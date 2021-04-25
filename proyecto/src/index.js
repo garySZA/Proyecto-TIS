@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Barra_Sup from './Componentes/Barra_Superior/barra_superior';
+import BarraLateral from'./Componentes/Campo_lateral_Izquierdo/barra_lateral_izquierda';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <Barra_Sup />
+    <BarraLateral />
   </React.StrictMode>,
   document.getElementById('root')
 );

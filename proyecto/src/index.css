@@ -3,7 +3,19 @@
   --fuente-titulos:'Exo', sans-serif;
   --tamaño-fuente-subtitulos: 300;
 
+  --fuente-subtitulos: 'Rubik', sans-serif;
+
   /*    Colores   */
-  --color-sombras-titulos: white
+  --color-sombras-titulos: white;
+
+  
+  --azul: #293863;
+  --color_letra_fondo_oscuro: silver;
+
+  --color_fondo: var(--azul);
+
+  --color_fondo_cuadros: #e5e5e5;
+
+  --color-segundo-umss: #EC1B23
 
 }
