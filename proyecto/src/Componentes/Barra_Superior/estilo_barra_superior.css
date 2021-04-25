@@ -86,3 +86,7 @@ nav {
 .nav .enlaces-header a:hover {
     font-size: 20px;
 }
+
+header {
+    margin-bottom: 100px;
+}
