@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #293863;
+    --color_letra_fondo_oscuro: silver;
+
+    --color_fondo: var(--azul);
+
+    --ruta_logo_umss: './src/Imagenes/UMSS_logo.png'
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1600px;
+    margin: auto;
+    overflow: hidden;
+
+    
+}
+
+nav {
+    width: 100%;
+    height: 80px;
+    background-color: var(--color_fondo);
+    border-bottom: 1px solid transparent;
+    box-shadow: 5px 5px 20px 0 rgba(204, 48, 48, 0.8);
+    position: fixed;
+    top: 0;  
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.nav .logo {
+    height: 80px;
+}
+
+.nav .logo img {
+    height: 90%;
+    vertical-align: top;
+    margin-top: 5px;
+}
+
+.enlaces-header {
+    font-weight: 300;
+    transition: ease-in-out .5s;
+}
+
+.nav .enlaces-header a{
+    text-decoration: none;
+    color: var(--color_letra_fondo_oscuro);
+    margin-left: 20px;
+    font-family: var(--fuente-titulos);
+    font-weight: 300;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px  var(--color-sombras-titulos);
+
+    transition: .5s ;
+}
+
+.titulo {
+    font-size: 30px;
+    color: var(--color_letra_fondo_oscuro);
+    font-family: var(--fuente-titulos);
+    text-shadow: 1px 1px 1px  var( --color-sombras-titulos);
+}
+
+.icono-login {
+    margin-left: 10px;
+
+    
+    color: var(--color_letra_fondo_oscuro);
+    text-shadow: 1px 1px 1px  var( --color-sombras-titulos);
+}
+
+.nav .enlaces-header a:hover {
+    font-size: 20px;
+}
+
+header {
+    margin-bottom: 100px;
+}

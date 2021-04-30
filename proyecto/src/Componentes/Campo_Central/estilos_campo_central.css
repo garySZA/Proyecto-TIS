@@ -1,0 +1,16 @@
+.principal{
+    background-color: var(--color_fondo_cuadros);
+    
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    margin-left: 60px;
+    border: 2px var(--color_fondo) solid;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}

@@ -1,0 +1,18 @@
+.dinamico{
+    display: flex;
+    
+}
+
+.opciones{
+    background-color: var(--color_fondo_cuadros);
+    
+    width: 400px;
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 2px var(--color_fondo) solid;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
