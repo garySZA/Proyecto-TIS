@@ -8,7 +8,7 @@ class Formulario_ProductosServicios extends Component{
     constructor(props){
         super(props)
         this.state = {
-            showMe:props.estado
+            showMe:true
         }
     }
 

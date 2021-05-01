@@ -7,7 +7,7 @@ class Registro_Empresa extends Component{
     constructor(props){
         super(props)
         this.state={
-            showMe:props.estado
+            showMe:true
         }
     }
     
@@ -17,7 +17,7 @@ class Registro_Empresa extends Component{
 
     render(){
         return(
-            <div>
+            <div data-aos="zoom-out-right">
                 {this.state.showMe ? (
                     <div className="contenedor-empresa" id="mostrar-registro-empresa">
                     <div className="contenedor-titulo">

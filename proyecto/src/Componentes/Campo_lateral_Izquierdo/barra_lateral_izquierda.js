@@ -1,14 +1,19 @@
 import './estilos_barra_lateral_izquierda.css';
 import Botones from './botones';
-import Campo_Central from '../Campo_Central/campo_central'
+import Registro_Empresa from '../Registro_Empresa/registro_empresa'
 import React from 'react';
+import '../Campo_Central/estilos_campo_central.css'
+
+//importacion de formulario de solicitud de productos y servicios
+import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
 
 
 class BarraLateral extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      mostrarRegistroEmpresa: false , mostrarFormularioProductosServicios :false
+      mostrarRegistroEmpresa: false,
+      mostrarFormularioProductosServicios :false
     };
   }
 
@@ -21,7 +26,8 @@ class BarraLateral extends React.Component{
       console.log(this.state.mostrarRegistroEmpresa);
     }else{
       this.setState({
-        mostrarRegistroEmpresa: true
+        mostrarRegistroEmpresa: true,
+        mostrarFormularioProductosServicios: false
       })
       console.log("false");
       console.log(this.state.mostrarRegistroEmpresa);
@@ -31,7 +37,7 @@ class BarraLateral extends React.Component{
   operation3 = () =>{
     if(this.state.mostrarFormularioProductosServicios == true){
       this.setState({
-        mostrarRegistroEmpresa: false
+        mostrarFormularioProductosServicios: false
       }) 
     }else{
       this.setState({
@@ -51,18 +57,20 @@ class BarraLateral extends React.Component{
 
             <button className="registro-empresa" onClick={()=>this.operation3()}>Registro de solicitud</button>
         </div>
-        {
-          (this.state.mostrarRegistroEmpresa)?
-          <Campo_Central estado={this.state.mostrarRegistroEmpresa}/>
-          :
-          ''   
-        }
-        {
-          (this.state.mostrarFormularioProductosServicios)?
-          <Campo_Central />
-          :
-          ''   
-        }
+        <div className="principal" id="algo">
+          {
+            (this.state.mostrarRegistroEmpresa)?
+            <Registro_Empresa estadoRegistroEmpresa={this.state.mostrarRegistroEmpresa}/>
+            :
+            ''
+          }
+          {
+            (this.state.mostrarFormularioProductosServicios)?
+            <Formulario_ProductosServicios />
+            :
+            ''
+          }
+      </div>
     </div>
     </div>
     );
