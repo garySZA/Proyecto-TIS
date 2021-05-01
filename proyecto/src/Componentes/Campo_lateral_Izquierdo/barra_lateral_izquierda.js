@@ -8,7 +8,7 @@ class BarraLateral extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      mostrarRegistroEmpresa: false
+      mostrarRegistroEmpresa: false , mostrarFormularioProductosServicios :false
     };
   }
 
@@ -28,6 +28,19 @@ class BarraLateral extends React.Component{
     }
   }
 
+  operation3 = () =>{
+    if(this.state.mostrarFormularioProductosServicios == true){
+      this.setState({
+        mostrarRegistroEmpresa: false
+      }) 
+    }else{
+      this.setState({
+        mostrarFormularioProductosServicios: true,
+        mostrarRegistroEmpresa: false
+      })     
+    }
+  }
+
   render(){
     return(
       <div>
@@ -35,10 +48,18 @@ class BarraLateral extends React.Component{
         <div className="opciones">
             
             <button className="registro-empresa" onClick={()=>this.operation2()}>Registrar Empresa</button>
+
+            <button className="registro-empresa" onClick={()=>this.operation3()}>Registro de solicitud</button>
         </div>
         {
           (this.state.mostrarRegistroEmpresa)?
           <Campo_Central estado={this.state.mostrarRegistroEmpresa}/>
+          :
+          ''   
+        }
+        {
+          (this.state.mostrarFormularioProductosServicios)?
+          <Campo_Central />
           :
           ''   
         }
