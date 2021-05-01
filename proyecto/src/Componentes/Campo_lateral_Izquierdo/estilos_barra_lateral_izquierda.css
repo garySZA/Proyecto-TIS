@@ -5,7 +5,7 @@
 
 .opciones{
     background-color: var(--color_fondo_cuadros);
-    
+    min-height: 400px;
     width: 400px;
     
     display: flex;
@@ -15,4 +15,6 @@
     border: 2px var(--color_fondo) solid;
     border-radius: 10px;
     box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+
+    margin-left: 20px;
 }
