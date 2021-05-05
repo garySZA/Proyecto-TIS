@@ -30,6 +30,9 @@ nav {
     box-shadow: 5px 5px 20px 0 rgba(204, 48, 48, 0.8);
     position: fixed;
     top: 0;  
+
+    z-index: 100;
+    transition: ease-in-out .5s;
 }
 
 .nav {
