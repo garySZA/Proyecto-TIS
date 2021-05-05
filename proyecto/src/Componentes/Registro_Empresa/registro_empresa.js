@@ -6,9 +6,9 @@ const expresiones = {
     rubro: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras
     telefonoEmpresa: /^\d{7,8}$/, // 7 a 8 digitos.
     correoEmpresa: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    nitEmpresa: /^\d{10,11}$/, // 10 digitos.
+    nitEmpresa: /^\d{10}$/, // 10 digitos.
     nombrePersona: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras
-    telefonoPersona: /^\d{7,8}$/, // 7 a 8 digitos.
+    telPersona: /^\d{7,8}$/, // 7 a 8 digitos.
     ciPersona: /^\d{7,8}$/, // 7 a 8 digitos.
 };
 class Registro_Empresa extends Component{
@@ -32,172 +32,165 @@ class Registro_Empresa extends Component{
         this.setState.showMe=true;
     }
 
-    nombreCampos = ["nombreEmpresa", "rubro" ,"telefonoEmpresa", "correoEmpresa", "nitEmpresa", "nombrePersona", "telefonoPersona", "ciPersona"];
+    nombreCampos = ["nombreEmpresa", "rubro" ,"telefonoEmpresa", "correoEmpresa", "nitEmpresa", "nombrePersona", "telPersona", "ciPersona"];
     
     onChange = () => {
         this.nombreCampos.forEach((campo) => {
-            switch (campo){
-                case "nombreEmpresa":
-                    if(document.getElementById(campo).value ===""){
+            var elemento = document.getElementById(campo);
+            if(campo == "nombreEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNombreEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.nombreEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoNombreEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoNombreEmpresa:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.nombreEmpresa.test(document.getElementById("nombreEmpresa").value)){
-                            this.setState({
-                                validoNombreEmpresa:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoNombreEmpresa:false
-                            });
-                            this.darEfectoError(campo);
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "rubro":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else if(campo == "rubro"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoRubroEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.rubro.test(elemento.value)){
+                        this.setState({
+                            validoRubroEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoRubroEmpresa:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.rubro.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoRubroEmpresa:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoRubroEmpresa:false
-                            })
-                            this.darEfectoError(campo);
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "telefonoEmpresa":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else if(campo == "telefonoEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoTelefonoEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.telefonoEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoTelefonoEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoTelefonoEmpresa:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.telefonoEmpresa.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoTelefonoEmpresa:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoTelefonoEmpresa:false
-                            })
-                            this.darEfectoError(campo);
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "correoEmpresa":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else if(campo == "correoEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoCorreoEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.correoEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoCorreoEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoCorreoEmpresa:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.correoEmpresa.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoCorreoEmpresa:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoCorreoEmpresa:false
-                            })
-                            this.darEfectoError(campo);
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "nitEmpresa":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else if(campo == "nitEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNitEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.nitEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoNitEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoNitEmpresa:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.nitEmpresa.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoNitEmpresa:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoNitEmpresa:false
-                            })
-                            this.darEfectoError(campo)
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "nombrePersona":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else if(campo == "nombrePersona"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNombrePersona:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.nombrePersona.test(elemento.value)){
+                        this.setState({
+                            validoNombrePersona:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoNombrePersona:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.nombrePersona.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoNombrePersona:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoNombrePersona:false
-                            })
-                            this.darEfectoError(campo)
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "telefonoPersona":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else if(campo == "telPersona"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoTelefonoPersona:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.telPersona.test(elemento.value)){
+                        this.setState({
+                            validoTelefonoPersona:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoTelefonoPersona:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.telefonoPersona.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoTelefonoPersona:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoTelefonoPersona:false
-                            })
-                            this.darEfectoError(campo)
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
-                case "ciPersona":
-                    if(document.getElementById(campo).value ===""){
+                }
+            }else{
+                if(elemento.value ===""){
+                    this.setState({
+                        validoCiPersona:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.ciPersona.test(elemento.value)){
+                        this.setState({
+                            validoCiPersona:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
                         this.setState({
                             validoCiPersona:false
                         })
-                    }else{
-                        console.log("funciona");
-                        if(expresiones.ciPersona.test(document.getElementById(campo).value)){
-                            this.setState({
-                                validoCiPersona:true
-                            })
-                            this.quitarEfectoError(campo);
-                        }else{
-                            this.setState({
-                                validoCiPersona:false
-                            })
-                            this.darEfectoError(campo)
-                        }
+                        this.darEfectoError(campo)
                     }
-                    break;
+                }
             }
+            
         })
     }
 
@@ -214,6 +207,9 @@ class Registro_Empresa extends Component{
     verificar = () =>{
         if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
             console.log("registrar");
+            this.nombreCampos.forEach((campo) => {
+                console.log(document.getElementById(campo).value)
+            })
         }else{
             console.log("datos llenados incorrectamente");
         }
@@ -327,7 +323,8 @@ class Registro_Empresa extends Component{
                                     className="inputs" 
                                     name="nitEmpresa"
                                     id="nitEmpresa"
-                                    placeholder="Ingrese nit aquí">
+                                    placeholder="Ingrese nit aquí"
+                                    onChange={this.onChange}>
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p class="formulario__input-error" id="mensajeError-nitEmpresa">
@@ -347,7 +344,8 @@ class Registro_Empresa extends Component{
                                     className="inputs" 
                                     name="nombrePersona"
                                     id="nombrePersona"
-                                    placeholder="Ingrese nombre aquí">
+                                    placeholder="Ingrese nombre aquí"
+                                    onChange={this.onChange}>
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p class="formulario__input-error" id="mensajeError-nombrePersona">
@@ -366,11 +364,12 @@ class Registro_Empresa extends Component{
                                     type="text" 
                                     className="inputs" 
                                     name="telefonoPersona"
-                                    id="telefonoPersona"
-                                    placeholder="Ingrese teléfono aquí">
+                                    id="telPersona"
+                                    placeholder="Ingrese teléfono aquí"
+                                    onChange={this.onChange}>
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                <p class="formulario__input-error" id="mensajeError-telefonoPersona">
+                                <p class="formulario__input-error" id="mensajeError-telPersona">
                                     El telefono solo puede contener numeros y el maximo son 8 dígitos.
                                 </p>
                             </div>
@@ -387,7 +386,8 @@ class Registro_Empresa extends Component{
                                     className="inputs" 
                                     name="ciPersona"
                                     id="ciPersona"
-                                    placeholder="Ingrese ci aquí">
+                                    placeholder="Ingrese ci aquí"
+                                    onChange={this.onChange}>
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p class="formulario__input-error" id="mensajeError-ciPersona">
