@@ -1,6 +1,6 @@
 import './estilos_campo_central.css';
 import Registro_Empresa from '../Registro_Empresa/registro_empresa';
-import Formulario_ProductosServicios from '../Solicitud_productos-servicios.js/Formulario_productos-servicios'
+import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
 import React from 'react';
 
 class Campo_Central extends React.Component{
