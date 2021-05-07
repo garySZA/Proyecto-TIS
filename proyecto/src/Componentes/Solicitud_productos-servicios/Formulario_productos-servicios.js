@@ -13,6 +13,7 @@ class Formulario_ProductosServicios extends Component{
     }
 
     operation(){
+        alert("mensaje de alerta");
         this.setState.showMe = true;
     }
 
@@ -28,32 +29,32 @@ class Formulario_ProductosServicios extends Component{
                         </div>
                         <div className="contenedor-formularioDeRegistro">
                             <div className="contenedor-detalle">
-                                <h2 className="campo-detalle">Detalle:</h2>
+                                <h2 className="campo-detalle"> <i class="fas fa-book"></i> Detalle:</h2>
                                 <div className="input-introducir-detalle">
                                     <textarea className="introducir-detalleDeRegistro" type="text" placeholder="Ingresar detalle de solicitud..." maxlength="200"></textarea>
                                 </div>
                             </div>
                             <div className="contenedor-fechaDeSolicitud">
-                                <h2 className="campo-fechaDeSolicitud">Fecha de solicitud:</h2>
+                                <h2 className="campo-fechaDeSolicitud"><i class="fas fa-calendar-week"></i> Fecha de solicitud:</h2>
                                 <div className="input-introducir-fechaDeSolicitud">
                                     <input className="introducir-fechaDeSolicitud" type="date" name="fecha" ></input>
                                 </div>
                             </div>
                             <div className="contenedro-responsableDeSolicitud">
-                                <h2 className="campo-responsableDeSolicitud">Responsable de solicitud:</h2>
+                                <h2 className="campo-responsableDeSolicitud"> <i class="fas fa-user"></i> Responsable de solicitud:</h2>
                                 <div className="input-introducir-responsableDeSolicitud">
                                     <input className="introducir-responsableDeSolicitud" type="text" placeholder="ingresar responsable de solicitud"></input>
                                 </div> 
                             </div>
                             <div className="contenedor-monto">
-                                <h2 className="campo-monto">Monto: <i class="fas fa-money-bill"> </i> </h2>
+                                <h2 className="campo-monto"> <i class="fas fa-dollar-sign"></i> Monto:   </h2>
                                 <div className="input-introducir-monto">
-                                    <input className="introducir-monto" type="number" placeholder="ingresar monto" ></input>
+                                    <input className="introducir-monto" type="number" placeholder="ingresar monto" required pattern="[0-9]+" ></input>
                                 </div>
                             </div>
                             <div className="contendor-botonesDeRegistro">
                                 <div className="boton-cancelarRegistro">
-                                    <button className="cancelarRegistro" type="button">Cancelar</button>
+                                    <button className="cancelarRegistro" type="button" onClick="alert('se cancelo el registro')" >Cancelar</button>
                                 </div>
                                 <div className="boton-solicitarRegistro">
                                     <button className="solicitarRegistro">Solicitar</button>
