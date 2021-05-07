@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './estilos_registro_empresa.css';
+import axios from 'axios';
 
 const expresiones = {
     nombreEmpresa: /^[a-zA-Z\_\-]{0,100}$/, // Letras
@@ -210,8 +211,26 @@ class Registro_Empresa extends Component{
             this.nombreCampos.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
+            //realizando un Post a la api mediante axios
+            axios.post('http://localhost:8080/api/empresas',{
+                nombreEmpresa: document.getElementById("nombreEmpresa").value,
+                rubro: document.getElementById("rubro").value,
+                telefonoEmpresa: document.getElementById("telefonoEmpresa").value,
+                correoEmpresa : document.getElementById("correoEmpresa").value,
+                nit : document.getElementById("nitEmpresa").value,
+                nombreEncargado : document.getElementById("nombrePersona").value,
+                telefonoEncargado : document.getElementById("telPersona").value,
+                ciEncargado : document.getElementById("ciPersona").value
+            }).then(response => {
+                console.log('Empresa añadida: ', response.data);
+            }).catch(e => {
+                console.log(e);
+            });
+
+            document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-activo");
         }else{
             console.log("datos llenados incorrectamente");
+            document.getElementById("formulario__mensaje").classList.add("formulario__input-error-activo");
         }
     }
 
