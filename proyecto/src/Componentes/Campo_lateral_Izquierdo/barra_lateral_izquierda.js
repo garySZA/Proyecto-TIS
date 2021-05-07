@@ -1,5 +1,4 @@
 import './estilos_barra_lateral_izquierda.css';
-import Botones from './botones';
 import Registro_Empresa from '../Registro_Empresa/registro_empresa'
 import React from 'react';
 import '../Campo_Central/estilos_campo_central.css'
@@ -7,13 +6,16 @@ import '../Campo_Central/estilos_campo_central.css'
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
 
+//importacion de formulario de registro de nuevos usuarios
+import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_registration.js'
 
 class BarraLateral extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       mostrarRegistroEmpresa: false,
-      mostrarFormularioProductosServicios :false
+      mostrarFormularioProductosServicios :false,
+      mostrarFormularioDeUsuariosNuevos:false 
     };
   }
 
@@ -27,7 +29,8 @@ class BarraLateral extends React.Component{
     }else{
       this.setState({
         mostrarRegistroEmpresa: true,
-        mostrarFormularioProductosServicios: false
+        mostrarFormularioProductosServicios: false, 
+        mostrarFormularioDeUsuariosNuevos: false
       })
       console.log("false");
       console.log(this.state.mostrarRegistroEmpresa);
@@ -42,10 +45,26 @@ class BarraLateral extends React.Component{
     }else{
       this.setState({
         mostrarFormularioProductosServicios: true,
+        mostrarFormularioDeUsuariosNuevos:false,
         mostrarRegistroEmpresa: false
       })     
     }
   }
+
+  operation4 = () =>{
+    if(this.state.mostrarFormularioDeUsuariosNuevos == true){
+      this.setState({
+        mostrarFormularioDeUsuariosNuevos: false
+      }) 
+    }else{
+      this.setState({
+        mostrarFormularioDeUsuariosNuevos: true,
+        mostrarFormularioProductosServicios:false,
+        mostrarRegistroEmpresa: false
+      })     
+    }
+  }
+
 
   render(){
     return(
@@ -54,8 +73,8 @@ class BarraLateral extends React.Component{
         <div className="opciones">
             
             <button className="registro-empresa" onClick={()=>this.operation2()}>Registrar Empresa</button>
-
             <button className="registro-empresa" onClick={()=>this.operation3()}>Registro de solicitud</button>
+            <button className="registro-empresa" onClick={()=>this.operation4()}>Registrar Nuevo Usuario</button>
         </div>
         <div className="principal" id="algo">
           {

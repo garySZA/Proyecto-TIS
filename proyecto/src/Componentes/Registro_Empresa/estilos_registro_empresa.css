@@ -86,3 +86,77 @@
     background-color: var(--color_fondo);
     color: var(--color_letra_fondo_oscuro);
 }
+
+/* estilos para validacion*/
+
+.formulario__grupo-input {
+    position: relative;
+  }
+
+.formulario__input-error {
+    
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__validacion-estado {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.formulario__mensaje {
+    height: 45px;
+    line-height: 45px;
+    background: #f66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+
+    text-align: center;
+}
+
+.formulario__mensaje-exito {
+    font-size: 20px;
+    color: #119200;
+    display: none;
+}
+
+.mensaje-exito{
+    display: flex;
+    justify-content: center;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+    color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+    color: #bb2929;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+    border: 3px solid #bb2929;
+}
+
+.formulario__input-error-activo {
+    display: block;
+}
+
+.formulario__grupo-correcto .formulario__validacion-estado {
+    color: #1ed12d;
+    opacity: 1;
+}
+
+.formulario__mensaje-activo {
+    display: block;
+}
+
+.input-error{
+    border: 2px solid tomato;
+}
