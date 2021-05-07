@@ -7,7 +7,7 @@ import '../Campo_Central/estilos_campo_central.css'
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
 
 //importacion de formulario de registro de nuevos usuarios
-import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_registration.js'
+import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_registration'
 
 class BarraLateral extends React.Component{
   constructor(props){
@@ -86,6 +86,12 @@ class BarraLateral extends React.Component{
           {
             (this.state.mostrarFormularioProductosServicios)?
             <Formulario_ProductosServicios />
+            :
+            ''
+          }
+          {
+            (this.state.mostrarFormularioDeUsuariosNuevos)?
+            <RegistroDeNuevosUsuarios />
             :
             ''
           }
