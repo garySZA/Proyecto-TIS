@@ -1,0 +1,270 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+   /* background:url(umss.jpg);*/
+    background-size:contain ;
+    background-attachment: fixed;
+ }
+ .contenedor_de_registro{
+     position: relative;
+     top: -30px;
+     width: 100%;
+     padding: 20px;  
+     background: size 50px ; 
+ }
+ .Formulario {
+     height: 550px;
+     background: rgb(240, 239, 239);
+     margin: 415px;
+     padding: 30px;
+ }
+ .titulo_registro_usuario{
+     text-align: center;
+     color: #20437c;
+     font-size: 30px;
+ }
+ h2{
+     text-align: justify;
+     position: relative;
+     left: 25px;
+     color: #1a2537;
+     font-size: 20px;
+ }
+ input[type="text"]
+ input[type="password"]{
+     font-size: 20px;
+     width: 82%;
+     padding: 10px;
+     border: none;
+     }   
+ 
+ .titulo_registro{
+     font-size: 30px;
+     position: relative;
+     left: -25px;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ .Introducir_nombre{
+     position: relative;
+     top: -40px ;
+     bottom: 0;
+     right: 0;
+     left: 0;
+     width: 0;
+ }
+ .Introducir_nombre_input{
+ position: relative;
+ top: 38px;
+ bottom: 0px;
+ right: 0px;
+ left: 118px;
+ width: 270px;
+ }
+ .icono_de_nombre{
+     position: relative;
+     top: 57px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .Introducir_apellidos{
+     position: relative;
+     top: -70px ;
+     bottom: 0;
+     right: 0;
+     left: 0;
+     width: 0;
+ }
+ .Introducir_Apellidos_input{
+     position: relative;
+     top: -38px; 
+     left: 120px;
+     width: 269px;
+ }
+ .icono_de_apellido{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .fecha_de_nacimiento{
+     position: relative;
+     top: -120px ;
+     bottom: 0;
+     right: 0;
+     left: 0;
+ }
+ .fecha_de_nacimiento_input{
+     position: relative;
+     top: -41px;
+     right: 60;
+     left: 232px;
+     width: 160px;
+ }
+ .icono_de_calendario{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .Introducir_Direccion{
+     position: relative;
+     top: -173px ;
+     bottom: 0;
+     right: 0;
+     left: 0;
+     width: 200;
+ }
+ .Introducir_direccion_input{
+     position: relative;
+     top: -41px;
+     right: 60;
+     left: 124px;
+     width: 265px;
+ }
+ .icono_de_domicilio{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .Introducir_Telefono{
+     position: relative;
+     top: -225px ;
+     bottom: 0;
+     right: 0;
+     left: 0;
+     width: 0;
+ }
+ .Introducir_telefono_input{
+     position: relative;
+     top: -41px;
+     right: 60;
+     left: 117px;
+     width: 271px;
+ }
+ .icono_de_telefono{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .Seleccionar_Tipo{
+     position: relative;
+     top: -280px ;
+     bottom:0 ;
+     right: 0;
+     left: 0;
+ }
+ .caja_de_seleccion_de_tipo{
+     position: relative;
+     top: -38px;
+     right: 60;
+     left: 90px;
+     width: 300px;
+     
+ }
+ .icono_de_tipo{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .Introdicir_Email{
+     position: relative;
+     top: -330px ;
+     bottom: 0;
+     right: 0;
+     left:90;
+ }
+ .introducir_Email_input{
+     position: relative;
+     top: -38px;
+     right: 60;
+     left: 88px;
+     width: 300px
+ }
+ .icono_de_email{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ .Introducir_Contraseña{
+     position: relative;
+     top: -380px ;
+     bottom: 0;
+     right: 0;
+     left: 0;
+ }
+ .introducir_contraseña_input{
+     position: relative;
+     top: -38px;
+     right: 60;
+     left: 140px;
+     width: -600px;
+ }
+ .icono_de_contraseña{
+     position: relative;
+     top: 37px;
+     bottom: 0px;
+     right: 0px;
+     left: 5px;
+     width: 300px;
+ }
+ 
+ .Bottones_de_Registro{
+     position: relative;
+     top: -380px ;
+     bottom: 0;
+     right: 0;
+     left: 120px;
+ 
+ }
+ .cancelar_registro_button{
+     position: relative;
+     top: -21px;
+     right: 60;
+     left: 100px;
+     width: 100px;
+ }
+ .comentarios{
+     position: relative;
+     top: 1px ;
+     left: -110px;
+     right: 50px;
+     font-size: 12px;
+     text-align: justify;
+ }
+ .iniciar_sesion_comentario{
+     position: relative;
+     top: -10px ;
+     left: 100px;
+     right: 50px;
+     font-size: 12px;
+     text-align: justify;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
