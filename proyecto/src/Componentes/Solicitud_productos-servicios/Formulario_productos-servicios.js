@@ -13,7 +13,7 @@ class Formulario_ProductosServicios extends Component{
     }
 
     operation(){
-        alert("mensaje de alerta");
+        
         this.setState.showMe = true;
     }
 
