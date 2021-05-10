@@ -1,4 +1,5 @@
 import './estilos_barra_lateral_izquierda.css';
+import './estilos_botones.css';
 import Registro_Empresa from '../Registro_Empresa/registro_empresa'
 import React from 'react';
 import '../Campo_Central/estilos_campo_central.css'
@@ -85,7 +86,7 @@ class BarraLateral extends React.Component{
           }
           {
             (this.state.mostrarFormularioProductosServicios)?
-            <Formulario_ProductosServicios />
+            <Formulario_ProductosServicios estadoFormularioProductosServicios={this.state.mostrarFormularioProductosServicios}/>
             :
             ''
           }

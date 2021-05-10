@@ -43,13 +43,13 @@
     background: whitesmoke;
 }
 
-    .contenedor-detalle {
+    .solicitud__datos {
         padding: 5px;
         width: 80%;
         max-width: 1600px;
         margin: auto;
         overflow: hidden;
-        margin-top: 5%;
+        margin-top: 3%;
     }
 
         /*.input-introducir-detalle {
@@ -80,13 +80,13 @@
             opacity: 0.5;
         }
 
-    .contenedro-responsableDeSolicitud {
+    /*.contenedro-responsableDeSolicitud {
         padding: 5px;
         width: 80%;
         max-width: 1600px;
         margin: auto;
         overflow: hidden;
-    }
+    }*/
         .introducir-responsableDeSolicitud {
             width: 95%;
             padding: 5px;
@@ -95,13 +95,13 @@
             opacity: 0.5;
         }
 
-    .contenedor-monto {
+    /*.contenedor-monto {
         padding: 5px;
         width: 80%;
         max-width: 1600px;
         margin: auto;
         overflow: hidden;
-    }
+    }*/
         .introducir-monto{
             width: 95%;
             padding: 5px;
@@ -150,3 +150,79 @@
         .solicitarRegistro:hover {
             opacity: 1;
         }
+
+
+/*mostrar errores*/
+
+.solicitud__datos-imputs {
+    position: relative;
+}
+
+.solicitud__validacionCampos-Estados {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.solicitud__datos-incorrecto .solicitud__h3 {
+    color: red;
+}
+
+.solicitud__datos-incorrecto .solicitud__validacionCampos-Estados {
+    color: red;
+    opacity: 1;
+}
+
+.solicitud__datos-incorrecto .solicitud__dato {
+    border: 3px solid red;
+}
+
+.dato-erroneo{
+    border: 2px solid red;
+}
+
+.solicitud__dato-erroneo {
+    font-size: 13px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.solicitud__dato-erroneo-activo {
+    display: block;
+}
+
+.solicitud__datos-correcto .solicitud__validacionCampos-Estados {
+    color: green;
+    opacity: 1;
+}
+
+/*Validacion de botones*/ 
+
+.solicitud__mensaje {
+    height: 45px;
+    line-height: 45px;
+    background: #f66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+    
+    text-align: center;
+}
+
+.solicitud__mensaje-exitoso {
+    font-size: 17px;
+    color: green;
+    display: none;
+}
+
+.mensaje-exitoso {
+    display: flex;
+    justify-content: center;
+}
+
+.solicitud__mensaje-activo {
+    display: block;
+}
