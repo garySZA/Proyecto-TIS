@@ -347,7 +347,7 @@ class Registro_Empresa extends Component{
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p class="formulario__input-error" id="mensajeError-nitEmpresa">
-                                    El nit de la empresa solo puede contener numeros y debe contener 10 dígitos.
+                                    El nit de la empresa solo puede contener 10 dígitos.
                                 </p>
                             </div>
                         </div>
@@ -355,7 +355,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__nombrePersona">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-user"></i>
-                                <label for="nombre-empresa" className="subtitulo">Nombre de persona encargada de empresa:</label>
+                                <label for="nombre-empresa" className="subtitulo">Nombre de persona encargada:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -376,7 +376,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__telefonoPersona">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-phone"></i>
-                                <label for="nombre-empresa" className="subtitulo">Telefono de persona encargada de empresa:</label>
+                                <label for="nombre-empresa" className="subtitulo">Telefono de persona encargada:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -389,7 +389,7 @@ class Registro_Empresa extends Component{
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p class="formulario__input-error" id="mensajeError-telPersona">
-                                    El telefono solo puede contener numeros y el maximo son 8 dígitos.
+                                    El telefono solo puede contener entre 7 y 8 digitos
                                 </p>
                             </div>
                         </div>
@@ -397,7 +397,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__ciPersona">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-hashtag"></i>
-                                <label for="nombre-empresa" className="subtitulo">CI de persona encargada de empresa:</label>
+                                <label for="nombre-empresa" className="subtitulo">CI de persona encargada:</label>
                             </div>
                             <div className="formulario__grupo" id="grupo-input">
                                 <input 
@@ -410,7 +410,7 @@ class Registro_Empresa extends Component{
                                 </input>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p class="formulario__input-error" id="mensajeError-ciPersona">
-                                    El ci solo puede contener letras ni tener mas de 10 digitos.
+                                    El ci solo puede contener números.
                                 </p>
                             </div>
                         </div>
