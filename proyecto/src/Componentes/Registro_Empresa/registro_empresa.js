@@ -212,7 +212,7 @@ class Registro_Empresa extends Component{
                 console.log(document.getElementById(campo).value)
             })
             //realizando un Post a la api mediante axios
-            axios.post('http://localhost:8080/api/empresas',{
+            axios.post('https://proyecto-tis.herokuapp.com/api/empresas',{
                 nombreEmpresa: document.getElementById("nombreEmpresa").value,
                 rubro: document.getElementById("rubro").value,
                 telefonoEmpresa: document.getElementById("telefonoEmpresa").value,
