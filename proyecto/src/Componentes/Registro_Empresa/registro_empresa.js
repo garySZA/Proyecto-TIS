@@ -211,6 +211,7 @@ class Registro_Empresa extends Component{
             this.nombreCampos.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
+
             //realizando un Post a la api mediante axios
             axios.post('http://localhost:8080/api/empresas',{
                 nombreEmpresa: document.getElementById("nombreEmpresa").value,
@@ -330,6 +331,7 @@ class Registro_Empresa extends Component{
                                 </p>
                             </div>
                         </div>
+
 
                         <div className="elementos formulario__grupo" id="grupo__nitEmpresa">
                             <div className="contenedor-elementos-subtitulo">
