@@ -427,6 +427,8 @@ class Registro_Empresa extends Component{
                             <button className="boton-cancelar boton">Cancelar</button>
                             <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>
                         </div>
+
+                        
                         <div className="mensaje-exito">
                             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
                                 ¡Formulario enviado exitosamente!

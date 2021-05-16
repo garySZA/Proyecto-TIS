@@ -1,6 +1,7 @@
 import './estilos_barra_lateral_izquierda.css';
 import Registro_Empresa from '../Registro_Empresa/registro_empresa'
 import React from 'react';
+import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
 
 //importacion de formulario de solicitud de productos y servicios
