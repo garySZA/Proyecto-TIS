@@ -1,8 +1,10 @@
 import './estilos_barra_lateral_izquierda.css';
+import './estilos_botones.css';
 import Registro_Empresa from '../Registro_Empresa/registro_empresa'
 import React from 'react';
 import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
+import './estilos_botones.css'
 
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
@@ -86,7 +88,7 @@ class BarraLateral extends React.Component{
           }
           {
             (this.state.mostrarFormularioProductosServicios)?
-            <Formulario_ProductosServicios />
+            <Formulario_ProductosServicios estadoFormularioProductosServicios={this.state.mostrarFormularioProductosServicios}/>
             :
             ''
           }

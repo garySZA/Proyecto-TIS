@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-  /*boton para solicitud de productos y/o servicios
+  /*boton para solicitud de productos y/o servicios*/
 .Registro-solicitud-productosServicios{
     width: 270px;
     height: 40px;
@@ -36,4 +36,4 @@
     font-size: 20px;
     text-shadow:1px 1px 1px var(--color-sombras-titulos);
     margin: 10px;
-}*/
+}
