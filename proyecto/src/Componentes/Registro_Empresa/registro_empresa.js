@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './estilos_registro_empresa.css';
+import swal from 'sweetalert2';
 import axios from 'axios';
 
 const expresiones = {
@@ -25,7 +26,8 @@ class Registro_Empresa extends Component{
             validoNitEmpresa        : false,
             validoNombrePersona     : false,
             validoTelefonoPersona   : false,
-            validoCiPersona         : false
+            validoCiPersona         : false,
+            camposVacios            : true
         }
     }
     
@@ -37,6 +39,7 @@ class Registro_Empresa extends Component{
     
     onChange = () => {
         this.nombreCampos.forEach((campo) => {
+            this.verificarCamposVacios();
             var elemento = document.getElementById(campo);
             if(campo == "nombreEmpresa"){
                 if(elemento.value ===""){
@@ -241,6 +244,39 @@ class Registro_Empresa extends Component{
         })
     }
 
+    notificacionAdvertencia = () =>{
+        if(!this.state.camposVacios){
+            swal.fire({
+                title:      'Advertencia',
+                text:       'Los campos llenados serán vaciados!',
+                icon:       'warning',
+                showDenyButton:     'true',
+                confirmButtonText:  `Aceptar`,
+                denyButtonText:     `Cancelar`
+            }).then((respuesta) => {
+                if(respuesta.isConfirmed){
+                    this.limpiarCampos();
+                }else if(respuesta.isDenied){
+    
+                }
+            })
+        }
+    }
+
+    verificarCamposVacios(){
+        this.nombreCampos.forEach((campo) => {
+            if(document.getElementById(campo) === ""){
+                this.setState({
+                    camposVacios: true
+                })
+            }else{
+                this.setState({
+                    camposVacios: false
+                })
+            }
+        })
+    }
+
     render(){
         return(
             <div >
@@ -432,7 +468,7 @@ class Registro_Empresa extends Component{
                         </div>
 
                         <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
-                            <button className="boton-cancelar boton" onClick={this.limpiarCampos}>Cancelar</button>
+                            <button className="boton-cancelar boton" onClick={this.notificacionAdvertencia}>Cancelar</button>
                             <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>
                         </div>
 
