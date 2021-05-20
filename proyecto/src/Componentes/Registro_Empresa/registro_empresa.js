@@ -246,11 +246,13 @@ class Registro_Empresa extends Component{
             <div >
                 {this.state.showMe ? (
                     <div className="contenedor-empresa" id="mostrar-registro-empresa">
+
                     <div className="contenedor-titulo">
                         <h2 className="titulo-registro-empresa">
                             Registro de Empresa
                         </h2>
                     </div>
+
                     <div className="contenedor-campos formulario">
 
                         <div className="elementos formulario__grupo" id="grupo__usuario">
@@ -258,6 +260,7 @@ class Registro_Empresa extends Component{
                                 <i className="fas fa-building"></i>
                                 <label for="nombre-empresa" className="subtitulo">Nombre de empresa:</label>
                             </div>
+
                             <div className="formulario__grupo-input ">
                             <input 
                                 type="text" 
@@ -268,8 +271,9 @@ class Registro_Empresa extends Component{
                                 onChange={this.onChange}>
 
                             </input>
-                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p className="formulario__input-error" id="mensajeError-nombreEmpresa">
+                            <i class="formularioNuevoUsuario__validacion-estado fas fa-times-circle"></i>
+                            <p className="formulario__input-error"
+                             id="mensajeError-nombreEmpresa">
                                 El nombre debe contener solo letras
                             </p>
                             </div>
@@ -430,7 +434,7 @@ class Registro_Empresa extends Component{
                                 rellena el formulario correctamente.
                             </p>
                         </div>
-
+           
                         <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
                             <button className="boton-cancelar boton" onClick={this.limpiarCampos}>Cancelar</button>
                             <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>

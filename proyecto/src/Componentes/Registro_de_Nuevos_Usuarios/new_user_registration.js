@@ -4,222 +4,534 @@ import axios from 'axios';
 
 
 
+const expresiones = {
+    nombreNuevoUsuarios: /^[a-zA-Z\_\-]{0,100}$/, // Letras
+    apellidoNuevoUsuarios:/^[a-zA-Z\_\-]{0,100}$/, // Letras
+    /*fechaNacimientoNuevoUsuario: required=,  */
+    direccionNuevoUsuarios:/^[a-zA-Z\_\-]{0,100}$/, // Letras
+    telefonoNuevoUsuarios: /^\d{7,8}$/, // 7 a 8 digitos.
+    /*seleccionTipoNuevoUsuario:required='',  */
+    emailNuevoUsuarios:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    contraseñaNuevoUsuarios:/^.{4,12}$/, // de 4 a 12 digitos
+
+};
+
+
+
 class RegistroDeNuevosUsuarios extends Component{
     constructor(props){
         super(props)
         this.state = {
-            showMe:true
+            showMe:true,
+
+            validoNombreUsuario    :false,
+            validoApellidoUsuario  :false,
+            /*validoFechaDeNacimiento :false,*/
+            validoDireccionDeUsuario:false,
+            validoTelefonoDeUsuario :false,
+            /*validoTipoDeUsuario     :false,*/
+            validoEmailDeUsuario    :false,
+            validoContraseñaUsuario :false
         }
     }
+
+
     operation(){
         
         this.setState.showMe = true;
     }
+     
+    nombreCampos = ["nombreNuevoUsuario","apellidoNuevoUsuario","direccionNuevoUsuario","telefonoNuevoUsuario","emailNuevoUsuario", "contraseñaNuevoUsuario"];
+    
+    onChange = () => {
+        this.nombreCampos.forEach((campo) => {
+            var elemento = document.getElementById(campo);
+
+            /*console.log(campo)*/
+            if(campo == "nombreNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNombreUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.nombreNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoNombreUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoNombreUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+
+            }else if(campo == "apellidoNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoApellidoUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.apellidoNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoApellidoUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoApellidoUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+           /* }else if(campo == "fechaNacimientoNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoFechaDeNacimiento:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.fechaNacimientoNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoFechaDeNacimiento:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoFechaDeNacimiento:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }*/
+            }else if(campo == "direccionNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                          validoDireccionDeUsuario:false,
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.direccionNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoDireccionDeUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoDireccionDeUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "telefonoNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoTelefonoDeUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.telefonoNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoTelefonoDeUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoTelefonoDeUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+           /* }else if(campo == "seleccionTipoNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoTipoDeUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.seleccionTipoNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoTipoDeUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoTipoDeUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }*/
+            }else if(campo == "emailNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoEmailDeUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.emailNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoEmailDeUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoEmailDeUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else{
+                if(elemento.value ==="contraseñaNuevoUsuario"){
+                    this.setState({
+                        validoContraseñaUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.contraseñaNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoContraseñaUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoContraseñaUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }}
+            
+        })
+    }
+
 
 
 
 
      
       //Funcion para el boton de registrar , que mande los datos a la Bd si ha sido llenado correctamente
-      ValidarBoton=()=>{
-        axios.post('http://localhost:3050/add',{
-           nombreUsuario:document.getElementById("nombres").value,
-            apellidoUsuario:document.getElementById("apellidos").value,
-            fechaDeNacimiento:document.getElementById("fechaNacimiento").value,
-            direccion:document.getElementById("introducirDireccion"),
-            telefono:document.getElementById("intruducirTelefono").value,
-            tipo:document.getElementById("seleccionTipo").value,
-            email:document.getElementById("introducirEmal"),
-            constraseña:document.getElementById("introducirContraseña").value 
-        }).then(Responde =>{
-            console.log('el usuario ha sido registrado correctamente',Responde.data);
-        }).catch(error=>{console.log(error);
-       });
+    
+
+
+
+    quitarEfectoError(etiqueta){
+        document.getElementById(etiqueta).classList.remove("input-error");
+        document.getElementById(`mensajeError-${etiqueta}`).classList.remove("formularioNuevoUsuario__input-error-activo");
     }
 
+    darEfectoError(etiqueta){
+        document.getElementById(etiqueta).classList.add("input-error");
+        document.getElementById(`mensajeError-${etiqueta}`).classList.add("formularioNuevoUsuario__input-error-activo");
+    }
+
+    verificar = () =>{
+        if(this.state.validoNombreUsuario == true && this.state.validoApellidoUsuario == true &&  this.state.validoDireccionDeUsuario == true && this.state.validoTelefonoDeUsuario == true &&  this.state.validoEmailDeUsuario == true && this.state.validoContraseñaUsuario == true){
+            console.log("registrar");
+            this.nombreCampos.forEach((campo) => {
+                console.log(document.getElementById(campo).value)
+            })
+
+        
+           
 
 
+            axios.post('http://localhost:3050/add',{
+                nombreUsuario:document.getElementById("nombreNuevoUsuario").value,
+                apellidoUsuario:document.getElementById("apellidoNuevoUsuario").value,
+                fechaDeNacimiento:document.getElementById("fechaNacimientoNuevoUsuario").value,
+                direccion:document.getElementById("direccionNuevoUsuario").value,
+                telefono:document.getElementById("telefonoNuevoUsuario").value,
+                tipo:document.getElementById("seleccionTipoNuevoUsuario").value,
+                email:document.getElementById("emailNuevoUsuario").value,
+                contraseña:document.getElementById("contraseñaNuevoUsuario").value 
+            }).then(Responde =>{
+                console.log('el usuario ha sido registrado correctamente',Responde.data);
+            }).catch(error=>{console.log(error);
+           });
+           document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-activo");
+        }else{
+            console.log("datos llenados incorrectamente");
+            document.getElementById("formulario__mensaje").classList.add("formularioNuevoUsuario__input-error-activo");
+        }
+        }
 
 
 
 
     render(){
         return(
-<div>
-     {this.state.showMe? (
+        <div>
+          {this.state.showMe? (
 
 
+                      <div className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
 
-
-<form className="Formulario">
-
-                 <div className="titulo_registro">
-                     <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
-                 </div>
+                                <div className="contenedorTitulo_RegistroUsuario">
+                                    <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
+                                </div>
                 
 
+  
 
 
+                            <div className="contenedorCampos_registro-usuario">
 
-    <div className="contenedor_registro-usuario">
+                                             <div className="elementosFormularioUsuarios__grupo"id="grupo_NombreUsuario" >
+                                                   <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                        <i className="fas fa-user icon"></i> 
+                                                        <label for="nombre-nuevo-usuario"className="subtituloNU">Nombres</label>
+                                                   </div>
 
-                <div className="Introducir_nombre" >
-                     <div className="icono_de_nombre">
-                         <i className="fas fa-user icon"></i> 
-               </div>
-                              <h2 type="text">Nombres</h2>
-                                <input className="Introducir_nombre_input" 
-                                    id="nombres" 
-                                    placeholder="Ingrese su nombre completo"    
-                                    required="" pattern="[a-zA-Z]+"  
-                                ></input>                   
-                </div>  
+                                                   <div className="formularioNuevoUsuario__grupo-input">
+                                                         <input 
+                                                             type="text" 
+                                                             className="ingreso"
+                                                             name="nombreNuevoUsuario"
+                                                             id="nombreNuevoUsuario" 
+                                                             placeholder="Ingrese su nombre completo"  
+                                                             onChange={this.onChange}  
+                                                         ></input>    
 
-
-
-
-
-                <div className="Introducir_apellidos">
-                      <div className="icono_de_apellido">
-                         <i className="fas fa-user icon"></i> 
-                     </div>
-                       <h2 type="text">Apellidos</h2>
-                           <input className="Introducir_apellidos_input"
-                               id="apellidos"
-                               placeholder="Ingrese sus Apellidos"    
-                               required="" 
-                               pattern="[a-zA-Z]+" 
-                             ></input>
-                </div>
-
-
-
-
-                <div className="fecha_de_nacimiento">
-                         <div className="icono_de_calendario" >
-                             <i className="fas fa-calendar-alt"></i>
-                         </div>
-                             <h2 type="text">Fecha de Nacimiento</h2>
-                                  <input type="date"
-                                      id="fechaNacimiento"
-                                      name="fecha"
-                                  ></input>
-                </div>
+                                                              
+                                                               <p className="formularioNuevoUsuario__input-error"
+                                                               id="mensajeError-nombreNuevoUsuario">
+                                                               El nombre debe contener solo letras
+                                                            </p>
+                                                  </div>  
+                                            </div>
 
 
 
 
 
-                 <div className="Introducir_Direccion">
-                         <div className="icono_de_domicilio">
-                               <i className="fas fa-home"></i>
-                         </div>
-                              <h2 type="text">Dirección</h2>
-                                  <input className= "Introducir_Direccion_Input" 
-                                      id="introducirDireccion"
-                                      placeholder="Introducir Direccionrequired " 
-                                      >
-                                  </input>
-                </div>
+                                           <div className="elementosFormularioUsuarios__grupo" id="grupo_ApellidoUsuario">
+                                                    <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                          <i className="fas fa-user icon"></i> 
+                                                          <label for="apellido-nuevo-usuario" className="subtituloNU">Apellidos</label>
+                                                    </div>
+                                                     <div class="formularioNuevoUsuario__grupo-input" >
+                                                        <input 
+                                                           type="text"
+                                                           className="ingreso"
+                                                           name="apellidoNuevoUsuario"
+                                                           id="apellidoNuevoUsuario"
+                                                           placeholder="Ingrese sus Apellidos" 
+                                                           onChange={this.onChange}   
+                                                        ></input>
+
+                                                           
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                               id="mensajeError-apellidoNuevoUsuario">
+                                                               Los apellidos deben contener solo letras
+                                                            </p>
+                                                    </div>
+                                            </div>
+
+
+
+
+                                            <div className="elementosFormularioUsuarios__grupo" id="grupo_FechaNacimientoUsuario">
+                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                          <i className="fas fa-calendar-alt"></i>
+                                                          <label for="calendario-nuevo-usuario" className="subtituloNU">Fecha de Nacimiento</label>
+                                                     </div>
+
+                                                      <div class="formularioNuevoUsuario__grupo-input" >
+                                                         <input  
+                                                          type="date"
+                                                          className="ingreso"
+                                                          name="fechaNacimientoNuevoUsuario"
+                                                          id="fechaNacimientoNuevoUsuario"
+                                                          name="fecha"
+                                                          onChange={this.onChange}
+                                                        ></input>
+
+                                                            
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                               id="mensajeError-fechaNacimientoNuevoUsuario">
+                                                               debe introducir fecha
+                                                            </p>
+            
+                                                     </div>
+                                            </div>
+
+
+
+
+
+                                            <div className="elementosFormularioUsuarios__grupo" id="grupo_DireccionUsuario">
+                                                      <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                         <i className="fas fa-home"></i>
+                                                         <label for="direccion-nuevo-usuario" className="subtituloNU">Direccion</label>
+                                                     </div>
+                                                        
+                                                        <div class="formularioNuevoUsuario__grupo-input" >
+                                                            <input 
+                                                            type= "text" 
+                                                            className="ingreso"
+                                                            name="direccionNuevoUsuario"
+                                                            id="direccionNuevoUsuario"
+                                                            placeholder="Introducir Direccion"
+                                                            onChange={this.onChange} 
+                                                            ></input>
+                                                           
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                               id="mensajeError-direccionNuevoUsuario">
+                                                               La direccion debe contener solo letras
+                                                            </p>
+                                                        </div>
+                                            </div>
 
 
 
 
 
 
-                <div className="Introducir_Telefono">
-                         <div className="icono_de_telefono">
-                           <i className="fas fa-phone"></i>
-                        </div>
-                            <h2 type="text">Teléfono</h2>
-                                 <input className ="Introducir_Telefono_input" 
-                                    id="intruducirTelefono"
-                                    placeholder="Introducir telefono"
-                                    required="" 
-                                    pattern="[0-9]+" 
-                                    minLength="7" maxLength="8"
-                                ></input>   
-                 </div>
+                                             <div className="elementosFormularioUsuarios__grupo" id="grupo_TelefonoUsuario">
+                                                         <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                             <i className="fas fa-phone"></i>
+                                                             <label for="telefono-nuevo-usuario" className="subtituloNU">Teléfono</label>
+                                                         </div>
+                                                         
+                                                         <div class="formularioNuevoUsuario__grupo-input" >
+                                                            <input 
+                                                             type ="number" 
+                                                             className="ingreso"
+                                                             name="telefonoNuevoUsuario"
+                                                             id="telefonoNuevoUsuario"
+                                                             placeholder="Introducir telefono" 
+                                                             onChange={this.onChange}           
+                                                            ></input>   
+                                                           
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                               id="mensajeError-telefonoNuevoUsuario">
+                                                               El numero de telefono solo contiene numeros
+                                                            </p>
+                                                        </div>
+                                            </div>
          
 
 
 
 
-                <div className="Seleccionar_Tipo">
-                      <div className="icono_de_tipo">
-                           <i className="fas fa-user icon"></i> 
-                      </div>
-                                <h2 type="text">Tipo</h2> 
-                                      <form>
-                                            <div className="caja_de_seleccion_de_tippo">
-                                               <select type="selection"
-                                                           id="seleccionTipo">
-                                                          <option disabled selected>seleccione un tipo</option>
-                                                          <option>secretario</option>
-                                                          <option>administrador</option>
-                                                          <option>jefe</option>
-                                               </select>
-                                            </div>
-                                      </form>        
-                </div>
+                                              <div className="elementosFormularioUsuarios__grupo" id="grupo_TipoUsuario">
+                                                         <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                              <i className="fas fa-user icon"></i> 
+                                                              <label for="tipo-nuevo-usuario" className="subtituloNU">Tipo</label>
+                                                         </div>
+                                                 
+                                                       
+                                                        <div class="formularioNuevoUsuario__grupo-input" >
+                                                        
+                                                                    <select type="selection"
+                                                                        className="ingreso"
+                                                                        name="seleccionTipoNuevoUsuario"
+                                                                        id="seleccionTipoNuevoUsuario">
+                                                                        <option disabled selected>seleccione un tipo</option>
+                                                                        <option>secretario</option>
+                                                                        <option>administrador</option>
+                                                                        <option>jefe</option>
+                                                                        onChange={this.onChange}
+                                                                    </select>
+
+                                                                    
+                                                                    <p className="formularioNuevoUsuario__input-error"
+                                                                     id="mensajeError-tipoNuevoUsuario">
+                                                                     seleccione una opcion
+                                                                    </p>
+                                                           
+                                                                       
+                                                        </div>
+                                              </div>
 
 
 
 
 
 
-                <div className="Introdicir_Email">
-                          <div className="icono_de_email">
-                               <i className="fas fa-envelope icon"></i>
-                          </div>
-                                  <h2 type="text">Email</h2>
-                                          <input className="introducir_email_input"
-                                             id="introducirEmal"
-                                             placeholder="Introducir correo electronico" 
-                                           ></input>
-               </div>
+                                              <div className="elementosFormularioUsuarios__grupo" id="grupo_EmailUsuario">
+                                                   <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                       <i className="fas fa-envelope icon"></i>
+                                                       <label for="email-nuevo-usuario" className="subtituloNU">Email</label>
+                                                   </div>
 
-
-
-                <div className="Introducir_Contraseña">
-                         <div className="icono_de_contraseña">
-                               <i className="fas fa-key icon"></i>
-                         </div>
-                                   <h2 >Contraseña</h2>
-                                       <div className="introducir_contraseña_input">
-                                              <input type="password"
-                                                  id="introducirContraseña" 
-                                                  placeholder="Introducir Contraseña"></input>
-                                       </div>
-                </div>
-         </div>
-
-
-
-
-                <div className="comentarios_Formulario-Registro">
-                             <p>Al registrarte aceptas nuestras condiciones de uso y politica de privacidad</p>
-                             <div className="iniciar_sesion_comentario">
-                               <p>¿Ya tienes una cuenta? <a className="link" href="loginvista.html">Iniciar Sesion</a> </p>
-                             </div>
-                </div>
+                                                   <div class="formularioNuevoUsuario__grupo-input" >
+                                                      <input 
+                                                         type="text"
+                                                         className="ingreso"
+                                                         name="emailNuevoUsuario"
+                                                         id="emailNuevoUsuario"
+                                                         placeholder="Introducir correo electronico" 
+                                                         onChange={this.onChange}
+                                                      ></input>
+                                                            
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                               id="mensajeError-emailNuevoUsuario">
+                                                               ingrese los datos correctamente
+                                                            </p>
+                                                   </div>
+                                               </div>
 
 
 
 
+                                               <div className="elementosFormularioUsuarios__grupo" id="grupo_ContraseniaUsuario">
+                                                            <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                               <i className="fas fa-key icon"></i>
+                                                               <label for="email-nuevo-usuario" className="subtituloNU">Contraseña</label>
+                                                            </div>
+                                                     
+                                                            <div class="formularioNuevoUsuario__grupo-input" >
+                                                              <input 
+                                                              type="password"
+                                                              className="ingreso"
+                                                              name="contraseñaNuevoUsuario"                                                    
+                                                              id="contraseñaNuevoUsuario" 
+                                                              placeholder="Introducir Contraseña"
+                                                              onChange={this.onChange}
+                                                              ></input>
+                                                             
+                                                                  <p className="formularioNuevoUsuario__input-error"
+                                                                  id="mensajeError-contraseñaNuevoUsuario">
+                                                                  la contraseña solo admite mas de 7 caracteres
+                                                                </p>
+                                                             </div>
+                                                </div>
 
-                <div className="BotonesDeRegistroUsuario" >
-                         <div className="BotonRegistrarUsuarioNuevo">
-                         <button onClick={this.ValidarBoton} className="BotonRegistroNuevoUsuario">Registrar</button>
-                         </div>
 
 
-                         <div className="BotonCancelarRegistroUsuarioNuevo">
-                             <button className="BotonCancelarRegistroNuevoUsuario">Cancelar</button>
-                        </div>
+                                                <div class="formulario__mensaje" id="formulario__mensaje">
+                                                                <p>
+                                                                <i class="fas fa-exclamation-triangle"></i>
+                                                                <b>Error:</b> Por favor
+                                                                  llena el formulario correctamente.
+                                                                </p>
+                                                            </div>
+           
+                                                            <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
+                                                               <button className="boton-cancelar boton" onClick={this.limpiarCampos}>Cancelar</button>
+                                                               <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>
+                                                            </div>
+
+                        
+                                                           <div className="mensaje-exito">
+                                                               <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                                                               ¡El formulario ha sido registrado con exito!
+                                                               </p>
+                                                            </div>
+                            </div>
+
+
+
+
+                                                  <div className="comentarios_Formulario-Registro">
+                                                       <p>Al registrarte aceptas nuestras condiciones de uso y politica de privacidad</p>
+                                                       <div className="iniciar_sesion_comentario">
+                                                            <p>¿Ya tienes una cuenta? <a className="link" href="loginvista.html">Iniciar Sesion</a> </p>
+                                                       </div>
+                                                  </div>
                  </div>
-
-       </form>
      ):(<div></div>)}
      </div>
    );

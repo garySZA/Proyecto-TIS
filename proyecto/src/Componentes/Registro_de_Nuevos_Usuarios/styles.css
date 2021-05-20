@@ -1,151 +1,18 @@
 
-.Formulario{
-    
-    height: 450px;
-    width: 100%;
-    flex-direction: column;
-    background-attachment: fixed;
 
-    display:flex;
-    color: rgb(29, 68, 100);
-    margin-top: 2%;
-    
-    text-align: center;
-    align-items: center;
-    justify-content: flex-start;
-}
-.contenedor_registro-usuario div{
-    
-    justify-content: flex-start;
-    left: 1%;
-    display:flex;
-    color: rgb(29, 68, 100);
-    
-    align-content: space-between;
-    margin-top: 2%;
-    font-family: var(--fuente-subtitulos);
-    font-size: 12px;   
-    
-}
-.titulo_registro{
-justify-content: center;
-font-size: 25px;
-margin: 20px;
-font-family: var(--fuente-titulos);
-font-size: 18px;
 
+.formularioNuevoUsuario__input-error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
 }
 
-@media(min-width: 768px){
 
-}
-           .Bottones_de_Registro{
-              flex-direction: row;
-              width: 100%;
-              height: 40px;
-              justify-content: center;
-              top: 20%;
-              flex-direction: row;
-
-}
-.comentarios_Formulario-Registro{
-    top: 13%;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    align-content: space-between ;    
-}
-.BotonesDeRegistroUsuario{
-    top:auto;
-    display: flex;
-    align-content: space-between;
+.formularioNuevoUsuario__input-error-activo{
+    display: block;
 }
 
-.BotonRegistroNuevoUsuario{
-    position: relative;
-    width: 110px;
-    height: 28px;
-    top: -75%;
-    margin-left: -10%;
-    
-}
-          .BotonRegistroNuevoUsuario:hover{
-           background-color: var(--color_fondo);
-           color: var(--color_letra_fondo_oscuro);
+.input-error {
+    border: 2px solid tomato;
 }
 
-.BotonCancelarRegistroNuevoUsuario{
-    position: relative;
-    width: 110px;
-    height: 28px;
-    top: -75%;
-    margin-left: 10%;
-}
-          .BotonCancelarRegistroNuevoUsuario:hover{
-           background-color: var(--color-segundo-umss);
-           color: var(--color_letra_fondo_oscuro);
-}
-.boton:hover{
-    cursor: pointer;
-}
-
-.input{
-    width: 300px;
-    height: 28px;
-    font-family: var(--fuente-subtitulos);
-    outline: none;
-}
-
-.Introducir_nombre_input{
-    display: flex;
-    position: relative;
-    width: 100%;
-    margin-left: 2%;
-}
-.Introducir_apellidos_input{
-    display: flex;
-    position: relative;
-    width: 80%;
-    margin-left: 2%;
-}
-.Fecha_de_Naciminto_input{
-    display: flex;
-    position: relative;
-    width: 48%;
-    left: 2%;
-}
-.Introducir_Direccion_Input{
-    display: flex;
-    position: relative;
-    width: 80%;
-    margin-left: 2%;
-}
-.Introducir_Telefono_input{
-    display: flex;
-    position: relative;
-    width: 80%;
-    margin-left: 2%;
-}
-select[type="selection"]{
-    display: flex;
-    position: relative;
-    width: 100%;
-    margin-left: 2%; 
-}
-.introducir_email_input{
-    display: flex;
-    position: relative;
-    width: 100%;
-    margin-left: 2%;
-}
-.introducir_contraseña_input{
-    display: flex;
-    position: relative;
-    top: -5px; 
-    margin-left: 14%;
-    width: 70%;
-    right: 0%;
-    
-}
-
-    
