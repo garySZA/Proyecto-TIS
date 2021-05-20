@@ -118,7 +118,7 @@ class Formulario_ProductosServicios extends Component{
                 console.log(document.getElementById(campo).value)
             })
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://formulario-prod-ser-backend.herokuapp.com/formularios' , {
+            axios.post('https://formulario-prod-ser-backend.herokuapp.com/add' , {
                 detalle: document.getElementById("detalleSolicitud").value ,
                 fechaDeSolicitud: document.getElementById("fecha").value ,
                 responsableDeSolicitud: document.getElementById("responsableSolicitud").value ,
