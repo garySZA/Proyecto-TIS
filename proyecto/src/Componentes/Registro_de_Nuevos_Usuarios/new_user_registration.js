@@ -1,18 +1,19 @@
 import {Component} from 'react';
 import './styles.css';
 import axios from 'axios';
+import swal from 'sweetalert2';
 
 
 
 const expresiones = {
-    nombreNuevoUsuarios: /^[a-zA-Z\_\-]{0,100}$/, // Letras
-    apellidoNuevoUsuarios:/^[a-zA-Z\_\-]{0,100}$/, // Letras
+    nombreNuevoUsuarios: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras
+    apellidoNuevoUsuarios:/^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras
     /*fechaNacimientoNuevoUsuario: required=,  */
     direccionNuevoUsuarios:/^[a-zA-Z\_\-]{0,100}$/, // Letras
     telefonoNuevoUsuarios: /^\d{7,8}$/, // 7 a 8 digitos.
     /*seleccionTipoNuevoUsuario:required='',  */
     emailNuevoUsuarios:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    contraseñaNuevoUsuarios:/^.{4,12}$/, // de 4 a 12 digitos
+    contraseñaNuevoUsuarios:/^.{8,12}$/, // de 4 a 12 digitos
 
 };
 
@@ -31,7 +32,8 @@ class RegistroDeNuevosUsuarios extends Component{
             validoTelefonoDeUsuario :false,
             /*validoTipoDeUsuario     :false,*/
             validoEmailDeUsuario    :false,
-            validoContraseñaUsuario :false
+            validoContraseñaUsuario :false,
+            camposVacios            : true,
         }
     }
 
@@ -45,6 +47,7 @@ class RegistroDeNuevosUsuarios extends Component{
     
     onChange = () => {
         this.nombreCampos.forEach((campo) => {
+            this.verificarCamposVacios();
             var elemento = document.getElementById(campo);
 
             /*console.log(campo)*/
@@ -236,7 +239,7 @@ class RegistroDeNuevosUsuarios extends Component{
            
 
 
-            axios.post('http://localhost:3050/add',{
+            axios.post('https://formuser-backend.herokuapp.com/add',{
                 nombreUsuario:document.getElementById("nombreNuevoUsuario").value,
                 apellidoUsuario:document.getElementById("apellidoNuevoUsuario").value,
                 fechaDeNacimiento:document.getElementById("fechaNacimientoNuevoUsuario").value,
@@ -255,6 +258,51 @@ class RegistroDeNuevosUsuarios extends Component{
             document.getElementById("formulario__mensaje").classList.add("formularioNuevoUsuario__input-error-activo");
         }
         }
+
+
+        limpiarCampos = () =>{
+            this.nombreCampos.forEach((campo) => {
+                document.getElementById(campo).value ="";
+            })
+        }
+    
+        notificacionAdvertencia = () =>{
+            if(!this.state.camposVacios){
+                swal.fire({
+                    title:      'Advertencia',
+                    text:       'Los campos llenados serán vaciados!',
+                    icon:       'warning',
+                    showDenyButton:     'true',
+                    confirmButtonText:  `Aceptar`,
+                    denyButtonText:     `Cancelar`,
+                    timer:              5000,
+                    timerProgressBar:   'true'
+                }).then((respuesta) => {
+                    if(respuesta.isConfirmed){
+                        this.limpiarCampos();
+                    }else if(respuesta.isDenied){
+        
+                    }
+                })
+            }
+        }
+    
+        verificarCamposVacios(){
+            this.nombreCampos.forEach((campo) => {
+                if(document.getElementById(campo) === ""){
+                    this.setState({
+                        camposVacios: true
+                    })
+                }else{
+                    this.setState({
+                        camposVacios: false
+                    })
+                }
+            })
+        }
+    
+
+
 
 
 
@@ -510,7 +558,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                                             </div>
            
                                                             <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
-                                                               <button className="boton-cancelar boton" onClick={this.limpiarCampos}>Cancelar</button>
+                                                               <button className="boton-cancelar boton" onClick={this.notificacionAdvertencia}>Cancelar</button>
                                                                <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>
                                                             </div>
 
@@ -525,12 +573,6 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
 
-                                                  <div className="comentarios_Formulario-Registro">
-                                                       <p>Al registrarte aceptas nuestras condiciones de uso y politica de privacidad</p>
-                                                       <div className="iniciar_sesion_comentario">
-                                                            <p>¿Ya tienes una cuenta? <a className="link" href="loginvista.html">Iniciar Sesion</a> </p>
-                                                       </div>
-                                                  </div>
                  </div>
      ):(<div></div>)}
      </div>
@@ -539,3 +581,9 @@ class RegistroDeNuevosUsuarios extends Component{
 }
 
 export default RegistroDeNuevosUsuarios;
+                                       /*<div className="comentarios_Formulario-Registro">
+                                                       <p>Al registrarte aceptas nuestras condiciones de uso y politica de privacidad</p>
+                                                       <div className="iniciar_sesion_comentario">
+                                                            <p>¿Ya tienes una cuenta? <a className="link" href="loginvista.html">Iniciar Sesion</a> </p>
+                                                       </div>
+                                                  </div>    */

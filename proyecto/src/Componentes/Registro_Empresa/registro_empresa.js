@@ -348,7 +348,7 @@ class Registro_Empresa extends Component{
                                 onChange={this.onChange}>
 
                             </input>
-                            <i class="formularioNuevoUsuario__validacion-estado fas fa-times-circle"></i>
+                            
                             <p className="formulario__input-error"
                              id="mensajeError-nombreEmpresa">
                                 El nombre debe contener solo letras

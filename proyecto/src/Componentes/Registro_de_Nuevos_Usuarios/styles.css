@@ -1,5 +1,80 @@
 
 
+.contenedorFormulario-RegistroUsuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: .5s ease-in-out;
+    
+}
+
+.contenedorCampos {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+   
+    align-content: space-between;
+    justify-content: flex-start;
+    
+}
+
+.contenedorElementosNuevosUsuarios_subtitulos{
+    /*
+    margin-bottom: 5px;
+    color: var(--color_fondo);
+    position: relative;
+  */
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  color: var(--color_fondo);
+  margin-top: -7px;
+  position: relative;
+  
+  left: -5px;
+}
+
+.formularioNuevoUsuario__grupo-input{
+    position: relative;
+    top: -50%;
+    left:  37%;
+    position: relative;
+    top: -30px;
+  
+    
+    
+}
+
+.titulo_registro_usuario{
+    font-size: 50px;
+    margin: 20px;
+    font-family: var(--fuente-titulos);
+    color: var(--color_fondo);
+}
+
+._subtitulos{
+    font-family: var(--fuente-subtitulos);
+    font-size: 20px;  
+}
+
+
+.elementosFormularioUsuarios{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px;
+}
+
+
+.ingreso{
+    width: 300px;
+    height: 28px;
+    font-family: var(--fuente-subtitulos);
+    outline: none;
+}
 
 .formularioNuevoUsuario__input-error {
     font-size: 12px;
@@ -7,12 +82,75 @@
     display: none;
 }
 
-
 .formularioNuevoUsuario__input-error-activo{
     display: block;
 }
 
+
 .input-error {
     border: 2px solid tomato;
 }
+.contenedor-botones{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;    
+    margin-bottom: 20px;
+}
+
+
+
+
+
+/* botones */
+
+.boton{
+    width: 230px;
+    height: 40px;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    font-family: var(--fuente-titulos);
+    font-size: 18px;
+    color: var(--color_letra_fondo_oscuro);
+
+    transition: .6s;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+
+.boton-cancelar{
+    color: var(--color-segundo-umss);
+    position: relative;
+    left: -12px;
+    top: -10px;
+}
+
+.boton-cancelar:hover{
+    background-color: var(--color-segundo-umss);
+    color: var(--color_letra_fondo_oscuro);
+}
+
+.boton-registrar{
+    color: var(--color_fondo);
+    position: relative;
+    left: 12px;
+    top: -10px;
+}
+
+.boton-registrar:hover{
+    background-color: var(--color_fondo);
+    color: var(--color_letra_fondo_oscuro);
+}
+
+
+
+
+
+
+
+
+
+
+
 
