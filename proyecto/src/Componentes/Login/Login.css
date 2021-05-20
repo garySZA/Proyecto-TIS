@@ -1,0 +1,81 @@
+.container-margen{
+    margin-top: 1.8em;
+}
+
+.fondo-pantalla{
+    background-color: #595DC8;
+    height: 100vh;
+}
+.texto-centro{
+    text-align: center;
+}
+.alinacion-centro{
+    align-items: center;
+}
+.alineacion-titulo{
+    margin-top: 1em;
+}
+.margin-top{
+    margin-top: 5em;
+}
+.fondo-heder-footer{
+    font-size: 1em;
+}
+.imagen{
+    width: 10em;
+    height: 9em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em; 
+}
+.tipo-letra{
+    font-family: Arial;
+    font-weight: bold;
+ }
+ .tamaño-letra-titulo{
+    font-size: xx-large;
+}
+.Cuadro-login{
+    border: 0.20em solid #4d4848;
+    border-radius: 4em;
+    padding: 17;
+    background-color: white;
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08);
+ }
+
+ .entrada{
+    margin-right: 6.0em; 
+    width: 15em;
+    height: 3em;
+ }
+ .margen-entrada{
+     margin-top: 1.08em;
+ }
+ .margen-superior{
+    margin-top: 0.50em;
+}
+ .boton-ingreso{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1.08em;
+ }
+ .boton{
+     width: 8em;
+     height: 3em;
+     background-color: #D13639;
+     border-color: #D13639;
+ }
+ .icono{
+     margin-top: 0.40em;
+     margin-left: 1.9em;
+
+ }
+.recuerdame{
+    margin-left: 5.0em;
+}
+.borde-texto{
+    margin-left: 1.2em;
+    font-size: large;
+}
