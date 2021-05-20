@@ -5,7 +5,7 @@ import swal from 'sweetalert2';
 import axios from 'axios';
 
 const llenadoDeCampos = {
-    detalleSolicitud: /^[a-zA-ZÀ-ÿ\s]{0,200}$/,
+    detalleSolicitud: /^[a-zA-ZÀ-ÿ\s\d]{1,200}$/,
     fecha: /^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[/\\/](19|20)\d{2}$/,
     responsableSolicitud: /^[a-zA-ZÀ-ÿ\s]{1,50}$/,
     monto: /^\d{1,7}$/,
@@ -201,13 +201,13 @@ class Formulario_ProductosServicios extends Component{
                                         id="detalleSolicitud" 
                                         type="text" 
                                         placeholder="Ingresar detalle de solicitud..." 
-                                        maxlength="200"
+                                        maxlength="201"
                                         onChange = {this.verificarCampos}>
 
                                     </textarea>
                                     <i class="solicitud__validacionCampos-Estados"></i>
                                     <p className="solicitud__dato-erroneo" id="errorDeMensaje-detalleSolicitud">
-                                        El campo debe de contener solo letras.
+                                        El texto debe de contener menos de 200 caracteres.
                                     </p>
 
                                 </div>
