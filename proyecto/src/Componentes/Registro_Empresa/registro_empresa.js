@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './estilos_registro_empresa.css';
+import swal from 'sweetalert2';
 import axios from 'axios';
 
 const expresiones = {
@@ -25,8 +26,11 @@ class Registro_Empresa extends Component{
             validoNitEmpresa        : false,
             validoNombrePersona     : false,
             validoTelefonoPersona   : false,
-            validoCiPersona         : false
+            validoCiPersona         : false,
+            camposVacios            : true,
+            nit                     :0
         }
+        
     }
     
     operation(){
@@ -37,6 +41,7 @@ class Registro_Empresa extends Component{
     
     onChange = () => {
         this.nombreCampos.forEach((campo) => {
+            this.verificarCamposVacios();
             var elemento = document.getElementById(campo);
             if(campo == "nombreEmpresa"){
                 if(elemento.value ===""){
@@ -208,27 +213,43 @@ class Registro_Empresa extends Component{
     verificar = () =>{
         if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
             console.log("registrar");
-            this.nombreCampos.forEach((campo) => {
-                console.log(document.getElementById(campo).value)
+            axios.get(`https://proyecto-tis.herokuapp.com/api/empresas/nit/?nit=${document.getElementById("nitEmpresa").value}`)
+            .then(response => {
+                if(response.data[0] == null){
+                    console.log("no existe")
+                    this.nombreCampos.forEach((campo) => {
+                        console.log(document.getElementById(campo).value)
+                    })
+        
+                    //realizando un Post a la api mediante axios
+                    axios.post('https://proyecto-tis.herokuapp.com/api/empresas',{
+                        nombreEmpresa: document.getElementById("nombreEmpresa").value,
+                        rubro: document.getElementById("rubro").value,
+                        telefonoEmpresa: document.getElementById("telefonoEmpresa").value,
+                        correoEmpresa : document.getElementById("correoEmpresa").value,
+                        nit : document.getElementById("nitEmpresa").value,
+                        nombreEncargado : document.getElementById("nombrePersona").value,
+                        telefonoEncargado : document.getElementById("telPersona").value,
+                        ciEncargado : document.getElementById("ciPersona").value
+                    }).then(response => {
+                        console.log('Empresa añadida: ', response.data);
+                    }).catch(e => {
+                        console.log(e);
+                    });
+                    document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-activo");
+                }else{
+                    console.log("empresa ya existe")
+                    swal.fire({
+                        title:      'Error!',
+                        text:       'La empresa que desea registrar ya se encuentra registrada!',
+                        icon:       'error',
+                        confirmButtonText:  `Ok`,
+                        timer:              10000,
+                        timerProgressBar:   'true'
+                    })
+                }
             })
 
-            //realizando un Post a la api mediante axios
-            axios.post('https://proyecto-tis.herokuapp.com/api/empresas',{
-                nombreEmpresa: document.getElementById("nombreEmpresa").value,
-                rubro: document.getElementById("rubro").value,
-                telefonoEmpresa: document.getElementById("telefonoEmpresa").value,
-                correoEmpresa : document.getElementById("correoEmpresa").value,
-                nit : document.getElementById("nitEmpresa").value,
-                nombreEncargado : document.getElementById("nombrePersona").value,
-                telefonoEncargado : document.getElementById("telPersona").value,
-                ciEncargado : document.getElementById("ciPersona").value
-            }).then(response => {
-                console.log('Empresa añadida: ', response.data);
-            }).catch(e => {
-                console.log(e);
-            });
-
-            document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-activo");
         }else{
             console.log("datos llenados incorrectamente");
             document.getElementById("formulario__mensaje").classList.add("formulario__input-error-activo");
@@ -239,6 +260,62 @@ class Registro_Empresa extends Component{
         this.nombreCampos.forEach((campo) => {
             document.getElementById(campo).value ="";
         })
+    }
+
+    notificacionAdvertencia = () =>{
+        if(!this.state.camposVacios){
+            swal.fire({
+                title:      'Advertencia',
+                text:       'Los campos llenados serán vaciados!',
+                icon:       'warning',
+                showDenyButton:     'true',
+                confirmButtonText:  `Aceptar`,
+                denyButtonText:     `Cancelar`,
+                timer:              5000,
+                timerProgressBar:   'true'
+            }).then((respuesta) => {
+                if(respuesta.isConfirmed){
+                    this.limpiarCampos();
+                }else if(respuesta.isDenied){
+    
+                }
+            })
+        }
+    }
+
+    verificarCamposVacios(){
+        this.nombreCampos.forEach((campo) => {
+            if(document.getElementById(campo) === ""){
+                this.setState({
+                    camposVacios: true
+                })
+            }else{
+                this.setState({
+                    camposVacios: false
+                })
+            }
+        })
+    }
+
+    confirmacionDeRegistro = () =>{
+        if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
+            swal.fire({
+                title:      'Advertencia',
+                text:       '¿Está de acuerdo en registrar los datos ingresados?',
+                icon:       'warning',
+                showDenyButton:     'true',
+                confirmButtonText:  `Registrar`,
+                denyButtonText:     `Cancelar`,
+                timer:              5000,
+                timerProgressBar:   'true'
+            }).then((respuesta) => {
+                if(respuesta.isConfirmed){
+                    this.verificar();
+                }else if(respuesta.isDenied){
+    
+                }
+            })
+        }
     }
 
     render(){
@@ -436,8 +513,8 @@ class Registro_Empresa extends Component{
                         </div>
            
                         <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
-                            <button className="boton-cancelar boton" onClick={this.limpiarCampos}>Cancelar</button>
-                            <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>
+                            <button className="boton-cancelar boton" onClick={this.notificacionAdvertencia}>Cancelar</button>
+                            <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.confirmacionDeRegistro}>Registrar</button>
                         </div>
 
                         
