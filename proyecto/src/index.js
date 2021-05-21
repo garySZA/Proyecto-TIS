@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Barra_Sup from './Componentes/Barra_Superior/barra_superior';
-import BarraLateral from'./Componentes/Campo_lateral_Izquierdo/barra_lateral_izquierda';
-import reportWebVitals from './reportWebVitals';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Routes from './Routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Barra_Sup />
-    <BarraLateral />
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -16,4 +16,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
