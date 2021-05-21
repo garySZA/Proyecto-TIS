@@ -1,3 +1,16 @@
+$ npm install
+$ npm install react-router-dom
+$ npm install react-bootstrap bootstrap
+$ npm install axios
+$ npm install reactstrap
+$ npm install yup
+$ npm install sweetalert2
+$ npm install web-vitals
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
