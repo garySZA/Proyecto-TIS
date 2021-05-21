@@ -63,6 +63,8 @@ const Login = () =>{
                 }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Usuario') {
                     console.log('filtrado de datos Usuario');
                     setUser(true);
+                }else{
+                    setPassword("");
                 }
 
             });
