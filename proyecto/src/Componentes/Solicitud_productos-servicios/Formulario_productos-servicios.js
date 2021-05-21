@@ -223,9 +223,10 @@ class Formulario_ProductosServicios extends Component{
                                         type="date" 
                                         name="fecha"
                                         id="fecha"
-                                        min="2016-01-01"
-                                        max="2031-12-31"
+                                        min="2021-01-01"
+                                        max="2025-12-31"
                                         step="1" 
+                                        value="2021-05-21"
                                         onChange = {this.verificarCampos}
                                         required>
 
@@ -279,7 +280,7 @@ class Formulario_ProductosServicios extends Component{
                                     </input>
                                     <i class="solicitud__validacionCampos-Estados"></i>
                                     <p className="solicitud__dato-erroneo" id="errorDeMensaje-monto">
-                                        El campo debe de contener solo numeros.
+                                        El campo debe de contener solo numeros positivos.
                                     </p>
 
                                 </div>
