@@ -9,11 +9,11 @@ const expresiones = {
     nombreNuevoUsuarios: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras
     apellidoNuevoUsuarios:/^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras
     /*fechaNacimientoNuevoUsuario: required=,  */
-    direccionNuevoUsuarios:/^[a-zA-Z\_\-]{0,100}$/, // Letras
+    direccionNuevoUsuarios:/^[a-zA-Z0-9_.+-+#\_\-\s]{0,100}$/, // Letras,numeros,simbNumeral,barra baja y barra media
     telefonoNuevoUsuarios: /^\d{7,8}$/, // 7 a 8 digitos.
     /*seleccionTipoNuevoUsuario:required='',  */
     emailNuevoUsuarios:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    contraseñaNuevoUsuarios:/^.{8,12}$/, // de 4 a 12 digitos
+    contraseñaNuevoUsuarios:/^.{8,12}$/, // de 8 a 12 digitos
 
 };
 
@@ -33,7 +33,7 @@ class RegistroDeNuevosUsuarios extends Component{
             /*validoTipoDeUsuario     :false,*/
             validoEmailDeUsuario    :false,
             validoContraseñaUsuario :false,
-            camposVacios            : true
+            camposVacios            : true,
         }
     }
 
@@ -230,7 +230,7 @@ class RegistroDeNuevosUsuarios extends Component{
 
     verificar = () =>{
         if(this.state.validoNombreUsuario == true && this.state.validoApellidoUsuario == true &&  this.state.validoDireccionDeUsuario == true && this.state.validoTelefonoDeUsuario == true &&  this.state.validoEmailDeUsuario == true && this.state.validoContraseñaUsuario == true){
-            console.log("registrar");
+            console.log("registrarNU");
             this.nombreCampos.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
@@ -557,9 +557,9 @@ class RegistroDeNuevosUsuarios extends Component{
                                                                 </p>
                                                             </div>
            
-                                                            <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
-                                                               <button className="boton-cancelar boton" onClick={this.notificacionAdvertencia}>Cancelar</button>
-                                                               <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.verificar}>Registrar</button>
+                                                            <div className="contenedor-button formulario__grupo formulario__grupo-btn-enviar">
+                                                               <button className="button-cancelar button" onClick={this.notificacionAdvertencia}>Cancelar</button>
+                                                               <button className="button-registrar button formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
                                                             </div>
 
                         
