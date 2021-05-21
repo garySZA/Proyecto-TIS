@@ -513,8 +513,8 @@ class Registro_Empresa extends Component{
                         </div>
            
                         <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
-                            <button className="boton-cancelar boton" onClick={this.notificacionAdvertencia}>Cancelar</button>
-                            <button className="boton-registrar boton formulario__btn" id="registrar" onClick={this.confirmacionDeRegistro}>Registrar</button>
+                            <button className="boton-cancelar botonRegistro" onClick={this.notificacionAdvertencia}>Cancelar</button>
+                            <button className="boton-registrar botonRegistro formulario__btn" id="registrar" onClick={this.confirmacionDeRegistro}>Registrar</button>
                         </div>
 
                         
