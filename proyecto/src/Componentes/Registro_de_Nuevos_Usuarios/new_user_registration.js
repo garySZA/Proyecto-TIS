@@ -33,7 +33,7 @@ class RegistroDeNuevosUsuarios extends Component{
             /*validoTipoDeUsuario     :false,*/
             validoEmailDeUsuario    :false,
             validoContraseñaUsuario :false,
-            camposVacios            : true,
+            camposVacios            : true
         }
     }
 
