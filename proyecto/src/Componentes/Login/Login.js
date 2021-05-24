@@ -13,7 +13,7 @@ import { Row, Button, Col,Image, Container,Form} from 'react-bootstrap';
 import Administrador from '../administrador/Administrador';
 
 const Login = () =>{
-    const[usuario,setUsuario]        = useState([]);
+    const [usuario,setUsuario]        = useState([]);
     const [email,setEmail]           = useState("");
     const [password,setPassword]     = useState("");
     const [admin,setAdmin]           = useState(false);
@@ -51,18 +51,21 @@ const Login = () =>{
    
         if (usuario?.length) {
             const filteredData = usuario.filter((value)=>{
-                if (email === value.Correo && password === value.contraseña && value.rol ==='Administrador') {
+
+                if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Administrador') {
                     console.log('filtrado de datos administrador');
                     setAdmin(true);
-                }else if (email === value.Correo && password === value.contraseña && value.rol ==='Jefe') {
+                }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Jefe') {
                     console.log('filtrado de datos Jefe');
                     setJefe(true);
-                }else if (email === value.Correo && password === value.contraseña && value.rol ==='Secretaria') {
+                }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Secretaria') {
                     console.log('filtrado de datos Secretaria');
                     setSecretaria(true);
-                }else if (email === value.Correo && password === value.contraseña && value.rol ==='Usuario') {
+                }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Usuario') {
                     console.log('filtrado de datos Usuario');
                     setUser(true);
+                }else{
+                    setPassword("");
                 }
 
             });
