@@ -111,7 +111,7 @@ const Login = () =>{
                             </Col>
                             <Col>
                                 <Form.Control className="entrada" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} 
-                                minlength="8" maxlength="40" required pattern="[A-Za-z0-9._@]" title=" Soporta letras mayusculas, minusculas números y los caracteres especiales .@#$%*{}\/- , tamaño mínimo: 8 a un tamaño máximo: 40"/>
+                                minlength="8" maxlength="40" required pattern="[A-Za-z0-9._@]" title=" Soporta letras mayusculas, minusculas números y los caracteres especiales . _ @ , tamaño mínimo: 8 a un tamaño máximo: 40"/>
                             </Col>
                         </Row>
                     </Form.Group>
