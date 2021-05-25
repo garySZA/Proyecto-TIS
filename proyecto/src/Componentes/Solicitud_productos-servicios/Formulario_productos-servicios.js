@@ -4,12 +4,16 @@ import './Estilos_formulario_productos-servicios.css';
 import swal from 'sweetalert2';
 import axios from 'axios';
 
+import {Row, Col, Container, Form, Button, fluid } from 'react-bootstrap';
+
+
 const llenadoDeCampos = {
     detalleSolicitud: /^[a-zA-ZÀ-ÿ\s\d]{1,200}$/,
     fecha: /^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[/\\/](19|20)\d{2}$/,
     responsableSolicitud: /^[a-zA-ZÀ-ÿ\s]{1,50}$/,
     monto: /^\d{1,7}$/,
 };
+
 
 
 class Formulario_ProductosServicios extends Component{
@@ -174,21 +178,24 @@ class Formulario_ProductosServicios extends Component{
             }
         })
     }
-
-
-
+    
+    
     render(){
         return(
-            <div>
-                {this.state.showMe ? (
-                    <div className="contenedor-deRegistro" id="mostrar-formulario-proser">
-                        <div className="contedor-tituloDeRegistro">
-                                <h4 className="solitudDeProductos-servicios">
-                                    Solicitud de Productos y/o Servicios
-                                </h4>
-                        </div>
+            <Container fluid className="contenedor-margen" >
+                    <Row className="cabeza-de-pagina">
                         
-                        <div className="contenedor-formularioDeRegistro">
+                    </Row>
+                    {this.state.showMe ? (
+                    <Row className="contenedor-deRegistro" id="mostrar-formulario-proser">
+                        
+                        <Row className="contedor-tituloDeRegistro">
+                            <label className="solitudDeProductos-servicios">
+                                Solicitud de Productos y/o Servicios
+                            </label>
+                        </Row>               
+                                                                                                                            
+                        <Row className="contenedor-formularioDeRegistro">
 
                             <div className="camposform solicitud__datos" id="dato__detalle">
                                 <div className="contenedor-camposform-subtitulos">
@@ -226,7 +233,7 @@ class Formulario_ProductosServicios extends Component{
                                         min="2021-01-01"
                                         max="2025-12-31"
                                         step="1" 
-                                        value="2021-05-21"
+                                        //value=""
                                         onChange = {this.verificarCampos}
                                         required>
 
@@ -303,10 +310,17 @@ class Formulario_ProductosServicios extends Component{
                                     ¡Se envio el formulario exitosamente!
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                ):(<div></div>)}
-            </div>
+                        </Row>
+                        
+
+                        
+                        
+                        
+
+                    </Row>
+                    ):(<div></div>)}
+                    <Row className="pie-de-pagina"> </Row>
+            </Container>
         );
     }
 }
