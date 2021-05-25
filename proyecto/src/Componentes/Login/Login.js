@@ -110,12 +110,7 @@ const Login = () =>{
                                 <Image src={correoIcono} alt="" rounded />
                             </Col>
                             <Col>
-<<<<<<< HEAD
                                 <Form.Control className="entradaEmail" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} />
-=======
-                                <Form.Control className="entrada" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} 
-                                required pattern="[A-Za-z0-9@._]{10,40}" title="Debe contener letras y números con un tamaño mínimo: 10 a un tamaño máximo: 40" />
->>>>>>> 21bb3a469184b9a1a2b9969f0b2e398eca6ad3e1
                             </Col>
                         </Row>
                     </Form.Group>
@@ -129,12 +124,7 @@ const Login = () =>{
                                 <Image src={passwordIcono} alt="" rounded />
                             </Col>
                             <Col>
-<<<<<<< HEAD
                                 <Form.Control className="entradaContraseña" id="campoContraseñaLogin" type="password" placeholder="************" value={password} onChange={handlePasswordChange}/>
-=======
-                                <Form.Control className="entrada" type="password" placeholder="************" value={password} onChange={handlePasswordChange}  
-                                required pattern="[A-Za-z0-9@-_!#$%^&*()]{7,40}" title="Letras mayusculas, minusculas, números y con algunos caracteres especiales tamaño mínimo: 7 a un tamaño máximo: 40"/>
->>>>>>> 21bb3a469184b9a1a2b9969f0b2e398eca6ad3e1
                             </Col>
                         </Row>  
                     </Form.Group>
