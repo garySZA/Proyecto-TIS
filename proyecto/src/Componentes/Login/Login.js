@@ -87,12 +87,12 @@ const Login = () =>{
     };
 
     return(
-        <Container className="container-margen" fluid onSubmit={handleFormSubmit}>  
+        <Container className="container-margen" fluid >  
           <Row  className=" fondo-heder-footer tipo-letra"></Row>  
           <Row >
             <Col className = ""></Col>
             <Col className = "Cuadro-login">
-                <Form className="tipo-letra">
+                <Form className="tipo-letra" onSubmit={handleFormSubmit}>
                     <Row className="texto-centro tamaño-letra-titulo alineacion-titulo">
                         <Form.Label>Iniciar sesión</Form.Label>
                     </Row>
@@ -110,7 +110,8 @@ const Login = () =>{
                                 <Image src={correoIcono} alt="" rounded />
                             </Col>
                             <Col>
-                                <Form.Control className="entrada" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} />
+                                <Form.Control className="entrada" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} 
+                                required pattern="[A-Za-z0-9@._]{10,40}" title="Debe contener letras y números con un tamaño mínimo: 10 a un tamaño máximo: 40" />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -124,7 +125,8 @@ const Login = () =>{
                                 <Image src={passwordIcono} alt="" rounded />
                             </Col>
                             <Col>
-                                <Form.Control className="entrada" type="password" placeholder="************" value={password} onChange={handlePasswordChange}/>
+                                <Form.Control className="entrada" type="password" placeholder="************" value={password} onChange={handlePasswordChange}  
+                                required pattern="[A-Za-z0-9@-_!#$%^&*()]{7,40}" title="Letras mayusculas, minusculas, números y con algunos caracteres especiales tamaño mínimo: 7 a un tamaño máximo: 40"/>
                             </Col>
                         </Row>  
                     </Form.Group>
