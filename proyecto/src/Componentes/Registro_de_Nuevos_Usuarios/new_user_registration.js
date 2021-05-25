@@ -239,7 +239,7 @@ class RegistroDeNuevosUsuarios extends Component{
            
 
 
-            axios.post('https://formuser-backend.herokuapp.com/add',{
+            axios.post('https://regnuevus.herokuapp.com/add',{
                 nombreUsuario:document.getElementById("nombreNuevoUsuario").value,
                 apellidoUsuario:document.getElementById("apellidoNuevoUsuario").value,
                 fechaDeNacimiento:document.getElementById("fechaNacimientoNuevoUsuario").value,
@@ -477,6 +477,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                                                         name="seleccionTipoNuevoUsuario"
                                                                         id="seleccionTipoNuevoUsuario">
                                                                         <option disabled selected>seleccione un tipo</option>
+                                                                        <option>usuario</option>
                                                                         <option>secretario</option>
                                                                         <option>administrador</option>
                                                                         <option>jefe</option>

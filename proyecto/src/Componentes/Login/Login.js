@@ -110,8 +110,7 @@ const Login = () =>{
                                 <Image src={correoIcono} alt="" rounded />
                             </Col>
                             <Col>
-                                <Form.Control className="entrada" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} 
-                                required pattern="[A-Za-z0-9@._]{10,40}" title="Debe contener letras y números con un tamaño mínimo: 10 a un tamaño máximo: 40" />
+                                <Form.Control className="entradaEmail" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -125,8 +124,7 @@ const Login = () =>{
                                 <Image src={passwordIcono} alt="" rounded />
                             </Col>
                             <Col>
-                                <Form.Control className="entrada" type="password" placeholder="************" value={password} onChange={handlePasswordChange}  
-                                required pattern="[A-Za-z0-9@-_!#$%^&*()]{7,40}" title="Letras mayusculas, minusculas, números y con algunos caracteres especiales tamaño mínimo: 7 a un tamaño máximo: 40"/>
+                                <Form.Control className="entradaContraseña" id="campoContraseñaLogin" type="password" placeholder="************" value={password} onChange={handlePasswordChange}/>
                             </Col>
                         </Row>  
                     </Form.Group>
@@ -135,7 +133,7 @@ const Login = () =>{
                     </Row>
 
                     <Form.Group className="boton-ingreso margen-entrada">
-                        <Button className="boton"size="lg" variant="primary" type="submit">
+                        <Button className="botonIngresar"  id="botonIngresarLogin"  size="lg" variant="primary" type="submit">
                             INGRESAR
                         </Button>
                     </Form.Group>
