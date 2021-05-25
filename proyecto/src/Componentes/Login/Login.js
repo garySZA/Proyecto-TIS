@@ -126,7 +126,7 @@ const Login = () =>{
                             </Col>
                             <Col>
                                 <Form.Control className="entrada" id="campoContraseñaLogin" type="password" placeholder="************" value={password} onChange={handlePasswordChange}
-                                required pattern="{8,40}" title="tamaño mínimo: 7 a un tamaño máximo: 40"/>
+                                minlength="7" maxlength="40" required pattern="[A-Za-z0-9./?\~!@#$%()+-*/]" title="tamaño mínimo: 7 a un tamaño máximo: 40"/>
                             </Col>
                         </Row>  
                     </Form.Group>
