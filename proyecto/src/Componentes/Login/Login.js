@@ -110,7 +110,7 @@ const Login = () =>{
                                 <Image src={correoIcono} alt="" rounded />
                             </Col>
                             <Col>
-                                <Form.Control className="entradaEmail" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} />
+                                <Form.Control className="entrada" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -124,7 +124,7 @@ const Login = () =>{
                                 <Image src={passwordIcono} alt="" rounded />
                             </Col>
                             <Col>
-                                <Form.Control className="entradaContraseña" id="campoContraseñaLogin" type="password" placeholder="************" value={password} onChange={handlePasswordChange}/>
+                                <Form.Control className="entrada" id="campoContraseñaLogin" type="password" placeholder="************" value={password} onChange={handlePasswordChange}/>
                             </Col>
                         </Row>  
                     </Form.Group>
@@ -133,7 +133,7 @@ const Login = () =>{
                     </Row>
 
                     <Form.Group className="boton-ingreso margen-entrada">
-                        <Button className="botonIngresar"  id="botonIngresarLogin"  size="lg" variant="primary" type="submit">
+                        <Button className="boton"  id="botonIngresarLogin"  size="lg" variant="primary" type="submit">
                             INGRESAR
                         </Button>
                     </Form.Group>
