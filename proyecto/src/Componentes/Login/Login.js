@@ -13,7 +13,7 @@ import { Row, Button, Col,Image, Container,Form} from 'react-bootstrap';
 import Administrador from '../administrador/Administrador';
 
 const Login = () =>{
-    const [usuario,setUsuario]        = useState([]);
+    const [usuario,setUsuario]       = useState([]);
     const [email,setEmail]           = useState("");
     const [password,setPassword]     = useState("");
     const [admin,setAdmin]           = useState(false);
@@ -46,30 +46,52 @@ const Login = () =>{
         setPassword(value);
     };
     const handleFormSubmit = (event) =>{
-
         event.preventDefault();
-   
-        if (usuario?.length) {
-            const filteredData = usuario.filter((value)=>{
+        verificarUsuario();
+        redireccionar();
+    };
+    useEffect(()=>{
+        verificarUsuario();
+        redireccionar();
+    },[admin,jefe,secretaria,user])
 
-                if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Administrador') {
+
+
+
+    const verificarUsuario = ()=>{
+        const copyEmail    = email.toLowerCase();
+      
+        if (usuario?.length) {
+            usuario.map((u) => {
+                // Cómo solo queremos los nombres, retornamos "name".
+              
+               if       (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Administrador') {
                     console.log('filtrado de datos administrador');
                     setAdmin(true);
-                }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Jefe') {
+                    console.log(admin);
+                
+               }else if (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Jefe') {
                     console.log('filtrado de datos Jefe');
                     setJefe(true);
-                }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Secretaria') {
+                
+                }else if (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Secretaria') {
                     console.log('filtrado de datos Secretaria');
                     setSecretaria(true);
-                }else if (email.toLowerCase() === value.Correo.toLowerCase() && password === value.contraseña && value.rol ==='Usuario') {
+                
+                }else if (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Usuario') {
                     console.log('filtrado de datos Usuario');
                     setUser(true);
+                
                 }else{
                     setPassword("");
+                
                 }
+            })
+        }    
+    };
 
-            });
-        }
+    const redireccionar=() =>{
+        console.log(admin);
         if(admin === true){
             console.log("Es admin");
             history.push('/Administrador');
@@ -83,7 +105,6 @@ const Login = () =>{
             console.log("Es Usuario");
             history.push('/Usuario');
         }
-
     };
 
     return(
