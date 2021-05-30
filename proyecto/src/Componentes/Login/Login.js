@@ -131,12 +131,9 @@ const Login = () =>{
                                 <Image src={correoIcono} alt="" rounded />
                             </Col>
                             <Col>
-<<<<<<< HEAD
-                                <Form.Control className="entrada" id ="campoEmailLogin" title="campoEmail" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} />
-=======
-                                <Form.Control className="entrada" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} 
-                                minlength="8" maxlength="40" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title=" Soporta letras mayusculas, minusculas números y los caracteres especiales . _@ , tamaño mínimo: 8 a un tamaño máximo: 40"/>
->>>>>>> 95b9a0b53403d38f8b59b98d54ed21c04a30cf69
+                            <Form.Control className="entrada" id ="campoEmailLogin" type="email" placeholder="Ejemplo@gmail.com" value={email} onChange={handleEmailChange} 
+                                minlength="8" maxlength="40" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                                title=" Soporta letras mayusculas, minusculas números y los caracteres especiales . _@ , tamaño mínimo: 8 a un tamaño máximo: 40"/>
                             </Col>
                         </Row>
                     </Form.Group>
@@ -150,12 +147,8 @@ const Login = () =>{
                                 <Image src={passwordIcono} alt="" rounded />
                             </Col>
                             <Col>
-<<<<<<< HEAD
-                                <Form.Control className="entrada" id="campoContraseñaLogin" title="campoContraseña" type="password" placeholder="************" value={password} onChange={handlePasswordChange}/>
-=======
                                 <Form.Control className="entrada" id="campoContraseñaLogin" type="password" placeholder="************" value={password} onChange={handlePasswordChange}
                                 minlength="7" maxlength="40" required pattern="[A-Za-z0-9./?\~!@#$%()+-*/]" title="tamaño mínimo: 7 a un tamaño máximo: 40"/>
->>>>>>> 95b9a0b53403d38f8b59b98d54ed21c04a30cf69
                             </Col>
                         </Row>  
                     </Form.Group>
