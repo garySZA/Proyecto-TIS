@@ -6,8 +6,10 @@ $ npm install reactstrap
 $ npm install yup
 $ npm install sweetalert2
 $ npm install web-vitals
-
-
+$ npm install @material-ui/core
+$ npm install @material-ui/icons
+$ npm install react-swipeable-views
+$ npm install @material-ui/lab
 
 
 
