@@ -1,0 +1,22 @@
+.imagen-presentation{
+    width: 4em;
+    height: 8em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em; 
+}
+.fondo-heder-presentation{
+    font-size: 1em;
+    margin-top: 2em; 
+}
+.fondo-footer-presentation{
+    font-size: 1em;
+    margin-top: 2em; 
+}
+
+.carousel{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto; 
+}
