@@ -14,9 +14,11 @@
 
   --color_fondo: var(--azul);
 
-  --color_fondo_cuadros: #e5e5e5;
+  --color_fondo_cuadros:#ecf0f3;
 
-  --color-segundo-umss: #EC1B23
+  --color-segundo-umss: #EC1B23;
+
+  --color_contenido: #185adb;
 
 }
 
