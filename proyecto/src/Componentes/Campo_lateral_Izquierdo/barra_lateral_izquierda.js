@@ -5,6 +5,7 @@ import React from 'react';
 import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
 import './estilos_botones.css'
+import Mostrar_tarjetas from '../Mostrar_Tarjetas/Mostrar_tarjetas'
 
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
@@ -18,7 +19,8 @@ class BarraLateral extends React.Component{
     this.state = {
       mostrarRegistroEmpresa: false,
       mostrarFormularioProductosServicios :false,
-      mostrarFormularioDeUsuariosNuevos:false 
+      mostrarFormularioDeUsuariosNuevos:false,
+      mostrarEmpresas: false 
     };
   }
 
@@ -68,6 +70,21 @@ class BarraLateral extends React.Component{
     }
   }
 
+  operation5 = () =>{
+    if(this.state.mostrarEmpresas == true){
+      this.setState({
+        mostrarEmpresas: false
+      }) 
+    }else{
+      this.setState({
+        mostrarFormularioDeUsuariosNuevos: false,
+        mostrarFormularioProductosServicios:false,
+        mostrarRegistroEmpresa: false,
+        mostrarEmpresas: true
+      })     
+    }
+  }
+
 
   render(){
     return(
@@ -78,6 +95,7 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"    id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
             <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation4()}>Registrar Nuevo Usuario</button>
+            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation5()}>Ver Empresas</button>
         </div>
         <div className="principal" id="algo">
           {
@@ -95,6 +113,12 @@ class BarraLateral extends React.Component{
           {
             (this.state.mostrarFormularioDeUsuariosNuevos)?
             <RegistroDeNuevosUsuarios />
+            :
+            ''
+          }
+          {
+            (this.state.mostrarEmpresas)?
+            <Mostrar_tarjetas />
             :
             ''
           }

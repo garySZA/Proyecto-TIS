@@ -1,4 +1,6 @@
-class tarjeta extends React.Component{
+import React from 'react';
+import './estilos_tarjeta.css';
+class Tarjeta extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -6,8 +8,7 @@ class tarjeta extends React.Component{
 
     render(){
         return(
-            <div>
-                <div class="contenedor-principal-tarjeta">
+            <div class="contenedor-principal-tarjeta">
                     <div class="contenedor-subtitulo-tarjeta subtitulos-tarjeta">
                         <label for="">Datos de Empresa</label>
                     </div>
@@ -25,9 +26,8 @@ class tarjeta extends React.Component{
                     <label for="" class="subtitulos-tarjeta campos-tarjeta">telefono: <label for="" class="contenido-tarjeta">67573183</label></label>
                     <label for="" class="subtitulos-tarjeta campos-tarjeta">CI: <label for="" class="contenido-tarjeta">14113546</label></label>
                 </div>
-            </div>
         );
     }
 }
 
-export default tarjeta;
+export default Tarjeta;
