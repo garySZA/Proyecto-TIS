@@ -80,7 +80,7 @@ class BarraLateral extends React.Component{
 
     axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
         .then(response => {
-            this.listaEmpresas = response.data[0];
+            this.listaEmpresas = response.data;
         })
 
     if(this.state.mostrarEmpresas == true){
@@ -100,7 +100,7 @@ class BarraLateral extends React.Component{
   onChange = () =>{
     axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
         .then(response => {
-            this.listaEmpresas = response.data[0];
+            this.listaEmpresas = response.data;
             console.log(this.listaEmpresas.nombreEmpresa)
         })
   }
