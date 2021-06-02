@@ -8,21 +8,23 @@ class Mostrar_tarjetas extends React.Component{
     constructor(props){
         super(props);
         
-        var listaEmpresas = ["King Dom"];
-    }
-
-    obtenerEmpresas(){
-        axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
-        .then(response => {
-            this.listaEmpresas.push(response.data[0])
-        })
+        this.listaEmpresas = this.props.lista;
     }
 
     render(){
         return(
             <div className="tarjetas">
                 <div className="contenedor-grid-tarjetas">
-                    <Tarjeta nombre={this.listaEmpresas}/>
+                    <Tarjeta 
+                        nombre = {this.listaEmpresas.nombreEmpresa}
+                        rubro = {this.listaEmpresas.rubro}
+                        telefonoEmpresa = {this.listaEmpresas.telefonoEmpresa}
+                        correoEmpresa = {this.listaEmpresas.correoEmpresa}
+                        nit = {this.listaEmpresas.nit}
+                        nombreEncargado = {this.listaEmpresas.nombreEncargado}
+                        telefonoEncargado = {this.listaEmpresas.telefonoEncargado}
+                        ciEncargado = {this.listaEmpresas.ciEncargado}
+                        />
                 </div>  
             </div>
         );
