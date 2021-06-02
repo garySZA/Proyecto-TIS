@@ -1,22 +1,59 @@
-.imagen-presentation{
-    width: 4em;
-    height: 8em;
+.rowPanel{
+    width: 100%;
+    height: 5em;
+    top: 0;
+    margin-top: 0em;
+    border-top: 0em; 
+}
+.end{
+    font-size: 30px;
+    color: silver;
+    font-family: 'Exo', sans-serif;
+    text-shadow: 1px 1px 1px  white;
+    text-align: center;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em; 
+    align-self: center;
+    place-items: center;
 }
-.fondo-heder-presentation{
-    font-size: 1em;
-    margin-top: 2em; 
-}
-.fondo-footer-presentation{
-    font-size: 1em;
-    margin-top: 2em; 
-}
+.panelMenu{
+    width: 100%;
+    height: 5em;
+    background-color: #293863;
+    border-bottom: 0.063em solid transparent;
+    box-shadow: 0.313em 0.313em 1.25em 0em rgba(204, 48, 48, 0.8);
+    position: fixed;
+    top: 0;
+    margin-top: 0em;
+    margin-left: 0em;
+    margin-right: 0em; 
+    border-top: #293863;
+    border-left: #293863;
+    border-right: #293863;
+    border-radius: 0em;  
 
-.carousel{
+    z-index: 100;
+    transition: ease-in-out .5s;
+}
+.card-container{
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto; 
+    text-align: center;
+    margin-top: 1.875em;
+    border-radius: 0.5em;
+    border: 0.10em solid #4d4848;
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08)
+}
+.carousel-Image{
+    border-radius: 0.25em; 
+}
+.images{
+    border-radius: 0.25em;  
+}
+.position-bottun{
+    margin-top: 1.875em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
