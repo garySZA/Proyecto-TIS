@@ -7,7 +7,7 @@ import { PanelMenu }                from 'primereact/panelmenu';
 import { Button }                   from 'primereact/button';
 import { Menubar }                  from 'primereact/menubar';
 
-import logo from './img/UMSS_logo.png'
+import logo from './img/UMSS_logo.png';
 import {Col,Row,Container,Card,Image} from 'react-bootstrap';
 
 import { Carousel }                     from "react-responsive-carousel";
