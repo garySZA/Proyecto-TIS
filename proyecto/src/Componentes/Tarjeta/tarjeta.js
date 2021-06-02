@@ -1,4 +1,6 @@
-class tarjeta extends React.Component{
+import React from 'react';
+import './estilos_tarjeta.css';
+class Tarjeta extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -6,28 +8,26 @@ class tarjeta extends React.Component{
 
     render(){
         return(
-            <div>
-                <div class="contenedor-principal-tarjeta">
-                    <div class="contenedor-subtitulo-tarjeta subtitulos-tarjeta">
-                        <label for="">Datos de Empresa</label>
+            <div className="contenedor-principal-tarjeta">
+                    <div className="contenedor-subtitulo-tarjeta subtitulos-tarjeta">
+                        <label >Datos de Empresa</label>
                     </div>
                     <div>
-                        <label for="" class="subtitulos-tarjeta campos-tarjeta">Nombre empresa: <label for="" class="contenido-tarjeta">kingDom</label></label>
+                        <label className="subtitulos-tarjeta campos-tarjeta">Nombre empresa: <label className="contenido-tarjeta">{this.props.nombre}</label></label>
                     </div>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">Rubro: <label for="" class="contenido-tarjeta">Comida rápida</label></label>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">Telefono: <label for="" class="contenido-tarjeta">4575403</label></label>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">Correo: <label for="" class="contenido-tarjeta">kingDom@gmail.com</label></label>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">Nit: <label for="" class="contenido-tarjeta">1010101010</label></label>
-                    <div class="contenedor-subtitulo-tarjeta subtitulos-tarjeta">
-                        <label for="">Datos de Persona Encargada</label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">Rubro: <label className="contenido-tarjeta">{this.props.rubro}</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">Telefono: <label className="contenido-tarjeta">{this.props.telefonoEmpresa}</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">Correo: <label className="contenido-tarjeta">{this.props.correoEmpresa}</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">Nit: <label className="contenido-tarjeta">{this.props.nit}</label></label>
+                    <div className="contenedor-subtitulo-tarjeta subtitulos-tarjeta">
+                        <label >Datos de Persona Encargada</label>
                     </div>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">Nombre: <label for="" class="contenido-tarjeta">Juan Perez</label></label>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">telefono: <label for="" class="contenido-tarjeta">67573183</label></label>
-                    <label for="" class="subtitulos-tarjeta campos-tarjeta">CI: <label for="" class="contenido-tarjeta">14113546</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">Nombre: <label className="contenido-tarjeta">{this.props.nombreEncargado}</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">telefono: <label className="contenido-tarjeta">{this.props.telefonoEncargado}</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">CI: <label className="contenido-tarjeta">{this.props.ciEncargado}</label></label>
                 </div>
-            </div>
         );
     }
 }
 
-export default tarjeta;
+export default Tarjeta;
