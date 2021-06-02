@@ -54,33 +54,52 @@
     text-align: center;
     font-size: xx-large;
     margin-top: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .imagen{
     width: 11em;
     height: 8em;
-    margin-left: 9em;
-    margin-right: 9em;
+
+}
+.imagen-position{
     margin-top: 0.15em;
+    align-items: center;
+    text-align: center;
 }
 
 .p-email {
-    width: 14em;
+    width: 16em;
+}
+.label-email{
+    margin-left: 1%;
+    font-size: large;
+}
+.icon-email{
+    margin-left: 1%;
 }
 .p-password {
-    width: 14em;
+    width: 16em; 
 }
-
-.alinacion-centro{
-    align-items: center;
+.label-password{
+    margin-left: 1%;
+    font-size: large;
+}
+.icon-password{
+    margin-right: 0.5%;
 }
 
 .margin-top{
     margin-top: 1em;
 }
-.fondo-heder-footer{
-    font-size: 1em;
+.margin-top-items{
+    margin-top: 1.8em;
 }
+.margin-position-input{   
+    text-align: center;
+}
+
 
 .type-letter{
     font-family: 'Exo', sans-serif;
@@ -88,18 +107,6 @@
  }
 
 
-
- .entrada{
-    margin-right: 6.0em; 
-    width: 15em;
-    height: 3em;
- }
- .margen-entrada{
-     margin-top: 1.08em;
- }
- .margen-superior{
-    margin-top: 0.50em;
-}
  .boton-ingreso{
     margin-left: auto;
     margin-right: auto;
@@ -113,15 +120,12 @@
      background-color: #D13639;
      border-color: #D13639;
  }
- .icono{
-     margin-top: 0.40em;
-     margin-left: 1.9em;
 
- }
-.recuerdame{
-    margin-left: 5.0em;
+.remember{
+    margin-left: 25%;
 }
-.borde-texto{
-    margin-left: 1.2em;
-    font-size: large;
+.button{
+    margin-left: 32%;
+    margin-bottom: 1.0em;
 }
+
