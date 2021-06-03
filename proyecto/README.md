@@ -10,6 +10,7 @@ $ npm install @material-ui/core
 $ npm install @material-ui/icons
 $ npm install react-swipeable-views
 $ npm install @material-ui/lab
+$ npm install react-datepicker //para las fechas automaticas o personalizadas
 
 
 

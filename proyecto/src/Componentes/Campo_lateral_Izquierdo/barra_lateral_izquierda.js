@@ -12,13 +12,18 @@ import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Form
 //importacion de formulario de registro de nuevos usuarios
 import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_registration'
 
+//importacion del formulario de registro de unidades de gasto
+import Registro_Unidad_Gasto from '../Registro_Unidades_De_Gasto/formulario_registro_unidadesDeGasto'
+
+
 class BarraLateral extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       mostrarRegistroEmpresa: false,
       mostrarFormularioProductosServicios :false,
-      mostrarFormularioDeUsuariosNuevos:false 
+      mostrarFormularioDeUsuariosNuevos:false,
+      mostrarregistroUnidadGasto: false
     };
   }
 
@@ -33,7 +38,8 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarRegistroEmpresa: true,
         mostrarFormularioProductosServicios: false, 
-        mostrarFormularioDeUsuariosNuevos: false
+        mostrarFormularioDeUsuariosNuevos: false,
+        mostrarregistroUnidadGasto: false
       })
       console.log("false");
       console.log(this.state.mostrarRegistroEmpresa);
@@ -49,7 +55,8 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarFormularioProductosServicios: true,
         mostrarFormularioDeUsuariosNuevos:false,
-        mostrarRegistroEmpresa: false
+        mostrarRegistroEmpresa: false,
+        mostrarregistroUnidadGasto: false
       })     
     }
   }
@@ -63,8 +70,24 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarFormularioDeUsuariosNuevos: true,
         mostrarFormularioProductosServicios:false,
-        mostrarRegistroEmpresa: false
+        mostrarRegistroEmpresa: false,
+        mostrarregistroUnidadGasto: false
       })     
+    }
+  }
+
+  operation5 = () => {
+    if(this.state.mostrarregistroUnidadGasto == true){
+      this.setState({
+        mostrarregistroUnidadGasto: false
+      })
+    }else {
+      this.setState({
+        mostrarregistroUnidadGasto: true,
+        mostrarFormularioDeUsuariosNuevos: false,
+        mostrarFormularioProductosServicios: false,
+        mostrarRegistroEmpresa: false
+      })
     }
   }
 
@@ -78,6 +101,7 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"    id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
             <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation4()}>Registrar Nuevo Usuario</button>
+            <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation5()}>Registrar Unidad de Gasto</button>
         </div>
         <div className="principal" id="algo">
           {
@@ -95,6 +119,12 @@ class BarraLateral extends React.Component{
           {
             (this.state.mostrarFormularioDeUsuariosNuevos)?
             <RegistroDeNuevosUsuarios />
+            :
+            ''
+          }
+          {
+            (this.state.mostrarregistroUnidadGasto)?
+            <Registro_Unidad_Gasto estadoRegistroUnidadGasto={this.state.mostrarregistroUnidadGasto}/>
             :
             ''
           }
