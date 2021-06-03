@@ -58,8 +58,8 @@
 
 .solitudDeProductos-servicios {
     font-size: 45px;
-    margin-left: 15%;
-    /*margin: 20px;*/
+    /*margin-left: 15%;
+    margin: 20px;*/
     font-family: var(--fuente-titulos);
     color: var(--color_fondo);
 }

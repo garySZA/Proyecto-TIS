@@ -4,12 +4,19 @@ import './Estilos_formulario_productos-servicios.css';
 import swal from 'sweetalert2';
 import axios from 'axios';
 
-import {Row, Col, Container, Form, Button, fluid } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
+import {Row, Col, Container, Form, Button, fluid } from 'react-bootstrap';
+import { Input, Label} from 'reactstrap';
+
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
 
 const llenadoDeCampos = {
+    item: /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
     detalleSolicitud: /^[a-zA-ZÀ-ÿ\s\d]{1,200}$/,
-    fecha: /^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[/\\/](19|20)\d{2}$/,
+    //fecha: /^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[/\\/](19|20)\d{2}$/,
     responsableSolicitud: /^[a-zA-ZÀ-ÿ\s]{1,50}$/,
     monto: /^\d{1,7}$/,
 };
@@ -22,10 +29,13 @@ class Formulario_ProductosServicios extends Component{
         super(props)
         this.state = {
             showMe:true,
+            validarItem: false,
             validarDetalleSolicitud: false,
             validarResponsableSolicitud: false,
             validarMonto: false,
-            camposVacios: true
+            camposVacios: true,
+
+            fecha: new Date()
         }
     }
 
@@ -33,7 +43,7 @@ class Formulario_ProductosServicios extends Component{
         this.setState.showMe = true;
     }
 
-    nameImputs = ["detalleSolicitud", "fecha", "responsableSolicitud", "monto"];
+    nameImputs = ["item","detalleSolicitud", "responsableSolicitud", "monto"];
 
     //para verificar los datos de cada campo
     verificarCampos = () => {
@@ -97,6 +107,25 @@ class Formulario_ProductosServicios extends Component{
                         this.mostrarError(campo)
                     }
                 }
+            }else if (campo == "item"){
+                if(elemento.value === ""){
+                    this.setState({
+                        validarItem: false
+                    })
+                }else{
+                    console.log("posiloco");
+                    if(llenadoDeCampos.item.test(elemento.value)){
+                        this.setState({
+                            validarItem:true
+                        })
+                        this.ocultarError(campo);
+                    }else{
+                        this.setState({
+                            validarItem: false
+                        })
+                        this.mostrarError(campo)
+                    }
+                }
             }
         })
     }
@@ -123,6 +152,7 @@ class Formulario_ProductosServicios extends Component{
             })
             //añadiendo datos a la API con ayuda de axios
             axios.post('https://formulario-prod-ser-backend.herokuapp.com/add' , {
+                item: document.getElementById("item").value,
                 detalle: document.getElementById("detalleSolicitud").value ,
                 fechaDeSolicitud: document.getElementById("fecha").value ,
                 responsableDeSolicitud: document.getElementById("responsableSolicitud").value ,
@@ -180,6 +210,7 @@ class Formulario_ProductosServicios extends Component{
     }
     
     
+    
     render(){
         return(
             <Container fluid className="contenedor-margen" >
@@ -188,21 +219,42 @@ class Formulario_ProductosServicios extends Component{
                     </Row>
                     {this.state.showMe ? (
                     <Row className="contenedor-deRegistro" id="mostrar-formulario-proser">
-                        
-                        <Row className="contedor-tituloDeRegistro">
-                            <label className="solitudDeProductos-servicios">
+
+                        <Col xs={9} className="contedor-tituloDeRegistro">
+                            <Label className="solitudDeProductos-servicios">
                                 Solicitud de Productos y/o Servicios
-                            </label>
-                        </Row>               
+                            </Label>
+                        </Col>           
                                                                                                                             
                         <Row className="contenedor-formularioDeRegistro">
+
+                            <div className="camposform solicitud__datos" id="dato__item">
+                                <div className="contenedor-camposform-subtitulos">
+                                    <h3 for="campo-item" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
+                                </div>
+                                <Row className="solicitud__datos-imputs">
+                                    <InputText
+                                        className="entradas"
+                                        name="item"
+                                        id="item" 
+                                        type="text" 
+                                        placeholder="Ingresar nombre del Item" 
+                                        maxlength="51"
+                                        onChange = {this.verificarCampos}>
+                                    </InputText>
+                                    <i class="solicitud__validacionCampos-Estados"></i>
+                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-item">
+                                        El texto debe de contener caracteres y numeros.
+                                    </p>
+                                </Row>
+                            </div>
 
                             <div className="camposform solicitud__datos" id="dato__detalle">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-book"></i> Detalle:</h3>
                                 </div>
-                                <div className="solicitud__datos-imputs">
-                                    <textarea 
+                                <Row className="solicitud__datos-imputs">
+                                    <InputTextarea
                                         className="entradas"
                                         name="detalleSolicitud"
                                         id="detalleSolicitud" 
@@ -211,47 +263,34 @@ class Formulario_ProductosServicios extends Component{
                                         maxlength="201"
                                         onChange = {this.verificarCampos}>
 
-                                    </textarea>
+                                    </InputTextarea>
                                     <i class="solicitud__validacionCampos-Estados"></i>
                                     <p className="solicitud__dato-erroneo" id="errorDeMensaje-detalleSolicitud">
                                         El texto debe de contener menos de 200 caracteres.
                                     </p>
 
-                                </div>
+                                </Row>
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__fecha" method="POST">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"><i class="fas fa-calendar-week"></i> Fecha de solicitud:</h3>
                                 </div>
-                                <div className="solicitud__datos-imputs">
-                                    <input 
-                                        className="entradas" 
-                                        type="date" 
+                                <Row className="solicitud__datos-imputs">
+                                    <DatePicker className="entradas" 
+                                        type="text" 
                                         name="fecha"
-                                        id="fecha"
-                                        min="2021-01-01"
-                                        max="2025-12-31"
-                                        step="1" 
-                                        //value=""
-                                        onChange = {this.verificarCampos}
-                                        required>
+                                        id="fecha" selected={this.state.fecha}>
+                                    </DatePicker>
 
-                                    </input>
-
-                                    <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-detalleSolicitud">
-                                        La fecha debe ser menor al "31-12-2031".
-                                    </p>
-
-                                </div>
+                                </Row>
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__responsable">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-user"></i> Responsable de solicitud:</h3>
                                 </div>
-                                <div className="solicitud__datos-imputs">
+                                <Row className="solicitud__datos-imputs">
                                     <input 
                                         className="entradas"
                                         name="responsableSolicitud"
@@ -267,14 +306,14 @@ class Formulario_ProductosServicios extends Component{
                                         El campo debe de contener solo letras.
                                     </p>
 
-                                </div> 
+                                </Row> 
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__monto">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-dollar-sign"></i> Monto:   </h3>
                                 </div>
-                                <div className="solicitud__datos-imputs">
+                                <Row className="solicitud__datos-imputs">
                                     <input 
                                         className="entradas"
                                         name="monto"
@@ -290,7 +329,7 @@ class Formulario_ProductosServicios extends Component{
                                         El campo debe de contener solo numeros positivos.
                                     </p>
 
-                                </div>
+                                </Row>
                             </div>
 
                             <div class="solicitud__mensaje" id="solicitud__mensaje">
