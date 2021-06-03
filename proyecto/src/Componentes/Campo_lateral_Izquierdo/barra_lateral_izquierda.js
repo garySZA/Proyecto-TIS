@@ -5,6 +5,8 @@ import React from 'react';
 import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
 import './estilos_botones.css'
+import Mostrar_tarjetas from '../Mostrar_Tarjetas/Mostrar_tarjetas'
+import axios from 'axios'
 
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
@@ -23,8 +25,11 @@ class BarraLateral extends React.Component{
       mostrarRegistroEmpresa: false,
       mostrarFormularioProductosServicios :false,
       mostrarFormularioDeUsuariosNuevos:false,
-      mostrarregistroUnidadGasto: false
+      mostrarregistroUnidadGasto: false,
+      mostrarEmpresas: false 
     };
+
+    this.listaEmpresas = [];
   }
 
   operation2 = () =>{
@@ -39,7 +44,8 @@ class BarraLateral extends React.Component{
         mostrarRegistroEmpresa: true,
         mostrarFormularioProductosServicios: false, 
         mostrarFormularioDeUsuariosNuevos: false,
-        mostrarregistroUnidadGasto: false
+        mostrarregistroUnidadGasto: false,
+        mostrarEmpresas: false
       })
       console.log("false");
       console.log(this.state.mostrarRegistroEmpresa);
@@ -56,7 +62,8 @@ class BarraLateral extends React.Component{
         mostrarFormularioProductosServicios: true,
         mostrarFormularioDeUsuariosNuevos:false,
         mostrarRegistroEmpresa: false,
-        mostrarregistroUnidadGasto: false
+        mostrarregistroUnidadGasto: false,
+        mostrarEmpresas: false
       })     
     }
   }
@@ -71,12 +78,13 @@ class BarraLateral extends React.Component{
         mostrarFormularioDeUsuariosNuevos: true,
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
-        mostrarregistroUnidadGasto: false
+        mostrarregistroUnidadGasto: false,
+        mostrarEmpresas: false
       })     
     }
   }
 
-  operation5 = () => {
+  operation6 = () => {
     if(this.state.mostrarregistroUnidadGasto == true){
       this.setState({
         mostrarregistroUnidadGasto: false
@@ -86,9 +94,40 @@ class BarraLateral extends React.Component{
         mostrarregistroUnidadGasto: true,
         mostrarFormularioDeUsuariosNuevos: false,
         mostrarFormularioProductosServicios: false,
-        mostrarRegistroEmpresa: false
+        mostrarRegistroEmpresa: false,
+        mostrarEmpresas: false
       })
     }
+  }
+
+  operation5 = () =>{
+
+    axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
+        .then(response => {
+            this.listaEmpresas = response.data;
+        })
+
+    if(this.state.mostrarEmpresas == true){
+      this.setState({
+        mostrarEmpresas: false
+      }) 
+    }else{
+      this.setState({
+        mostrarFormularioDeUsuariosNuevos: false,
+        mostrarFormularioProductosServicios:false,
+        mostrarRegistroEmpresa: false,
+        mostrarregistroUnidadGasto: false,
+        mostrarEmpresas: true
+      })     
+    }
+  }
+
+  onChange = () =>{
+    axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
+        .then(response => {
+            this.listaEmpresas = response.data;
+            console.log(this.listaEmpresas.nombreEmpresa)
+        })
   }
 
 
@@ -101,9 +140,10 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"    id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
             <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation4()}>Registrar Nuevo Usuario</button>
-            <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation5()}>Registrar Unidad de Gasto</button>
+            <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation6()}>Registrar Unidad de Gasto</button>
+            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation5()}>Ver Empresas</button>
         </div>
-        <div className="principal" id="algo">
+        <div className="principal" id="algo" onChange={this.onChange}>
           {
             (this.state.mostrarRegistroEmpresa)?
             <Registro_Empresa estadoRegistroEmpresa={this.state.mostrarRegistroEmpresa}/>
@@ -119,6 +159,12 @@ class BarraLateral extends React.Component{
           {
             (this.state.mostrarFormularioDeUsuariosNuevos)?
             <RegistroDeNuevosUsuarios />
+            :
+            ''
+          }
+          {
+            (this.state.mostrarEmpresas)?
+            <Mostrar_tarjetas lista = {this.listaEmpresas} onChange={this.onChange}/>
             :
             ''
           }

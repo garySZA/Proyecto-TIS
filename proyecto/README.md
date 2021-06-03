@@ -1,17 +1,40 @@
 $ npm install
-$ npm install react-router-dom
-$ npm install react-bootstrap bootstrap
-$ npm install axios
-$ npm install reactstrap
-$ npm install yup
-$ npm install sweetalert2
-$ npm install web-vitals
-$ npm install @material-ui/core
-$ npm install @material-ui/icons
-$ npm install react-swipeable-views
-$ npm install @material-ui/lab
-$ npm install react-datepicker //para las fechas automaticas o personalizadas
 
+$ npm install react-router-dom
+
+$ npm install react-bootstrap bootstrap
+
+$ npm install axios
+
+$ npm install reactstrap
+
+$ npm install yup
+
+$ npm install sweetalert2
+
+$ npm install web-vitals
+
+$ npm install @material-ui/core      //no instalar 
+
+$ npm install @material-ui/icons     //No instalar 
+
+$ npm install react-swipeable-views  //no instalar 
+
+$ npm install @material-ui/lab       //no instalar 
+
+$ npm install primereact --save
+
+$ npm install primeicons --save
+
+$ npm install react-transition-group --save
+
+$ npm install react-responsive-carousel
+
+$ npm install react-hook-form
+
+$ npm install primeflex
+
+$ npm install react-datepicker //para las fechas automaticas o personalizadas
 
 
 # Getting Started with Create React App

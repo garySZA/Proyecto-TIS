@@ -9,17 +9,20 @@ import Administrador from './Componentes/administrador/Administrador';
 import Jefe          from './Componentes/jefe/Jefe';
 import Secretaria    from './Componentes/secretaria/Secretaria';
 import Usuario       from './Componentes/usuario/Usuario';
+import Home          from './Componentes/Home/Home';
 
 const Routes = () =>{
     return(
         <BrowserRouter>
             <Switch>
-                <Route path="/"              exact component={Presentation}/> 
+                <Route path="/"              exact component={Home}/>
+                <Route path="/Presentation"  exact component={Presentation}/> 
                 <Route path="/Login"         exact component={Login}/>
                 <Route path="/Administrador" exact component={Administrador}/>
                 <Route path="/Jefe"          exact component={Jefe}/>
                 <Route path="/Secretaria"    exact component={Secretaria}/>
                 <Route path="/Usuario"       exact component={Usuario}/>
+
             </Switch>
         </BrowserRouter>
     )

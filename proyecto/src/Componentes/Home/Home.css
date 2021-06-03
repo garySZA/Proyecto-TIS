@@ -36,24 +36,39 @@
     z-index: 100;
     transition: ease-in-out .5s;
 }
-.card-container{
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 1.875em;
-    border-radius: 0.5em;
-    border: 0.10em solid #4d4848;
-    box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08)
+.loginRegister{
+    color: white!important;
+
+    
 }
-.carousel-Image{
-    border-radius: 0.25em; 
-}
-.images{
-    border-radius: 0.25em;  
-}
-.position-bottun{
-    margin-top: 1.875em;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
+.type-letter{
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+ }
+ .type-letter-text{
+    font-family: 'Exo', sans-serif; 
+ }
+
+ .margin-top{
+    margin-top: 3em;
+ }
+ .card-st{
+    padding: 0;
+ }
+ .card-title{
+     text-align: center;
+ }
+ .card-Parrafo{
+     text-align: justify;
+ }
+ .imagen-suport{
+     height: 9em;
+     width: 8em;
+ }
+ .imagen-rvgc{
+    height: 7em;
+    width: 15em;
+ }
+ .text-left{
+     text-align: left;
+ }
