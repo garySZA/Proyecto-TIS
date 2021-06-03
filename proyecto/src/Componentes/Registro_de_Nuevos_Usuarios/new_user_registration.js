@@ -558,9 +558,9 @@ class RegistroDeNuevosUsuarios extends Component{
                                                                 </p>
                                                             </div>
            
-                                                            <div className="contenedor-button formulario__grupo formulario__grupo-btn-enviar">
-                                                               <button className="button-cancelar button" onClick={this.notificacionAdvertencia}>Cancelar</button>
-                                                               <button className="button-registrar button formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
+                                                            <div className="contenedor-botoncito formulario__grupo formulario__grupo-btn-enviar">
+                                                               <button className="botoncito-cancelar botoncito" onClick={this.notificacionAdvertencia}>Cancelar</button>
+                                                               <button className="botoncito-registrar botoncito formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
                                                             </div>
 
                         
