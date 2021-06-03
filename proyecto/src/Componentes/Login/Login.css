@@ -59,7 +59,7 @@
 }
 
 .imagen{
-    width: 11em;
+    width: 10em;
     height: 8em;
 
 }
@@ -131,4 +131,14 @@
 .button-color{
     background-color: #293863;
 }
+
+.loginRegister{
+    color: white!important;
+
+    
+}
+.type-letter{
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+ }
 

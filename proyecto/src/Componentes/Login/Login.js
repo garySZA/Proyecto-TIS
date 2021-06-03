@@ -133,12 +133,22 @@ const Login = () =>{
         </React.Fragment>
     );
 
+    const loginRegister=()=>{
+        return (
+        <div>
+            <Button label="REGISTRARSE"    icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " />
+        </div>    
+    
+        )
+    };
+
+
 
     return(
         <div>
             <div className="p-grid">
                 <div className="p-col-12 rowPanel">
-                    <Menubar className="panelMenu"  start={start}  end={end}/>
+                    <Menubar className="panelMenu"  start={start}  end={loginRegister}/>
                 </div>
             </div>
             <div className="p-grid">
