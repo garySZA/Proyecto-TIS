@@ -9,6 +9,7 @@ import Administrador from './Componentes/administrador/Administrador';
 import Jefe          from './Componentes/jefe/Jefe';
 import Secretaria    from './Componentes/secretaria/Secretaria';
 import Usuario       from './Componentes/usuario/Usuario';
+import Home          from './Componentes/Home/Home';
 
 const Routes = () =>{
     return(
@@ -20,6 +21,7 @@ const Routes = () =>{
                 <Route path="/Jefe"          exact component={Jefe}/>
                 <Route path="/Secretaria"    exact component={Secretaria}/>
                 <Route path="/Usuario"       exact component={Usuario}/>
+                <Route path="/Home"          exact component={Home}/>
             </Switch>
         </BrowserRouter>
     )

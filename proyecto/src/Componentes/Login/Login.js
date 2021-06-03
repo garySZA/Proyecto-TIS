@@ -177,7 +177,7 @@ const Login = () =>{
                                 </div>
                             </div>
                             <div className="p-col button">
-                                <Button label="INGRESAR" icon="pi pi-check" iconPos="right" id="botonIngresarLogin" type="submit"/>
+                                <Button className="" label="INGRESAR" icon="pi pi-check" iconPos="right" id="botonIngresarLogin" type="submit"/>
                             </div> 
                             <div className="p-col">
 
