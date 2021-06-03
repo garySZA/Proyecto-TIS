@@ -34,7 +34,7 @@ $ npm install react-hook-form
 
 $ npm install primeflex
 
-$ npm install react-datepicker //para las fechas automaticas o personalizadas
+$ npm install react-datepicker //para las fechas automaticas o personalizadas 
 
 
 # Getting Started with Create React App
