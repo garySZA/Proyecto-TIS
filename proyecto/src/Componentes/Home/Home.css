@@ -1,0 +1,74 @@
+.rowPanel{
+    width: 100%;
+    height: 5em;
+    top: 0;
+    margin-top: 0em;
+    border-top: 0em; 
+}
+.end{
+    font-size: 30px;
+    color: silver;
+    font-family: 'Exo', sans-serif;
+    text-shadow: 1px 1px 1px  white;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    place-items: center;
+}
+.panelMenu{
+    width: 100%;
+    height: 5em;
+    background-color: #293863;
+    border-bottom: 0.063em solid transparent;
+    box-shadow: 0.313em 0.313em 1.25em 0em rgba(204, 48, 48, 0.8);
+    position: fixed;
+    top: 0;
+    margin-top: 0em;
+    margin-left: 0em;
+    margin-right: 0em; 
+    border-top: #293863;
+    border-left: #293863;
+    border-right: #293863;
+    border-radius: 0em;  
+
+    z-index: 100;
+    transition: ease-in-out .5s;
+}
+.loginRegister{
+    color: white!important;
+
+    
+}
+.type-letter{
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+ }
+ .type-letter-text{
+    font-family: 'Exo', sans-serif; 
+ }
+
+ .margin-top{
+    margin-top: 3em;
+ }
+ .card-st{
+    padding: 0;
+ }
+ .card-title{
+     text-align: center;
+ }
+ .card-Parrafo{
+     text-align: justify;
+ }
+ .imagen-suport{
+     height: 9em;
+     width: 8em;
+ }
+ .imagen-rvgc{
+    height: 7em;
+    width: 15em;
+ }
+ .text-left{
+     text-align: left;
+ }

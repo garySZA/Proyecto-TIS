@@ -1,41 +1,48 @@
-.container-margen{
-    margin-top: 1.8em;
+.rowPanel{
+    width: 100%;
+    height: 5em;
+    top: 0;
+    margin-top: 0em;
+    border-top: 0em; 
 }
-
-.fondo-pantalla{
-    background-color: #595DC8;
-    height: 100vh;
-}
-.texto-centro{
+.end{
+    font-size: 30px;
+    color: silver;
+    font-family: 'Exo', sans-serif;
+    text-shadow: 1px 1px 1px  white;
     text-align: center;
-}
-.alinacion-centro{
     align-items: center;
-}
-.alineacion-titulo{
-    margin-top: 1em;
-}
-.margin-top{
-    margin-top: 5em;
-}
-.fondo-heder-footer{
-    font-size: 1em;
-}
-.imagen{
-    width: 10em;
-    height: 9em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em; 
+    align-self: center;
+    place-items: center;
 }
-.tipo-letra{
-    font-family: Arial;
-    font-weight: bold;
- }
- .tamaño-letra-titulo{
-    font-size: xx-large;
+.panelMenu{
+    width: 100%;
+    height: 5em;
+    background-color: #293863;
+    border-bottom: 0.063em solid transparent;
+    box-shadow: 0.313em 0.313em 1.25em 0em rgba(204, 48, 48, 0.8);
+    position: fixed;
+    top: 0;
+    margin-top: 0em;
+    margin-left: 0em;
+    margin-right: 0em; 
+    border-top: #293863;
+    border-left: #293863;
+    border-right: #293863;
+    border-radius: 0em;  
+
+    z-index: 100;
+    transition: ease-in-out .5s;
 }
-.Cuadro-login{
+
+
+.container-margen{
+    margin-top: 1.5em;
+}
+
+.picture-login{
     border: 0.20em solid #4d4848;
     border-radius: 4em;
     padding: 17;
@@ -43,17 +50,63 @@
     box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08);
  }
 
- .entrada{
-    margin-right: 6.0em; 
-    width: 15em;
-    height: 3em;
- }
- .margen-entrada{
-     margin-top: 1.08em;
- }
- .margen-superior{
-    margin-top: 0.50em;
+.text-title{
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.imagen{
+    width: 10em;
+    height: 8em;
+
+}
+.imagen-position{
+    margin-top: 0.15em;
+    align-items: center;
+    text-align: center;
+}
+
+.p-email {
+    width: 16em;
+}
+.label-email{
+    margin-left: 1%;
+    font-size: large;
+}
+.icon-email{
+    margin-left: 1%;
+}
+.p-password {
+    width: 16em; 
+}
+.label-password{
+    margin-left: 1%;
+    font-size: large;
+}
+.icon-password{
+    margin-right: 0.5%;
+}
+
+.margin-top{
+    margin-top: 1em;
+}
+.margin-top-items{
+    margin-top: 1.8em;
+}
+.margin-position-input{   
+    text-align: center;
+}
+
+
+.type-letter{
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+ }
+
+
  .boton-ingreso{
     margin-left: auto;
     margin-right: auto;
@@ -67,15 +120,25 @@
      background-color: #D13639;
      border-color: #D13639;
  }
- .icono{
-     margin-top: 0.40em;
-     margin-left: 1.9em;
 
+.remember{
+    margin-left: 25%;
+}
+.button{
+    margin-left: 32%;
+    margin-bottom: 1.0em;
+}
+.button-color{
+    background-color: #293863;
+}
+
+.loginRegister{
+    color: white!important;
+
+    
+}
+.type-letter{
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
  }
-.recuerdame{
-    margin-left: 5.0em;
-}
-.borde-texto{
-    margin-left: 1.2em;
-    font-size: large;
-}
+
