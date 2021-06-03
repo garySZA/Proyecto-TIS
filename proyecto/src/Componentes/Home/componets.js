@@ -1,9 +1,10 @@
 import './Home.css';
 
 
-import { Button }                   from 'primereact/button';
+
 import logo                         from './img/UMSS_logo.png';
 import suportTecnic                 from './img/suport_tecnic.png';
+
 
 export const items = [
     {
@@ -122,15 +123,7 @@ export const items = [
     }
 ];
 
-export const loginRegister=()=>{
-    return (
-    <div>
-        <Button label="INICIAR SESIÓN" icon="pi  pi-fw pi-user"      className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " />
-        <Button label="REGISTRARSE"    icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " />
-    </div>    
 
-    )
-};
 
 export const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
 export const end   = <h1 className="end">Sistema de Cotizaciones</h1>;

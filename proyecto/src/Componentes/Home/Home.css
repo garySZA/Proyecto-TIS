@@ -45,6 +45,9 @@
     font-family: 'Exo', sans-serif;
     font-weight: bold;
  }
+ .type-letter-text{
+    font-family: 'Exo', sans-serif; 
+ }
 
  .margin-top{
     margin-top: 3em;
@@ -61,4 +64,11 @@
  .imagen-suport{
      height: 9em;
      width: 8em;
+ }
+ .imagen-rvgc{
+    height: 7em;
+    width: 15em;
+ }
+ .text-left{
+     text-align: left;
  }
