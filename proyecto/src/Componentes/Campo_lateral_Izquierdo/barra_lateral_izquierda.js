@@ -139,7 +139,7 @@ class BarraLateral extends React.Component{
             
             <button className="registro-empresa"    id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
-            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation4()}>Registrar Nuevo Usuario</button>
+            
             <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation6()}>Registrar Unidad de Gasto</button>
             <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation5()}>Ver Empresas</button>
         </div>

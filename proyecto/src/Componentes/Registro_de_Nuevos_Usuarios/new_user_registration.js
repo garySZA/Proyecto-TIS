@@ -2,6 +2,7 @@ import {Component} from 'react';
 import './styles.css';
 import axios from 'axios';
 import swal from 'sweetalert2';
+import {Col, Container, Row} from 'react-bootstrap';
 
 
 
@@ -309,11 +310,8 @@ class RegistroDeNuevosUsuarios extends Component{
 
     render(){
         return(
-        <div>
-          {this.state.showMe? (
-
-
-                      <div className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
+        <Container>
+             <Col className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
 
                                 <div className="contenedorTitulo_RegistroUsuario">
                                     <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
@@ -574,9 +572,9 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
 
-                 </div>
-     ):(<div></div>)}
-     </div>
+                 </Col>
+      
+     </Container>
    );
   }
 }
