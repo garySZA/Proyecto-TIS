@@ -22,7 +22,7 @@ const Home = () =>{
 
 
     const handleRegistrarse=()=>{
-        history.push('/RegistroDeNuevosUsuarios');
+        history.push('/NewUser');
     }
 
 
