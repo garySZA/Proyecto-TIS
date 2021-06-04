@@ -24,7 +24,7 @@ class Tarjeta_Solicitudes extends React.Component{
                     </div>
                     <label className = "subtitulos-solicitud">Responsable:</label>
                     <div className="contenido-de-solicitudes">
-                        <label className="etiqueta-contenido-solicitud">Soliz Gary</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.lista}</label>
                     </div>
                     <label className = "subtitulos-solicitud">Monto:</label>
                     <div className="contenido-de-solicitudes">

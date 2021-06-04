@@ -6,6 +6,7 @@ import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
 import './estilos_botones.css'
 import Mostrar_tarjetas from '../Mostrar_Tarjetas/Mostrar_tarjetas'
+import Mostrar_tarjetas_solicitudes from '../Mostrar_Tarjetas_Solicitudes/Mostrar_Tarjetas_Solicitudes'
 import axios from 'axios'
 
 //importacion de formulario de solicitud de productos y servicios
@@ -165,8 +166,8 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
             
             <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation6()}>Registrar Unidad de Gasto</button>
-            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation5()}>Ver Empresas</button>
-            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
+            <button className="registro-empresa"  id="botonVerEmpresas"   onClick={()=>this.operation5()}>Ver Empresas</button>
+            <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
         </div>
         <div className="principal" id="algo" onChange={this.onChange}>
           {
@@ -196,6 +197,12 @@ class BarraLateral extends React.Component{
           {
             (this.state.mostrarregistroUnidadGasto)?
             <Registro_Unidad_Gasto estadoRegistroUnidadGasto={this.state.mostrarregistroUnidadGasto}/>
+            :
+            ''
+          }
+          {
+            (this.state.mostrarHistorialSolicitudes)?
+            <Mostrar_tarjetas_solicitudes />
             :
             ''
           }

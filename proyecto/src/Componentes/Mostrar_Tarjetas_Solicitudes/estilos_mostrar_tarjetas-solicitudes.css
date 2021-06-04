@@ -1,0 +1,11 @@
+.contenedor-flex-solicitudes{
+    display: flex;
+    justify-content: center;
+}
+.contenedor-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    padding: 25px;
+}
