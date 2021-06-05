@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './estilos_mostrar_tarjetas.css';
 import Tarjeta from '../Tarjeta/Tarjeta';
-import axios from 'axios';
+import Spinner from '../Spinner/Spinner'
 
 function Mostrar_tarjetas(){
     const url = 'https://proyecto-tis.herokuapp.com/api/empresas'
@@ -20,7 +20,7 @@ function Mostrar_tarjetas(){
         <div className="tarjetas">
             <div className="contenedor-grid-tarjetas">
                 {
-                    !todos ? 'Cargando...':
+                    !todos ? <Spinner />:
                     todos.map(empresa => {
                         return <Tarjeta 
                                     nombre = {empresa.nombreEmpresa}

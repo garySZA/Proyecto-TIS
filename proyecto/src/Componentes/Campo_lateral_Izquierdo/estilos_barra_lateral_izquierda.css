@@ -16,6 +16,7 @@
     box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
     
     margin-left: 20px;
+    margin-bottom: 10px;
 
     /*  Posicionando estáticamente contenedor de botones*/
     position: sticky;

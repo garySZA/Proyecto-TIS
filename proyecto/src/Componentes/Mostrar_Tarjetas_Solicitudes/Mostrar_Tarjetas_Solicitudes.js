@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './estilos_mostrar_tarjetas-solicitudes.css';
 import Tarjeta_Solicitudes from "../Tarjeta-Solicitudes/Tarjeta-Solicitudes";
+import Spinner from '../Spinner/Spinner'
 
 function Mostrar_tarjetas_solicitudes(){
     const url = 'https://backendcompleto-sdc.herokuapp.com/api/formReq/getFormReq'
@@ -20,7 +21,7 @@ function Mostrar_tarjetas_solicitudes(){
             <div className="contenedor-flex-solicitudes">
                 <div className="contenedor-grid">
                     {
-                        !todos ? 'Cargando...' : 
+                        !todos ? <Spinner/> : 
                         todos.map(solicitud => {
                             return <Tarjeta_Solicitudes solicitud = {solicitud}/>
                         })
