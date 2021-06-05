@@ -58,6 +58,6 @@ export const updateUserID =(id,data) =>{
     });
 }
 
-export const getUserID =(id) =>{
+export const deleteUserID =(id) =>{
     return axios.delete(`https://backendcompleto-sdc.herokuapp.com/api/user/deleteUser/${id}`);
 }
