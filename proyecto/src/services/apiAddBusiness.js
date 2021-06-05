@@ -1,29 +1,27 @@
 import axios from 'axios';
 
- export const getUsers = () =>{
-     return axios.get('https://backendcompleto-sdc.herokuapp.com/api/user/getUser');
+ export const getAddBusiness = () =>{
+     return axios.get('https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/getRegisterBusiness');
  }
 
- export const getUserID =(id) =>{
-     return axios.get(`https://backendcompleto-sdc.herokuapp.com/api/user/${id}`);
+ export const getAddBusinessID =(id) =>{
+     return axios.get(`https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/${id}`);
  }
 
 
 
- export const createUser=(data)=>{
-    return axios.post('https://backendcompleto-sdc.herokuapp.com/api/user/createUser', 
+ export const createAddBusiness=(data,idF)=>{
+    return axios.post('https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/createRegisterBus', 
       {
-         RolR:               `${data.RolR}`,
-         NombreUsuario:      `${data.NombreUsuario}`,
-         ApellidoUsuario:    `${data.ApellidoUsuario}`,
-         FechaDeNacimiento:  `${data.FechaDeNacimiento}`,
-         contraseñaUsuario:  `${data.contraseñaUsuario}`,
-         SexoUsuario:        `${data.SexoUsuario}`,
-         CorreoC:            `${data.CorreoC}`,
-         CiudadDireccion:    `${data.CiudadDireccion}`,
-         PaisDireccion:      `${data.PaisDireccion}`,
-         CalleDireccion:     `${data.CalleDireccion}`,
-         TelefonoT:          `${data.TelefonoT}`
+        nombreEmpresa:                               `${data.nombreEmpresa}`,
+        rubroEmpresa:                                `${data.rubroEmpresa}`,
+        telefonoEmpresa:                             `${data.telefonoEmpresa}`,
+        correoEmpresa:                               `${data.correoEmpresa}`,
+        NITEmpresa:                                  `${data.NITEmpresa}`,
+        NombrePersona:                               `${data.NombrePersona}`,
+        telefonoPersona:                             `${data.telefonoPersona}`,
+        ciPersona:                                   `${data.ciPersona}`,
+        RegistroNuevoUsuario_idRegistroNuevoUsuario: `${idF}`
       }
       )
       .then(function (response) {
@@ -34,20 +32,18 @@ import axios from 'axios';
       });
  }
 
-export const updateUserID =(id,data) =>{
-    return axios.post(`https://backendcompleto-sdc.herokuapp.com/api/user/updateUser/${id}`, 
+export const updateAddBusinessID =(data,idF,id) =>{
+    return axios.post(`https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/updateRegisterBus/${id}`, 
     {
-       RolR:               `${data.RolR}`,
-       NombreUsuario:      `${data.NombreUsuario}`,
-       ApellidoUsuario:    `${data.ApellidoUsuario}`,
-       FechaDeNacimiento:  `${data.FechaDeNacimiento}`,
-       contraseñaUsuario:  `${data.contraseñaUsuario}`,
-       SexoUsuario:        `${data.SexoUsuario}`,
-       CorreoC:            `${data.CorreoC}`,
-       CiudadDireccion:    `${data.CiudadDireccion}`,
-       PaisDireccion:      `${data.PaisDireccion}`,
-       CalleDireccion:     `${data.CalleDireccion}`,
-       TelefonoT:          `${data.TelefonoT}`
+        nombreEmpresa:                               `${data.nombreEmpresa}`,
+        rubroEmpresa:                                `${data.rubroEmpresa}`,
+        telefonoEmpresa:                             `${data.telefonoEmpresa}`,
+        correoEmpresa:                               `${data.correoEmpresa}`,
+        NITEmpresa:                                  `${data.NITEmpresa}`,
+        NombrePersona:                               `${data.NombrePersona}`,
+        telefonoPersona:                             `${data.telefonoPersona}`,
+        ciPersona:                                   `${data.ciPersona}`,
+        RegistroNuevoUsuario_idRegistroNuevoUsuario: `${idF}`
     }
     )
     .then(function (response) {
@@ -58,6 +54,6 @@ export const updateUserID =(id,data) =>{
     });
 }
 
-export const getUserID =(id) =>{
-    return axios.delete(`https://backendcompleto-sdc.herokuapp.com/api/user/deleteUser/${id}`);
+export const deleteAddBusinessID =(id) =>{
+    return axios.delete(`https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/deleteRegisterBus/${id}`);
 }

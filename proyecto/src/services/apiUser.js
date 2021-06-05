@@ -34,7 +34,7 @@ import axios from 'axios';
       });
  }
 
-export const updateUserID =(id,data) =>{
+export const updateUserID =(data,id) =>{
     return axios.post(`https://backendcompleto-sdc.herokuapp.com/api/user/updateUser/${id}`, 
     {
        RolR:               `${data.RolR}`,
