@@ -14,21 +14,36 @@ import { Button }                   from 'primereact/button';
 
 const Home = () =>{
     const history                    = useHistory();
-
+    const [userDB,setUseDB]          = useState(1000000)
 
     const handleLogin=()=>{
         history.push('/Login');
     }
 
+
+    const handleRegistrarse=()=>{
+        history.push("/NewUser");
+    }
+
+
+
     const loginRegister=()=>{
         return (
         <div>
             <Button label="INICIAR SESIÓN" icon="pi  pi-fw pi-user"      className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " onClick={handleLogin}/>
-            <Button label="REGISTRARSE"    icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " />
+            <Button label="REGISTRARSE"    icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " onClick={handleRegistrarse}/>
         </div>    
     
         )
     };
+
+
+
+
+
+
+
+    
 
     
 

@@ -2,7 +2,7 @@ import {Component} from 'react';
 import './styles.css';
 import axios from 'axios';
 import swal from 'sweetalert2';
-import { Container, Row } from 'react-bootstrap';
+import {Col, Container, Row} from 'react-bootstrap';
 
 
 
@@ -311,10 +311,7 @@ class RegistroDeNuevosUsuarios extends Component{
     render(){
         return(
         <Container>
-          {this.state.showMe? (
-
-
-                      <Row className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
+             <Col className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
 
                                 <div className="contenedorTitulo_RegistroUsuario">
                                     <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
@@ -559,9 +556,9 @@ class RegistroDeNuevosUsuarios extends Component{
                                                                 </p>
                                                             </div>
            
-                                                            <div className="contenedor-button formulario__grupo formulario__grupo-btn-enviar">
-                                                               <button className="button-cancelar button" onClick={this.notificacionAdvertencia}>Cancelar</button>
-                                                               <button className="button-registrar button formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
+                                                            <div className="contenedor-botoncito formulario__grupo formulario__grupo-btn-enviar">
+                                                               <button className="botoncito-cancelar botoncito" onClick={this.notificacionAdvertencia}>Cancelar</button>
+                                                               <button className="botoncito-registrar botoncito formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
                                                             </div>
 
                         
@@ -575,8 +572,8 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
 
-                 </Row>
-     ):(<div></div>)}
+                 </Col>
+      
      </Container>
    );
   }

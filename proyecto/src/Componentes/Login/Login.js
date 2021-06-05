@@ -1,5 +1,5 @@
 import React,{useEffect,useState}   from 'react';
-import {getUsuario}                 from   '../../services/apiUsuario';
+import {getUsers,createUser}                   from   '../../services/apiUser';
 import './Login.css';
 import logoUser                     from './img/avatarUser.png';
 import { useHistory }               from 'react-router-dom';
@@ -30,15 +30,19 @@ const Login = () =>{
     const [user,setUser]             = useState(false);
     const history                    = useHistory();
     const [checked, setChecked]      = useState(false);
- 
-
+    const [userDB,setUserDB]         = useState();
 
     useEffect(()=>{
         fetchUsuario();
+
+    },[])
+    useEffect(()=>{
+    
     },[])
 
+
     const fetchUsuario = () =>{
-        getUsuario().then(json =>{
+        getUsers().then(json =>{
             if(json.error){
                 console.log("Error");
             }else{
@@ -73,22 +77,26 @@ const Login = () =>{
             usuario.map((u) => {
                 // Cómo solo queremos los nombres, retornamos "name".
               
-               if       (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Administrador') {
+               if       (copyEmail === u.CorreoC.toLowerCase() && password === u.contraseñaUsuario && u.RolR ==='Administrador'.toLowerCase()) {
                     console.log('filtrado de datos administrador');
                     setAdmin(true);
+                    setUserDB(u.idRegistroNuevoUsuario);
                     console.log(admin);
                 
-               }else if (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Jefe') {
+               }else if (copyEmail === u.CorreoC.toLowerCase() && password === u.contraseñaUsuario && u.RolR ==='Jefe'.toLowerCase()) {
                     console.log('filtrado de datos Jefe');
                     setJefe(true);
+                    setUserDB(u.idRegistroNuevoUsuario);
                 
-                }else if (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Secretaria') {
+                }else if (copyEmail === u.CorreoC.toLowerCase() && password === u.contraseñaUsuario && u.RolR ==='Secretaria'.toLowerCase()) {
                     console.log('filtrado de datos Secretaria');
                     setSecretaria(true);
+                    setUserDB(u.idRegistroNuevoUsuario);
                 
-                }else if (copyEmail === u.Correo.toLowerCase() && password === u.contraseña && u.rol ==='Usuario') {
+                }else if (copyEmail === u.CorreoC.toLowerCase() && password === u.contraseñaUsuario && u.RolR ==='Usuario'.toLowerCase()) {
                     console.log('filtrado de datos Usuario');
                     setUser(true);
+                    setUserDB(u.idRegistroNuevoUsuario);
                 
                 }else{
                     setPassword("");
@@ -105,7 +113,7 @@ const Login = () =>{
             history.push('/Administrador');
         }else if(jefe === true){
             console.log("Es Jefe");
-            history.push('/Jefe');
+            history.push(`/Jefe/${userDB}`);
         }else if(secretaria === true){
             console.log("Es Secretaria");
             history.push('/Secretaria');
