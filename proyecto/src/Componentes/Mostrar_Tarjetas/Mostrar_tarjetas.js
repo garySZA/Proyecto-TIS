@@ -1,26 +1,39 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './estilos_mostrar_tarjetas.css';
 import Tarjeta from '../Tarjeta/Tarjeta';
 import axios from 'axios';
 
+function Mostrar_tarjetas(){
+    const url = 'https://proyecto-tis.herokuapp.com/api/empresas'
+    const [todos, setTodos] = useState()
+    const fetchApi = async () =>{
+        const response = await fetch(url)
+        const responseJSON = await response.json()
+        setTodos(responseJSON)
+    }
 
-function Mostrar_tarjetas(props){
+    useEffect(() => {
+        fetchApi()
+    }, [])
+
     return(
         <div className="tarjetas">
             <div className="contenedor-grid-tarjetas">
                 {
-                    props.lista.map(item =>
-                        <Tarjeta 
-                                nombre = {item.nombreEmpresa}
-                                rubro = {item.rubro}
-                                telefonoEmpresa = {item.telefonoEmpresa}
-                                correoEmpresa = {item.correoEmpresa}
-                                nit = {item.nit}
-                                nombreEncargado = {item.nombreEncargado}
-                                telefonoEncargado = {item.telefonoEncargado}
-                                ciEncargado = {item.ciEncargado}
+                    !todos ? 'Cargando...':
+                    todos.map(empresa => {
+                        return <Tarjeta 
+                                    nombre = {empresa.nombreEmpresa}
+                                    rubro = {empresa.rubro}
+                                    telefonoEmpresa = {empresa.telefonoEmpresa}
+                                    correoEmpresa = {empresa.correoEmpresa}
+                                    nit = {empresa.nit}
+                                    nombreEncargado = {empresa.nombreEncargado}
+                                    telefonoEncargado = {empresa.telefonoEncargado}
+                                    ciEncargado = {empresa.ciEncargado}
                                 />
-                        )
+                    })
+                        
                 }
             </div>  
         </div>

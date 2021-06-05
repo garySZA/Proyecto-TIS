@@ -23,7 +23,7 @@ class Tarjeta extends React.Component{
                         <label >Datos de Persona Encargada</label>
                     </div>
                     <label className="subtitulos-tarjeta campos-tarjeta">Nombre: <label className="contenido-tarjeta">{this.props.nombreEncargado}</label></label>
-                    <label className="subtitulos-tarjeta campos-tarjeta">telefono: <label className="contenido-tarjeta">{this.props.telefonoEncargado}</label></label>
+                    <label className="subtitulos-tarjeta campos-tarjeta">Telefono: <label className="contenido-tarjeta">{this.props.telefonoEncargado}</label></label>
                     <label className="subtitulos-tarjeta campos-tarjeta">CI: <label className="contenido-tarjeta">{this.props.ciEncargado}</label></label>
                 </div>
         );
