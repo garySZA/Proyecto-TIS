@@ -11,24 +11,24 @@ class Tarjeta_Modificacion_Estados extends React.Component{
         return(
             <div className="tarjeta-solicitud">
                 <div className="contenedor-estado-solicitud">
-                    <label className="estado-solicitud">{this.props.estado}</label>
+                    <label className="estado-solicitud">{this.props.solicitud.estadoSolicitud}</label>
                 </div>
                 <div className="contenedor-campos-solicitud">
                     <label className = "subtitulos-solicitud">Detalle:</label>
                     <div className="contenido-de-solicitudes contenedor-overflow">
-                        <label className="etiqueta-contenido-solicitud">Compra de insumos de oficina</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.DetalleSolitud}</label>
                     </div>
                     <label className = "subtitulos-solicitud">Fecha de Solicitud:</label>
                     <div className="contenido-de-solicitudes">
-                        <label className="etiqueta-contenido-solicitud">02/06/2021</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.FechaDeSolicitud}</label>
                     </div>
                     <label className = "subtitulos-solicitud">Responsable:</label>
                     <div className="contenido-de-solicitudes">
-                        <label className="etiqueta-contenido-solicitud">Soliz Gary</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.responsableSolicitud}</label>
                     </div>
                     <label className = "subtitulos-solicitud">Monto:</label>
                     <div className="contenido-de-solicitudes">
-                        <label className="etiqueta-contenido-solicitud">200bs</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.montoSolicitud}</label>
                     </div>
                 </div>
                 <div className="contenedor-botones-cambio-estado">
