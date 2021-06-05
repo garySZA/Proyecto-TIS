@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Row, Button, Col,Image, Container,Form} from 'react-bootstrap';
-import { Label } from "reactstrap";
+import { Card, Label } from "reactstrap";
 
 
 
@@ -14,24 +14,45 @@ class Registro_Unidad_Gasto extends Component {
         }
     }
 
-
     render(){
         return(
             <Container>
                 {this.state.showMe ? (
-                    <Container className="contenedorUnidadGasto">
+                    <Row className="contenedorUnidadGasto">
 
-                        <Row className="cabezaUnidadGasto">
-                            <Label className="tituloUnidadGasto">
+                        <Row className="cabezaUnidadGasto" id="cabezaUnidadGasto" title="tituloUnidadGasto">
+                            <Label className="entrada-tituloUnidadGasto">
                                 Registro Unidad de Gasto
                             </Label>
                         </Row>
 
-                        <Col>
-                            <Label>Facultad</Label>
-                        </Col>
+                        <Form className="formulario-unidadDeGasto" id="Formulario-unidadDeGasto">
+                            
+                            <Row className="camposUnidadGasto" id="camposNombreFacultad">
+                                <Col className="subtituloNombreFacultad">
+                                    <Label className="camposLabel"> <i class="fas fa-school"></i> Nombre de Facultad: </Label>
+                                </Col>
+                                <Col className="entradasComponentes">
+                                    <select>
+                                        <option> Elegir la Facultad </option>
+                                        <option value="1">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="2">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="3">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="4">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="5">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="6">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="7">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="8">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="9">Facultad de Ciencias y Tecnologia</option>
+                                        <option value="10">Facultad de Ciencias y Tecnologia</option>
+                                    </select>
+                                </Col>
 
-                    </Container>
+                            </Row>
+
+                        </Form>
+
+                    </Row>
                 ):(<div></div>)}
             </Container>);
     }

@@ -153,10 +153,10 @@ class Formulario_ProductosServicios extends Component{
             //añadiendo datos a la API con ayuda de axios
             axios.post('https://formulario-prod-ser-backend.herokuapp.com/add' , {
                 item: document.getElementById("item").value,
-                detalle: document.getElementById("detalleSolicitud").value ,
-                fechaDeSolicitud: document.getElementById("fecha").value ,
-                responsableDeSolicitud: document.getElementById("responsableSolicitud").value ,
-                monto: document.getElementById("monto").value
+                DetalleSolitud: document.getElementById("detalleSolicitud").value ,
+                FechaDeSolicitud: document.getElementById("fecha").value ,
+                responsableSolicitud: document.getElementById("responsableSolicitud").value ,
+                montoSolicitud: document.getElementById("monto").value
             }).then(response => {
                 console.log('solicitud aceptada y añadida!', response.data);
             }).catch(e => {
