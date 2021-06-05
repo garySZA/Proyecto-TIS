@@ -1,28 +1,33 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './estilos_mostrar_tarjetas-solicitudes.css';
 import Tarjeta_Solicitudes from "../Tarjeta-Solicitudes/Tarjeta-Solicitudes";
 
-function Mostrar_tarjetas_solicitudes(props){
+function Mostrar_tarjetas_solicitudes(){
+    const url = 'https://backendcompleto-sdc.herokuapp.com/api/formReq/getFormReq'
+    const [todos, setTodos] = useState()
+    const fetchApi = async () => {
+        const response = await fetch(url)
+        const responseJSON = await response.json()
+        setTodos(responseJSON)
+    }
 
-    let lista = ['nombre1', 'nombre2','nombre3','nombre4','nombre5','nombre6','nombre7','nombre8']
+    useEffect(() => {
+        fetchApi()
+    }, [])
 
-    return(
-        <div className="contenedor-flex-solicitudes">
-            <div className="contenedor-grid">
-                {
-                    lista.map(item =>
-                        
-                            
-                                (item != 'nombre2')?
-                                <Tarjeta_Solicitudes lista = {item}/>
-                                :
-                                ''
-                        
-                        )
-                }
+
+        return(
+            <div className="contenedor-flex-solicitudes">
+                <div className="contenedor-grid">
+                    {
+                        !todos ? 'Cargando...' : 
+                        todos.map(solicitud => {
+                            return <Tarjeta_Solicitudes solicitud = {solicitud}/>
+                        })
+                    }
+                </div>
             </div>
-        </div>
-    );
+        );
 }
 
 export default Mostrar_tarjetas_solicitudes;

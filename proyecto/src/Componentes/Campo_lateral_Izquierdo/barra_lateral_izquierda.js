@@ -223,7 +223,7 @@ class BarraLateral extends React.Component{
           }
           {
             (this.state.mostrarEmpresas)?
-            <Mostrar_tarjetas lista = {this.listaEmpresas} onChange={this.onChange}/>
+            <Mostrar_tarjetas />
             :
             ''
           }
