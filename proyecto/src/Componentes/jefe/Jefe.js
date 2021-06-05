@@ -4,11 +4,15 @@ import { Menubar }                  from 'primereact/menubar';
 import { Button }                   from 'primereact/button';
 import  { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
-
+import { useParams } from 'react-router';
 
 import logo                         from './img/UMSS_logo.png';
 
 const Jefe = () =>{
+
+    const {id} =  useParams();
+    const [idDB,setIdDB] = useState(id);
+
     const [selectedCity1, setSelectedCity1] = useState(null);
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
@@ -61,6 +65,7 @@ const Jefe = () =>{
             <div className="p-grid p-justify-between ">
                 <div className="p-col-12 margin-card">
                     <div className="card color-card">
+                        <h1>{idDB}</h1>
                         <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text type-letter " />
                     </div>    
                 </div>    
