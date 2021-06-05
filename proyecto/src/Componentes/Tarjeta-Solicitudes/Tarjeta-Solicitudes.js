@@ -32,7 +32,7 @@ class Tarjeta_Solicitudes extends React.Component{
                     </div>
                     <label className = "subtitulos-solicitud">Monto:</label>
                     <div className="contenido-de-solicitudes">
-                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.montoSolicitud}</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.montoSolicitud}Bs.</label>
                     </div>
                 </div>
             </div>
