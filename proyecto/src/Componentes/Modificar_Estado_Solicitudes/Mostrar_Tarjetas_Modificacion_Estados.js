@@ -23,7 +23,8 @@ function Mostrar_Tarjetas_Modificacion_Estados(){
             {
                 !todos ? <Spinner/>:
                 todos.map(solicitud => {
-                    return <Tarjeta_Modificacion_Estados solicitud={solicitud}/>
+                    return (solicitud.estadoSolicitud != 'Aprobado' && solicitud.estadoSolicitud != 'Rechazado')? 
+                    <Tarjeta_Modificacion_Estados solicitud={solicitud}/> : ''
                 })
             }
         </div>

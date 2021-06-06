@@ -11,7 +11,7 @@ class Tarjeta_Solicitudes extends React.Component{
         return(
             <div className="tarjeta-solicitud-aprobado">
                 <div className="contenedor-estado-solicitud-aprobado">
-                    <label className="estado-solicitud">Aprobado</label>
+                    <label className="estado-solicitud">{this.props.solicitud.estadoSolicitud}</label>
                 </div>
                 <div className="contenedor-campos-solicitud">
                     <label className = "subtitulos-solicitud">Detalle:</label>
@@ -24,7 +24,7 @@ class Tarjeta_Solicitudes extends React.Component{
                     </div>
                     <label className = "subtitulos-solicitud">Fecha de Solicitud:</label>
                     <div className="contenido-de-solicitudes">
-                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.FechaDeSolicitud}</label>
+                        <label className="etiqueta-contenido-solicitud">{this.props.solicitud.FechaDeSolicitud.replace('T00:00:00.000Z', '')}</label>
                     </div>
                     <label className = "subtitulos-solicitud">Responsable:</label>
                     <div className="contenido-de-solicitudes">
