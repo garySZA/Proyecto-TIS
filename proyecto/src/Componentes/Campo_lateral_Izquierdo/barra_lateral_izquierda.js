@@ -5,8 +5,11 @@ import React from 'react';
 import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
 import './estilos_botones.css'
+
+//importacion de tarjetas para mostrar empresas
 import Mostrar_tarjetas from '../Mostrar_Tarjetas/Mostrar_tarjetas'
-import axios from 'axios'
+//importacion de tarjetas para mostrar solicitudes
+import Mostrar_tarjetas_solicitudes from '../Mostrar_Tarjetas_Solicitudes/Mostrar_Tarjetas_Solicitudes'
 
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
@@ -17,6 +20,10 @@ import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_re
 //importacion del formulario de registro de unidades de gasto
 import Registro_Unidad_Gasto from '../Registro_Unidades_De_Gasto/formulario_registro_unidadesDeGasto'
 
+//importacion de componente para mostrar solicitudes modificables
+import Mostrar_Tarjetas_Modificacion_Estados from '../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados'
+
+import axios from 'axios'
 
 class BarraLateral extends React.Component{
   constructor(props){
@@ -27,7 +34,8 @@ class BarraLateral extends React.Component{
       mostrarFormularioDeUsuariosNuevos:false,
       mostrarregistroUnidadGasto: false,
       mostrarEmpresas: false,
-      mostrarHistorialSolicitudes: false
+      mostrarHistorialSolicitudes: false,
+      mostrarSolicitudesModificables: false
     };
 
     this.listaEmpresas = [];
@@ -47,6 +55,7 @@ class BarraLateral extends React.Component{
         mostrarFormularioDeUsuariosNuevos: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
+        mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })
       console.log("false");
@@ -66,6 +75,7 @@ class BarraLateral extends React.Component{
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
+        mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })     
     }
@@ -83,6 +93,7 @@ class BarraLateral extends React.Component{
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
+        mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })     
     }
@@ -100,6 +111,7 @@ class BarraLateral extends React.Component{
         mostrarFormularioProductosServicios: false,
         mostrarRegistroEmpresa: false,
         mostrarEmpresas: false,
+        mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })
     }
@@ -123,6 +135,7 @@ class BarraLateral extends React.Component{
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarHistorialSolicitudes: false,
+        mostrarSolicitudesModificables: false,
         mostrarEmpresas: true
       })     
     }
@@ -141,7 +154,27 @@ class BarraLateral extends React.Component{
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
+        mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: true
+      })     
+    }
+  }
+
+  operation8 = () =>{
+
+    if(this.state.mostrarSolicitudesModificables == true){
+      this.setState({
+        mostrarSolicitudesModificables: false
+      }) 
+    }else{
+      this.setState({
+        mostrarFormularioDeUsuariosNuevos: false,
+        mostrarFormularioProductosServicios:false,
+        mostrarRegistroEmpresa: false,
+        mostrarregistroUnidadGasto: false,
+        mostrarEmpresas: false,
+        mostrarHistorialSolicitudes: false,
+        mostrarSolicitudesModificables: true
       })     
     }
   }
@@ -165,8 +198,9 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
             
             <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation6()}>Registrar Unidad de Gasto</button>
-            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation5()}>Ver Empresas</button>
-            <button className="registro-empresa"  id="botonRegistroNuevoUsuario"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
+            <button className="registro-empresa"  id="botonVerEmpresas"   onClick={()=>this.operation5()}>Ver Empresas</button>
+            <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
+            <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation8()}>Modificar Estados</button>
         </div>
         <div className="principal" id="algo" onChange={this.onChange}>
           {
@@ -189,13 +223,25 @@ class BarraLateral extends React.Component{
           }
           {
             (this.state.mostrarEmpresas)?
-            <Mostrar_tarjetas lista = {this.listaEmpresas} onChange={this.onChange}/>
+            <Mostrar_tarjetas />
             :
             ''
           }
           {
             (this.state.mostrarregistroUnidadGasto)?
             <Registro_Unidad_Gasto estadoRegistroUnidadGasto={this.state.mostrarregistroUnidadGasto}/>
+            :
+            ''
+          }
+          {
+            (this.state.mostrarHistorialSolicitudes)?
+            <Mostrar_tarjetas_solicitudes />
+            :
+            ''
+          }
+          {
+            (this.state.mostrarSolicitudesModificables)?
+            <Mostrar_Tarjetas_Modificacion_Estados />
             :
             ''
           }

@@ -14,7 +14,7 @@ import { Button }                   from 'primereact/button';
 
 const Home = () =>{
     const history                    = useHistory();
-
+    const [userDB,setUseDB]          = useState(1000000)
 
     const handleLogin=()=>{
         history.push('/Login');
@@ -22,7 +22,7 @@ const Home = () =>{
 
 
     const handleRegistrarse=()=>{
-        history.push('/NewUser');
+        history.push("/NewUser");
     }
 
 

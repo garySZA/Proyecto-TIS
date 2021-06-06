@@ -1,26 +1,39 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './estilos_mostrar_tarjetas.css';
 import Tarjeta from '../Tarjeta/Tarjeta';
-import axios from 'axios';
+import Spinner from '../Spinner/Spinner'
 
+function Mostrar_tarjetas(){
+    const url = 'https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/getRegisterBusiness'
+    const [todos, setTodos] = useState()
+    const fetchApi = async () =>{
+        const response = await fetch(url)
+        const responseJSON = await response.json()
+        setTodos(responseJSON)
+    }
 
-function Mostrar_tarjetas(props){
+    useEffect(() => {
+        fetchApi()
+    }, [])
+
     return(
         <div className="tarjetas">
             <div className="contenedor-grid-tarjetas">
                 {
-                    props.lista.map(item =>
-                        <Tarjeta 
-                                nombre = {item.nombreEmpresa}
-                                rubro = {item.rubro}
-                                telefonoEmpresa = {item.telefonoEmpresa}
-                                correoEmpresa = {item.correoEmpresa}
-                                nit = {item.nit}
-                                nombreEncargado = {item.nombreEncargado}
-                                telefonoEncargado = {item.telefonoEncargado}
-                                ciEncargado = {item.ciEncargado}
+                    !todos ? <Spinner />:
+                    todos.map(empresa => {
+                        return <Tarjeta 
+                                    nombre = {empresa.nombreEmpresa}
+                                    rubro = {empresa.rubroEmpresa}
+                                    telefonoEmpresa = {empresa.telefonoEmpresa}
+                                    correoEmpresa = {empresa.correoEmpresa}
+                                    nit = {empresa.NITEmpresa}
+                                    nombreEncargado = {empresa.NombrePersona}
+                                    telefonoEncargado = {empresa.telefonoPersona}
+                                    ciEncargado = {empresa.ciPersona}
                                 />
-                        )
+                    })
+                        
                 }
             </div>  
         </div>
