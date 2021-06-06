@@ -1,11 +1,38 @@
 import React from 'react';
 import './Usuarios.css';
 
+import { Menubar }                  from 'primereact/menubar';
+import { Button }                   from 'primereact/button';
+
+
+import logo                         from './img/UMSS_logo.png';
+
 const Usuarios = () =>{
+
+    const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
+
+    const closeSesion = ()=>{
+        return(
+            <div>
+                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " />
+            </div>  
+        )
+    }
 
     return(
         <div>
-            <h1>Usuarios</h1>
+            <div className="p-grid p-justify-center ">
+                <div className="p-col-12 rowPanel">
+                    <Menubar className="panelMenu"  start={start}  end={closeSesion}/>
+                </div>
+                <div className="p-grid p-justify-center ">
+                    <div className="p-col-11">
+                        <div    className="card margin-card color-card">
+                               <h1>usuarios</h1> 
+                        </div>
+                    </div>
+                </div>     
+            </div>
         </div>
     )
 }
