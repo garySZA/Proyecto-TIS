@@ -36,3 +36,34 @@
     z-index: 100;
     transition: ease-in-out .5s;
 }
+
+.type-letter{
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+ }
+ .close-se{
+    color: white!important; 
+}
+.margin-card{
+    margin-top: 3.125em;
+}
+.color-card{
+    border: 0.20em solid #4d4848;
+    border-radius: 0.8em;
+    padding: 17;
+    background-color: white;
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08);
+}
+.card-menu-top{
+    width: 25rem; 
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0.05em;
+    margin-right: 0.05em;
+}
+.card-menu-button{
+    width: 25rem; 
+    margin-bottom: 1em;
+    margin-left: 0.05em;
+    margin-right: 0.05em;
+}
