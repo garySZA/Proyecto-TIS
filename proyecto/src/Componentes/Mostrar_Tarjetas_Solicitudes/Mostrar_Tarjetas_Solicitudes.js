@@ -24,7 +24,10 @@ function Mostrar_tarjetas_solicitudes(){
                         !todos ? <Spinner/> : 
                         todos.map(solicitud => {
                             return (solicitud.estadoSolicitud == 'Aprobado' || solicitud.estadoSolicitud == 'Rechazado')?
-                            <Tarjeta_Solicitudes solicitud = {solicitud}/>
+                                (solicitud.estadoSolicitud == 'Aprobado')?
+                                <Tarjeta_Solicitudes solicitud = {solicitud} estadoCaja = 'tarjeta-solicitud-aprobado' estadoTitulo = 'contenedor-estado-solicitud-aprobado'/>
+                                :
+                                <Tarjeta_Solicitudes solicitud = {solicitud} estadoCaja = 'tarjeta-solicitud-rechazado' estadoTitulo = 'contenedor-estado-solicitud-rechazado'/>
                             :
                             ''
                         })
