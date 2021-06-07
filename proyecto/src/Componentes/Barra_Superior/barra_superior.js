@@ -14,8 +14,8 @@ function Barra_Sup() {
                     <h1 className="titulo">Sistema de Cotizaciones</h1>
                 </div>
                 <div className="enlaces-header contenedor-iconos">
-                    <a href="#">Iniciar Sesión<i className="fas fa-sign-in-alt icono-login"></i></a>
-                    <a href="#">Registrarse<i className="fas fa-user-plus icono-login"></i></a>
+                    
+                    
                 </div>
             </section>
           </nav>
@@ -25,3 +25,6 @@ function Barra_Sup() {
 }
 
 export default Barra_Sup;
+
+/*<a href="#">Iniciar Sesión<i className="fas fa-sign-in-alt icono-login"></i></a>
+<a href="#">Registrarse<i className="fas fa-user-plus icono-login"></i></a> */

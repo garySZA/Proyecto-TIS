@@ -1,161 +1,103 @@
 
 
 .contenedor-deRegistro {
-    width: 100%;
-    max-width:1600px;
-    margin: auto;
-    overflow: hidden;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease-in-out;
 }
 
-.contedor-tituloDeRegistro {
-    width: 50%;
-    max-width: 1600px;
-    margin: auto;
-    overflow: hidden;
-    background-color: var(--color_fondo);
-    color: white;
-    margin-top: 0%;
-    margin-block-end: 0%;
-}
-
-    .tituloDeRegistro {
-        width: 90%;
-        max-width: 1600px;
-        margin: auto;
-        overflow: hidden;
-        margin-top: 40%;
-        margin-left: 10%;
-        display: flex;
-    }
-
-    .SolitudDeProductos-servicios {
-        display: flex;
-        margin-left: 5%;
-        margin-right: 15%;
-    }
 
 .contenedor-formularioDeRegistro {
-    width: 90%;
-    max-width: 1600px;
-    margin: auto;
-    overflow: hidden;
-    background: whitesmoke;
-}
-
-    .solicitud__datos {
-        padding: 5px;
-        width: 80%;
-        max-width: 1600px;
-        margin: auto;
-        overflow: hidden;
-        margin-top: 3%;
-    }
-
-        /*.input-introducir-detalle {
-            overflow-x: hidden;
-            overflow-y: scroll;
-        }*/
-        .introducir-detalleDeRegistro {
-            width: 95%;
-            padding: 5px;
-            /*border: none;*/
-            border-bottom: 2px solid black;
-            opacity: 0.5;
-            resize: none;
-        }
-
-    .contenedor-fechaDeSolicitud {
-        padding: 5px;
-        width: 80%;
-        max-width: 1600px;
-        margin: auto;
-        overflow: hidden;
-    }
-        .introducir-fechaDeSolicitud {
-            /*width: 95%;*/
-            padding: 5px;
-            /*border: none;*/
-            border-bottom: 2px solid black;
-            opacity: 0.5;
-        }
-
-    /*.contenedro-responsableDeSolicitud {
-        padding: 5px;
-        width: 80%;
-        max-width: 1600px;
-        margin: auto;
-        overflow: hidden;
-    }*/
-        .introducir-responsableDeSolicitud {
-            width: 95%;
-            padding: 5px;
-            /*border: none;*/
-            border-bottom: 2px solid black;
-            opacity: 0.5;
-        }
-
-    /*.contenedor-monto {
-        padding: 5px;
-        width: 80%;
-        max-width: 1600px;
-        margin: auto;
-        overflow: hidden;
-    }*/
-        .introducir-monto{
-            width: 95%;
-            padding: 5px;
-            /*border: none;*/
-            border-bottom: 2px solid black;
-            opacity: 0.5;
-        }
-
-.contendor-botonesDeRegistro {
-    padding: 25px;
-    width: 100%;
-    max-width: 1600px;
-    margin: auto;
-    overflow: hidden;
+    width: 600px;
     display: flex;
+    flex-direction: column;
 }
 
-    .boton-cancelarRegistro {
-        margin-left: 53%;
-    }
+.contenedor-camposform-subtitulos {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: var(--color_fondo);
+}
 
-        .cancelarRegistro {
-            /*color: red;*/
-            background-color: red;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            opacity: 0.8;
-        }
-        .cancelarRegistro:hover {
-            opacity: 1;
-        }
+.contendor-botonesDeRegistro{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;    
+    margin-bottom: 20px;
+}
 
-    .boton-solicitarRegistro {
-        margin-left: 5%;
-    }
+.botones-formulario {
+    width: 230px;
+    height: 40px;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    font-family: var(--fuente-titulos);
+    font-size: 18px;
+    color: var(--color_letra_fondo_oscuro);
+    transition: .6s;
+}
 
-        .solicitarRegistro {
-            /*color: turquoise;*/
-            background-color: turquoise;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            opacity: 0.8;
-        }
-        .solicitarRegistro:hover {
-            opacity: 1;
-        }
+.botones-formulario:hover {
+    cursor: pointer;
+}
 
+.camposform {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px;
+}
 
-/*mostrar errores*/
+.entradas {
+    width: 300px;
+    height: 28px;
+    font-family: var(--fuente-subtitulos);
+    outline: none;
+}
+
+.solitudDeProductos-servicios {
+    font-size: 45px;
+    /*margin-left: 15%;
+    margin: 20px;*/
+    font-family: var(--fuente-titulos);
+    color: var(--color_fondo);
+}
+
+.subtitulos {
+    font-family: var(--fuente-subtitulos);
+    font-size: 16px;
+}
+
+.botondecancelar {
+    color: var(--color-segundo-umss);
+}
+
+.botondecancelar:hover {
+    background-color: var(--color-segundo-umss);
+    color: var(--color_letra_fondo_oscuro);
+}
+
+.botondesolicitar {
+    color: var(--color_fondo);
+}
+
+.botondesolicitar:hover {
+    background-color: var(--color_fondo);
+    color: var(--color_letra_fondo_oscuro);
+}
+
+/*para las validaciones de los campos*/
 
 .solicitud__datos-imputs {
     position: relative;
+    max-width: 300px;
+}
+
+.solicitud__dato-erroneo {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
 }
 
 .solicitud__validacionCampos-Estados {
@@ -167,40 +109,6 @@
     opacity: 0;
 }
 
-.solicitud__datos-incorrecto .solicitud__h3 {
-    color: red;
-}
-
-.solicitud__datos-incorrecto .solicitud__validacionCampos-Estados {
-    color: red;
-    opacity: 1;
-}
-
-.solicitud__datos-incorrecto .solicitud__dato {
-    border: 3px solid red;
-}
-
-.dato-erroneo{
-    border: 2px solid red;
-}
-
-.solicitud__dato-erroneo {
-    font-size: 13px;
-    margin-bottom: 0;
-    display: none;
-}
-
-.solicitud__dato-erroneo-activo {
-    display: block;
-}
-
-.solicitud__datos-correcto .solicitud__validacionCampos-Estados {
-    color: green;
-    opacity: 1;
-}
-
-/*Validacion de botones*/ 
-
 .solicitud__mensaje {
     height: 45px;
     line-height: 45px;
@@ -208,13 +116,12 @@
     padding: 0 15px;
     border-radius: 3px;
     display: none;
-    
     text-align: center;
 }
 
 .solicitud__mensaje-exitoso {
-    font-size: 17px;
-    color: green;
+    font-size: 20px;
+    color: #119200;
     display: none;
 }
 
@@ -223,6 +130,32 @@
     justify-content: center;
 }
 
+.solicitud__datos-incorrecto .solicitud__label {
+    color: #bb2929;
+}
+
+.solicitud__datos-incorrecto .solicitud__validacionCampos-Estados {
+    color: #bb2929;
+    opacity: 1;
+}
+
+.solicitud__datos-incorrecto .solicitud__dato {
+    border: 3px solid #bb2929;
+}
+
+.solicitud__dato-erroneo-activo {
+    display: block;
+}
+
+.solicitud__datos-correcto .solicitud__validacionCampos-Estados {
+    color: #1ed12d;
+    opacity: 1;
+}
+
 .solicitud__mensaje-activo {
     display: block;
+}
+
+.dato-erroneo {
+    border: 2px solid tomato;
 }

@@ -27,7 +27,8 @@ class Botones extends Component{
   render(){
     return (
       <div className="contenedor-botones-barra-izquierda">
-              <button className="registro-empresa" onClick={()=>this.operation2()}>Registrar Empresa</button>
+              <button className="registro-empresa"  id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
+              
       </div>
     );
   }

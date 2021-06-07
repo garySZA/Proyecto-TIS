@@ -1,0 +1,13 @@
+.tarjetas{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-grid-tarjetas{
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    justify-content: center;
+    gap: 15px;
+
+    margin: 15px
+}

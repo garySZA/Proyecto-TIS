@@ -1,3 +1,42 @@
+$ npm install
+
+$ npm install react-router-dom
+
+$ npm install react-bootstrap bootstrap
+
+$ npm install axios
+
+$ npm install reactstrap
+
+$ npm install yup
+
+$ npm install sweetalert2
+
+$ npm install web-vitals
+
+$ npm install @material-ui/core      //no instalar 
+
+$ npm install @material-ui/icons     //No instalar 
+
+$ npm install react-swipeable-views  //no instalar 
+
+$ npm install @material-ui/lab       //no instalar 
+
+$ npm install primereact --save
+
+$ npm install primeicons --save
+
+$ npm install react-transition-group --save
+
+$ npm install react-responsive-carousel
+
+$ npm install react-hook-form
+
+$ npm install primeflex
+
+$ npm install react-datepicker //para las fechas automaticas o personalizadas 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

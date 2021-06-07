@@ -9,7 +9,7 @@
 
 .contenedor-campos{
 
-    width: 680px;
+    width: 600px;
     display: flex;
     flex-direction: column;
 }
@@ -28,7 +28,7 @@
     margin-bottom: 20px;
 }
 
-.boton{
+.botonRegistro{
     width: 230px;
     height: 40px;
     box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
@@ -47,6 +47,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 8px;
 }
 
 .inputs {
@@ -66,7 +67,7 @@
 
 .subtitulo{
     font-family: var(--fuente-subtitulos);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .boton-cancelar{
@@ -91,6 +92,7 @@
 
 .formulario__grupo-input {
     position: relative;
+    max-width: 300px;
   }
 
 .formulario__input-error {
