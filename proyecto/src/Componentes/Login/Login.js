@@ -1,5 +1,5 @@
 import React,{useEffect,useState}   from 'react';
-import {getUsers,createUser}                   from   '../../services/apiUser';
+import {getUsers,createUser}        from   '../../services/apiUser';
 import './Login.css';
 import logoUser                     from './img/avatarUser.png';
 import { useHistory }               from 'react-router-dom';

@@ -4,7 +4,7 @@ import Tarjeta from '../Tarjeta/Tarjeta';
 import Spinner from '../Spinner/Spinner'
 
 function Mostrar_tarjetas(){
-    const url = 'https://proyecto-tis.herokuapp.com/api/empresas'
+    const url = 'https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/getRegisterBusiness'
     const [todos, setTodos] = useState()
     const fetchApi = async () =>{
         const response = await fetch(url)
@@ -24,13 +24,13 @@ function Mostrar_tarjetas(){
                     todos.map(empresa => {
                         return <Tarjeta 
                                     nombre = {empresa.nombreEmpresa}
-                                    rubro = {empresa.rubro}
+                                    rubro = {empresa.rubroEmpresa}
                                     telefonoEmpresa = {empresa.telefonoEmpresa}
                                     correoEmpresa = {empresa.correoEmpresa}
-                                    nit = {empresa.nit}
-                                    nombreEncargado = {empresa.nombreEncargado}
-                                    telefonoEncargado = {empresa.telefonoEncargado}
-                                    ciEncargado = {empresa.ciEncargado}
+                                    nit = {empresa.NITEmpresa}
+                                    nombreEncargado = {empresa.NombrePersona}
+                                    telefonoEncargado = {empresa.telefonoPersona}
+                                    ciEncargado = {empresa.ciPersona}
                                 />
                     })
                         

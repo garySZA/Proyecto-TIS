@@ -3,7 +3,10 @@ import './styles.css';
 import axios from 'axios';
 import swal from 'sweetalert2';
 import {Col, Container, Row} from 'react-bootstrap';
-
+import React from 'react';
+import { Menubar }  from 'primereact/menubar';
+import logo  from './img/UMSS_logo.png';
+import { Button }  from 'primereact/button';
 
 
 const expresiones = {
@@ -309,272 +312,318 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
     render(){
+        const start = <img alt="logo" src={logo} height="60"  className="p-mr-2"></img>;
+        const closeSesion= ()=>{
+                  return(
+                    <div>
+                    <Button label="CERRAR SESION"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text closeSesion type-letter " />
+                    </div>    
+            
+                  )
+
+        }
+
         return(
-        <Container>
-             <Col className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
-
-                                <div className="contenedorTitulo_RegistroUsuario">
-                                    <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
-                                </div>
-                
-
-  
 
 
-                            <div className="contenedorCampos_registro-usuario">
+        <div>
 
-                                             <div className="elementosFormularioUsuarios__grupo"id="grupo_NombreUsuario" >
-                                                   <div className="contenedorElementosNuevosUsuarios_subtitulos">
-                                                        <i className="fas fa-user icon"></i> 
-                                                        <label for="nombre-nuevo-usuario"className="subtituloNU">Nombres</label>
-                                                   </div>
 
-                                                   <div className="formularioNuevoUsuario__grupo-input">
-                                                         <input 
+                <div className="p-grid" >
+                    <div className=" p-col -12   rowPanel"  ></div>
+                    <Menubar className="panelMenu" start={start}    />                 
+                </div>
+
+
+
+
+                <div className="p-grid">
+ 
+
+                    <div className="p-col   space-top" ></div>
+
+
+
+                    <div className="p-col   space-top" >
+                        
+                        
+                      <div className="card ppicture-login  container-margen type-letter">  
+                            <form onSubmit>
+
+                                          <div className="contenedorTitulo_RegistroUsuario">
+                                            <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
+                                         </div>
+
+
+                                  <div className="contenedorFormulario-RegistroUsuario" id="mostrarRegitroUsuario">
+
+                            
+
+
+
+                                            <div className="contenedorCampos_registro-usuario">
+
+                                                <div className="elementosFormularioUsuarios__grupo"id="grupo_NombreUsuario" >
+                                                       <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                           <i className="fas fa-user icon"></i> 
+                                                          <label for="nombre-nuevo-usuario"className="subtituloNU">Nombres</label>
+                                                       </div>
+
+                                                        <div className="formularioNuevoUsuario__grupo-input">
+                                                           <input 
                                                              type="text" 
                                                              className="ingreso"
                                                              name="nombreNuevoUsuario"
                                                              id="nombreNuevoUsuario" 
                                                              placeholder="Ingrese su nombre completo"  
                                                              onChange={this.onChange}  
-                                                         ></input>    
+                                                             ></input>    
 
-                                                              
-                                                               <p className="formularioNuevoUsuario__input-error"
-                                                               id="mensajeError-nombreNuevoUsuario">
-                                                               El nombre debe contener solo letras
-                                                            </p>
-                                                  </div>  
-                                            </div>
-
-
-
-
-
-                                           <div className="elementosFormularioUsuarios__grupo" id="grupo_ApellidoUsuario">
-                                                    <div className="contenedorElementosNuevosUsuarios_subtitulos">
-                                                          <i className="fas fa-user icon"></i> 
-                                                          <label for="apellido-nuevo-usuario" className="subtituloNU">Apellidos</label>
-                                                    </div>
-                                                     <div class="formularioNuevoUsuario__grupo-input" >
-                                                        <input 
-                                                           type="text"
-                                                           className="ingreso"
-                                                           name="apellidoNuevoUsuario"
-                                                           id="apellidoNuevoUsuario"
-                                                           placeholder="Ingrese sus Apellidos" 
-                                                           onChange={this.onChange}   
-                                                        ></input>
-
-                                                           
+                                      
                                                             <p className="formularioNuevoUsuario__input-error"
-                                                               id="mensajeError-apellidoNuevoUsuario">
-                                                               Los apellidos deben contener solo letras
+                                                            id="mensajeError-nombreNuevoUsuario">
+                                                             El nombre debe contener solo letras
                                                             </p>
-                                                    </div>
-                                            </div>
-
-
-
-
-                                            <div className="elementosFormularioUsuarios__grupo" id="grupo_FechaNacimientoUsuario">
-                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos" >
-                                                          <i className="fas fa-calendar-alt"></i>
-                                                          <label for="calendario-nuevo-usuario" className="subtituloNU">Fecha de Nacimiento</label>
-                                                     </div>
-
-                                                      <div class="formularioNuevoUsuario__grupo-input" >
-                                                         <input  
-                                                          type="date"
-                                                          className="ingreso"
-                                                          name="fechaNacimientoNuevoUsuario"
-                                                          id="fechaNacimientoNuevoUsuario"
-                                                          name="fecha"
-                                                          onChange={this.onChange}
-                                                        ></input>
-
-                                                            
-                                                            <p className="formularioNuevoUsuario__input-error"
-                                                               id="mensajeError-fechaNacimientoNuevoUsuario">
-                                                               debe introducir fecha
-                                                            </p>
-            
-                                                     </div>
-                                            </div>
-
-
-
-
-
-                                            <div className="elementosFormularioUsuarios__grupo" id="grupo_DireccionUsuario">
-                                                      <div className="contenedorElementosNuevosUsuarios_subtitulos">
-                                                         <i className="fas fa-home"></i>
-                                                         <label for="direccion-nuevo-usuario" className="subtituloNU">Direccion</label>
-                                                     </div>
-                                                        
-                                                        <div class="formularioNuevoUsuario__grupo-input" >
-                                                            <input 
-                                                            type= "text" 
-                                                            className="ingreso"
-                                                            name="direccionNuevoUsuario"
-                                                            id="direccionNuevoUsuario"
-                                                            placeholder="Introducir Direccion"
-                                                            onChange={this.onChange} 
-                                                            ></input>
-                                                           
-                                                            <p className="formularioNuevoUsuario__input-error"
-                                                               id="mensajeError-direccionNuevoUsuario">
-                                                               La direccion debe contener solo letras
-                                                            </p>
-                                                        </div>
-                                            </div>
-
-
-
-
-
-
-                                             <div className="elementosFormularioUsuarios__grupo" id="grupo_TelefonoUsuario">
-                                                         <div className="contenedorElementosNuevosUsuarios_subtitulos" >
-                                                             <i className="fas fa-phone"></i>
-                                                             <label for="telefono-nuevo-usuario" className="subtituloNU">Teléfono</label>
-                                                         </div>
-                                                         
-                                                         <div class="formularioNuevoUsuario__grupo-input" >
-                                                            <input 
-                                                             type ="number" 
-                                                             className="ingreso"
-                                                             name="telefonoNuevoUsuario"
-                                                             id="telefonoNuevoUsuario"
-                                                             placeholder="Introducir telefono" 
-                                                             onChange={this.onChange}           
-                                                            ></input>   
-                                                           
-                                                            <p className="formularioNuevoUsuario__input-error"
-                                                               id="mensajeError-telefonoNuevoUsuario">
-                                                               El numero de telefono solo contiene numeros
-                                                            </p>
-                                                        </div>
-                                            </div>
-         
-
-
-
-
-                                              <div className="elementosFormularioUsuarios__grupo" id="grupo_TipoUsuario">
-                                                         <div className="contenedorElementosNuevosUsuarios_subtitulos" >
-                                                              <i className="fas fa-user icon"></i> 
-                                                              <label for="tipo-nuevo-usuario" className="subtituloNU">Tipo</label>
-                                                         </div>
-                                                 
-                                                       
-                                                        <div class="formularioNuevoUsuario__grupo-input" >
-                                                        
-                                                                    <select type="selection"
-                                                                        className="ingreso"
-                                                                        name="seleccionTipoNuevoUsuario"
-                                                                        id="seleccionTipoNuevoUsuario">
-                                                                        <option disabled selected>seleccione un tipo</option>
-                                                                        <option>usuario</option>
-                                                                        <option>secretario</option>
-                                                                        <option>administrador</option>
-                                                                        <option>jefe</option>
-                                                                        onChange={this.onChange}
-                                                                    </select>
-
-                                                                    
-                                                                    <p className="formularioNuevoUsuario__input-error"
-                                                                     id="mensajeError-tipoNuevoUsuario">
-                                                                     seleccione una opcion
-                                                                    </p>
-                                                           
-                                                                       
-                                                        </div>
-                                              </div>
-
-
-
-
-
-
-                                              <div className="elementosFormularioUsuarios__grupo" id="grupo_EmailUsuario">
-                                                   <div className="contenedorElementosNuevosUsuarios_subtitulos" >
-                                                       <i className="fas fa-envelope icon"></i>
-                                                       <label for="email-nuevo-usuario" className="subtituloNU">Email</label>
-                                                   </div>
-
-                                                   <div class="formularioNuevoUsuario__grupo-input" >
-                                                      <input 
-                                                         type="text"
-                                                         className="ingreso"
-                                                         name="emailNuevoUsuario"
-                                                         id="emailNuevoUsuario"
-                                                         placeholder="Introducir correo electronico" 
-                                                         onChange={this.onChange}
-                                                      ></input>
-                                                            
-                                                            <p className="formularioNuevoUsuario__input-error"
-                                                               id="mensajeError-emailNuevoUsuario">
-                                                               ingrese los datos correctamente
-                                                            </p>
-                                                   </div>
+                                                        </div>  
                                                </div>
 
 
 
 
-                                               <div className="elementosFormularioUsuarios__grupo" id="grupo_ContraseniaUsuario">
-                                                            <div className="contenedorElementosNuevosUsuarios_subtitulos" >
-                                                               <i className="fas fa-key icon"></i>
-                                                               <label for="email-nuevo-usuario" className="subtituloNU">Contraseña</label>
-                                                            </div>
-                                                     
-                                                            <div class="formularioNuevoUsuario__grupo-input" >
-                                                              <input 
-                                                              type="password"
-                                                              className="ingreso"
-                                                              name="contraseñaNuevoUsuario"                                                    
-                                                              id="contraseñaNuevoUsuario" 
-                                                              placeholder="Introducir Contraseña"
-                                                              onChange={this.onChange}
-                                                              ></input>
-                                                             
-                                                                  <p className="formularioNuevoUsuario__input-error"
-                                                                  id="mensajeError-contraseñaNuevoUsuario">
-                                                                  la contraseña solo admite mas de 7 caracteres
-                                                                </p>
-                                                             </div>
+
+                                               <div className="elementosFormularioUsuarios__grupo" id="grupo_ApellidoUsuario">
+                                                    <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                        <i className="fas fa-user icon"></i> 
+                                                        <label for="apellido-nuevo-usuario" className="subtituloNU">Apellidos</label>
+                                                    </div>
+                                                     <div class="formularioNuevoUsuario__grupo-input" >
+                                                          <input 
+                                                             type="text"
+                                                             className="ingreso"
+                                                             name="apellidoNuevoUsuario"
+                                                             id="apellidoNuevoUsuario"
+                                                             placeholder="Ingrese sus Apellidos" 
+                                                              onChange={this.onChange}   
+                                                           ></input>
+
+                                   
+                                                          <p className="formularioNuevoUsuario__input-error"
+                                                             id="mensajeError-apellidoNuevoUsuario">
+                                                             Los apellidos deben contener solo letras
+                                                          </p>
+                                                     </div>
+                                                 </div>
+
+
+
+
+                                                 <div className="elementosFormularioUsuarios__grupo" id="grupo_FechaNacimientoUsuario">
+                                                    <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                       <i className="fas fa-calendar-alt"></i>
+                                                       <label for="calendario-nuevo-usuario" className="subtituloNU">Fecha de Nacimiento</label>
+                                                    </div>
+
+                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                                      <input  
+                                                       type="date"
+                                                        className="ingreso"
+                                                        name="fechaNacimientoNuevoUsuario"
+                                                        id="fechaNacimientoNuevoUsuario"
+                                                        name="fecha"
+                                                        onChange={this.onChange}
+                                                      ></input>
+                                                      <p className="formularioNuevoUsuario__input-error"
+                                                        id="mensajeError-fechaNacimientoNuevoUsuario">
+                                                         debe introducir fecha
+                                                         </p>
+
+                                                        </div>
+                                                 </div>
+
+
+
+
+
+                                                  <div className="elementosFormularioUsuarios__grupo" id="grupo_DireccionUsuario">
+                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                          <i className="fas fa-home"></i>
+                                                          <label for="direccion-nuevo-usuario" className="subtituloNU">Direccion</label>
+                                                  </div>
+                                
+                                                  <div class="formularioNuevoUsuario__grupo-input" >
+                                                    <input 
+                                                      type= "text" 
+                                                      className="ingreso"
+                                                      name="direccionNuevoUsuario"
+                                                      id="direccionNuevoUsuario"
+                                                      placeholder="Introducir Direccion"
+                                                      onChange={this.onChange} 
+                                                    ></input>
+                                   
+                                                    <p className="formularioNuevoUsuario__input-error"
+                                                      id="mensajeError-direccionNuevoUsuario">
+                                                       La direccion debe contener solo letras
+                                                   </p>
+                                                </div>
+                                             </div>
+
+
+
+
+
+
+                                               <div className="elementosFormularioUsuarios__grupo" id="grupo_TelefonoUsuario">
+                                                 <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                     <i className="fas fa-phone"></i>
+                                                     <label for="telefono-nuevo-usuario" className="subtituloNU">Teléfono</label>
+                                                 </div>
+                                 
+                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                                      <input 
+                                                      type ="number" 
+                                                      className="ingreso"
+                                                      name="telefonoNuevoUsuario"
+                                                      id="telefonoNuevoUsuario"
+                                                      placeholder="Introducir telefono" 
+                                                      onChange={this.onChange}           
+                                                     ></input>   
+                                   
+                                                   <p className="formularioNuevoUsuario__input-error"
+                                                    id="mensajeError-telefonoNuevoUsuario">
+                                                     El numero de telefono solo contiene numeros
+                                                   </p>
+                                                  </div>
                                                 </div>
 
 
 
-                                                <div class="formulario__mensaje" id="formulario__mensaje">
-                                                                <p>
-                                                                <i class="fas fa-exclamation-triangle"></i>
-                                                                <b>Error:</b> Por favor
-                                                                  llena el formulario correctamente.
+
+
+                                                <div className="elementosFormularioUsuarios__grupo" id="grupo_TipoUsuario">
+                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                       <i className="fas fa-user icon"></i> 
+                                                       <label for="tipo-nuevo-usuario" className="subtituloNU">Tipo</label>
+                                                     </div>
+                         
+                               
+                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                
+                                                         <select type="selection"
+                                                          className="ingreso"
+                                                          name="seleccionTipoNuevoUsuario"
+                                                          id="seleccionTipoNuevoUsuario">
+                                                              <option disabled selected>seleccione un tipo</option>
+                                                              <option>usuario</option>
+                                                              <option>secretario</option>
+                                                              <option>administrador</option>
+                                                              <option>jefe</option>
+                                                           onChange={this.onChange}
+                                                         </select>
+
+                                            
+                                                        <p className="formularioNuevoUsuario__input-error"
+                                                        id="mensajeError-tipoNuevoUsuario">
+                                                        seleccione una opcion
+                                                          </p>    
+                                                     </div>
+                                                </div>
+
+
+
+
+
+
+                                                <div className="elementosFormularioUsuarios__grupo" id="grupo_EmailUsuario">
+                                                    <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                          <i className="fas fa-envelope icon"></i>
+                                                          <label for="email-nuevo-usuario" className="subtituloNU">Email</label>
+                                                    </div>
+
+                                                     <div class="formularioNuevoUsuario__grupo-input" >
+                                                                <input 
+                                                                 type="text"
+                                                                 className="ingreso"
+                                                                 name="emailNuevoUsuario"
+                                                                 id="emailNuevoUsuario"
+                                                                 placeholder="Introducir correo electronico" 
+                                                                 onChange={this.onChange}
+                                                                ></input>
+                                    
+                                                              <p className="formularioNuevoUsuario__input-error"
+                                                                id="mensajeError-emailNuevoUsuario">
+                                                                 ingrese los datos correctamente
                                                                 </p>
-                                                            </div>
-           
-                                                            <div className="contenedor-botoncito formulario__grupo formulario__grupo-btn-enviar">
-                                                               <button className="botoncito-cancelar botoncito" onClick={this.notificacionAdvertencia}>Cancelar</button>
-                                                               <button className="botoncito-registrar botoncito formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
-                                                            </div>
-
-                        
-                                                           <div className="mensaje-exito">
-                                                               <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
-                                                               ¡El formulario ha sido registrado con exito!
-                                                               </p>
-                                                            </div>
-                            </div>
+                                                     </div>
+                                              </div>
 
 
 
 
-                 </Col>
-      
-     </Container>
+                                              <div className="elementosFormularioUsuarios__grupo" id="grupo_ContraseniaUsuario">
+                                                <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                   <i className="fas fa-key icon"></i>
+                                                   <label for="email-nuevo-usuario" className="subtituloNU">Contraseña</label>
+                                                 </div>
+                             
+                                                  <div class="formularioNuevoUsuario__grupo-input" >
+                                                      <input 
+                                                           type="password"
+                                                           className="ingreso"
+                                                           name="contraseñaNuevoUsuario"                                                    
+                                                           id="contraseñaNuevoUsuario" 
+                                                           placeholder="Introducir Contraseña"
+                                                           
+                                                           onChange={this.onChange}
+                                                      ></input>
+                                     
+                                                       <p className="formularioNuevoUsuario__input-error"
+                                                         id="mensajeError-contraseñaNuevoUsuario">
+                                                          ingrese más de 7 carácteres
+                                                       </p>
+                                                   </div>
+                                               </div>
+
+
+
+                                                    <div class="formulario__mensaje" id="formulario__mensaje">
+                                                     <p>
+                                                      <i class="fas fa-exclamation-triangle"></i>
+                                                      <b>Error:</b> Por favor
+                                                        llena el formulario correctamente.
+                                                     </p>
+                                                       </div>
+
+                                                        <div className="contenedor-botoncito formulario__grupo formulario__grupo-btn-enviar">
+                                                        <button className="botoncito-cancelar botoncito" onClick={this.notificacionAdvertencia}>Cancelar</button>
+                                                        <button className="botoncito-registrar botoncito formulario__btn" id="registrarNU" onClick={this.verificar}>Registrar</button>
+                                                       </div>
+
+
+                                                       <div className="mensaje-exito">
+                                                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                                                        ¡El formulario ha sido registrado con exito!
+                                                        </p>
+                                                       </div>
+
+
+
+                                            </div>
+                                </div>
+
+                           </form>    
+
+                        </div>
+                     
+
+
+
+                  
+                 </div>
+
+                 <div className="p-col   space-top"></div>
+            </div>
+
+     </div>
    );
   }
 }

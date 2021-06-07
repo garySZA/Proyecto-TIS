@@ -15,9 +15,8 @@
 .contenedor-estado-solicitud{
     height: 35px;
     background-color: #293863;
-    text-align: center;
     color: white;
-    font-size: 22px;
+    font-size: 16px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -5px;
@@ -25,6 +24,14 @@
     width: 250px;
     font-family: var(--fuente-titulos);
     box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.estado-solicitud{
+    margin: 0;
 }
 
 .contenedor-campos-solicitud{
@@ -46,6 +53,11 @@
     margin: 0px;
 
     font-family: var(--fuente-subtitulos);
+}
+
+.etiqueta-contenido-solicitud{
+    font-size: 14px;
+    margin: 0;
 }
 
 .contenedor-botones-cambio-estado{

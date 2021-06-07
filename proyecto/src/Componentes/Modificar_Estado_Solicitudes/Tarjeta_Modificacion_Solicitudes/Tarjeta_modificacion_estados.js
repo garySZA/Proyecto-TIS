@@ -1,5 +1,20 @@
 import React, {useState} from 'react';
 import './estilos_tarjeta_modificacion_estados.css'
+import axios from 'axios'
+
+function cambioDeEstado(estado, solicitud){
+    axios.post(`https://backendcompleto-sdc.herokuapp.com/api/formReq/updateFormReq/${solicitud.idFormularioSolitud}`,{
+        
+        item: "mesas",
+        DetalleSolitud: "solicitud para la compra de mesas para el laboratorio",
+        FechaDeSolicitud: solicitud.FechaDeSolicitud.replace('T00:00:00.000Z', ''),
+        responsableSolicitud: "Raquel Chipana",
+        montoSolicitud: 100,
+        estadoSolicitud: estado,
+        registroUnidadGasto_idRegistroUnidad: 3000000
+    }
+    )
+}
 
 function Tarjeta_Modificacion_Estados(props){
     let idBotones = 'id' + props.solicitud.idFormularioSolitud
@@ -12,23 +27,34 @@ function Tarjeta_Modificacion_Estados(props){
 
     const rechazarSolicitud = () => {
         setEstado(estadoRechazado)
-        document.getElementById("contenedor-botones-cambio-estado").style.display = 'none'
+        document.getElementById(idBotones).style.display = 'none'
+        cambioDeEstado('Rechazado', props.solicitud)
     }
 
     const aprobarSolicitud = () => {
-        if(estado == 'En espera'){
+        if(estado == 'En Espera'){
             setEstado('Esperando Autorización Final')
             document.getElementById(props.solicitud.idFormularioSolitud).style.fontSize = "16px"
+            //llamando al metodo encargado de realizar un POST
+            cambioDeEstado('Esperando Autorización Final', props.solicitud)
+
         }else if(estado == 'En Verificación'){
             setEstado('Esperando Autorización')
+            cambioDeEstado('Esperando Autorización', props.solicitud)
+
         }else if(estado == 'Esperando Autorización'){
             setEstado('Realizando Contización')
+            cambioDeEstado('Realizando Cotización', props.solicitud)
+
         }else if(estado == 'Realizando Contización'){
             setEstado('En Espera')
+            cambioDeEstado('En Espera', props.solicitud)
+
         }else if(estado == 'Esperando Autorización Final'){
             setEstado('Aprobado')
             document.getElementById(idBotones).style.display = 'none'
             document.getElementById(props.solicitud.idFormularioSolitud).style.fontSize = "22px"
+            cambioDeEstado('Aprobado', props.solicitud)
         }
     }
 
@@ -44,7 +70,7 @@ function Tarjeta_Modificacion_Estados(props){
                 </div>
                 <label className = "subtitulos-solicitud">Fecha de Solicitud:</label>
                 <div className="contenido-de-solicitudes">
-                    <label className="etiqueta-contenido-solicitud">{props.solicitud.FechaDeSolicitud}</label>
+                    <label className="etiqueta-contenido-solicitud">{props.solicitud.FechaDeSolicitud.replace('T00:00:00.000Z', '')}</label>
                 </div>
                 <label className = "subtitulos-solicitud">Responsable:</label>
                 <div className="contenido-de-solicitudes">
