@@ -55,6 +55,7 @@ const Empresas = () =>{
             </span>
         </div>
     );
+    //Headers
     const header = (id)=>{
         return(
             <div className="span-justify type-bold">
