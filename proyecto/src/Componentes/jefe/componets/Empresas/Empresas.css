@@ -37,20 +37,54 @@
     transition: ease-in-out .5s;
 }
 
-.type-letter{
-    font-family: 'Exo', sans-serif;
+.type-letterE{
+    font-family: 'Exo', sans-serif;  
+ }
+ .type-bold{
     font-weight: bold;
  }
  .close-se{
     color: white!important; 
 }
-.margin-card{
-    margin-top: 3.125em;
+.m-card{
+    margin-top: 1.555em;
 }
+
 .color-card{
     border: 0.20em solid #4d4848;
     border-radius: 0.8em;
     padding: 17;
     background-color: white;
     box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08);
+}
+
+.margenes-card{
+    margin: 0.35em;
+}
+
+
+.datatable-crud-demo .table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.datatable-crud-demo .product-image {
+    width: 100px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.datatable-crud-demo .p-dialog .product-image {
+    width: 150px;
+    margin: 0 auto 2rem auto;
+    display: block;
+}
+
+.datatable-crud-demo .confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.span-justify{
+    text-align: center;
 }
