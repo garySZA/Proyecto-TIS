@@ -79,31 +79,15 @@ const Empresas = () =>{
                                       <div className="p-col-4">
                                             <Card className=" color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} header={header(empresa.idRegistroEmpresa)} footer={footer}>
                                                 <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong>nombreEmpresa:</strong>              {empresa.nombreEmpresa}   
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong> rubroEmpresa:</strong>              {empresa.rubroEmpresa}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong>telefonoEmpresa:</strong>            {empresa.telefonoEmpresa}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong>correoEmpresa:</strong>              {empresa.correoEmpresa}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong> NITEmpresa:</strong>                {empresa.NITEmpresa}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong>NombrePersona:</strong>              {empresa.NombrePersona}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong> telefonoPersona:</strong>           {empresa.telefonoPersona}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong>ciPersona:</strong>                  {empresa.ciPersona}
-                                                </p>
-                                                <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                    <strong>RegistroNuevoUsuario_idRegistroNuevoUsuario:</strong>   {empresa.RegistroNuevoUsuario_idRegistroNuevoUsuario}
+                                                    <strong>nombreEmpresa:</strong>              {empresa.nombreEmpresa}    <br/>
+                                                    <strong> rubroEmpresa:</strong>              {empresa.rubroEmpresa}     <br/>
+                                                    <strong>telefonoEmpresa:</strong>            {empresa.telefonoEmpresa}  <br/>
+                                                    <strong>correoEmpresa:</strong>              {empresa.correoEmpresa}    <br/>
+                                                    <strong> NITEmpresa:</strong>                {empresa.NITEmpresa}       <br/>
+                                                    <strong>NombrePersona:</strong>              {empresa.NombrePersona}    <br/>
+                                                    <strong> telefonoPersona:</strong>           {empresa.telefonoPersona}  <br/>
+                                                    <strong>ciPersona:</strong>                  {empresa.ciPersona}        <br/>
+                                                    <strong>RegistroNuevoUsuario_idRegistroNuevoUsuario:</strong>   {empresa.RegistroNuevoUsuario_idRegistroNuevoUsuario} <br/>
                                                 </p>
                                             </Card>
                                         </div>
