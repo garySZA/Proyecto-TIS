@@ -29,6 +29,8 @@ function Tarjeta_Modificacion_Estados(props){
         setEstado(estadoRechazado)
         document.getElementById(idBotones).style.display = 'none'
         cambioDeEstado('Rechazado', props.solicitud)
+        document.getElementById(`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('tarjeta-solicitud-rechazado')
+            document.getElementById(`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('contenedor-solicitud-rechazado')
     }
 
     const aprobarSolicitud = () => {
@@ -55,12 +57,14 @@ function Tarjeta_Modificacion_Estados(props){
             document.getElementById(idBotones).style.display = 'none'
             document.getElementById(props.solicitud.idFormularioSolitud).style.fontSize = "22px"
             cambioDeEstado('Aprobado', props.solicitud)
+            document.getElementById(`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('tarjeta-solicitud-aprobado')
+            document.getElementById(`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('contenedor-solicitud-aprobado')
         }
     }
 
     return(
-        <div className="tarjeta-solicitud">
-            <div className="contenedor-estado-solicitud">
+        <div className="tarjeta-solicitud" id={`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`}>
+            <div className="contenedor-estado-solicitud" id={`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`}>
                 <label className="estado-solicitud" id={props.solicitud.idFormularioSolitud}>{estado}</label>
             </div>
             <div className="contenedor-campos-solicitud">
