@@ -1,22 +1,39 @@
 import React, {useState} from 'react';
 import './estilos_tarjeta_modificacion_estados.css'
 import axios from 'axios'
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap'
+import 'bootstrap/dist/css/bootstrap.css'
 
+//  Funcion que se encarga de cambiar el campo 'estadoSolicitud'
 function cambioDeEstado(estado, solicitud){
     axios.post(`https://backendcompleto-sdc.herokuapp.com/api/formReq/updateFormReq/${solicitud.idFormularioSolitud}`,{
         
-        item: "mesas",
-        DetalleSolitud: "solicitud para la compra de mesas para el laboratorio",
+        item: solicitud.item,
+        DetalleSolitud: solicitud.DetalleSolitud,
         FechaDeSolicitud: solicitud.FechaDeSolicitud.replace('T00:00:00.000Z', ''),
-        responsableSolicitud: "Raquel Chipana",
-        montoSolicitud: 100,
+        responsableSolicitud: solicitud.responsableSolicitud,
+        montoSolicitud: solicitud.montoSolicitud,
         estadoSolicitud: estado,
-        registroUnidadGasto_idRegistroUnidad: 3000000
+        registroUnidadGasto_idRegistroUnidad: solicitud.registroUnidadGasto_idRegistroUnidad
+    }
+    )
+}
+
+//  Funcion para añadir datos para el informe de una solicitur
+function mandarDatosInforme(nombreJefe, detalle, unidadSolicitante, facultadSolicitante, carreraSolicitante, idSolicitud){
+    axios.post('https://backendcompleto-sdc.herokuapp.com/api/inform/createInfAR',{
+        NombreJefeIRA: nombreJefe,
+        DetalleIAR: detalle,
+        UnidadSolicitanteIRA: unidadSolicitante,
+        FacultadSolicitanteIRA: facultadSolicitante,
+        CarreraSolicitanteIRA: carreraSolicitante,
+        FormularioSolitud_idFormularioSolitud: idSolicitud
     }
     )
 }
 
 function Tarjeta_Modificacion_Estados(props){
+    
     let idBotones = 'id' + props.solicitud.idFormularioSolitud
 
     let estadoRechazado= 'Rechazado'
@@ -26,6 +43,8 @@ function Tarjeta_Modificacion_Estados(props){
     const [estado, setEstado] = useState(props.solicitud.estadoSolicitud)
 
     const rechazarSolicitud = () => {
+        abrirModal()
+        mandarDatosInforme(props.solicitud.idFormularioSolitud, "Gary S.", document.getElementById("observaciones-solicitud").Value, "...", "Tecno", "Sistems")
         setEstado(estadoRechazado)
         document.getElementById(idBotones).style.display = 'none'
         cambioDeEstado('Rechazado', props.solicitud)
@@ -62,6 +81,21 @@ function Tarjeta_Modificacion_Estados(props){
         }
     }
 
+    
+    const [estadoModal, setEstadoModal] = useState(false)
+    
+    const abrirModal = () => {
+        setEstadoModal(!estadoModal)
+    }
+
+    const modalStyles = {
+        position: "absolute",
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '500px'
+    }
+
     return(
         <div className="tarjeta-solicitud" id={`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`}>
             <div className="contenedor-estado-solicitud" id={`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`}>
@@ -86,9 +120,24 @@ function Tarjeta_Modificacion_Estados(props){
                 </div>
             </div>
             <div className="contenedor-botones-cambio-estado" id={idBotones}>
-                <button className="Boton-estado-solicitud boton-rechazar-solicitud" onClick={rechazarSolicitud}>Rechazar</button>
+                <button className="Boton-estado-solicitud boton-rechazar-solicitud" onClick={abrirModal}>Rechazar</button>
                 <button className="Boton-estado-solicitud boton-aprobar-solicitud" onClick={aprobarSolicitud}>Aprobar</button>
             </div>
+            <Modal isOpen={estadoModal} style={modalStyles}>
+                <ModalHeader>
+                    Observaciones
+                </ModalHeader>
+                <ModalBody>
+                    <FormGroup>
+                        <Label>Ingrese las observaciones</Label>
+                        <Input placeholder="Observaciones..." id="observaciones-solicitud"></Input>
+                    </FormGroup>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={rechazarSolicitud}>Aceptar</Button>
+                    <Button color="secondary" onClick={abrirModal}>Cancelar</Button>
+                </ModalFooter>
+            </Modal>
         </div>
     )
 }
