@@ -192,7 +192,7 @@ class BarraLateral extends React.Component{
     return(
       <div>
       <div className="dinamico">
-        <div className="opciones">
+        <div className="p-grid opciones">
             
             <button className="registro-empresa"    id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
@@ -202,7 +202,7 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
             <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation8()}>Modificar Estados</button>
         </div>
-        <div className="principal" id="algo" onChange={this.onChange}>
+        <div className="p-grid principal" id="algo" onChange={this.onChange}>
           {
             (this.state.mostrarRegistroEmpresa)?
             <Registro_Empresa estadoRegistroEmpresa={this.state.mostrarRegistroEmpresa}/>
