@@ -32,7 +32,7 @@ function Tarjeta_Modificacion_Estados(props){
     }
 
     const aprobarSolicitud = () => {
-        if(estado == 'En espera'){
+        if(estado == 'En Espera'){
             setEstado('Esperando Autorización Final')
             document.getElementById(props.solicitud.idFormularioSolitud).style.fontSize = "16px"
             //llamando al metodo encargado de realizar un POST
