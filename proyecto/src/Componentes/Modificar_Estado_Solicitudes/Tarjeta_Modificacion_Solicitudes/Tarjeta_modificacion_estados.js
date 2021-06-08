@@ -44,12 +44,25 @@ function Tarjeta_Modificacion_Estados(props){
 
     const rechazarSolicitud = () => {
         abrirModal()
-        mandarDatosInforme(props.solicitud.idFormularioSolitud, "Gary S.", document.getElementById("observaciones-solicitud").Value, "...", "Tecno", "Sistems")
+        //console.log("rechazando")
+        //console.log(document.getElementById())
+        mandarDatosInforme("Gary S.", document.getElementById('inputObservaciones').value, "...", "Tecno", "Sistems",props.solicitud.idFormularioSolitud)
         setEstado(estadoRechazado)
         document.getElementById(idBotones).style.display = 'none'
         cambioDeEstado('Rechazado', props.solicitud)
         document.getElementById(`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('tarjeta-solicitud-rechazado')
             document.getElementById(`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('contenedor-solicitud-rechazado')
+    }
+
+    const aprobarSolicitudFinal = () => {
+        abrirModalAprobado()
+        mandarDatosInforme("Gary S.", document.getElementById('inputApr').value, "...", "Tecno", "Sistems",props.solicitud.idFormularioSolitud)
+        setEstado('Aprobado')
+        document.getElementById(idBotones).style.display = 'none'
+        document.getElementById(props.solicitud.idFormularioSolitud).style.fontSize = "22px"
+        cambioDeEstado('Aprobado', props.solicitud)
+        document.getElementById(`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('tarjeta-solicitud-aprobado')
+        document.getElementById(`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('contenedor-solicitud-aprobado')
     }
 
     const aprobarSolicitud = () => {
@@ -72,20 +85,20 @@ function Tarjeta_Modificacion_Estados(props){
             cambioDeEstado('En Espera', props.solicitud)
 
         }else if(estado == 'Esperando Autorización Final'){
-            setEstado('Aprobado')
-            document.getElementById(idBotones).style.display = 'none'
-            document.getElementById(props.solicitud.idFormularioSolitud).style.fontSize = "22px"
-            cambioDeEstado('Aprobado', props.solicitud)
-            document.getElementById(`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('tarjeta-solicitud-aprobado')
-            document.getElementById(`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`).classList.add('contenedor-solicitud-aprobado')
+            abrirModalAprobado()
         }
     }
 
     
     const [estadoModal, setEstadoModal] = useState(false)
-    
+    const [estadoModalAprobado, setEstadoModalAprobado] = useState(false)
+
     const abrirModal = () => {
         setEstadoModal(!estadoModal)
+    }
+
+    const abrirModalAprobado = () => {
+        setEstadoModalAprobado(!estadoModalAprobado)
     }
 
     const modalStyles = {
@@ -130,12 +143,28 @@ function Tarjeta_Modificacion_Estados(props){
                 <ModalBody>
                     <FormGroup>
                         <Label>Ingrese las observaciones</Label>
-                        <Input placeholder="Observaciones..." id="observaciones-solicitud"></Input>
+                        <Input type="text" placeholder="Observaciones..." id="inputObservaciones"></Input>
                     </FormGroup>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={rechazarSolicitud}>Aceptar</Button>
                     <Button color="secondary" onClick={abrirModal}>Cancelar</Button>
+                </ModalFooter>
+            </Modal>
+
+            <Modal isOpen={estadoModalAprobado} style={modalStyles}>
+                <ModalHeader>
+                    Observaciones
+                </ModalHeader>
+                <ModalBody>
+                    <FormGroup>
+                        <Label>Ingrese las observaciones</Label>
+                        <Input type="text" placeholder="Observaciones..." id="inputApr"></Input>
+                    </FormGroup>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={aprobarSolicitudFinal}>Aceptar</Button>
+                    <Button color="secondary" onClick={abrirModalAprobado}>Cancelar</Button>
                 </ModalFooter>
             </Modal>
         </div>
