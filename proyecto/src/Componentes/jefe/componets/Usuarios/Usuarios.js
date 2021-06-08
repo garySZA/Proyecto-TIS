@@ -1,9 +1,23 @@
 import React from 'react';
+import  { useState, useEffect, useRef } from 'react';
 import './Usuarios.css';
 
 import { Menubar }                  from 'primereact/menubar';
 import { Button }                   from 'primereact/button';
+import { Card }                     from 'primereact/card';
 
+import UsuarioCard                    from './UsuarioCard';
+import AgregarUsuarioCard             from './AgregarUsuarioCard';
+import EditarYo                       from './EditarYo';
+
+
+import {
+    getUsers,
+    getUserID,
+    createUser,
+    updateUserID,
+    deleteUserID
+}   from   '../../../../services/apiUser';
 
 import logo                         from './img/UMSS_logo.png';
 
@@ -19,19 +33,94 @@ const Usuarios = () =>{
         )
     }
 
+    const [usuarios,setUsuarios]     = useState([]);
+
+
+    useEffect(()=>{
+        fetchUsuarios();
+
+    },[])
+
+    const fetchUsuarios = () =>{
+        getUsers().then(json =>{
+            if(json.error){
+                console.log("Error");
+            }else{
+                setUsuarios(json.data);
+                console.log("usuarios insertados")
+            }
+        })
+    }
+
+
+  const agregarUsuario = (usuario) => {
+    console.log(usuario)
+    setUsuarios([...usuarios,usuario])
+  }
+
+  // Eliminar usuario
+  const eliminandoUsuario = (id) => {
+    setUsuarios(usuarios.filter(usuario => usuario.idRegistroNuevoUsuario !== id))
+    deleteUserID(id);
+    console.log(`El ID es ${id}`);
+    console.log("Eliminando");
+  }
+
+  // Editar usuario
+    const [editando, setEditando] = useState(false)
+
+    const inicializarFormularioEstados = 
+    { 
+        idRegistroNuevoUsuario: 0, 
+        RolR:                   '',
+        NombreUsuario:          '',
+        ApellidoUsuario:        '',
+        FechaDeNacimiento:      '',
+        contraseñaUsuario:      '',
+        SexoUsuario:            '',
+        CorreoC:                '',
+        CiudadDireccion:        '',
+        PaisDireccion:          '',
+        CalleDireccion:         '',
+        TelefonoT:              ''
+    }
+
+    const [actualUsario, setActualUsuario] = useState(inicializarFormularioEstados);
+
+    const editarFila = (usuario) => {
+      setEditando(true) 
+      setActualUsuario(
+        { 
+          idRegistroNuevoUsuario: usuario.idRegistroNuevoUsuario, 
+          RolR:                   usuario.RolR,
+          NombreUsuario:          usuario.NombreUsuario,
+          ApellidoUsuario:        usuario.ApellidoUsuario,
+          FechaDeNacimiento:      usuario.FechaDeNacimiento,
+          contraseñaUsuario:      usuario.contraseñaUsuario,
+          SexoUsuario:            usuario.SexoUsuario,
+          CorreoC:                usuario.CorreoC,
+          CiudadDireccion:        usuario.CiudadDireccion,
+          PaisDireccion:          usuario.PaisDireccion,
+          CalleDireccion:         usuario.CalleDireccion,
+          TelefonoT:              usuario.TelefonoT 
+        })
+    }
+
+    const actualizarUsuario = (id, actualizarUsuario) => {
+      setEditando(false)
+      setUsuarios(usuarios.map(usuario => (usuario.idRegistroNuevoUsuario === id ? actualizarUsuario : usuario)))
+    }
+    
+       
     return(
         <div>
             <div className="p-grid p-justify-center ">
                 <div className="p-col-12 rowPanel">
                     <Menubar className="panelMenu"  start={start}  end={closeSesion}/>
                 </div>
-                <div className="p-grid p-justify-center ">
-                    <div className="p-col-11">
-                        <div    className="card margin-card color-card">
-                               <h1>usuarios</h1> 
-                        </div>
-                    </div>
-                </div>     
+                
+                <UsuarioCard usuarios={usuarios} eliminandoUsuario={eliminandoUsuario} editarFila={editarFila} /> 
+
             </div>
         </div>
     )
