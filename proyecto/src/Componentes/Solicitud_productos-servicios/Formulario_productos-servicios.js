@@ -28,11 +28,11 @@ class Formulario_ProductosServicios extends Component{
         super(props)
         this.state = {
             showMe:true,
-            validarItem: false,
-            validarDetalleSolicitud: false,
-            validarResponsableSolicitud: false,
-            validarMonto: false,
-            camposVacios: true,
+            validarItem:                    false,
+            validarDetalleSolicitud:        false,
+            validarResponsableSolicitud:    false,
+            validarMonto:                   false,
+            camposVacios:                   true,
 
             fecha: new Date()
         }
@@ -144,13 +144,16 @@ class Formulario_ProductosServicios extends Component{
 
     //al presionar el boton "Solicitar"
     Solicitar = () => {
-        if(this.state.validarDetalleSolicitud == true && this.state.validarResponsableSolicitud == true && this.state.validarMonto == true){
+        if(this.state.validarItem == true 
+            && this.state.validarDetalleSolicitud == true 
+            && this.state.validarResponsableSolicitud == true 
+            && this.state.validarMonto == true){
             console.log("solicitar");
             this.nameImputs.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://formulario-prod-ser-backend.herokuapp.com/add' , {
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/formReq/createFormReq' , {
                 item: document.getElementById("item").value,
                 DetalleSolitud: document.getElementById("detalleSolicitud").value ,
                 FechaDeSolicitud: document.getElementById("fecha").value ,
