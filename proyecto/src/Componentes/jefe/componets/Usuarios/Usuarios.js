@@ -25,6 +25,7 @@ const Usuarios = () =>{
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
 
+
     const closeSesion = ()=>{
         return(
             <div>
@@ -114,11 +115,24 @@ const Usuarios = () =>{
        
     return(
         <div>
-            <div className="p-grid p-justify-center ">
+            <div className="p-grid ">
                 <div className="p-col-12 rowPanel">
                     <Menubar className="panelMenu"  start={start}  end={closeSesion}/>
                 </div>
-                
+                {
+                    editando?(
+                        <div>
+                          <h2>Editar usuario</h2>
+                            <EditarYo setEditando={setEditando} actualUsario={actualUsario} actualizarUsuario={actualUsario}/>
+                        </div>
+                    ):(
+                        <div className="p-grid m-botton-add">
+                            <div className="p-col-12">
+                                <AgregarUsuarioCard agregarUsuario={agregarUsuario}  />
+                            </div>
+                        </div>
+                    )
+                }
                 <UsuarioCard usuarios={usuarios} eliminandoUsuario={eliminandoUsuario} editarFila={editarFila} /> 
 
             </div>
