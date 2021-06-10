@@ -2,22 +2,26 @@ import React from 'react';
 import  { useState, useEffect, useRef } from 'react';
 import './EstadoSolicitudes.css';
 
-import { Menubar }                  from 'primereact/menubar';
-import { Button }                   from 'primereact/button';
-import { Card }                     from 'primereact/card';
+import { Menubar }                      from 'primereact/menubar';
+import { Button }                       from 'primereact/button';
+import { Card }                         from 'primereact/card';
 
-import {
-    getInformAR,
-    getInformARID,
-    createInformAR,
-    updateInformARID,
-    deleteInformARID
-}   from   '../../../../services/apiInformAR';
+import EstadoSolicitudCard              from './EstadoSolicitudCard';
+import AgregarEstadoSolicitudCard       from './AgregarEstadoSolicitudCard';
+import EditarYo                         from './EditarYo';
+
+import { useHistory }                   from 'react-router-dom';
+
+import { useParams }                    from 'react-router';
+
+import {getInformAR,deleteInformARID}   from   '../../../../services/apiInformAR';
+
+import logo                             from './img/UMSS_logo.png';
 
 
-import logo                         from './img/UMSS_logo.png';
 
-const Informes = () =>{
+
+const EstadoSolicitudes = () =>{
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
 
@@ -29,8 +33,13 @@ const Informes = () =>{
         )
     }
 
+
+
     const [informeAR,setInformeAR] = useState([]);
-        useEffect(()=>{
+     // Editar usuario
+    const [editando, setEditando] = useState(false);
+
+    useEffect(()=>{
             fetchInformerAR();
         },[])
     const fetchInformerAR = () =>{
@@ -43,24 +52,55 @@ const Informes = () =>{
                 }
             })
     }
-
-    const footer = (
-        <div className="span-justify">
-            <span >
-                <Button label="EDITAR"   icon="pi pi-pencil" className="" />
-                <Button label="ELIMINAR" icon="pi pi-trash" className="p-button-secondary p-ml-2" />
-            </span>
-        </div>
-    );
-    //Headers
-    const header = (id)=>{
-        return(
-            <div className="span-justify type-bold">
-                {`ID:${id}`}
-            </div>
-        )
+    const agregarEstadoSolicitud = (estadoSolicitud) => {
+        console.log(estadoSolicitud);
+        setInformeAR([...informeAR,estadoSolicitud]);
     }
 
+    const eliminandoEstadoSolicitud = (id) => {
+      setInformeAR(informeAR.filter(estadoSolicitud => estadoSolicitud.idIAR !== id))
+      deleteInformARID(id);
+      console.log(`El ID es ${id}`);
+      console.log("Eliminando");
+    }
+
+
+
+    const inicializarFormularioEstados = 
+    { 
+        idIAR:                                 0, 
+        NombreJefeIRA:                        '',
+        DetalleIAR:                           '',
+        UnidadSolicitanteIRA:                 '',
+        FacultadSolicitanteIRA:               '',
+        CarreraSolicitanteIRA:                '',
+        FormularioSolitud_idFormularioSolitud: 0,
+    }
+
+    const [actualEstadoSolicitud, setActualEstadoSolicitud] = useState(inicializarFormularioEstados);
+
+    const editarFila = (estadoSolicitud) => {
+      setEditando(true) 
+      setActualEstadoSolicitud(
+      { 
+          idIAR:                                 estadoSolicitud.idIAR, 
+          NombreJefeIRA:                         estadoSolicitud.NombreJefeIRA,
+          DetalleIAR:                            estadoSolicitud.DetalleIAR,
+          UnidadSolicitanteIRA:                  estadoSolicitud.UnidadSolicitanteIRA,
+          FacultadSolicitanteIRA:                estadoSolicitud.FacultadSolicitanteIRA,
+          CarreraSolicitanteIRA:                 estadoSolicitud.CarreraSolicitanteIRA,
+          FormularioSolitud_idFormularioSolitud: estadoSolicitud.FormularioSolitud_idFormularioSolitud  
+      })
+    }
+
+    const actualizarEstadoSolicitud = (id, actualizarEstadoSolicitud) => {
+      setEditando(false);
+      setInformeAR(informeAR.map(estadoSolicitud => (estadoSolicitud.idIAR === id ? actualizarEstadoSolicitud : estadoSolicitud)));
+    }
+    
+
+
+   
 
     return(
         <div>
@@ -68,35 +108,23 @@ const Informes = () =>{
                 <div className="p-col-12 rowPanel">
                     <Menubar className="panelMenu"  start={start}  end={closeSesion}/>
                 </div>
-
                 {
-                    informeAR&& informeAR.map((informe,i)=>
-                    <div className="m-card"> 
-                        <div key = {i} >
-                              <div className="p-grid p-justify-between margenes-card ">
-                                  <div className="p-col-4">
-                                        <Card className=" color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} 
-                                        header={header(informe.idIAR)} footer={footer}>
-                                            <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                <strong>NombreJefeIRA:</strong>                            {informe.NombreJefeIRA}               <br/>
-                                                <strong> DetalleIAR:</strong>                              {informe.DetalleIAR}                  <br/>
-                                                <strong>UnidadSolicitanteIRA:</strong>                     {informe.UnidadSolicitanteIRA}        <br/>
-                                                <strong>FacultadSolicitanteIRA:</strong>                   {informe.FacultadSolicitanteIRA}      <br/>
-                                                <strong> CarreraSolicitanteIRA:</strong>                   {informe.CarreraSolicitanteIRA}       <br/>
-                                                <strong>FormularioSolitud_idFormularioSolitud:</strong>    {informe.FormularioSolitud_idFormularioSolitud}          <br/>
-                                            </p>
-                                        </Card>
-                                    </div>
-                                </div> 
+                    editando?(
+                        <div>
+                            <EditarYo setEditando={setEditando} actualEstadoSolicitud={actualEstadoSolicitud} actualizarEstadoSolicitud={actualizarEstadoSolicitud}/>
                         </div>
-                    </div>
+                    ):(
+                        <div className="p-grid m-botton-add">
+                            <div className="p-col-12">
+                                <AgregarEstadoSolicitudCard agregarEstadoSolicitud={agregarEstadoSolicitud} />
+                            </div>
+                        </div>
                     )
                 }
-
-
+                <EstadoSolicitudCard informeAR={informeAR} eliminandoEstadoSolicitud={eliminandoEstadoSolicitud} editarFila={editarFila} /> 
             </div>
         </div>
     )
 }
 
-export default Informes;
+export default EstadoSolicitudes;
