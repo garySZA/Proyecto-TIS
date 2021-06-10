@@ -6,13 +6,16 @@ import { Menubar }                  from 'primereact/menubar';
 import { Button }                   from 'primereact/button';
 import { Card }                     from 'primereact/card';
 
-import {
-    getAnswerBusiness,
-    getAnswerBusinessID,
-    createAnswerBusiness,
-    updateAnswerBusinessID,
-    deleteAnswerBusinessID
-}   from   '../../../../services/apiAnswerBusiness';
+import RespuestaEmpresaCard          from './RespuestaEmpresaCard';
+import AgregarRespuestasEmpresaCard  from './AgregarRespuetasEmpresaCard';
+import EditarYo                      from './EditarYo';
+
+import { useHistory }                       from 'react-router-dom';
+
+import { useParams }                        from 'react-router';
+
+
+import {getAnswerBusiness,deleteAnswerBusinessID}   from   '../../../../services/apiAnswerBusiness';
 
 
 import logo                         from './img/UMSS_logo.png';
@@ -31,69 +34,92 @@ const RespuestasEmpresa = () =>{
     }
 
     const [respuestaEmpresas,setRespuestaEmpresas] = useState([]);
-        useEffect(()=>{
+    const [editando, setEditando] = useState(false);
+
+    useEffect(()=>{
             fetchRespuestaEmpresas();
-        },[])
+    },[])
+
     const fetchRespuestaEmpresas = () =>{
-            getAnswerBusiness().then(json =>{
-                if(json.error){
-                    console.log("Error");
-                }else{
-                    setRespuestaEmpresas(json.data);
-                    console.log("respuesta de empresa enviado")
-                }
-            })
+        getAnswerBusiness().then(json =>{
+            if(json.error){
+                console.log("Error");
+            }else{
+                setRespuestaEmpresas(json.data);
+                console.log("respuesta de empresa enviado")
+            }
+        })
     }
 
-    const footer = (
-        <div className="span-justify">
-            <span >
-                <Button label="EDITAR"   icon="pi pi-pencil" className="" />
-                <Button label="ELIMINAR" icon="pi pi-trash" className="p-button-secondary p-ml-2" />
-            </span>
-        </div>
-    );
-    //Headers
-    const header = (id)=>{
-        return(
-            <div className="span-justify type-bold">
-                {`ID:${id}`}
-            </div>
-        )
+    const agregarRespuestaEmpresa = (respuestaEmpresa) => {
+        console.log(respuestaEmpresa);
+        setRespuestaEmpresas([...respuestaEmpresas,respuestaEmpresa]);
+    }
+    
+    const eliminandoRespuestaEmpresa = (id) => {
+      setRespuestaEmpresas(respuestaEmpresas.filter(respuestaEmpresa => respuestaEmpresa.idrespuestasEmpresas !== id))
+      deleteAnswerBusinessID(id);
+      console.log(`El ID es ${id}`);
+      console.log("Eliminando");
+    }
+    
+    
+    
+    const inicializarFormularioEstados = 
+    { 
+        idrespuestasEmpresas:                  0, 
+        NroRE:                                 0,
+        CantidadRE:                            0,
+        UnidadRE:                              0,
+        DetalleRE:                            '',
+        UnitarioRE:                            0,
+        TotalRE:                               0,
+        FormularioSolitud_idFormularioSolitud: 0,
     }
 
+    const [actualRespuestaEmpresa, setActualRespuestaEmpresa] = useState(inicializarFormularioEstados);
+
+    const editarFila = (respuestaEmpresa) => {
+      setEditando(true) 
+      setActualRespuestaEmpresa(
+        { 
+          idrespuestasEmpresas:                  respuestaEmpresa.idrespuestasEmpresas, 
+          NroRE:                                 respuestaEmpresa.NroRE,
+          CantidadRE:                            respuestaEmpresa.CantidadRE,
+          UnidadRE:                              respuestaEmpresa.UnidadRE,
+          DetalleRE:                             respuestaEmpresa.DetalleRE,
+          UnitarioRE:                            respuestaEmpresa.UnitarioRE,
+          TotalRE:                               respuestaEmpresa.TotalRE,
+          FormularioSolitud_idFormularioSolitud: respuestaEmpresa.FormularioSolitud_idFormularioSolitud,
+
+        })
+    }
+
+    const actualizarRespuestaEmpresa = (id, actualizarRespuestaEmpresa) => {
+      setEditando(false);
+      setRespuestaEmpresas(respuestaEmpresas.map(respuestaEmpresa => (respuestaEmpresa.idrespuestasEmpresas === id ? actualizarRespuestaEmpresa : respuestaEmpresa)));
+    }
+    
     return(
         <div>
             <div className="p-grid p-justify-center ">
                 <div className="p-col-12 rowPanel">
                     <Menubar className="panelMenu"  start={start}  end={closeSesion}/>
                 </div>
-
                 {
-                    respuestaEmpresas&& respuestaEmpresas.map((respuestaE,i)=>
-                    <div className="m-card"> 
-                        <div key = {i} >
-                              <div className="p-grid p-justify-between margenes-card ">
-                                  <div className="p-col-4">
-                                        <Card className=" color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} 
-                                        header={header(respuestaE.idrespuestasEmpresas)} footer={footer}>
-                                            <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                <strong>NroRE:</strong>                                    {respuestaE.NroRE}               <br/>
-                                                <strong> CantidadRE:</strong>                              {respuestaE.CantidadRE}          <br/>
-                                                <strong>UnidadRE:</strong>                                 {respuestaE.UnidadRE}            <br/>
-                                                <strong>DetalleRE:</strong>                                {respuestaE.DetalleRE}           <br/>
-                                                <strong> UnitarioRE:</strong>                              {respuestaE.UnitarioRE}          <br/>
-                                                <strong>TotalRE:</strong>                                  {respuestaE.TotalRE}             <br/>
-                                                <strong>FormularioSolitud_idFormularioSolitud:</strong>    {respuestaE.FormularioSolitud_idFormularioSolitud}        <br/>
-                                            </p>
-                                        </Card>
-                                    </div>
-                                </div> 
+                    editando?(
+                        <div>
+                            <EditarYo setEditando={setEditando} actualRespuestaEmpresa={actualRespuestaEmpresa} actualizarRespuestaEmpresa={actualizarRespuestaEmpresa}/>
                         </div>
-                    </div>
+                    ):(
+                        <div className="p-grid m-botton-add">
+                            <div className="p-col-12">
+                                <AgregarRespuestasEmpresaCard agregarRespuestaEmpresa={agregarRespuestaEmpresa} />
+                            </div>
+                        </div>
                     )
                 }
-
+                <RespuestaEmpresaCard respuestaEmpresas={respuestaEmpresas} eliminandoRespuestaEmpresa={eliminandoRespuestaEmpresa} editarFila={editarFila} /> 
             </div>
         </div>
     )
