@@ -53,4 +53,18 @@
     padding: 17;
     background-color: white;
     box-shadow: 0 15px 30px 0 rgba(0,0,0,.41), 0 5px 15px 0 rgba(0,0,0,.08);
+    margin:0.57em;
+}
+.m-span{
+    margin-top: 1.0em;
+}
+.m-botton-add{
+    margin-top: 1.5em ;
+    margin-left: 1.5em;
+}
+.btn-flot{
+    position: fixed; 
+    top: 2%;
+    right: 17%;
+    z-index: 100
 }

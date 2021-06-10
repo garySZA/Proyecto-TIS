@@ -20,7 +20,7 @@ const UsuarioCard = (props) => (
                                 <strong>FechaDeNacimiento:</strong>     {usuario.FechaDeNacimiento} <br/>
                                 <strong>contraseñaUsuario:</strong>     {usuario.contraseñaUsuario} <br/>
                                 <strong>SexoUsuario:</strong>           {usuario.SexoUsuario}       <br/>
-                                <strong> CorreoC:</strong>              {usuario.CorreoC}           <br/>
+                                <strong>CorreoC:</strong>               {usuario.CorreoC}           <br/>
                                 <strong>CiudadDireccion:</strong>       {usuario.CiudadDireccion}   <br/>
                                 <strong>PaisDireccion:</strong>         {usuario.PaisDireccion}     <br/>
                                 <strong>CalleDireccion:</strong>        {usuario.CalleDireccion}    <br/>
@@ -40,7 +40,7 @@ const UsuarioCard = (props) => (
                 
             ) : (
                 <tr>
-                    <td colSpan={3}>Existen Usuarios</td>
+                    <td colSpan={3}>No Existen Usuarios</td>
                 </tr>
             )
             
