@@ -42,7 +42,10 @@ class Formulario_ProductosServicios extends Component{
         this.setState.showMe = true;
     }
 
-    nameImputs = ["item","detalleSolicitud", "responsableSolicitud", "monto"];
+    nameImputs = ["item",
+                  "detalleSolicitud", 
+                  "responsableSolicitud", 
+                  "monto"];
 
     //para verificar los datos de cada campo
     verificarCampos = () => {
@@ -152,14 +155,29 @@ class Formulario_ProductosServicios extends Component{
             this.nameImputs.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
+
+
+            var iitem1 = document.getElementById("item").value;
+            var detalle = document.getElementById("detalleSolicitud").value
+            var fechaS = "2021-06-11"
+            var respon = document.getElementById("responsableSolicitud").value
+            var mont = document.getElementById("monto").value
+            var llave = "3000000"
+
+            const data = {
+                item: `${iitem1}`,
+                DetalleSolitud: `${detalle}` ,
+                FechaDeSolicitud: `${fechaS}` ,
+                responsableSolicitud: `${respon}` ,
+                montoSolicitud: `${mont}`,
+                estadoSolicitud: "En espera",
+                registroUnidadGasto_idRegistroUnidad: 3000000
+            }
+            console.log(fechaS);
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://backendcompleto-sdc.herokuapp.com/api/formReq/createFormReq' , {
-                item: document.getElementById("item").value,
-                DetalleSolitud: document.getElementById("detalleSolicitud").value ,
-                FechaDeSolicitud: document.getElementById("fecha").value ,
-                responsableSolicitud: document.getElementById("responsableSolicitud").value ,
-                montoSolicitud: document.getElementById("monto").value
-            }).then(response => {
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/formReq/createFormReq' ,
+                data
+            ).then(response => {
                 console.log('solicitud aceptada y añadida!', response.data);
             }).catch(e => {
                 console.log(e);
@@ -229,7 +247,7 @@ class Formulario_ProductosServicios extends Component{
 
                             <div className="camposform solicitud__datos" id="dato__item">
                                 <div className="contenedor-camposform-subtitulos">
-                                    <h3 for="campo-item" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
+                                    <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
                                 </div>
                                 <div className="solicitud__datos-imputs">
                                     <input
