@@ -2,40 +2,42 @@ import React from 'react';
 import  { useState, useEffect, useRef } from 'react';
 import './Usuarios.css';
 
-import { Menubar }                  from 'primereact/menubar';
-import { Button }                   from 'primereact/button';
-import { Card }                     from 'primereact/card';
+import { Menubar }                      from 'primereact/menubar';
+import { Button }                       from 'primereact/button';
+import { Card }                         from 'primereact/card';
 
-import UsuarioCard                    from './UsuarioCard';
-import AgregarUsuarioCard             from './AgregarUsuarioCard';
-import EditarYo                       from './EditarYo';
+import UsuarioCard                      from './UsuarioCard';
+import AgregarUsuarioCard               from './AgregarUsuarioCard';
+import EditarYo                         from './EditarYo';
+
+import { useHistory }                   from 'react-router-dom';
+
+import { useParams }                    from 'react-router';
 
 
-import {
-    getUsers,
-    getUserID,
-    createUser,
-    updateUserID,
-    deleteUserID
-}   from   '../../../../services/apiUser';
+import {getUsers,deleteUserID}          from   '../../../../services/apiUser';
 
-import logo                         from './img/UMSS_logo.png';
+import logo                             from './img/UMSS_logo.png';
 
 const Usuarios = () =>{
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
-
+    const history                    = useHistory();
+    const {id} =  useParams();
+    const [idDB,setIdDB] = useState(id);
+    
 
     const closeSesion = ()=>{
         return(
             <div>
-                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " />
+                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out"  className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " />
             </div>  
         )
     }
 
     const [usuarios,setUsuarios]     = useState([]);
-
+    // Editar usuario
+    const [editando, setEditando] = useState(false)
 
     useEffect(()=>{
         fetchUsuarios();
@@ -55,8 +57,9 @@ const Usuarios = () =>{
 
 
   const agregarUsuario = (usuario) => {
-    console.log(usuario)
-    setUsuarios([...usuarios,usuario])
+    console.log(usuario);
+    setUsuarios([...usuarios,usuario]);
+    //createUser(usuario);
   }
 
   // Eliminar usuario
@@ -67,8 +70,7 @@ const Usuarios = () =>{
     console.log("Eliminando");
   }
 
-  // Editar usuario
-    const [editando, setEditando] = useState(false)
+
 
     const inicializarFormularioEstados = 
     { 
@@ -108,8 +110,8 @@ const Usuarios = () =>{
     }
 
     const actualizarUsuario = (id, actualizarUsuario) => {
-      setEditando(false)
-      setUsuarios(usuarios.map(usuario => (usuario.idRegistroNuevoUsuario === id ? actualizarUsuario : usuario)))
+      setEditando(false);
+      setUsuarios(usuarios.map(usuario => (usuario.idRegistroNuevoUsuario === id ? actualizarUsuario : usuario)));
     }
     
        
@@ -122,13 +124,12 @@ const Usuarios = () =>{
                 {
                     editando?(
                         <div>
-                          <h2>Editar usuario</h2>
-                            <EditarYo setEditando={setEditando} actualUsario={actualUsario} actualizarUsuario={actualUsario}/>
+                            <EditarYo setEditando={setEditando} actualUsario={actualUsario} actualizarUsuario={actualizarUsuario}/>
                         </div>
                     ):(
                         <div className="p-grid m-botton-add">
                             <div className="p-col-12">
-                                <AgregarUsuarioCard agregarUsuario={agregarUsuario}  />
+                                <AgregarUsuarioCard agregarUsuario={agregarUsuario} />
                             </div>
                         </div>
                     )
