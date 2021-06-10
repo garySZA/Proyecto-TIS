@@ -23,8 +23,8 @@ const Usuarios = () =>{
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
     const history                    = useHistory();
-    const {id} =  useParams();
-    const [idDB,setIdDB] = useState(id);
+    const {id}                       = useParams();
+    const [idDB,setIdDB]             = useState(id);
     
 
     const closeSesion = ()=>{
@@ -37,7 +37,7 @@ const Usuarios = () =>{
 
     const [usuarios,setUsuarios]     = useState([]);
     // Editar usuario
-    const [editando, setEditando] = useState(false)
+    const [editando, setEditando] = useState(false);
 
     useEffect(()=>{
         fetchUsuarios();
@@ -59,10 +59,8 @@ const Usuarios = () =>{
   const agregarUsuario = (usuario) => {
     console.log(usuario);
     setUsuarios([...usuarios,usuario]);
-    //createUser(usuario);
   }
 
-  // Eliminar usuario
   const eliminandoUsuario = (id) => {
     setUsuarios(usuarios.filter(usuario => usuario.idRegistroNuevoUsuario !== id))
     deleteUserID(id);

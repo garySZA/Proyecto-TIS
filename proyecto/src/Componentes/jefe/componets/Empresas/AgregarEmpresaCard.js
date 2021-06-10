@@ -1,16 +1,16 @@
-import React, { useState }     from 'react';
+import React            from 'react';
+import {useState}       from 'react';
+import './Empresas.css';
 
-import { Dialog }              from 'primereact/dialog';
-import { Button }              from 'primereact/button';
-import { InputText }           from 'primereact/inputtext';
+import { Dialog }       from 'primereact/dialog';
+import { Button }       from 'primereact/button';
+import { InputText }    from 'primereact/inputtext';
 
-import {updateAddBusinessID}   from   '../../../../services/apiAddBusiness';
+import { createAddBusiness}    from   '../../../../services/apiAddBusiness';
 
-const EditYo = (props) => {
+const AgregarEmpresaCard = (props) => {
 
-   
-
-    const [displayBasic, setDisplayBasic] = useState(true);
+    const [displayBasic, setDisplayBasic] = useState(false);
 
     const [position, setPosition] = useState('center');
     
@@ -19,37 +19,55 @@ const EditYo = (props) => {
     }
   
     const onClick = (name, position) => {
-      dialogFuncMap[`${name}`](true);
-  
-      if (position) {
-          setPosition(position);
+        dialogFuncMap[`${name}`](true);
+    
+        if (position) {
+            setPosition(position);
+        }
+    }
+    const [nombre,setNombre]        = useState("");
+    const [rubro,setRubro]          = useState("");
+    const [telefono,setTelefono]    = useState("");
+    const [correo,setCorreo]        = useState("");
+    const [nit,setNit]              = useState("");
+    const [nombreP,setNombreP]      = useState("");
+    const [telefonoP,setTelefonoP]  = useState("");
+    const [ciPersona,setCiPersona]  = useState("");
+    const [idUsuario,setIdUsuario]  = useState(0);
+
+
+    const onHide = (name,res) => {
+      dialogFuncMap[`${name}`](false);
+      const data = {
+        nombreEmpresa:                              `${nombre}`,
+        rubroEmpresa:                               `${rubro}`,
+        telefonoEmpresa:                            `${telefono}`,
+        correoEmpresa:                              `${correo}`,
+        NITEmpresa:                                 `${nit}`,
+        NombrePersona:                              `${nombreP}`,
+        telefonoPersona:                            `${telefonoP}`,
+        ciPersona:                                  `${ciPersona}`
       }
+      if(res === 'Si'){
+        console.log("Si");
+        console.log(data);
+        props.agregarEmpresa(data);
+        createAddBusiness(data,idUsuario);
+      }else{
+        console.log("no") 
+      }
+      
     }
 
-    const renderFooter = (name) => {
-        return (
-            <div>
-                <Button label="No" icon="pi pi-times" onClick={() => onHide(name,'No')} className="p-button-text" />
-                <Button label="Si" icon="pi pi-check" onClick={() => onHide(name,'Si')} autoFocus />
-            </div>
-        );
+  const renderFooter = (name) => {
+    return (
+        <div>
+            <Button label="No" icon="pi pi-times" onClick={() => onHide(name,'No')} className="p-button-text" />
+            <Button label="Si" icon="pi pi-check" onClick={() => onHide(name,'Si')} autoFocus />
+        </div>
+    );
     }
 
-    const [id,setId]                = useState(props.actualEmpresa.idRegistroEmpresa);
-    const [nombre,setNombre]        = useState(props.actualEmpresa.nombreEmpresa);
-    const [rubro,setRubro]          = useState(props.actualEmpresa.rubroEmpresa);
-    const [telefono,setTelefono]    = useState(props.actualEmpresa.telefonoEmpresa);
-    const [correo,setCorreo]        = useState(props.actualEmpresa.correoEmpresa);
-    const [nit,setNit]              = useState(props.actualEmpresa.NITEmpresa);
-    const [nombreP,setNombreP]      = useState(props.actualEmpresa.NombrePersona);
-    const [telefonoP,setTelefonoP]  = useState(props.actualEmpresa.telefonoPersona);
-    const [ciPersona,setCiPersona]  = useState(props.actualEmpresa.ciPersona);
-    const [idUsuario,setIdUsuario]  = useState(props.actualEmpresa.RegistroNuevoUsuario_idRegistroNuevoUsuario);
-
-
-    const handleIdChange = ({ target:{ value}})=>{
-        setId(value);
-    };
     const handleNombreChange = ({ target:{ value}})=>{
         setNombre(value);
     };
@@ -78,44 +96,11 @@ const EditYo = (props) => {
         setIdUsuario(value);
     };
 
-
-    const onHide = (name,res) => {
-        dialogFuncMap[`${name}`](false);
-        const data = {
-          idRegistroEmpresa:                          `${id}`,
-          nombreEmpresa:                              `${nombre}`,
-          rubroEmpresa:                               `${rubro}`,
-          telefonoEmpresa:                            `${telefono}`,
-          correoEmpresa:                              `${correo}`,
-          NITEmpresa:                                 `${nit}`,
-          NombrePersona:                              `${nombreP}`,
-          telefonoPersona:                            `${telefonoP}`,
-          ciPersona:                                  `${ciPersona}`,
-          RegistroNuevoUsuario_idRegistroNuevoUsuario: idUsuario
-        }
-        if(res === 'Si'){
-          console.log("Data Si");
-          console.log(data);
-          data.id = props.actualEmpresa.idRegistroEmpresa;
-          props.actualizarEmpresa(props.actualEmpresa.idRegistroEmpresa, data);
-          console.log(`el Id es ${data.idRegistroEmpresa}`);
-          console.log(data)  
-          updateAddBusinessID(data,idUsuario,data.idRegistroEmpresa);
-          setDisplayBasic(false);
-        }else{
-          console.log("no");
-          props.setEditando(false);
-          setDisplayBasic(false);
-        }
-        
-    }
-  
-
     return (
-          <div >
-                
-                <Dialog header="EDITAR USUARIO" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
-                <div className="p-d-flex p-flex-column">
+        <div >
+            <Button label="AÑADIR EMPRESA"   icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter btn-flot" onClick={() => onClick('displayBasic')}/>
+            <Dialog header="AÑADIR EMPRESA" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+            <div className="p-d-flex p-flex-column">
                     <div className="p-mb-2">
                         <span className="p-float-label">
                             <InputText id="nombreEmpresa" type="text" value={nombre} onChange={handleNombreChange}/>
@@ -170,10 +155,10 @@ const EditYo = (props) => {
                             <label htmlFor="RegistroNuevoUsuario_idRegistroNuevoUsuario">RegistroNuevoUsuario_idRegistroNuevoUsuario</label>
                         </span>
                     </div> 
-                </div>        
-                </Dialog>
+                </div>            
+            </Dialog>
         </div>
     );
 }
  
-export default EditYo;
+export default AgregarEmpresaCard;

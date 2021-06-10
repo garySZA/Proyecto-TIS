@@ -84,14 +84,6 @@ const EditYo = (props) => {
         setTelefono(value);
     };
 
-
-    const onSubmit = (data, e) => {
-        data.id = props.currentUser.id
-        console.log(data)
-        props.actualizarUsuario(props.currentUser.id, data)
-        e.target.reset()
-    }
-
     const onHide = (name,res) => {
         dialogFuncMap[`${name}`](false);
         const data = {
