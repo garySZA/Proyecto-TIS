@@ -125,68 +125,68 @@ const EditYo = (props) => {
                 <div className="p-d-flex p-flex-column">
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="RolR" type="text" value={rol} onChange={handleRolChange}/>
-                            <label htmlFor="RolR">RolR</label>
+                            <InputText className="input-margin" id="RolR" type="text" value={rol} onChange={handleRolChange}/>
+                            <label htmlFor="RolR">Rol</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="NombreUsuario" type="text" value={nombre} onChange={handleNombreChange}/>
-                            <label htmlFor="NombreUsuario">NombreUsuario</label>
+                            <InputText className="input-margin" id="NombreUsuario" type="text" value={nombre} onChange={handleNombreChange}/>
+                            <label htmlFor="NombreUsuario">Nombre(s)</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="ApellidoUsuario" type="text" value={apellido} onChange={handleApellidoChange}/>
-                            <label htmlFor="ApellidoUsuario">ApellidoUsuario</label>
+                            <InputText className="input-margin" id="ApellidoUsuario" type="text" value={apellido} onChange={handleApellidoChange}/>
+                            <label htmlFor="ApellidoUsuario">Apellido(s)</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="FechaDeNacimiento" type="text" value={fechaNacimiento} onChange={handleFechaNacimientoChange}/>
-                            <label htmlFor="FechaDeNacimiento">FechaDeNacimiento</label>
+                            <InputText className="input-margin" id="FechaDeNacimiento" type="text" value={fechaNacimiento} onChange={handleFechaNacimientoChange}/>
+                            <label htmlFor="FechaDeNacimiento">Fecha de Nacimiento</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="contraseñaUsuario" type="text" value={contraseña} onChange={handleContraseñaChange}/>
-                            <label htmlFor="contraseñaUsuario">contraseñaUsuario</label>
+                            <InputText className="input-margin" id="contraseñaUsuario" type="text" value={contraseña} onChange={handleContraseñaChange}/>
+                            <label htmlFor="contraseñaUsuario">contraseña</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="SexoUsuario" type="text" value={sexo} onChange={handleSexoChange}/>
-                            <label htmlFor="SexoUsuario">SexoUsuario</label>
+                            <InputText className="input-margin" id="SexoUsuario" type="text" value={sexo} onChange={handleSexoChange}/>
+                            <label htmlFor="SexoUsuario">Sexo</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="CorreoC" type="text" value={correo} onChange={handleCorreoChange}/>
-                            <label htmlFor="CorreoC">CorreoC</label>
+                            <InputText className="input-margin" id="CorreoC" type="text" value={correo} onChange={handleCorreoChange}/>
+                            <label htmlFor="CorreoC">Correo</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="CiudadDireccion" type="text" value={ciudad} onChange={handleCiudadChange}/>
-                            <label htmlFor="CiudadDireccion">CiudadDireccion</label>
+                            <InputText className="input-margin" id="CiudadDireccion" type="text" value={ciudad} onChange={handleCiudadChange}/>
+                            <label htmlFor="CiudadDireccion">Ciudad</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="PaisDireccion" type="text" value={pais} onChange={handlePaisChange}/>
-                            <label htmlFor="PaisDireccion">PaisDireccion</label>
+                            <InputText className="input-margin" id="PaisDireccion" type="text" value={pais} onChange={handlePaisChange}/>
+                            <label htmlFor="PaisDireccion">Pais</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="CalleDireccion" type="text" value={calle} onChange={handleCalleChange}/>
-                            <label htmlFor="CalleDireccion">CalleDireccion</label>
+                            <InputText className="input-margin" id="CalleDireccion" type="text" value={calle} onChange={handleCalleChange}/>
+                            <label htmlFor="CalleDireccion">Calle</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="TelefonoT" type="text" value={telefono} onChange={handleTelefonoChange}/>
-                            <label htmlFor="TelefonoT">TelefonoT</label>
+                            <InputText className="input-margin" id="TelefonoT" type="text" value={telefono} onChange={handleTelefonoChange}/>
+                            <label htmlFor="TelefonoT">Telefono</label>
                         </span>
                     </div> 
                 </div>        

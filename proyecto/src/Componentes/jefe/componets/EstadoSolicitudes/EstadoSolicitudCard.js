@@ -14,12 +14,12 @@ const EstadoSolicitudCard = (props) => (
                             <div className="">
                             <Card className="color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} header={header(estadoSolicitud.idIAR)}>
                             <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                <strong>NombreJefeIRA:</strong>                            {estadoSolicitud.NombreJefeIRA}               <br/>
-                                <strong> DetalleIAR:</strong>                              {estadoSolicitud.DetalleIAR}                  <br/>
-                                <strong>UnidadSolicitanteIRA:</strong>                     {estadoSolicitud.UnidadSolicitanteIRA}        <br/>
-                                <strong>FacultadSolicitanteIRA:</strong>                   {estadoSolicitud.FacultadSolicitanteIRA}      <br/>
-                                <strong>CarreraSolicitanteIRA:</strong>                    {estadoSolicitud.CarreraSolicitanteIRA}       <br/>
-                                <strong>FormularioSolitud_idFormularioSolitud:</strong>    {estadoSolicitud.FormularioSolitud_idFormularioSolitud}          <br/>
+                                <strong>Nombre de Jefe:</strong>                {estadoSolicitud.NombreJefeIRA}               <br/>
+                                <strong>Detalle:</strong>                       {estadoSolicitud.DetalleIAR}                  <br/>
+                                <strong>Unidad Solicitante:</strong>            {estadoSolicitud.UnidadSolicitanteIRA}        <br/>
+                                <strong>Facultad:</strong>                      {estadoSolicitud.FacultadSolicitanteIRA}      <br/>
+                                <strong>Carrera:</strong>                       {estadoSolicitud.CarreraSolicitanteIRA}       <br/>
+                                <strong>idFormularioSolicitud:</strong>         {estadoSolicitud.FormularioSolitud_idFormularioSolitud}          <br/>
                             </p>
                             <div className="span-justify m-span">
                                 <span >
