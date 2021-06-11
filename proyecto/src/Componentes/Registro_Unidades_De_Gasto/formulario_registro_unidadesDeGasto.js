@@ -240,9 +240,9 @@ class Registro_Unidad_Gasto extends Component {
                 RegistroNuevoUsuario_idRegistroNuevoUsuario: 1000000
             }
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://backendcompleto-sdc.herokuapp.com/api/unitSpending/createRegisterUnit' , {
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/unitSpending/createRegisterUnit' ,
                 data,    
-            }).then(response => {
+            ).then(response => {
                 console.log('registro añadido!', response.data);
             }).catch(e => {
                 console.log(e);

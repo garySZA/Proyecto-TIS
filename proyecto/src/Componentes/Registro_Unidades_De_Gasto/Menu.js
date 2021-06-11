@@ -100,13 +100,11 @@ function Menu () {
     const [idArticulos, setIdArticulos] = useState(-1);
 
     const handlerCargarArticulos = function (e) {
-        const opcion = e.target .value;
+        const opcion = e.target.value;
         console.log(opcion);
 
         setIdArticulos(opcion);
     }
-
-
 
 
     return (
