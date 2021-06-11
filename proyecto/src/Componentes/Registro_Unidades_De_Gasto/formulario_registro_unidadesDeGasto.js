@@ -1,7 +1,9 @@
 import { Component } from "react";
-import { Card, Label } from "reactstrap";
+import { Card, Form, Label } from "reactstrap";
 import axios from 'axios';
 import swal from 'sweetalert2';
+
+import Menu from "./Menu"; //importacion de la carpeta Meno para controlar select
 
 import './formulario_registro_unidadesDeGasto.css';
 
@@ -15,8 +17,8 @@ import { InputTextarea } from 'primereact/inputtextarea';
 
 
 const llenadoDeCampos = {
-    elegirFacultad:         /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
-    elegirCarrera:          /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
+    //elegirFacultad:         /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
+    //elegirCarrera:          /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
     unidadAdministrativa:   /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/, 
     presupuesto:            /^\d{1,7}$/, 
     nombreJefe:             /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/, 
@@ -25,15 +27,11 @@ const llenadoDeCampos = {
 };
 
 
-
-
 class Registro_Unidad_Gasto extends Component {
     constructor(props){
         super(props)
         this.state = {
             showMe:true, 
-            seleccionarFacultad:    "",
-            seleccionarCarrera:     "",
 
             validarunidadAdministrativa:   false, 
             validarpresupuesto:            false, 
@@ -44,89 +42,6 @@ class Registro_Unidad_Gasto extends Component {
             camposVacios:                   true,    
             
         };
-
-        this.facultad = [
-            { name: 'Fac. Arquitectura Y Ciencias Del Habitat',     code: 'FAC' },
-            { name: 'Fac. Ciencias Agricolas Y Pecuarias',          code: 'FCA' },
-            { name: 'Fac. Ciencias Economicas',                     code: 'FCE' },
-            { name: 'Fac. Ciencias Juridicas Y Politicas',          code: 'FCJ' },
-            { name: 'Fac. Ciencias Sociales',                       code: 'FCS' },
-            { name: 'Fac. Ciencias Veterinarias',                   code: 'FCV' },
-            { name: 'Fac. Ciencias y Tecnología',                   code: 'FCT' },
-            { name: 'Fac. Cs .Farmaceuticas Y Bioquimicas',         code: 'FFB' },
-            { name: 'Fac. Desarrollo Rural y Territorial',          code: 'FDR' },
-            { name: 'Fac. De Medicina',                             code: 'FM' },
-            { name: 'Fac. De Enfermeria',                           code: 'FE' },
-            { name: 'Fac. Humanidades Y Cs. De Educacion',          code: 'FHE' },
-            { name: 'Fac. De Odontología',                          code: 'FO' }
-        ];
-        this.carrera = [
-            { name: 'LIC. EN DIS. INTERIORES Y DEL MOBILIARIO',     code: 'LIM' },
-            { name: 'LIC. EN DISEÑO GRAF Y COMUNIC VISUAL',         code: 'LDG' },
-            { name: 'LICENCIATURA EN ARQUITECTURA',          	code: 'LEA' },
-            { name: 'LICENCIATURA EN TURISMO',          		code: 'LET' },
-            { name: 'TECNICO UNIV. SUPERIOR EN CONSTRUCCIONES',     code: 'TSC' },
-    
-            { name: 'LIC. EN INGENIERIA AGRICOLA',          	    code: 'LIAGRI' },
-            { name: 'LIC. EN INGENIERIA FITOTECNISTA',          	code: 'LIF' },
-            { name: 'LIC. EN INGENIERIA FORESTAL(NUE)',         	code: 'LIFN' },
-            { name: 'LICENCIATURA EN ING. AGROINDUSTRIAL',          code: 'LIAL' },
-            { name: 'LICENCIATURA EN INGENIERIA AGRONOMICA',        code: 'LIAGRO' },
-            { name: 'TEC. SUPERIOR EN MECANIZACION AGRICOLA',       code: 'TSMA' },
-    
-            { name: 'LIC. EN ADMINISTRACION DE EMPRESAS',          code: 'LAdmE' },
-        { name: 'LICENCIATURA EN CONTADURIA PUBLICA',              code: 'LConP' },
-        { name: 'LICENCIATURA EN ECONOMIA',     	               code: 'LEco' },
-        { name: 'LICENCIATURA EN INGENIERA COMERCIAL',         code: 'LIngCom' },
-        { name: 'LICENCIATURA EN INGENIERA FINANCIERA',        code: 'LIngFin' },
-    
-        { name: 'LICENCIATURA EN CIENCIAS JURIDICAS',          code: 'LCIeJur' },
-        { name: 'LICENCIATURA EN CIENCIAS POLITICAS (NUE)',    code: 'LCIeJurNue' },
-    
-        { name: 'LICENCIATURA EN SOCIOLOGIA',          		code: 'LEnSoc' },
-        { name: 'PROGRAMA DE LICENCIATURA EN ANTROPOLOGIA',     code: 'PLicAnt' },
-    
-        { name: 'LIC. EN MEDICINA VETERINARIA Y ZOOTECNIA',     code: 'LMedVet' },
-    
-        { name: 'LICENCIATURA EN BIOLOGIA',          		code: 'LEnBio' },
-        { name: 'LICENCIATURA EN FISICA',          		code: 'LEnFis' },
-        { name: 'LICENCIATURA EN ING. ELECTROMECANICA',         code: 'LIngELecM' },
-        { name: 'LICENCIATURA EN INGENIERIA CIVIL (NUEVO)',     code: 'LIngCivN' },
-        { name: 'LICENCIATURA EN INGENIERIA DE SISTEMAS',       code: 'LIngSis' },
-        { name: 'LICENCIATURA EN INGENIERIA ELECTRICA',         code: 'LIngEle' },
-        { name: 'LICENCIATURA EN INGENIERIA INDUSTRIAL',        code: 'LIngInd' },
-        { name: 'LICENCIATURA EN INGENIERIA INFORMATICA',       code: 'LIngInf' },
-        { name: 'LICENCIATURA EN INGENIERIA QUIMICA',           code: 'LIngQui' },
-        { name: 'LICENCIATURA EN INGENIERIA MECANICA',          code: 'LIngMec' },
-    
-        { name: 'LICENCIATURA EN BIOQUIMICA Y FARMACIA',        code: 'LicBioFar' },
-    
-        { name: 'LIC. EN PROD. AGRARIA Y DES. TERRITORIAL',  code: 'LicProAgrTer' },
-        { name: 'TECNICO SUPERIOR EN AGRONOMIA',             code: 'TSAgro' },
-    
-        { name: 'LIC. EN FISIOTERAPIA Y KINESIOLOGIA',          code: 'LicFisKi' },
-        { name: 'LICENCIATURA EN MEDICINA',          		code: 'LicMed' },
-        { name: 'LICENCIATURA EN NUTRICION Y DIETETICA',        code: 'LicNutDie' },
-    
-        { name: 'LICENCIATURA EN ENFERMERIA',          		code: 'LicEnf' },
-    
-        { name: 'LICENCIATURA EN CIENCIAS DE LA EDUCACION',     code: 'LicCieEdu' },
-        { name: 'LICENCIATURA EN COMUNICACION SOCIAL(NUE)',    code: 'LicComSocN' },
-        { name: 'LICENCIATURA EN PSICOLOGIA (NUE)',             code: 'LicPsiN' },
-        { name: 'LICENCIATURA EN TRABAJO SOCIAL',               code: 'LTraSoc' },
-        { name: 'LIC. EN LINGUIS. APLIC.ENSEÑANZA LENGUAS',     code: 'LicAplLen' },
-    
-        { name: 'LIC. EN ODONTOLOGIA (PLAN NUEVO)',          code: 'LicOdoN' }
-        ];
-        this.onFacultad = this.onFacultad.bind(this);
-        this.onCarrera = this.onCarrera.bind(this);
-    }
-
-    onFacultad(e) {
-        this.setState({ seleccionarFacultad: e.value });
-    }
-    onCarrera(e) {
-        this.setState({ seleccionarCarrera: e.value });
     }
 
 
@@ -304,8 +219,8 @@ class Registro_Unidad_Gasto extends Component {
                 console.log(document.getElementById(campo).value)
             })
 
-            var nomF = ""
-            var nomC = ""
+            //var nomF = document.getElementById("elegirFacultad").value
+            //var nomC = document.getElementById("elegirCarrera").value
             var nomUnid = document.getElementById("unidadAdministrativa").value
             var pre = document.getElementById("presupuesto").value 
             var jefeUnid = document.getElementById("nombreJefe").value
@@ -314,8 +229,9 @@ class Registro_Unidad_Gasto extends Component {
             var llave = "1000000"
 
             const data = {
-                nombreFacultad: `${nomF}`,
-                nombreCarrera: `${nomC}`,
+                //nombreFacultad: `${seleccion}`,
+                //nombreCarrera: `${seleccion}`,
+
                 nombreUnidad: `${nomUnid}`,
                 presupuesto: `${pre}`,
                 jefeUnidad: `${jefeUnid}`,
@@ -324,9 +240,9 @@ class Registro_Unidad_Gasto extends Component {
                 RegistroNuevoUsuario_idRegistroNuevoUsuario: 1000000
             }
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://backendcompleto-sdc.herokuapp.com/api/unitSpending/createRegisterUnit' , 
-                data
-            ).then(response => {
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/unitSpending/createRegisterUnit' , {
+                data,    
+            }).then(response => {
                 console.log('registro añadido!', response.data);
             }).catch(e => {
                 console.log(e);
@@ -351,53 +267,11 @@ class Registro_Unidad_Gasto extends Component {
                             <label className=" solitudDeProductos-servicios">
                                 Registrar Unidad de Gasto
                             </label>
-                        </div>           
+                        </div>
 
+                        <Menu/>
+       
                         <div className="contenedor-formularioDeRegistro">
-                            <div className="p-col-12 camposform solicitud__datos" id="dato__item">
-                                <div className="p-col-5 contenedor-camposform-subtitulos">
-                                    <h3 for="campo-item" className="subtitulos"> 
-                                    <i class="fas fa-school"></i> Nombre de Facultad:
-                                    </h3>
-                                </div>
-                                <div className="p-col-7 solicitud__datos-imputs">  
-                                <Dropdown
-                                    className="entradas"
-                                    name="elegirFacultad"
-                                    title="elegirFacultad" 
-                                    type="selection" 
-                                    value={this.state.seleccionarFacultad} 
-                                    options={this.facultad} 
-                                    onChange={this.onFacultad} 
-                                    optionLabel="name" 
-                                    placeholder="Seleccione una Facultad" >
-                                </Dropdown>
-                                    
-                                    
-                                </div>
-                            </div>
-                            <div className="p-col-12 camposform solicitud__datos" id="dato__detalle">
-                                <div className="p-col-5 contenedor-camposform-subtitulos">
-                                    <h3 for="campo-detalle" className="subtitulos"> 
-                                    <i class="fas fa-landmark"></i> Nombre de Carrera:
-                                    </h3>
-                                </div>
-                                <div className="p-col-7 solicitud__datos-imputs">
-                                <Dropdown
-                                    className="entradas"
-                                    name="nombreCarrera"
-                                    title="nombreCarrera" 
-                                    type="selection" 
-                                    value={this.state.seleccionarCarrera} 
-                                    options={this.carrera} 
-                                    onChange={this.onCarrera} 
-                                    optionLabel="name" 
-                                    placeholder="Seleccione una Carrera" >
-                                </Dropdown>
-                                    
-                                    
-                                </div>
-                            </div>
                             
                             <div className="p-col-12 camposform solicitud__datos" id="dato__fecha">
                                 <div className="p-col-5 contenedor-camposform-subtitulos">
