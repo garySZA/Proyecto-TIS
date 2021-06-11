@@ -140,11 +140,15 @@ const Login = () =>{
             </ul>
         </React.Fragment>
     );
+    const handleRegistrarse=()=>{
+        history.push("/NewUser");
+    }
+
 
     const loginRegister=()=>{
         return (
         <div>
-            <Button label="REGISTRARSE"    icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " />
+            <Button label="REGISTRARSE"    icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text loginRegister type-letter " onClick={handleRegistrarse}/>
         </div>    
     
         )

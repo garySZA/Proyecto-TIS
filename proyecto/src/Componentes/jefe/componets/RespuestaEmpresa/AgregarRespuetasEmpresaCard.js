@@ -96,44 +96,44 @@ const AgregarRespuestasEmpresaCard = (props) => {
                 <div className="p-d-flex p-flex-column">
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="NroRE" type="text" value={nro} onChange={handleNroChange}/>
-                            <label htmlFor="NroRE">NroRE</label>
+                            <InputText className="input-margin" id="NroRE" type="text" value={nro} onChange={handleNroChange}/>
+                            <label htmlFor="NroRE">Numero</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="CantidadRE" type="text" value={cantidad} onChange={handleCantidadChange}/>
-                            <label htmlFor="CantidadRE">CantidadRE</label>
+                            <InputText className="input-margin" id="CantidadRE" type="text" value={cantidad} onChange={handleCantidadChange}/>
+                            <label htmlFor="CantidadRE">Cantidad</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="UnidadRE" type="text" value={unidad} onChange={handleUnidadChange}/>
-                            <label htmlFor="UnidadRE">UnidadRE</label>
+                            <InputText className="input-margin" id="UnidadRE" type="text" value={unidad} onChange={handleUnidadChange}/>
+                            <label htmlFor="UnidadRE">Unidad</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="DetalleRE" type="text" value={detalle} onChange={handleDetalleChange}/>
-                            <label htmlFor="DetalleRE">DetalleRE</label>
+                            <InputText className="input-margin" id="DetalleRE" type="text" value={detalle} onChange={handleDetalleChange}/>
+                            <label htmlFor="DetalleRE">Detalle</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="UnitarioRE" type="text" value={unitario} onChange={handleUnitarioChange}/>
-                            <label htmlFor="UnitarioRE">UnitarioRE</label>
+                            <InputText className="input-margin" id="UnitarioRE" type="text" value={unitario} onChange={handleUnitarioChange}/>
+                            <label htmlFor="UnitarioRE">Precio Unitario</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="TotalRE" type="text" value={total} onChange={handleTotalChange}/>
-                            <label htmlFor="TotalRE">TotalRE</label>
+                            <InputText className="input-margin" id="TotalRE" type="text" value={total} onChange={handleTotalChange}/>
+                            <label htmlFor="TotalRE">Precio Total</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="FormularioSolitud_idFormularioSolitud" type="text" value={idFormSolicitud} onChange={handleFormSolicitudChange}/>
-                            <label htmlFor="FormularioSolitud_idFormularioSolitud">FormularioSolitud_idFormularioSolitud</label>
+                            <InputText className="input-margin" id="FormularioSolitud_idFormularioSolitud" type="text" value={idFormSolicitud} onChange={handleFormSolicitudChange}/>
+                            <label htmlFor="FormularioSolitud_idFormularioSolitud">idFormularioSolitud</label>
                         </span>
                     </div> 
                 </div>            

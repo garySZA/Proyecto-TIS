@@ -68,3 +68,7 @@
     right: 17%;
     z-index: 100
 }
+.input-margin{
+    margin-top: 0.32em;
+    margin-bottom: 0.32em;
+}

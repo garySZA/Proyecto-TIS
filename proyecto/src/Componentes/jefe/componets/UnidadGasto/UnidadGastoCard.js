@@ -14,14 +14,14 @@ const UnidadGastoCard = (props) => (
                             <div className="">
                             <Card className="color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} header={header(unidadGasto.idRegistroUnidad)}>
                                 <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                    <strong>nombreFacultad:</strong>                                {unidadGasto.nombreFacultad}    <br/>
-                                    <strong>nombreCarrera:</strong>                                 {unidadGasto.nombreCarrera}     <br/>
-                                    <strong>nombreUnidad:</strong>                                  {unidadGasto.nombreUnidad}      <br/>
-                                    <strong>presupuesto:</strong>                                   {unidadGasto.presupuesto}       <br/>
-                                    <strong>jefeUnidad:</strong>                                    {unidadGasto.jefeUnidad}        <br/>
-                                    <strong>secretariaUnidad:</strong>                              {unidadGasto.secretariaUnidad}  <br/>
-                                    <strong>telefonoUnidad:</strong>                                {unidadGasto.telefonoUnidad}    <br/>
-                                    <strong>RegistroNuevoUsuario_idRegistroNuevoUsuario:</strong>   {unidadGasto.RegistroNuevoUsuario_idRegistroNuevoUsuario}   <br/>
+                                    <strong>Nombre Facultad:</strong>                               {unidadGasto.nombreFacultad}    <br/>
+                                    <strong>Nombre Carrera:</strong>                                {unidadGasto.nombreCarrera}     <br/>
+                                    <strong>Unidad Administrativa:</strong>                         {unidadGasto.nombreUnidad}      <br/>
+                                    <strong>Presupuesto:</strong>                                   {unidadGasto.presupuesto}       <br/>
+                                    <strong>Nombre Jefe:</strong>                                   {unidadGasto.jefeUnidad}        <br/>
+                                    <strong>Nombre de Secretaria/o:</strong>                        {unidadGasto.secretariaUnidad}  <br/>
+                                    <strong>Telefono:</strong>                                      {unidadGasto.telefonoUnidad}    <br/>
+                                    <strong>IdUsuario:</strong>                                     {unidadGasto.RegistroNuevoUsuario_idRegistroNuevoUsuario}   <br/>
                                 </p>
                                 <div className="span-justify m-span">
                                     <span >
