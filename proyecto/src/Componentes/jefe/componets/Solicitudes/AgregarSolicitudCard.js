@@ -1,16 +1,16 @@
-import React, { useState }     from 'react';
+import React            from 'react';
+import {useState}       from 'react';
+import './Solicitudes.css';
 
-import { Dialog }              from 'primereact/dialog';
-import { Button }              from 'primereact/button';
-import { InputText }           from 'primereact/inputtext';
+import { Dialog }       from 'primereact/dialog';
+import { Button }       from 'primereact/button';
+import { InputText }    from 'primereact/inputtext';
 
-import {updateRegisterRequestID}   from   '../../../../services/apiRegisterRequest';
+import { createRegisterRequest}    from   '../../../../services/apiRegisterRequest';
 
-const EditYo = (props) => {
+const AgregarSolicitudCard = (props) => {
 
-   
-
-    const [displayBasic, setDisplayBasic] = useState(true);
+    const [displayBasic, setDisplayBasic] = useState(false);
 
     const [position, setPosition] = useState('center');
     
@@ -19,36 +19,54 @@ const EditYo = (props) => {
     }
   
     const onClick = (name, position) => {
-      dialogFuncMap[`${name}`](true);
-  
-      if (position) {
-          setPosition(position);
+        dialogFuncMap[`${name}`](true);
+    
+        if (position) {
+            setPosition(position);
+        }
+    }
+ 
+    const [item,setItem]                    = useState("");
+    const [detalle,setDetalle]              = useState("");
+    const [fecha,setFecha]                  = useState("");
+    const [responsable,setResponsable]      = useState("");
+    const [solicitud,setSolicitud]          = useState(0);
+    const [estado,setEstado]                = useState("");
+    const [idUnidadGasto,setIdUnidadGasto]  = useState(0);
+
+
+    const onHide = (name,res) => {
+      dialogFuncMap[`${name}`](false);
+      const data = {
+        item:                                 `${item}`,
+        DetalleSolitud:                       `${detalle}`,
+        FechaDeSolicitud:                     `${fecha}`,
+        responsableSolicitud:                 `${responsable}`,
+        montoSolicitud:                         solicitud,
+        estadoSolicitud:                      `${estado}`,
+        registroUnidadGasto_idRegistroUnidad:  idUnidadGasto
       }
+      if(res === 'Si'){
+        console.log("Si");
+        console.log(data);
+        props.agregarSolicitud(data);
+        createRegisterRequest(data,idUnidadGasto);
+      }else{
+        console.log("no") 
+      }
+      
     }
 
-    const renderFooter = (name) => {
-        return (
-            <div>
-                <Button label="No" icon="pi pi-times" onClick={() => onHide(name,'No')} className="p-button-text" />
-                <Button label="Si" icon="pi pi-check" onClick={() => onHide(name,'Si')} autoFocus />
-            </div>
-        );
+  const renderFooter = (name) => {
+    return (
+        <div>
+            <Button label="No" icon="pi pi-times" onClick={() => onHide(name,'No')} className="p-button-text" />
+            <Button label="Si" icon="pi pi-check" onClick={() => onHide(name,'Si')} autoFocus />
+        </div>
+    );
     }
 
-    const [id,setId]                        = useState(props.actualSolicitud.idFormularioSolitud);
-    const [item,setItem]                    = useState(props.actualSolicitud.item);
-    const [detalle,setDetalle]              = useState(props.actualSolicitud.DetalleSolitud);
-    const [fecha,setFecha]                  = useState(props.actualSolicitud.FechaDeSolicitud);
-    const [responsable,setResponsable]      = useState(props.actualSolicitud.responsableSolicitud);
-    const [solicitud,setSolicitud]          = useState(props.actualSolicitud.montoSolicitud);
-    const [estado,setEstado]                = useState(props.actualSolicitud.estadoSolicitud);
-    const [idUnidadGasto,setIdUnidadGasto]  = useState(props.actualSolicitud.registroUnidadGasto_idRegistroUnidad);
 
-
-
-    const handleIdChange = ({ target:{ value}})=>{
-        setId(value);
-    };
     const handleItemChange = ({ target:{ value}})=>{
         setItem(value);
     };
@@ -70,45 +88,13 @@ const EditYo = (props) => {
     const handleIdUnidadGastoPChange = ({ target:{ value}})=>{
         setIdUnidadGasto(value);
     };
-    
-
-
-    const onHide = (name,res) => {
-        dialogFuncMap[`${name}`](false);
-        const data = {
-            idFormularioSolitud:                  `${id}`,
-            item:                                 `${item}`,
-            DetalleSolitud:                       `${detalle}`,
-            FechaDeSolicitud:                     `${fecha}`,
-            responsableSolicitud:                 `${responsable}`,
-            montoSolicitud:                        solicitud,
-            estadoSolicitud:                      `${estado}`,
-            registroUnidadGasto_idRegistroUnidad:  idUnidadGasto
-        }
-        if(res === 'Si'){
-          console.log("Data Si");
-          console.log(data);
-          data.id = props.actualSolicitud.idFormularioSolitud;
-          props.actualizarSolicitud(props.actualSolicitud.idFormularioSolitud, data);
-          console.log(`el Id es ${data.idFormularioSolitud}`);
-          console.log(data)  
-          updateRegisterRequestID(data,idUnidadGasto,data.idFormularioSolitud);
-          setDisplayBasic(false);
-        }else{
-          console.log("no");
-          props.setEditando(false);
-          setDisplayBasic(false);
-        }
-        
-    }
-  
 
     return (
-          <div >
-                
-                <Dialog header="EDITAR FORMULARIO DE SOLICITUD" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
-                <div className="p-d-flex p-flex-column">
-                    <div className="p-mb-2">
+        <div >
+            <Button label="AÑADIR  NUEVA SOLICITUD"   icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter btn-flot" onClick={() => onClick('displayBasic')}/>
+            <Dialog header="AÑADIR NUEVA SOLICITUD" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+            <div className="p-d-flex p-flex-column">
+                <div className="p-mb-2">
                         <span className="p-float-label">
                             <InputText id="item" type="text" value={item} onChange={handleItemChange}/>
                             <label htmlFor="item">item</label>
@@ -149,11 +135,11 @@ const EditYo = (props) => {
                             <InputText id="registroUnidadGasto_idRegistroUnidad" type="text" value={idUnidadGasto} onChange={handleIdUnidadGastoPChange}/>
                             <label htmlFor="registroUnidadGasto_idRegistroUnidad">registroUnidadGasto_idRegistroUnidad</label>
                         </span>
-                    </div> 
-                </div>        
-                </Dialog>
+                    </div>    
+                </div>            
+            </Dialog>
         </div>
     );
 }
  
-export default EditYo;
+export default AgregarSolicitudCard;

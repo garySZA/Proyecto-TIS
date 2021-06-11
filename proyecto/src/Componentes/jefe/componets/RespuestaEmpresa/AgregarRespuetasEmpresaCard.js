@@ -1,16 +1,16 @@
-import React, { useState }     from 'react';
+import React            from 'react';
+import {useState}       from 'react';
+import './RespuestasEmpresa.css';
 
-import { Dialog }              from 'primereact/dialog';
-import { Button }              from 'primereact/button';
-import { InputText }           from 'primereact/inputtext';
+import { Dialog }       from 'primereact/dialog';
+import { Button }       from 'primereact/button';
+import { InputText }    from 'primereact/inputtext';
 
-import {updateAnswerBusinessID}   from   '../../../../services/apiAnswerBusiness';
+import { createAnswerBusiness}    from   '../../../../services/apiAnswerBusiness';
 
-const EditYo = (props) => {
+const AgregarRespuestasEmpresaCard = (props) => {
 
-   
-
-    const [displayBasic, setDisplayBasic] = useState(true);
+    const [displayBasic, setDisplayBasic] = useState(false);
 
     const [position, setPosition] = useState('center');
     
@@ -19,11 +19,43 @@ const EditYo = (props) => {
     }
   
     const onClick = (name, position) => {
-      dialogFuncMap[`${name}`](true);
-  
-      if (position) {
-          setPosition(position);
+        dialogFuncMap[`${name}`](true);
+    
+        if (position) {
+            setPosition(position);
+        }
+    }
+
+    const [nro,setNro]                          = useState(0);
+    const [cantidad,setCantidad]                = useState(0);
+    const [unidad,setUnidad]                    = useState(0);
+    const [detalle,setDetalle]                  = useState("");
+    const [unitario,setUnitario]                = useState(0);
+    const [total,setTotal]                      = useState(0);
+    const [idFormSolicitud,setidFormSolicitud]  = useState(0);
+
+
+
+
+    const onHide = (name,res) => {
+      dialogFuncMap[`${name}`](false);
+      const data = {
+        NroRE:                                 nro,
+        CantidadRE:                            cantidad,
+        UnidadRE:                              unidad,
+        DetalleRE:                             `${detalle}`,
+        UnitarioRE:                            unitario,
+        TotalRE:                               total
       }
+      if(res === 'Si'){
+        console.log("Si");
+        console.log(data);
+        props.agregarRespuestaEmpresa(data);
+        createAnswerBusiness(data,idFormSolicitud);
+      }else{
+        console.log("no") 
+      }
+      
     }
 
     const renderFooter = (name) => {
@@ -35,20 +67,6 @@ const EditYo = (props) => {
         );
     }
 
-    const [id,setId]                            = useState(props.actualRespuestaEmpresa.idrespuestasEmpresas);
-    const [nro,setNro]                          = useState(props.actualRespuestaEmpresa.NroRE);
-    const [cantidad,setCantidad]                = useState(props.actualRespuestaEmpresa.CantidadRE);
-    const [unidad,setUnidad]                    = useState(props.actualRespuestaEmpresa.UnidadRE);
-    const [detalle,setDetalle]                  = useState(props.actualRespuestaEmpresa.DetalleRE);
-    const [unitario,setUnitario]                = useState(props.actualRespuestaEmpresa.UnitarioRE);
-    const [total,setTotal]                      = useState(props.actualRespuestaEmpresa.TotalRE);
-    const [idFormSolicitud,setidFormSolicitud]  = useState(props.actualRespuestaEmpresa.FormularioSolitud_idFormularioSolitud);
-
-
-
-    const handleIdChange = ({ target:{ value}})=>{
-        setId(value);
-    };
     const handleNroChange = ({ target:{ value}})=>{
         setNro(value);
     };
@@ -71,40 +89,10 @@ const EditYo = (props) => {
         setidFormSolicitud(value);
     };
 
-    const onHide = (name,res) => {
-        dialogFuncMap[`${name}`](false);
-        const data = {
-            idrespuestasEmpresas:                  id,
-            NroRE:                                 nro,
-            CantidadRE:                            cantidad,
-            UnidadRE:                              unidad,
-            DetalleRE:                            `${detalle}`,
-            UnitarioRE:                            unitario,
-            TotalRE:                               total,
-            FormularioSolitud_idFormularioSolitud: idFormSolicitud
-        }
-        if(res === 'Si'){
-          console.log("Data Si");
-          console.log(data);
-          data.id = props.actualRespuestaEmpresa.idrespuestasEmpresas;
-          props.actualizarRespuestaEmpresa(props.actualRespuestaEmpresa.idrespuestasEmpresas, data);
-          console.log(`el Id es ${data.idrespuestasEmpresas}`);
-          console.log(data)  
-          updateAnswerBusinessID(data,idFormSolicitud,data.idrespuestasEmpresas);
-          setDisplayBasic(false);
-        }else{
-          console.log("no");
-          props.setEditando(false);
-          setDisplayBasic(false);
-        }
-        
-    }
-  
-
     return (
-          <div >
-                
-                <Dialog header="EDITAR RESPUESTA EMPRESAS" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+        <div >
+            <Button label="AÑADIR RESPUESTA EMPRESA"   icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter btn-flot" onClick={() => onClick('displayBasic')}/>
+            <Dialog header="AÑADIR RESPUESTA EMPRESA" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
                 <div className="p-d-flex p-flex-column">
                     <div className="p-mb-2">
                         <span className="p-float-label">
@@ -148,10 +136,10 @@ const EditYo = (props) => {
                             <label htmlFor="FormularioSolitud_idFormularioSolitud">FormularioSolitud_idFormularioSolitud</label>
                         </span>
                     </div> 
-                </div>        
-                </Dialog>
+                </div>            
+            </Dialog>
         </div>
     );
 }
  
-export default EditYo;
+export default AgregarRespuestasEmpresaCard;
