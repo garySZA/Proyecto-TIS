@@ -7,16 +7,16 @@ import axios from 'axios';
 
 const categorias = [
     {
-        "nombreFacultad": "FAC. ARQUITECTURA Y CIENCIAS DEL HABITAT",
-        "nombreCarrera": ["LIC. EN DIS. INTERIORES Y DEL MOBILIARIO", 
+        nombreFacultad: "FAC. ARQUITECTURA Y CIENCIAS DEL HABITAT",
+        nombreCarrera: ["LIC. EN DIS. INTERIORES Y DEL MOBILIARIO", 
                           "LIC. EN DISEÑO GRAF Y COMUNIC VISUAL", 
                           "LIC. EN ARQUITECTURA",
                           "LIC. EN TURISMO", 
                           "TEC. SUPERIOR EN CONSTRUCCIONES"]
     },
     {
-        "nombreFacultad": "FAC. CIENCIAS AGRICOLAS Y PECUARIAS",
-        "nombreCarrera": ["LIC. EN INGENIERIA AGRICOLA", 
+        nombreFacultad: "FAC. CIENCIAS AGRICOLAS Y PECUARIAS",
+        nombreCarrera: ["LIC. EN INGENIERIA AGRICOLA", 
                           "LIC. EN INGENIERIA FITOTECNISTA", 
                           "LIC. EN INGENIERIA FORESTAL(NUE)",
                           "LIC. EN ING. AGROINDUSTRIAL", 
@@ -24,30 +24,30 @@ const categorias = [
                           "TEC. SUPERIOR EN MECANIZACION AGRICOLA"]
     },
     {
-        "nombreFacultad": "FAC. CIENCIAS ECONOMICAS",
-        "nombreCarrera": ["LIC. EN ADMINISTRACION DE EMPRESAS",
+        nombreFacultad: "FAC. CIENCIAS ECONOMICAS",
+        nombreCarrera: ["LIC. EN ADMINISTRACION DE EMPRESAS",
                           "LIC. EN CONTADURIA PUBLICA", 
                           "LIC. EN ECONOMIA", 
                           "LIC. EN INGENIERA COMERCIAL",
                           "LIC. EN INGENIERA FINANCIERA"]
     },
     {
-        "nombreFacultad": "FAC. CIENCIAS JURIDICAS Y POLITICAS",
-        "nombreCarrera": ["LIC. EN CIENCIAS JURIDICAS",
-                          "LIC. EN CIENCIAS POLITICAS (NUE)"]
+        nombreFacultad: "FAC. CIENCIAS JURIDICAS Y POLITICAS",
+        nombreCarrera: ["LIC. EN CIENCIAS JURIDICAS",
+                        "LIC. EN CIENCIAS POLITICAS (NUE)"]
     },
     {
-        "nombreFacultad": "FAC. CIENCIAS SOCIALES",
-        "nombreCarrera": ["LIC. EN SOCIOLOGIA",
+        nombreFacultad: "FAC. CIENCIAS SOCIALES",
+        nombreCarrera: ["LIC. EN SOCIOLOGIA",
                           "PROGRAMA DE LIC. EN ANTROPOLOGIA"]
     },
     {
-        "nombreFacultad": "FAC. CIENCIAS VETERINARIAS",
-        "nombreCarrera": ["LIC. EN MEDICINA VETERINARIA Y ZOOTECNIA"]
+        nombreFacultad: "FAC. CIENCIAS VETERINARIAS",
+        nombreCarrera: ["LIC. EN MEDICINA VETERINARIA Y ZOOTECNIA"]
     },
     {
-        "nombreFacultad": "FAC. CIENCIAS Y TECNOLOGIA",
-        "nombreCarrera": ["LIC. EN BIOLOGIA",
+        nombreFacultad: "FAC. CIENCIAS Y TECNOLOGIA",
+        nombreCarrera: ["LIC. EN BIOLOGIA",
                           "LIC. EN FISICA", 
                           "LIC. EN ING. ELECTROMECANICA", 
                           "LIC. EN INGENIERIA CIVIL (NUE)", 
@@ -60,36 +60,36 @@ const categorias = [
                           "LIC. EN INGENIERIA MECANICA"]
     },
     {
-        "nombreFacultad": "FAC. CS .FARMACEUTICAS Y BIOQUIMICAS",
-        "nombreCarrera": ["LIC. EN BIOQUIMICA Y FARMACIA"]
+        nombreFacultad: "FAC. CS .FARMACEUTICAS Y BIOQUIMICAS",
+        nombreCarrera: ["LIC. EN BIOQUIMICA Y FARMACIA"]
     },
     {
-        "nombreFacultad": "FAC. DESARROLLO RURAL y TERRITORIAL",
-        "nombreCarrera": ["LIC. EN PROD. AGRARIA Y DES. TERRITORIAL",
+        nombreFacultad: "FAC. DESARROLLO RURAL y TERRITORIAL",
+        nombreCarrera: ["LIC. EN PROD. AGRARIA Y DES. TERRITORIAL",
                           "TECNICO SUPERIOR EN AGRONOMIA"]
     },
     {
-        "nombreFacultad": "FAC. DE MEDICINA",
-        "nombreCarrera": ["LIC. EN FISIOTERAPIA Y KINESIOLOGIA",
+        nombreFacultad: "FAC. DE MEDICINA",
+        nombreCarrera: ["LIC. EN FISIOTERAPIA Y KINESIOLOGIA",
                           "LIC. EN MEDICINA", 
                           "LIC. EN NUTRICION Y DIETETICA",]
     },
     {
-        "nombreFacultad": "FAC. DE ENFERMERIA",
-        "nombreCarrera": ["LIC. EN ENFERMERIA",
+        nombreFacultad: "FAC. DE ENFERMERIA",
+        nombreCarrera: ["LIC. EN ENFERMERIA",
                           "LIC. EN ENFERMERIA (NUE)"]
     },
     {
-        "nombreFacultad": "FAC. HUMANIDADES Y CS. DE EDUCACION",
-        "nombreCarrera": ["LIC. EN CIENCIAS DE LA EDUCACION",
+        nombreFacultad: "FAC. HUMANIDADES Y CS. DE EDUCACION",
+        nombreCarrera: ["LIC. EN CIENCIAS DE LA EDUCACION",
                           "LIC. EN COMUNICACION SOCIAL(NUE)", 
                           "LIC. EN PSICOLOGIA (NUE)", 
                           "LIC. EN TRABAJO SOCIAL", 
                           "LIC. EN LINGUIS. APLIC.ENSEÑANZA LENGUAS"]
     },
     {
-        "nombreFacultad": "FAC. DE ODONTOLOGIA",
-        "nombreCarrera": ["LIC. EN ODONTOLOGIA (PLAN NUEVO)"]
+        nombreFacultad: "FAC. DE ODONTOLOGIA",
+        nombreCarrera: ["LIC. EN ODONTOLOGIA (PLAN NUEVO)"]
     }
 ]
 
@@ -104,6 +104,7 @@ function Menu () {
         console.log(opcion);
 
         setIdArticulos(opcion);
+        //console.log(categorias.nombreFacultad[opcion]);     
     }
 
 
