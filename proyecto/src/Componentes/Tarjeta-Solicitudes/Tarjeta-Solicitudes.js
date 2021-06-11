@@ -29,12 +29,21 @@ function Tarjeta_Solicitudes(props){
         doc.addPage();//previsualiza pdf en nuevo pestaña solo en chrome
         doc.save('Solicitud de Empresas.pdf');
 
-        
-       
-
-    
     }
     
+    const urlObs = 'https://backendcompleto-sdc.herokuapp.com/api/inform/getInfAR';
+    const [observaciones, setObservaciones] = useState([''])
+
+    const obtenerObservaciones = async () => {
+        const response = await fetch(urlObs)
+        const responseJSON = await response.json()
+        setObservaciones(responseJSON)
+    }
+
+    useEffect(() => {
+        obtenerObservaciones();
+    },[])
+
     return(
         !observaciones? 'Cargando':
         observaciones.map(obs => {

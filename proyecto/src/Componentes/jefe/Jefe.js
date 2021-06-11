@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useParams }                from 'react-router';
 import { useHistory }               from 'react-router-dom';
-import './jefe.css';
+import './Jefe.css';
 
 import { Menubar }                  from 'primereact/menubar';
 import { Button }                   from 'primereact/button';
