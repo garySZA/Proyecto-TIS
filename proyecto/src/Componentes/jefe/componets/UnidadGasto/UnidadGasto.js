@@ -6,14 +6,15 @@ import { Menubar }                  from 'primereact/menubar';
 import { Button }                   from 'primereact/button';
 import { Card }                     from 'primereact/card';
 
+import UnidadGastoCard              from './UnidadGastoCard';
+import AgregarUnidadGastoCard       from './AgregarUnidadGastoCard';
+import EditarYo                     from './EditarYo';
 
-import {
-    getRegisterUnitSpeding,
-    getRegisterUnitSpedingID,
-    createRegisterUnitSpeding,
-    updateRegisterUnitSpedingID,
-    deleteRegisterUnitSpedingID
-}   from   '../../../../services/apiRegisterUnitSpeding';
+import { useHistory }                       from 'react-router-dom';
+
+import { useParams }                        from 'react-router';
+
+import {getRegisterUnitSpeding,deleteRegisterUnitSpedingID}   from   '../../../../services/apiRegisterUnitSpeding';
 
 import logo                         from './img/UMSS_logo.png';
 
@@ -21,14 +22,22 @@ const UnidadGasto = () =>{
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
 
+    const history        = useHistory();
+
+    const handleHome=()=>{
+        history.push("/");
+    }
+
     const closeSesion = ()=>{
         return(
             <div>
-                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " />
+                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " onClick={handleHome}/>
             </div>  
         )
     }
+
     const [unidadGastos,setUnidadGastos] = useState([]);
+    const [editando, setEditando] = useState(false);
 
     useEffect(()=>{
         fetchUnidadGastos();
@@ -46,21 +55,54 @@ const UnidadGasto = () =>{
         })
     }
     
-    const footer = (
-        <div className="span-justify">
-            <span >
-                <Button label="EDITAR"   icon="pi pi-pencil" className="" />
-                <Button label="ELIMINAR" icon="pi pi-trash" className="p-button-secondary p-ml-2" />
-            </span>
-        </div>
-    );
-    //Headers
-    const header = (id)=>{
-        return(
-            <div className="span-justify type-bold">
-                {`ID:${id}`}
-            </div>
-        )
+    const agregarUnidadGasto = (unidadGasto) => {
+        console.log(unidadGasto);
+        setUnidadGastos([...unidadGastos,unidadGasto]);
+      }
+    
+    const eliminandoUnidadGasto = (id) => {
+      setUnidadGastos(unidadGastos.filter(unidadGasto => unidadGasto.idRegistroUnidad !== id))
+      deleteRegisterUnitSpedingID(id);
+      console.log(`El ID es ${id}`);
+      console.log("Eliminando");
+    }
+    
+    
+    
+    const inicializarFormularioEstados = 
+    { 
+        idRegistroUnidad:                            0, 
+        nombreFacultad:                             '',
+        nombreCarrera:                              '',
+        nombreUnidad:                               '',
+        presupuesto:                                '',
+        jefeUnidad:                                 '',
+        secretariaUnidad:                           '',
+        telefonoUnidad:                             '',
+        RegistroNuevoUsuario_idRegistroNuevoUsuario: 0,
+    }
+
+    const [actualUnidadGasto, setActualUnidadGasto] = useState(inicializarFormularioEstados);
+
+    const editarFila = (solicitud) => {
+      setEditando(true) 
+      setActualUnidadGasto(
+        { 
+          idRegistroUnidad:                            solicitud.idRegistroUnidad, 
+          nombreFacultad:                              solicitud.nombreFacultad,
+          nombreCarrera:                               solicitud.nombreCarrera,
+          nombreUnidad:                                solicitud.nombreUnidad,
+          presupuesto:                                 solicitud.presupuesto,
+          jefeUnidad:                                  solicitud.jefeUnidad,
+          secretariaUnidad:                            solicitud.secretariaUnidad,
+          telefonoUnidad:                              solicitud.telefonoUnidad,
+          RegistroNuevoUsuario_idRegistroNuevoUsuario: solicitud.RegistroNuevoUsuario_idRegistroNuevoUsuario
+        })
+    }
+
+    const actualizarUnidadGasto = (id, actualizarUnidadGasto) => {
+      setEditando(false);
+      setUnidadGastos(unidadGastos.map(unidadGasto => (unidadGasto.idRegistroUnidad === id ? actualizarUnidadGasto : unidadGasto)));
     }
 
     return(
@@ -70,29 +112,19 @@ const UnidadGasto = () =>{
                     <Menubar className="panelMenu"  start={start}  end={closeSesion}/>
                 </div>
                 {
-                    unidadGastos&& unidadGastos.map((unidadGasto,i)=>
-                    <div className="m-card"> 
-                        <div key = {i} >
-                              <div className="p-grid p-justify-between margenes-card ">
-                                  <div className="p-col-4">
-                                        <Card className=" color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} header={header(unidadGasto.idRegistroUnidad)} footer={footer}>
-                                            <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                                <strong>nombreFacultad:</strong>                            {unidadGasto.nombreFacultad}    <br/>
-                                                <strong>nombreCarrera:</strong>                             {unidadGasto.nombreCarrera}     <br/>
-                                                <strong>nombreUnidad:</strong>                              {unidadGasto.nombreUnidad}      <br/>
-                                                <strong>presupuesto:</strong>                               {unidadGasto.presupuesto}       <br/>
-                                                <strong>jefeUnidad:</strong>                                {unidadGasto.jefeUnidad}        <br/>
-                                                <strong>secretariaUnidad:</strong>                          {unidadGasto.secretariaUnidad}  <br/>
-                                                <strong>telefonoUnidad:</strong>                           {unidadGasto.telefonoUnidad}    <br/>
-                                                <strong>RegistroNuevoUsuario_idRegistroNuevoUsuario:</strong>       {unidadGasto.RegistroNuevoUsuario_idRegistroNuevoUsuario}   <br/>
-                                            </p>
-                                        </Card>
-                                    </div>
-                                </div> 
+                    editando?(
+                        <div>
+                            <EditarYo setEditando={setEditando} actualUnidadGasto={actualUnidadGasto} actualizarUnidadGasto={actualizarUnidadGasto}/>
                         </div>
-                    </div>
+                    ):(
+                        <div className="p-grid m-botton-add">
+                            <div className="p-col-12">
+                                <AgregarUnidadGastoCard agregarUnidadGasto={agregarUnidadGasto} />
+                            </div>
+                        </div>
                     )
-                }  
+                }
+                <UnidadGastoCard unidadGastos={unidadGastos} eliminandoUnidadGasto={eliminandoUnidadGasto} editarFila={editarFila} /> 
             </div>
         </div>
     )

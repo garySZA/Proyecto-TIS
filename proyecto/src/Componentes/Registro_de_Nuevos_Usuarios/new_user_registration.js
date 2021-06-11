@@ -313,6 +313,7 @@ class RegistroDeNuevosUsuarios extends Component{
 
     render(){
         const start = <img alt="logo" src={logo} height="60"  className="p-mr-2"></img>;
+        
         const closeSesion= ()=>{
                   return(
                     <div>
@@ -425,7 +426,8 @@ class RegistroDeNuevosUsuarios extends Component{
 
                                                     <div class="formularioNuevoUsuario__grupo-input" >
                                                       <input  
-                                                       type="date"
+                                                    
+                                                        type = 'date'
                                                         className="ingreso"
                                                         name="fechaNacimientoNuevoUsuario"
                                                         id="fechaNacimientoNuevoUsuario"

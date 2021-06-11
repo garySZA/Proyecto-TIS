@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useParams }                from 'react-router';
 import { useHistory }               from 'react-router-dom';
-import './jefe.css';
+import './Jefe.css';
 
 import { Menubar }                  from 'primereact/menubar';
 import { Button }                   from 'primereact/button';
@@ -18,12 +18,15 @@ const Jefe = () =>{
 
     const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
 
+    const handleHome=()=>{
+        history.push("/");
+    }
 
 
     const closeSesion = ()=>{
         return(
             <div>
-                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " />
+                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " onClick={handleHome}/>
             </div>  
         )
     }
@@ -88,7 +91,7 @@ const Jefe = () =>{
             </div>
             <div className="p-grid p-justify-center ">
                     <div className="p-col-11">
-                        <div className="card margin-card color-card">   
+                        <div className=" margin-card">   
                             <div className="p-d-flex p-flex-column p-jc-center">
                                 <div className="p-d-flex p-flex-md-row p-jc-center">
                                     <div className="p-mr-2 p-order-3">                    
@@ -142,8 +145,7 @@ const Jefe = () =>{
             <div className="p-grid p-justify-center ">
                 <div className="p-col-11 margin-card">
                     <div className="card color-card">
-                        <h1>{idDB}</h1>
-                        <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out" className="p-button-rounded p-button-lg p-button-info p-button-text type-letter " />
+
                     </div>    
                 </div>    
             </div>

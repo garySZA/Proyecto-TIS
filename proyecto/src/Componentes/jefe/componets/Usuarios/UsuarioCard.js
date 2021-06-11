@@ -14,17 +14,17 @@ const UsuarioCard = (props) => (
                             <div className="">
                             <Card className="color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} header={header(usuario.idRegistroNuevoUsuario)}>
                             <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                <strong>RolR:</strong>                  {usuario.RolR}              <br/>
-                                <strong>NombreUsuario:</strong>         {usuario.NombreUsuario}     <br/>
-                                <strong>ApellidoUsuario:</strong>       {usuario.ApellidoUsuario}   <br/>
-                                <strong>FechaDeNacimiento:</strong>     {usuario.FechaDeNacimiento} <br/>
-                                <strong>contraseñaUsuario:</strong>     {usuario.contraseñaUsuario} <br/>
-                                <strong>SexoUsuario:</strong>           {usuario.SexoUsuario}       <br/>
-                                <strong>CorreoC:</strong>               {usuario.CorreoC}           <br/>
-                                <strong>CiudadDireccion:</strong>       {usuario.CiudadDireccion}   <br/>
-                                <strong>PaisDireccion:</strong>         {usuario.PaisDireccion}     <br/>
-                                <strong>CalleDireccion:</strong>        {usuario.CalleDireccion}    <br/>
-                                <strong>TelefonoT:</strong>             {usuario.TelefonoT}         <br/>
+                                <strong>Rol:</strong>                   {usuario.RolR}              <br/>
+                                <strong>Nombre(s):</strong>             {usuario.NombreUsuario}     <br/>
+                                <strong>Apellido(s):</strong>           {usuario.ApellidoUsuario}   <br/>
+                                <strong>Fecha de Nacimiento:</strong>   {usuario.FechaDeNacimiento} <br/>
+                                <strong>contraseña:</strong>            {usuario.contraseñaUsuario} <br/>
+                                <strong>Sexo:</strong>                  {usuario.SexoUsuario}       <br/>
+                                <strong>Correo:</strong>                {usuario.CorreoC}           <br/>
+                                <strong>Ciudad:</strong>                {usuario.CiudadDireccion}   <br/>
+                                <strong>Pais:</strong>                  {usuario.PaisDireccion}     <br/>
+                                <strong>Calle:</strong>                 {usuario.CalleDireccion}    <br/>
+                                <strong>Telefono:</strong>              {usuario.TelefonoT}         <br/>
                             </p>
                             <div className="span-justify m-span">
                                 <span >
