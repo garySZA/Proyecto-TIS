@@ -8,14 +8,9 @@
     transition: .5s ease-in-out;
 }
 
-/*.contedor-tituloDeRegistro{
-    width: 100%;
-    height: 5em;
-    top: 0;
-    margin-top: 0em;
-    border-top: 0em;
-}*/
-
+.contedor-tituloDeRegistro {
+    margin-top: 1.5em;
+}
 
 .contenedor-formularioDeRegistro {
     width: 37.5em;
@@ -24,24 +19,24 @@
 }
 
 .contenedor-camposform-subtitulos {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 0.625em;
+    margin-bottom: 0.313em;
     color: var(--color_fondo);
 }
 
 .contendor-botonesDeRegistro{
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;    
-    margin-bottom: 20px;
+    margin-top: 1.25em;    
+    margin-bottom: 1.25em;
 }
 
 .botones-formulario {
-    width: 230px;
-    height: 40px;
-    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    width: 14.375em;
+    height: 2.5em;
+    box-shadow: 0 0.125em 0.313em 0.063em rgb(64 60 67 / 16%);
     font-family: var(--fuente-titulos);
-    font-size: 18px;
+    font-size: 1.125em;
     color: var(--color_letra_fondo_oscuro);
     transition: .6s;
 }
@@ -54,18 +49,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 8px;
+    margin: 0.5em;
 }
 
 .entradas {
-    width: 300px;
-    height: 28px;
+    width: 20.625em;
+    height: 2.188em;
     font-family: var(--fuente-subtitulos);
     outline: none;
 }
 
 .solitudDeProductos-servicios {
-    font-size: 45px;
+    font-size: 2.813em;
     /*margin-left: 15%;
     margin: 20px;*/
     font-family: var(--fuente-titulos);
@@ -74,7 +69,7 @@
 
 .subtitulos {
     font-family: var(--fuente-subtitulos);
-    font-size: 16px;
+    font-size: 1em;
 }
 
 .botondecancelar {
@@ -99,36 +94,36 @@
 
 .solicitud__datos-imputs {
     position: relative;
-    max-width: 300px;
+    max-width: 18.75em;
 }
 
 .solicitud__dato-erroneo {
-    font-size: 12px;
+    font-size: 0.75em;
     margin-bottom: 0;
     display: none;
 }
 
 .solicitud__validacionCampos-Estados {
     position: absolute;
-    right: 10px;
-    bottom: 15px;
+    right: 0.625em;
+    bottom: 0.938em;
     z-index: 100;
-    font-size: 16px;
+    font-size: 1em;
     opacity: 0;
 }
 
 .solicitud__mensaje {
-    height: 45px;
-    line-height: 45px;
+    height: 2.813em;
+    line-height: 2.813em;
     background: #f66060;
-    padding: 0 15px;
-    border-radius: 3px;
+    padding: 0 0.938em;
+    border-radius: 0.188em;
     display: none;
     text-align: center;
 }
 
 .solicitud__mensaje-exitoso {
-    font-size: 20px;
+    font-size: 1.25em;
     color: #119200;
     display: none;
 }
@@ -148,7 +143,7 @@
 }
 
 .solicitud__datos-incorrecto .solicitud__dato {
-    border: 3px solid #bb2929;
+    border: 0.188em solid #bb2929;
 }
 
 .solicitud__dato-erroneo-activo {
@@ -165,5 +160,5 @@
 }
 
 .dato-erroneo {
-    border: 2px solid tomato;
+    border: 0.125em solid tomato;
 }
