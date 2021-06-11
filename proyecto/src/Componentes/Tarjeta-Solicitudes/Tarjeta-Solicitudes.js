@@ -5,6 +5,8 @@ function Tarjeta_Solicitudes(props){
     const urlObs = 'https://backendcompleto-sdc.herokuapp.com/api/inform/getInfAR';
     const [observaciones, setObservaciones] = useState([''])
 
+    
+
     const obtenerObservaciones = async () => {
         const response = await fetch(urlObs)
         const responseJSON = await response.json()
