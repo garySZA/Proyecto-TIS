@@ -1,0 +1,164 @@
+
+
+.contenedor-deRegistro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease-in-out;
+}
+
+.contedor-tituloDeRegistro {
+    margin-top: 1.5em;
+}
+
+.contenedor-formularioDeRegistro {
+    width: 37.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-camposform-subtitulos {
+    margin-top: 0.625em;
+    margin-bottom: 0.313em;
+    color: var(--color_fondo);
+}
+
+.contendor-botonesDeRegistro{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1.25em;    
+    margin-bottom: 1.25em;
+}
+
+.botones-formulario {
+    width: 14.375em;
+    height: 2.5em;
+    box-shadow: 0 0.125em 0.313em 0.063em rgb(64 60 67 / 16%);
+    font-family: var(--fuente-titulos);
+    font-size: 1.125em;
+    color: var(--color_letra_fondo_oscuro);
+    transition: .6s;
+}
+
+.botones-formulario:hover {
+    cursor: pointer;
+}
+
+.camposform {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5em;
+}
+
+.entradas {
+    width: 20.625em;
+    height: 2.188em;
+    font-family: var(--fuente-subtitulos);
+    outline: none;
+}
+
+.solitudDeProductos-servicios {
+    font-size: 2.813em;
+    /*margin-left: 15%;
+    margin: 20px;*/
+    font-family: var(--fuente-titulos);
+    color: var(--color_fondo);
+}
+
+.subtitulos {
+    font-family: var(--fuente-subtitulos);
+    font-size: 1em;
+}
+
+.botondecancelar {
+    color: var(--color-segundo-umss);
+}
+
+.botondecancelar:hover {
+    background-color: var(--color-segundo-umss);
+    color: var(--color_letra_fondo_oscuro);
+}
+
+.botondesolicitar {
+    color: var(--color_fondo);
+}
+
+.botondesolicitar:hover {
+    background-color: var(--color_fondo);
+    color: var(--color_letra_fondo_oscuro);
+}
+
+/*para las validaciones de los campos*/
+
+.solicitud__datos-imputs {
+    position: relative;
+    max-width: 18.75em;
+}
+
+.solicitud__dato-erroneo {
+    font-size: 0.75em;
+    margin-bottom: 0;
+    display: none;
+}
+
+.solicitud__validacionCampos-Estados {
+    position: absolute;
+    right: 0.625em;
+    bottom: 0.938em;
+    z-index: 100;
+    font-size: 1em;
+    opacity: 0;
+}
+
+.solicitud__mensaje {
+    height: 2.813em;
+    line-height: 2.813em;
+    background: #f66060;
+    padding: 0 0.938em;
+    border-radius: 0.188em;
+    display: none;
+    text-align: center;
+}
+
+.solicitud__mensaje-exitoso {
+    font-size: 1.25em;
+    color: #119200;
+    display: none;
+}
+
+.mensaje-exitoso {
+    display: flex;
+    justify-content: center;
+}
+
+.solicitud__datos-incorrecto .solicitud__label {
+    color: #bb2929;
+}
+
+.solicitud__datos-incorrecto .solicitud__validacionCampos-Estados {
+    color: #bb2929;
+    opacity: 1;
+}
+
+.solicitud__datos-incorrecto .solicitud__dato {
+    border: 0.188em solid #bb2929;
+}
+
+.solicitud__dato-erroneo-activo {
+    display: block;
+}
+
+.solicitud__datos-correcto .solicitud__validacionCampos-Estados {
+    color: #1ed12d;
+    opacity: 1;
+}
+
+.solicitud__mensaje-activo {
+    display: block;
+}
+
+.dato-erroneo {
+    border: 0.125em solid tomato;
+}
