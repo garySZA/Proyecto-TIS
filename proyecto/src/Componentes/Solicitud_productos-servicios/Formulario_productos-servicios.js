@@ -7,7 +7,6 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {Row, Col, Container, Form, Button, fluid } from 'react-bootstrap';
 import { Input, Label} from 'reactstrap';
 
 import { InputText } from 'primereact/inputtext';
@@ -29,11 +28,11 @@ class Formulario_ProductosServicios extends Component{
         super(props)
         this.state = {
             showMe:true,
-            validarItem: false,
-            validarDetalleSolicitud: false,
-            validarResponsableSolicitud: false,
-            validarMonto: false,
-            camposVacios: true,
+            validarItem:                    false,
+            validarDetalleSolicitud:        false,
+            validarResponsableSolicitud:    false,
+            validarMonto:                   false,
+            camposVacios:                   true,
 
             fecha: new Date()
         }
@@ -43,7 +42,10 @@ class Formulario_ProductosServicios extends Component{
         this.setState.showMe = true;
     }
 
-    nameImputs = ["item","detalleSolicitud", "responsableSolicitud", "monto"];
+    nameImputs = ["item",
+                  "detalleSolicitud", 
+                  "responsableSolicitud", 
+                  "monto"];
 
     //para verificar los datos de cada campo
     verificarCampos = () => {
@@ -145,19 +147,37 @@ class Formulario_ProductosServicios extends Component{
 
     //al presionar el boton "Solicitar"
     Solicitar = () => {
-        if(this.state.validarDetalleSolicitud == true && this.state.validarResponsableSolicitud == true && this.state.validarMonto == true){
+        if(this.state.validarItem == true 
+            && this.state.validarDetalleSolicitud == true 
+            && this.state.validarResponsableSolicitud == true 
+            && this.state.validarMonto == true){
             console.log("solicitar");
             this.nameImputs.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
+
+
+            var iitem1 = document.getElementById("item").value;
+            var detalle = document.getElementById("detalleSolicitud").value
+            var fechaS = "2021-06-11"
+            var respon = document.getElementById("responsableSolicitud").value
+            var mont = document.getElementById("monto").value
+            var llave = "3000000"
+
+            const data = {
+                item: `${iitem1}`,
+                DetalleSolitud: `${detalle}` ,
+                FechaDeSolicitud: `${fechaS}` ,
+                responsableSolicitud: `${respon}` ,
+                montoSolicitud: `${mont}`,
+                estadoSolicitud: "En espera",
+                registroUnidadGasto_idRegistroUnidad: 3000000
+            }
+            console.log(fechaS);
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://formulario-prod-ser-backend.herokuapp.com/add' , {
-                item: document.getElementById("item").value,
-                DetalleSolitud: document.getElementById("detalleSolicitud").value ,
-                FechaDeSolicitud: document.getElementById("fecha").value ,
-                responsableSolicitud: document.getElementById("responsableSolicitud").value ,
-                montoSolicitud: document.getElementById("monto").value
-            }).then(response => {
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/formReq/createFormReq' ,
+                data
+            ).then(response => {
                 console.log('solicitud aceptada y añadida!', response.data);
             }).catch(e => {
                 console.log(e);
@@ -213,27 +233,24 @@ class Formulario_ProductosServicios extends Component{
     
     render(){
         return(
-            <Container fluid className="contenedor-margen" >
-                    <Row className="cabeza-de-pagina">
-                        
-                    </Row>
+            <div>
                     {this.state.showMe ? (
-                    <Row className="contenedor-deRegistro" id="mostrar-formulario-proser">
+                    <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 
-                        <Col xs={9} className="contedor-tituloDeRegistro">
-                            <Label className="solitudDeProductos-servicios">
+                        <div className="p-col-12 contedor-tituloDeRegistro">
+                            <label className=" solitudDeProductos-servicios">
                                 Solicitud de Productos y/o Servicios
-                            </Label>
-                        </Col>           
+                            </label>
+                        </div>           
                                                                                                                             
-                        <Row className="contenedor-formularioDeRegistro">
+                        <div className="contenedor-formularioDeRegistro">
 
                             <div className="camposform solicitud__datos" id="dato__item">
                                 <div className="contenedor-camposform-subtitulos">
-                                    <h3 for="campo-item" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
+                                    <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
                                 </div>
-                                <Row className="solicitud__datos-imputs">
-                                    <InputText
+                                <div className="solicitud__datos-imputs">
+                                    <input
                                         className="entradas"
                                         name="item"
                                         id="item" 
@@ -241,20 +258,20 @@ class Formulario_ProductosServicios extends Component{
                                         placeholder="Ingresar nombre del Item" 
                                         maxlength="51"
                                         onChange = {this.verificarCampos}>
-                                    </InputText>
+                                    </input>
                                     <i class="solicitud__validacionCampos-Estados"></i>
                                     <p className="solicitud__dato-erroneo" id="errorDeMensaje-item">
                                         El texto debe de contener caracteres y numeros.
                                     </p>
-                                </Row>
+                                </div>
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__detalle">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-book"></i> Detalle:</h3>
                                 </div>
-                                <Row className="solicitud__datos-imputs">
-                                    <InputTextarea
+                                <div className="solicitud__datos-imputs">
+                                    <textarea
                                         className="entradas"
                                         name="detalleSolicitud"
                                         id="detalleSolicitud" 
@@ -263,34 +280,34 @@ class Formulario_ProductosServicios extends Component{
                                         maxlength="201"
                                         onChange = {this.verificarCampos}>
 
-                                    </InputTextarea>
+                                    </textarea>
                                     <i class="solicitud__validacionCampos-Estados"></i>
                                     <p className="solicitud__dato-erroneo" id="errorDeMensaje-detalleSolicitud">
                                         El texto debe de contener menos de 200 caracteres.
                                     </p>
 
-                                </Row>
+                                </div>
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__fecha" method="POST">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"><i class="fas fa-calendar-week"></i> Fecha de solicitud:</h3>
                                 </div>
-                                <Row className="solicitud__datos-imputs">
+                                <div className="solicitud__datos-imputs">
                                     <DatePicker className="entradas" 
                                         type="text" 
                                         name="fecha"
                                         id="fecha" selected={this.state.fecha}>
                                     </DatePicker>
 
-                                </Row>
+                                </div>
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__responsable">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-user"></i> Responsable de solicitud:</h3>
                                 </div>
-                                <Row className="solicitud__datos-imputs">
+                                <div className="solicitud__datos-imputs">
                                     <input 
                                         className="entradas"
                                         name="responsableSolicitud"
@@ -306,14 +323,14 @@ class Formulario_ProductosServicios extends Component{
                                         El campo debe de contener solo letras.
                                     </p>
 
-                                </Row> 
+                                </div> 
                             </div>
 
                             <div className="camposform solicitud__datos" id="dato__monto">
                                 <div className="contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-dollar-sign"></i> Monto:   </h3>
                                 </div>
-                                <Row className="solicitud__datos-imputs">
+                                <div className="solicitud__datos-imputs">
                                     <input 
                                         className="entradas"
                                         name="monto"
@@ -329,7 +346,7 @@ class Formulario_ProductosServicios extends Component{
                                         El campo debe de contener solo numeros positivos.
                                     </p>
 
-                                </Row>
+                                </div>
                             </div>
 
                             <div class="solicitud__mensaje" id="solicitud__mensaje">
@@ -349,17 +366,11 @@ class Formulario_ProductosServicios extends Component{
                                     ¡Se envio el formulario exitosamente!
                                 </p>
                             </div>
-                        </Row>
-                        
+                        </div>
 
-                        
-                        
-                        
-
-                    </Row>
+                    </div>
                     ):(<div></div>)}
-                    <Row className="pie-de-pagina"> </Row>
-            </Container>
+            </div>
         );
     }
 }

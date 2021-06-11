@@ -1,7 +1,7 @@
 import './estilos_barra_lateral_izquierda.css';
 import './estilos_botones.css';
 import Registro_Empresa from '../Registro_Empresa/registro_empresa'
-import React from 'react';
+import React, {useState} from 'react';
 import './estilos_botones.css';
 import '../Campo_Central/estilos_campo_central.css'
 import './estilos_botones.css'
@@ -50,12 +50,12 @@ class BarraLateral extends React.Component{
   }
 
   operation2 = () =>{
+    this.cambiarColorBoton('botonRegistroEmpresa')
     if(this.state.mostrarRegistroEmpresa == true){
       this.setState({
         mostrarRegistroEmpresa: false
       })
-      console.log("true");
-      console.log(this.state.mostrarRegistroEmpresa);
+      document.getElementById('botonRegistroEmpresa').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
         
@@ -68,8 +68,12 @@ class BarraLateral extends React.Component{
         mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })
-      console.log("false");
-      console.log(this.state.mostrarRegistroEmpresa);
+      document.getElementById('botonVerEmpresas').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroSolicitud').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroUnidadDeGasto').classList.remove('estilo-boton-click')
+      document.getElementById('botonHistorialSolicitudes').classList.remove('estilo-boton-click')
+      document.getElementById('botonModificarEstados').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroEmpresa').classList.toggle('estilo-boton-click')
     }
   }
 
@@ -78,6 +82,7 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarFormularioProductosServicios: false
       }) 
+      document.getElementById('botonRegistroSolicitud').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
         mostrarGenerarPdf: false,
@@ -88,7 +93,13 @@ class BarraLateral extends React.Component{
         mostrarEmpresas: false,
         mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
-      })     
+      })
+      document.getElementById('botonVerEmpresas').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroSolicitud').classList.toggle('estilo-boton-click')
+      document.getElementById('botonRegistroUnidadDeGasto').classList.remove('estilo-boton-click')
+      document.getElementById('botonHistorialSolicitudes').classList.remove('estilo-boton-click')
+      document.getElementById('botonModificarEstados').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroEmpresa').classList.remove('estilo-boton-click')
     }
   }
 
@@ -116,6 +127,7 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarregistroUnidadGasto: false
       })
+      document.getElementById('botonRegistroUnidadDeGasto').classList.toggle('estilo-boton-click')
     }else {
       this.setState({
         mostrarGenerarPdf: false,
@@ -127,11 +139,17 @@ class BarraLateral extends React.Component{
         mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })
+      document.getElementById('botonVerEmpresas').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroSolicitud').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroUnidadDeGasto').classList.toggle('estilo-boton-click')
+      document.getElementById('botonHistorialSolicitudes').classList.remove('estilo-boton-click')
+      document.getElementById('botonModificarEstados').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroEmpresa').classList.remove('estilo-boton-click')
     }
   }
 
   operation5 = () =>{
-
+    this.cambiarColorBoton('botonVerEmpresas');
     axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
         .then(response => {
             this.listaEmpresas = response.data;
@@ -141,6 +159,7 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarEmpresas: false
       }) 
+      document.getElementById('botonVerEmpresas').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
         mostrarGenerarPdf: false,
@@ -152,6 +171,12 @@ class BarraLateral extends React.Component{
         mostrarSolicitudesModificables: false,
         mostrarEmpresas: true
       })     
+      document.getElementById('botonVerEmpresas').classList.toggle('estilo-boton-click')
+      document.getElementById('botonRegistroSolicitud').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroUnidadDeGasto').classList.remove('estilo-boton-click')
+      document.getElementById('botonHistorialSolicitudes').classList.remove('estilo-boton-click')
+      document.getElementById('botonModificarEstados').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroEmpresa').classList.remove('estilo-boton-click')
     }
   }
 
@@ -161,6 +186,7 @@ class BarraLateral extends React.Component{
       this.setState({
         mostrarHistorialSolicitudes: false
       }) 
+      document.getElementById('botonHistorialSolicitudes').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
         mostrarGenerarPdf: false,
@@ -171,7 +197,13 @@ class BarraLateral extends React.Component{
         mostrarEmpresas: false,
         mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: true
-      })     
+      })
+      document.getElementById('botonVerEmpresas').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroSolicitud').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroUnidadDeGasto').classList.remove('estilo-boton-click')
+      document.getElementById('botonHistorialSolicitudes').classList.toggle('estilo-boton-click')
+      document.getElementById('botonModificarEstados').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroEmpresa').classList.remove('estilo-boton-click')     
     }
   }
 
@@ -180,7 +212,8 @@ class BarraLateral extends React.Component{
     if(this.state.mostrarSolicitudesModificables == true){
       this.setState({
         mostrarSolicitudesModificables: false
-      }) 
+      })
+      document.getElementById('botonModificarEstados').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
         mostrarFormularioDeUsuariosNuevos: false,
@@ -191,7 +224,13 @@ class BarraLateral extends React.Component{
         mostrarHistorialSolicitudes: false,
         mostrarGenerarPdf: false,
         mostrarSolicitudesModificables: true
-      })     
+      })
+      document.getElementById('botonVerEmpresas').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroSolicitud').classList.remove('estilo-boton-click')
+      document.getElementById('botonRegistroUnidadDeGasto').classList.remove('estilo-boton-click')
+      document.getElementById('botonHistorialSolicitudes').classList.remove('estilo-boton-click')
+      document.getElementById('botonModificarEstados').classList.toggle('estilo-boton-click')
+      document.getElementById('botonRegistroEmpresa').classList.remove('estilo-boton-click')     
     }
   }
 
@@ -227,12 +266,21 @@ class BarraLateral extends React.Component{
         })
   }
 
+  //metodo para cambiar color de boton al darle click
+  cambiarColorBoton(valor){
+    let idBotones = ['botonRegistroEmpresa','botonRegistroSolicitud','botonRegistroUnidadDeGasto', 'botonVerEmpresas', 'botonHistorialSolicitudes', 'botonModificarEstados']
+    idBotones.forEach(boton =>  {
+      if(boton == valor){
+        console.log('')
+      }
+    })
+  }
 
   render(){
     return(
       <div>
       <div className="dinamico">
-        <div className="opciones">
+        <div className="p-grid opciones">
             
             <button className="registro-empresa"    id ="botonRegistroEmpresa"  onClick={()=>this.operation2()}>Registrar Empresa</button>
             <button className="registro-empresa"   id="botonRegistroSolicitud"   onClick={()=>this.operation3()}>Registro de solicitud</button>
@@ -244,7 +292,7 @@ class BarraLateral extends React.Component{
             
            
         </div>
-        <div className="principal" id="algo" onChange={this.onChange}>
+        <div className="p-grid principal" id="algo" onChange={this.onChange}>
           {
             (this.state.mostrarRegistroEmpresa)?
             <Registro_Empresa estadoRegistroEmpresa={this.state.mostrarRegistroEmpresa}/>

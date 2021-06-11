@@ -1,7 +1,7 @@
 .tarjeta-solicitud-aprobado{
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
     border: 2px solid #A9E159;
-    width: 280px;
+    width: 250px;
     border-radius: 30px;
     box-shadow: 18px 18px 20px #d1d9e6, -10px -10px 15px #ffffff;
 }
@@ -18,7 +18,7 @@
     border-top-right-radius: 30px;
     margin-top: -5px;
     margin-left: -2px;
-    width: 280px;
+    width: 250px;
 }
 
 
@@ -45,7 +45,7 @@
 .tarjeta-solicitud-rechazado{
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
     border: 2px solid #EC1B23;
-    width: 280px;
+    width: 250px;
     border-radius: 30px;
     box-shadow: 18px 18px 20px #d1d9e6, -10px -10px 15px #ffffff;
 }
@@ -60,6 +60,5 @@
     border-top-right-radius: 30px;
     margin-top: -5px;
     margin-left: -1px;
-    width: 280px;
+    width: 250px;
 }
-/*boton pdf*/
