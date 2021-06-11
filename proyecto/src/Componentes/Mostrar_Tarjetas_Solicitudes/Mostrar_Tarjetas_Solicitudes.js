@@ -13,6 +13,7 @@ function Mostrar_tarjetas_solicitudes(){
         const responseJSON = await response.json();
         setTodos(responseJSON);
     }
+console.log(todos)
 
     useEffect(() => {
         fetchApi();
@@ -33,8 +34,12 @@ function Mostrar_tarjetas_solicitudes(){
                             ''
                             
                         })
+
                     }
+                     
+                    
                 </div>
+
             </div>
         );
 }
