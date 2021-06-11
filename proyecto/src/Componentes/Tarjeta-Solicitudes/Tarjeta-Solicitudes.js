@@ -1,40 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import './estilos-tarjeta-solicitudes.css'
-import {Button} from 'reactstrap'
-import jsPDF from 'jspdf'; 
-
 
 function Tarjeta_Solicitudes(props){
-    
-    const {solicitud}=props;
-    
-    const { estadoSolicitud,DetalleSolitud,item,FechaDeSolicitud,responsableSolicitud,montoSolicitud}=solicitud;
-    const fecha =FechaDeSolicitud.replace('T00:00:00.000Z', '');
- 
-    const printPDF=()=>{
+    const urlObs = 'https://backendcompleto-sdc.herokuapp.com/api/inform/getInfAR';
+    const [observaciones, setObservaciones] = useState([''])
 
-
-        
-        var doc=new jsPDF('portrait','px','a4','false');
-        
-        doc.text(150,70, "Solicitudes de Empresas");
-        doc.text(60,110,"Detalle: "+DetalleSolitud);
-        doc.text(60,130,"Item: "+item);
-        doc.text(60,150,"Fecha: "+fecha);
-        doc.text(60,170,"Responsable: "+responsableSolicitud);
-        doc.text(60,190,"Monto: "+montoSolicitud);
-        doc.text(143,230,"________________________");
-        doc.text(200,250,"RVGC");
-        
-        doc.addPage();//previsualiza pdf en nuevo pestaña solo en chrome
-        doc.save('Solicitud de Empresas.pdf');
-
-        
-       
-
-    
+    const obtenerObservaciones = async () => {
+        const response = await fetch(urlObs)
+        const responseJSON = await response.json()
+        setObservaciones(responseJSON)
     }
-    
+
+    useEffect(() => {
+        obtenerObservaciones();
+    },[])
     return(
         !observaciones? 'Cargando':
         observaciones.map(obs => {
@@ -43,7 +22,6 @@ function Tarjeta_Solicitudes(props){
                     <div className={props.estadoTitulo}>
                         <label className="estado-solicitud">{props.solicitud.estadoSolicitud}</label>
                     </div>
-
                     <div className="contenedor-campos-solicitud">
                         <label className = "subtitulos-solicitud">Detalle:</label>
                         <div className="contenido-de-solicitudes">
@@ -70,16 +48,10 @@ function Tarjeta_Solicitudes(props){
                             <label className="etiqueta-contenido-solicitud">{obs.DetalleIAR}</label>
                         </div>
                     </div>
-                    
-                <div className="tamanio-Botocito" style ={{textAlign:'center'}} ><br/>
-               <Button onClick={printPDF} >Download PDF</Button>
                 </div>
-
-                </div>
-
-               :
-            ''
-          })
+        :
+        ''
+        })
     )
 }
 
