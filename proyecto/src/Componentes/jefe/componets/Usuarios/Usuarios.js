@@ -27,10 +27,14 @@ const Usuarios = () =>{
     const [idDB,setIdDB]             = useState(id);
     
 
+    const handleHome=()=>{
+        history.push("/");
+    }
+
     const closeSesion = ()=>{
         return(
             <div>
-                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out"  className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " />
+                <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out"  className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " onClick={handleHome}/>
             </div>  
         )
     }

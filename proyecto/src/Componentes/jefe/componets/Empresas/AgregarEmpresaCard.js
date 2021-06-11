@@ -101,58 +101,60 @@ const AgregarEmpresaCard = (props) => {
             <Button label="AÑADIR EMPRESA"   icon="pi  pi-fw pi-user-plus" className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter btn-flot" onClick={() => onClick('displayBasic')}/>
             <Dialog header="AÑADIR EMPRESA" visible={displayBasic} style={{ width: '35vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
             <div className="p-d-flex p-flex-column">
+                    <u className="input-margin"><strong>Datos de la empresa</strong> <br/></u>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="nombreEmpresa" type="text" value={nombre} onChange={handleNombreChange}/>
-                            <label htmlFor="nombreEmpresa">nombreEmpresa</label>
+                            <InputText className="input-margin" id="nombreEmpresa" type="text" value={nombre} onChange={handleNombreChange}/>
+                            <label htmlFor="nombreEmpresa">Nombre de Empresa</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="rubroEmpresa" type="text" value={rubro} onChange={handleRubroChange}/>
-                            <label htmlFor="rubroEmpresa">rubroEmpresa</label>
+                            <InputText className="input-margin" id="rubroEmpresa" type="text" value={rubro} onChange={handleRubroChange}/>
+                            <label htmlFor="rubroEmpresa">Rubro</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="telefonoEmpresa" type="text" value={telefono} onChange={handleTelefonoChange}/>
-                            <label htmlFor="telefonoEmpresa">telefonoEmpresa</label>
+                            <InputText className="input-margin" id="telefonoEmpresa" type="text" value={telefono} onChange={handleTelefonoChange}/>
+                            <label htmlFor="telefonoEmpresa">Telefono</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="correoEmpresa" type="text" value={correo} onChange={handleCorreoChange}/>
-                            <label htmlFor="correoEmpresa">correoEmpresa</label>
+                            <InputText className="input-margin" id="correoEmpresa" type="text" value={correo} onChange={handleCorreoChange}/>
+                            <label htmlFor="correoEmpresa">Correo</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="NITEmpresa" type="text" value={nit} onChange={handleNitChange}/>
-                            <label htmlFor="NITEmpresa">NITEmpresa</label>
+                            <InputText className="input-margin" id="NITEmpresa" type="text" value={nit} onChange={handleNitChange}/>
+                            <label htmlFor="NITEmpresa">NIT</label>
+                        </span>
+                    </div> 
+                    <u className="input-margin" ><strong>Datos persona encargada</strong> <br/></u>
+                    <div className="p-mb-2">
+                        <span className="p-float-label">
+                            <InputText className="input-margin" id="NombrePersona" type="text" value={nombreP} onChange={handleNombrePChange}/>
+                            <label htmlFor="NombrePersona">Nombre</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="NombrePersona" type="text" value={nombreP} onChange={handleNombrePChange}/>
-                            <label htmlFor="NombrePersona">NombrePersona</label>
+                            <InputText className="input-margin" id="telefonoPersona" type="text" value={telefonoP} onChange={handleTelefonoPChange}/>
+                            <label htmlFor="telefonoPersona">Telefono</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="telefonoPersona" type="text" value={telefonoP} onChange={handleTelefonoPChange}/>
-                            <label htmlFor="telefonoPersona">telefonoPersona</label>
+                            <InputText className="input-margin" id="ciPersona" type="text" value={ciPersona} onChange={handleCiPersonaChange}/>
+                            <label htmlFor="ciPersona">CI</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="ciPersona" type="text" value={ciPersona} onChange={handleCiPersonaChange}/>
-                            <label htmlFor="ciPersona">ciPersona</label>
-                        </span>
-                    </div> 
-                    <div className="p-mb-2">
-                        <span className="p-float-label">
-                            <InputText id="RegistroNuevoUsuario_idRegistroNuevoUsuario" type="text" value={idUsuario} onChange={handleIdUsuarioChange}/>
-                            <label htmlFor="RegistroNuevoUsuario_idRegistroNuevoUsuario">RegistroNuevoUsuario_idRegistroNuevoUsuario</label>
+                            <InputText className="input-margin" id="RegistroNuevoUsuario_idRegistroNuevoUsuario" type="text" value={idUsuario} onChange={handleIdUsuarioChange}/>
+                            <label htmlFor="RegistroNuevoUsuario_idRegistroNuevoUsuario">idUsuario</label>
                         </span>
                     </div> 
                 </div>            

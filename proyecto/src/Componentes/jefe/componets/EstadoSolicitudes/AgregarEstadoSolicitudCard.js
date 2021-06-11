@@ -90,38 +90,38 @@ const AgregarEstadoSolicitudCard = (props) => {
             <div className="p-d-flex p-flex-column">
             <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="NombreJefeIRA" type="text" value={nombre} onChange={handleNombreChange}/>
-                            <label htmlFor="NombreJefeIRA">NombreJefeIRA</label>
+                            <InputText className="input-margin" id="NombreJefeIRA" type="text" value={nombre} onChange={handleNombreChange}/>
+                            <label htmlFor="NombreJefeIRA">Nombre de Jefe</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="DetalleIAR" type="text" value={detalle} onChange={handleDetalleChange}/>
-                            <label htmlFor="DetalleIAR">DetalleIAR</label>
+                            <InputText className="input-margin" id="DetalleIAR" type="text" value={detalle} onChange={handleDetalleChange}/>
+                            <label htmlFor="DetalleIAR">Detalle</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="UnidadSolicitanteIRA" type="text" value={unidad} onChange={handleUnidadChange}/>
-                            <label htmlFor="UnidadSolicitanteIRA">UnidadSolicitanteIRA</label>
+                            <InputText className="input-margin" id="UnidadSolicitanteIRA" type="text" value={unidad} onChange={handleUnidadChange}/>
+                            <label htmlFor="UnidadSolicitanteIRA">Unidad</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="FacultadSolicitanteIRA" type="text" value={facultad} onChange={handleFacultadChange}/>
-                            <label htmlFor="FacultadSolicitanteIRA">FacultadSolicitanteIRA</label>
+                            <InputText className="input-margin" id="FacultadSolicitanteIRA" type="text" value={facultad} onChange={handleFacultadChange}/>
+                            <label htmlFor="FacultadSolicitanteIRA">Nombre de Facultad</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="CarreraSolicitanteIRA" type="text" value={carrera} onChange={handleCarreraChange}/>
-                            <label htmlFor="CarreraSolicitanteIRA">CarreraSolicitanteIRA</label>
+                            <InputText className="input-margin" id="CarreraSolicitanteIRA" type="text" value={carrera} onChange={handleCarreraChange}/>
+                            <label htmlFor="CarreraSolicitanteIRA">Nombre de Carrera</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="FormularioSolitud_idFormularioSolitud" type="text" value={idFormSolicitud} onChange={handleIdFormSolicitudChange}/>
-                            <label htmlFor="FormularioSolitud_idFormularioSolitud">FormularioSolitud_idFormularioSolitud</label>
+                            <InputText className="input-margin" id="FormularioSolitud_idFormularioSolitud" type="text" value={idFormSolicitud} onChange={handleIdFormSolicitudChange}/>
+                            <label htmlFor="FormularioSolitud_idFormularioSolitud">idFormularioSolicitud</label>
                         </span>
                     </div> 
             </div>        

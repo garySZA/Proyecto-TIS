@@ -14,13 +14,13 @@ const RespuestaEmpresaCard = (props) => (
                             <div className="">
                             <Card className="color-card type-letterE" title="" style={{ width: '25rem', marginBottom: '2em' }} header={header(respuestaEmpresa.idrespuestasEmpresas)}>
                                 <p className="p-m-0" style={{lineHeight: '1.5'}}>
-                                    <strong>NroRE:</strong>                                    {respuestaEmpresa.NroRE}               <br/>
-                                    <strong>CantidadRE:</strong>                               {respuestaEmpresa.CantidadRE}          <br/>
-                                    <strong>UnidadRE:</strong>                                 {respuestaEmpresa.UnidadRE}            <br/>
-                                    <strong>DetalleRE:</strong>                                {respuestaEmpresa.DetalleRE}           <br/>
-                                    <strong>UnitarioRE:</strong>                               {respuestaEmpresa.UnitarioRE}          <br/>
-                                    <strong>TotalRE:</strong>                                  {respuestaEmpresa.TotalRE}             <br/>
-                                    <strong>FormularioSolitud_idFormularioSolitud:</strong>    {respuestaEmpresa.FormularioSolitud_idFormularioSolitud}        <br/>
+                                    <strong>Numero:</strong>                                 {respuestaEmpresa.NroRE}               <br/>
+                                    <strong>Cantidad:</strong>                               {respuestaEmpresa.CantidadRE}          <br/>
+                                    <strong>Unidad:</strong>                                 {respuestaEmpresa.UnidadRE}            <br/>
+                                    <strong>Detalle:</strong>                                {respuestaEmpresa.DetalleRE}           <br/>
+                                    <strong>Unitario:</strong>                               {respuestaEmpresa.UnitarioRE}          <br/>
+                                    <strong>Total:</strong>                                  {respuestaEmpresa.TotalRE}             <br/>
+                                    <strong>idFormularioSolitud:</strong>                    {respuestaEmpresa.FormularioSolitud_idFormularioSolitud}        <br/>
                                 </p>
                                 <div className="span-justify m-span">
                                     <span >
