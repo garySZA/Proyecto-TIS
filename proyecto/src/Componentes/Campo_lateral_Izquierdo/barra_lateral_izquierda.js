@@ -23,6 +23,10 @@ import Registro_Unidad_Gasto from '../Registro_Unidades_De_Gasto/formulario_regi
 //importacion de componente para mostrar solicitudes modificables
 import Mostrar_Tarjetas_Modificacion_Estados from '../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados'
 
+//importar componente generar_pdf para mostrar enviar las solicitudes a las empresas
+import GenerarPdf from '../generar_pdf/data'
+
+
 import axios from 'axios'
 
 class BarraLateral extends React.Component{
@@ -32,10 +36,14 @@ class BarraLateral extends React.Component{
       mostrarRegistroEmpresa: false,
       mostrarFormularioProductosServicios :false,
       mostrarFormularioDeUsuariosNuevos:false,
+      
+      mostrarGenerarPdf:false,
+
       mostrarregistroUnidadGasto: false,
       mostrarEmpresas: false,
       mostrarHistorialSolicitudes: false,
       mostrarSolicitudesModificables: false
+
     };
 
     this.listaEmpresas = [];
@@ -50,11 +58,13 @@ class BarraLateral extends React.Component{
       console.log(this.state.mostrarRegistroEmpresa);
     }else{
       this.setState({
+        
         mostrarRegistroEmpresa: true,
         mostrarFormularioProductosServicios: false, 
         mostrarFormularioDeUsuariosNuevos: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
+        mostrarGenerarPdf: false,
         mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })
@@ -70,6 +80,7 @@ class BarraLateral extends React.Component{
       }) 
     }else{
       this.setState({
+        mostrarGenerarPdf: false,
         mostrarFormularioProductosServicios: true,
         mostrarFormularioDeUsuariosNuevos:false,
         mostrarRegistroEmpresa: false,
@@ -88,6 +99,7 @@ class BarraLateral extends React.Component{
       }) 
     }else{
       this.setState({
+        mostrarGenerarPdf: false,
         mostrarFormularioDeUsuariosNuevos: true,
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
@@ -106,6 +118,7 @@ class BarraLateral extends React.Component{
       })
     }else {
       this.setState({
+        mostrarGenerarPdf: false,
         mostrarregistroUnidadGasto: true,
         mostrarFormularioDeUsuariosNuevos: false,
         mostrarFormularioProductosServicios: false,
@@ -130,6 +143,7 @@ class BarraLateral extends React.Component{
       }) 
     }else{
       this.setState({
+        mostrarGenerarPdf: false,
         mostrarFormularioDeUsuariosNuevos: false,
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
@@ -149,6 +163,7 @@ class BarraLateral extends React.Component{
       }) 
     }else{
       this.setState({
+        mostrarGenerarPdf: false,
         mostrarFormularioDeUsuariosNuevos: false,
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
@@ -174,10 +189,35 @@ class BarraLateral extends React.Component{
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
         mostrarHistorialSolicitudes: false,
+        mostrarGenerarPdf: false,
         mostrarSolicitudesModificables: true
       })     
     }
   }
+
+  operation9 = () =>{
+    if(this.state.mostrarGenerarPdf== true){
+      this.setState({
+        mostrarGenerarPdf: false
+      })
+      console.log("true");
+      console.log(this.state.mostrarGenerarPdf);
+    }else{
+      this.setState({
+        mostrarGenerarPdf: true,
+        mostrarFormularioProductosServicios: false, 
+        mostrarFormularioDeUsuariosNuevos: false,
+        mostrarregistroUnidadGasto: false,
+        mostrarEmpresas: false,
+        mostrarSolicitudesModificables: false,
+        mostrarHistorialSolicitudes: false
+      })
+      console.log("false");
+      console.log(this.state.mostrarGenerarPdf);
+    }
+  }
+
+
 
   onChange = () =>{
     axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
@@ -200,7 +240,9 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation6()}>Registrar Unidad de Gasto</button>
             <button className="registro-empresa"  id="botonVerEmpresas"   onClick={()=>this.operation5()}>Ver Empresas</button>
             <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
-            <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation8()}>Modificar Estados</button>
+            <button className="registro-empresa"  id="botonModificarEstadosSolicitudes"   onClick={()=>this.operation8()}>Modificar Estados</button>
+            
+           
         </div>
         <div className="principal" id="algo" onChange={this.onChange}>
           {
@@ -244,7 +286,14 @@ class BarraLateral extends React.Component{
             <Mostrar_Tarjetas_Modificacion_Estados />
             :
             ''
-          }
+          } 
+
+              {
+            (this.state.mostrarGenerarPdf)?
+            < GenerarPdf/>
+            :
+            ''
+           }
       </div>
     </div>
     </div>

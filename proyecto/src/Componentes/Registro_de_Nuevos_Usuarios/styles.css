@@ -28,6 +28,13 @@ width: em;
    
     width: 40em;
     height: 40em;
+    border-radius: 30px;
+    color: var(--color_contenido);
+    background-color: var(--color_fondo_cuadros);
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    border: 2px var(--color_fondo) solid;
+
+
 }
 .panelMenu{
     position: relative;

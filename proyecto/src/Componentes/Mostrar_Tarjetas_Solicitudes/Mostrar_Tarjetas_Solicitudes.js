@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './estilos_mostrar_tarjetas-solicitudes.css';
 import Tarjeta_Solicitudes from "../Tarjeta-Solicitudes/Tarjeta-Solicitudes";
 import Spinner from '../Spinner/Spinner'
+import { Button } from 'reactstrap';
 
 function Mostrar_tarjetas_solicitudes(){
     const url = 'https://backendcompleto-sdc.herokuapp.com/api/formReq/getFormReq'
@@ -11,6 +12,7 @@ function Mostrar_tarjetas_solicitudes(){
         const responseJSON = await response.json()
         setTodos(responseJSON)
     }
+console.log(todos)
 
     useEffect(() => {
         fetchApi()
@@ -28,11 +30,17 @@ function Mostrar_tarjetas_solicitudes(){
                                 <Tarjeta_Solicitudes solicitud = {solicitud} estadoCaja = 'tarjeta-solicitud-aprobado' estadoTitulo = 'contenedor-estado-solicitud-aprobado'/>
                                 :
                                 <Tarjeta_Solicitudes solicitud = {solicitud} estadoCaja = 'tarjeta-solicitud-rechazado' estadoTitulo = 'contenedor-estado-solicitud-rechazado'/>
-                            :
+                               
+                                :
                             ''
+                            
                         })
+
                     }
+                     
+                    
                 </div>
+
             </div>
         );
 }
