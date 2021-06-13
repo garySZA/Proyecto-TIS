@@ -13,9 +13,12 @@ const expresiones = {
     nombreNuevoUsuarios: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras
     apellidoNuevoUsuarios:/^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras
     /*fechaNacimientoNuevoUsuario: required=,  */
+    paisNuevoUsuarios: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, 
+    ciudadNuevoUsuarios: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, 
     direccionNuevoUsuarios:/^[a-zA-Z0-9_.+-+#\_\-\s]{0,100}$/, // Letras,numeros,simbNumeral,barra baja y barra media
     telefonoNuevoUsuarios: /^\d{7,8}$/, // 7 a 8 digitos.
     /*seleccionTipoNuevoUsuario:required='',  */
+    //sexoNuevoUsuarios
     emailNuevoUsuarios:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     contraseñaNuevoUsuarios:/^.{8,12}$/, // de 8 a 12 digitos
 
@@ -31,10 +34,13 @@ class RegistroDeNuevosUsuarios extends Component{
 
             validoNombreUsuario    :false,
             validoApellidoUsuario  :false,
-            /*validoFechaDeNacimiento :false,*/
+            //validoFechaDeNacimiento :false,
+            validoPaisUsuario:false,
+            validoCiudadUsuario:false,
             validoDireccionDeUsuario:false,
             validoTelefonoDeUsuario :false,
-            /*validoTipoDeUsuario     :false,*/
+            //validoTipoDeUsuario:false,
+            //validoSexoUsuario:fase,
             validoEmailDeUsuario    :false,
             validoContraseñaUsuario :false,
             camposVacios            : true,
@@ -47,7 +53,7 @@ class RegistroDeNuevosUsuarios extends Component{
         this.setState.showMe = true;
     }
      
-    nombreCampos = ["nombreNuevoUsuario","apellidoNuevoUsuario","direccionNuevoUsuario","telefonoNuevoUsuario","emailNuevoUsuario", "contraseñaNuevoUsuario"];
+    nombreCampos = ["nombreNuevoUsuario","apellidoNuevoUsuario","paisNuevoUsuario","ciudadNuevoUsuario","direccionNuevoUsuario","telefonoNuevoUsuario","emailNuevoUsuario", "contraseñaNuevoUsuario"];
     
     onChange = () => {
         this.nombreCampos.forEach((campo) => {
@@ -74,6 +80,8 @@ class RegistroDeNuevosUsuarios extends Component{
                         this.darEfectoError(campo)
                     }
                 }
+
+
 
             }else if(campo == "apellidoNuevoUsuario"){
                 if(elemento.value ===""){
@@ -113,6 +121,59 @@ class RegistroDeNuevosUsuarios extends Component{
                         this.darEfectoError(campo)
                     }
                 }*/
+                
+
+            }else if(campo == "paisNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoPaisUsuario:false,
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.paisNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoPaisUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoPaisUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+
+
+
+               
+                
+            }else if(campo == "ciudadNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoCiudadUsuario:false,
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.ciudadNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoCiudadUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoCiudadUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+
+
+
+
+
+
+
+
             }else if(campo == "direccionNuevoUsuario"){
                 if(elemento.value ===""){
                     this.setState({
@@ -170,6 +231,33 @@ class RegistroDeNuevosUsuarios extends Component{
                         this.darEfectoError(campo)
                     }
                 }*/
+
+
+
+                /* }else if(campo == "sexoNuevoUsuario"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoSexoUsuario:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.sexoNuevoUsuarios.test(elemento.value)){
+                        this.setState({
+                            validoSexoUsuario:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoSexoUsuario:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }*/
+
+
+
+
+
             }else if(campo == "emailNuevoUsuario"){
                 if(elemento.value ===""){
                     this.setState({
@@ -244,14 +332,21 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
             axios.post('https://backendcompleto-sdc.herokuapp.com/api/user/createUser',{
+                //idRegistroNuevoUsuario
+                
                 NombreUsuario:document.getElementById("nombreNuevoUsuario").value,
                 ApellidoUsuario:document.getElementById("apellidoNuevoUsuario").value,
                 FechaDeNacimiento:document.getElementById("fechaNacimientoNuevoUsuario").value,
+                PaisDireccion:document.getElementById("paisNuevoUsuario").value,
+                CiudadDireccion:document.getElementById("ciudadNuevoUsuario").value,
                 CalleDireccion:document.getElementById("direccionNuevoUsuario").value,
                 TelefonoT:document.getElementById("telefonoNuevoUsuario").value,
                 RolR:document.getElementById("seleccionTipoNuevoUsuario").value,
+                SexoUsuario:document.getElementById("sexoNuevoUsuario").value,
                 CorreoC:document.getElementById("emailNuevoUsuario").value,
-                contraseñaUsuario:document.getElementById("contraseñaNuevoUsuario").value 
+                contraseñaUsuario:document.getElementById("contraseñaNuevoUsuario").value, 
+                
+                
             }).then(Responde =>{
                 console.log('el usuario ha sido registrado correctamente',Responde.data);
             }).catch(error=>{console.log(error);
@@ -349,7 +444,7 @@ class RegistroDeNuevosUsuarios extends Component{
                         
                         
                       <div className="card ppicture-login  container-margen type-letter">  
-                            <form >
+                            <div>
 
                                           <div className="contenedorTitulo_RegistroUsuario">
                                             <h1 className="titulo_registro_usuario">Registro de nuevos Usuarios</h1>
@@ -445,6 +540,66 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
 
+                                                 <div className="elementosFormularioUsuarios__grupo"id="grupo_PaisUsuario" >
+                                                       <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                       <i class="fas fa-globe-americas"></i>
+                                                          <label for="pais-nuevo-usuario"className="subtituloNU">Pais</label>
+                                                       </div>
+
+                                                        <div className="formularioNuevoUsuario__grupo-input">
+                                                           <input 
+                                                             type="text" 
+                                                             className="ingreso"
+                                                             name="paisNuevoUsuario"
+                                                             id="paisNuevoUsuario" 
+                                                             placeholder="Ingrese su nombre completo"  
+                                                             onChange={this.onChange}  
+                                                             ></input>    
+
+                                      
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                            id="mensajeError-paisNuevoUsuario">
+                                                             El pais debe contener solo letras
+                                                            </p>
+                                                        </div>  
+                                               </div>
+
+
+
+
+
+
+                                               <div className="elementosFormularioUsuarios__grupo"id="grupo_CiudadUsuario" >
+                                                       <div className="contenedorElementosNuevosUsuarios_subtitulos">
+                                                           <i class="fas fa-city"></i>
+                                                          <label for="ciudad-nuevo-usuario"className="subtituloNU">Ciudad</label>
+                                                       </div>
+
+                                                        <div className="formularioNuevoUsuario__grupo-input">
+                                                           <input 
+                                                             type="text" 
+                                                             className="ingreso"
+                                                             name="ciudadNuevoUsuario"
+                                                             id="ciudadNuevoUsuario" 
+                                                             placeholder="Ingrese su nombre completo"  
+                                                             onChange={this.onChange}  
+                                                             ></input>    
+
+                                      
+                                                            <p className="formularioNuevoUsuario__input-error"
+                                                            id="mensajeError-ciudadNuevoUsuario">
+                                                             El nombre debe contener solo letras
+                                                            </p>
+                                                        </div>  
+                                               </div>
+
+
+
+
+
+
+
+
 
                                                   <div className="elementosFormularioUsuarios__grupo" id="grupo_DireccionUsuario">
                                                      <div className="contenedorElementosNuevosUsuarios_subtitulos">
@@ -482,7 +637,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                  
                                                     <div className="formularioNuevoUsuario__grupo-input" >
                                                       <input 
-                                                      type ="number" 
+                                                      type ="text" 
                                                       className="ingreso"
                                                       name="telefonoNuevoUsuario"
                                                       id="telefonoNuevoUsuario"
@@ -492,11 +647,14 @@ class RegistroDeNuevosUsuarios extends Component{
                                    
                                                    <p className="formularioNuevoUsuario__input-error"
                                                     id="mensajeError-telefonoNuevoUsuario">
-                                                     El numero de telefono solo contiene numeros
+                                                     su numero de telefono es incorrecto
                                                    </p>
                                                   </div>
                                                 </div>
 
+
+
+                            
 
 
 
@@ -513,10 +671,8 @@ class RegistroDeNuevosUsuarios extends Component{
                                                          <select type="selection"
                                                           className="ingreso"
                                                           name="seleccionTipoNuevoUsuario"
-                                                          id="seleccionTipoNuevoUsuario"
-                                                          //onChange={this.onChange}
-                                                          >
-                                                              <option defaultValue="Seleccione un tipo">Seleccione un tipo</option>
+                                                          id="seleccionTipoNuevoUsuario">
+                                                              <option disabled selected>seleccione un Rol</option>
                                                               <option>usuario</option>
                                                               <option>secretario</option>
                                                               <option>administrador</option>
@@ -532,6 +688,38 @@ class RegistroDeNuevosUsuarios extends Component{
                                                      </div>
                                                 </div>
 
+
+
+
+
+
+
+                                                <div className="elementosFormularioUsuarios__grupo" id="grupo_SexoUsuario">
+                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos" >
+                                                       <i className="fas fa-user icon"></i> 
+                                                       <label for="sexo-nuevo-usuario" className="subtituloNU">Sexo</label>
+                                                     </div>
+                         
+                               
+                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                
+                                                         <select type="selection"
+                                                          className="ingreso"
+                                                          name="sexoNuevoUsuario"
+                                                          id="sexoNuevoUsuario">
+                                                              <option disabled selected>seleccione su sexo</option>
+                                                              <option>masculino</option>
+                                                              <option>femenino</option>
+                                                           onChange={this.onChange}
+                                                         </select>
+
+                                            
+                                                        <p className="formularioNuevoUsuario__input-error"
+                                                        id="mensajeError-sexoNuevoUsuario">
+                                                        seleccione una opcion
+                                                          </p>    
+                                                     </div>
+                                                </div>
 
 
 
@@ -614,7 +802,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                             </div>
                                 </div>
 
-                           </form>    
+                           </div>    
 
                         </div>
                      
