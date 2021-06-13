@@ -14,17 +14,11 @@ import Mostrar_tarjetas_solicitudes from '../Mostrar_Tarjetas_Solicitudes/Mostra
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
 
-//importacion de formulario de registro de nuevos usuarios
-import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_registration'
-
 //importacion del formulario de registro de unidades de gasto
 import Registro_Unidad_Gasto from '../Registro_Unidades_De_Gasto/formulario_registro_unidadesDeGasto'
 
 //importacion de componente para mostrar solicitudes modificables
 import Mostrar_Tarjetas_Modificacion_Estados from '../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados'
-
-//importar componente generar_pdf para mostrar enviar las solicitudes a las empresas
-import GenerarPdf from '../generar_pdf/data'
 
 
 import axios from 'axios'
@@ -35,10 +29,6 @@ class BarraLateral extends React.Component{
     this.state = {
       mostrarRegistroEmpresa: false,
       mostrarFormularioProductosServicios :false,
-      mostrarFormularioDeUsuariosNuevos:false,
-      
-      mostrarGenerarPdf:false,
-
       mostrarregistroUnidadGasto: false,
       mostrarEmpresas: false,
       mostrarHistorialSolicitudes: false,
@@ -61,10 +51,8 @@ class BarraLateral extends React.Component{
         
         mostrarRegistroEmpresa: true,
         mostrarFormularioProductosServicios: false, 
-        mostrarFormularioDeUsuariosNuevos: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
-        mostrarGenerarPdf: false,
         mostrarSolicitudesModificables: false,
         mostrarHistorialSolicitudes: false
       })
@@ -85,9 +73,7 @@ class BarraLateral extends React.Component{
       document.getElementById('botonRegistroSolicitud').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarGenerarPdf: false,
         mostrarFormularioProductosServicios: true,
-        mostrarFormularioDeUsuariosNuevos:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
@@ -103,24 +89,7 @@ class BarraLateral extends React.Component{
     }
   }
 
-  operation4 = () =>{
-    if(this.state.mostrarFormularioDeUsuariosNuevos == true){
-      this.setState({
-        mostrarFormularioDeUsuariosNuevos: false
-      }) 
-    }else{
-      this.setState({
-        mostrarGenerarPdf: false,
-        mostrarFormularioDeUsuariosNuevos: true,
-        mostrarFormularioProductosServicios:false,
-        mostrarRegistroEmpresa: false,
-        mostrarregistroUnidadGasto: false,
-        mostrarEmpresas: false,
-        mostrarSolicitudesModificables: false,
-        mostrarHistorialSolicitudes: false
-      })     
-    }
-  }
+  
 
   operation6 = () => {
     if(this.state.mostrarregistroUnidadGasto == true){
@@ -130,9 +99,9 @@ class BarraLateral extends React.Component{
       document.getElementById('botonRegistroUnidadDeGasto').classList.toggle('estilo-boton-click')
     }else {
       this.setState({
-        mostrarGenerarPdf: false,
+        
         mostrarregistroUnidadGasto: true,
-        mostrarFormularioDeUsuariosNuevos: false,
+      
         mostrarFormularioProductosServicios: false,
         mostrarRegistroEmpresa: false,
         mostrarEmpresas: false,
@@ -162,8 +131,8 @@ class BarraLateral extends React.Component{
       document.getElementById('botonVerEmpresas').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarGenerarPdf: false,
-        mostrarFormularioDeUsuariosNuevos: false,
+        
+        
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
@@ -189,8 +158,8 @@ class BarraLateral extends React.Component{
       document.getElementById('botonHistorialSolicitudes').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarGenerarPdf: false,
-        mostrarFormularioDeUsuariosNuevos: false,
+       
+        
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
@@ -216,13 +185,12 @@ class BarraLateral extends React.Component{
       document.getElementById('botonModificarEstados').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarFormularioDeUsuariosNuevos: false,
+       
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
         mostrarHistorialSolicitudes: false,
-        mostrarGenerarPdf: false,
         mostrarSolicitudesModificables: true
       })
       document.getElementById('botonVerEmpresas').classList.remove('estilo-boton-click')
@@ -234,27 +202,7 @@ class BarraLateral extends React.Component{
     }
   }
 
-  operation9 = () =>{
-    if(this.state.mostrarGenerarPdf== true){
-      this.setState({
-        mostrarGenerarPdf: false
-      })
-      console.log("true");
-      console.log(this.state.mostrarGenerarPdf);
-    }else{
-      this.setState({
-        mostrarGenerarPdf: true,
-        mostrarFormularioProductosServicios: false, 
-        mostrarFormularioDeUsuariosNuevos: false,
-        mostrarregistroUnidadGasto: false,
-        mostrarEmpresas: false,
-        mostrarSolicitudesModificables: false,
-        mostrarHistorialSolicitudes: false
-      })
-      console.log("false");
-      console.log(this.state.mostrarGenerarPdf);
-    }
-  }
+ 
 
 
 
@@ -305,12 +253,7 @@ class BarraLateral extends React.Component{
             :
             ''
           }
-          {
-            (this.state.mostrarFormularioDeUsuariosNuevos)?
-            <RegistroDeNuevosUsuarios />
-            :
-            ''
-          }
+         
           {
             (this.state.mostrarEmpresas)?
             <Mostrar_tarjetas />
@@ -336,12 +279,7 @@ class BarraLateral extends React.Component{
             ''
           } 
 
-              {
-            (this.state.mostrarGenerarPdf)?
-            < GenerarPdf/>
-            :
-            ''
-           }
+            
       </div>
     </div>
     </div>
