@@ -28,7 +28,7 @@ width: em;
 .ppicture-login{
    
     width: 40em;
-    height: 40em;
+    height: auto;
     border-radius: 30px;
     color: var(--color_contenido);
     background-color: var(--color_fondo_cuadros);

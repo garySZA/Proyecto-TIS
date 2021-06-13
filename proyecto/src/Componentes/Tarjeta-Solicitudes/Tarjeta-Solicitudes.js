@@ -80,7 +80,7 @@ function Tarjeta_Solicitudes(props){
                         </div>
                     </div>
                     
-                <div className="tamanio-Botocito" style ={{textAlign:'center'}} ><br/>
+                <div className="tamanio-Botocitoo" style ={{textAlign:'center'}} ><br/>
                <Button onClick={printPDF} >Download PDF</Button>
                 </div>
 

@@ -157,9 +157,9 @@ class Formulario_ProductosServicios extends Component{
             })
 
 
-            var iitem1 = document.getElementById("item").value;
+            var iitem1 = document.getElementById("item").value
             var detalle = document.getElementById("detalleSolicitud").value
-            var fechaS = "2021-06-11"
+            var fechaS = document.getElementById("fecha").value
             var respon = document.getElementById("responsableSolicitud").value
             var mont = document.getElementById("monto").value
             var llave = "3000000"
@@ -297,7 +297,9 @@ class Formulario_ProductosServicios extends Component{
                                     <DatePicker className="entradas" 
                                         type="text" 
                                         name="fecha"
-                                        id="fecha" selected={this.state.fecha}>
+                                        title="fechaSolicitud"
+                                        id="fecha" selected={this.state.fecha}
+                                        dateFormat="dd/MM/yyyy">
                                     </DatePicker>
 
                                 </div>
