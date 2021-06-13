@@ -147,7 +147,7 @@ function Menu () {
                                 idArticulos > -1 &&
                                 (
                                     categorias[idArticulos].nombreCarrera.map((item,i) =>(
-                                        <option key={"articulo" +i} value="">{item}</option>
+                                        <option key={"articulo" +i} value={i+item}>{item}</option>
                                     ))
                                 )
                             }
