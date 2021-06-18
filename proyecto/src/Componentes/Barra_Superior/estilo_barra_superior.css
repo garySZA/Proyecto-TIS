@@ -16,9 +16,7 @@
 .contenedor {
     max-width: 1600px;
     margin: auto;
-    overflow: hidden;
-
-    
+    overflow: hidden; 
 }
 
 nav {
@@ -32,13 +30,15 @@ nav {
 
     z-index: 100;
     transition: ease-in-out .5s;
+    display: flex;
+    flex-direction: row;
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     height: 80px;
-    width: 100%;
+    width: 80%;
     align-items: center;
     padding: 0 40px;
 }
@@ -91,4 +91,97 @@ nav {
 
 header {
     margin-bottom: 100px;
+}
+
+/*  Estilos boton hamburguesa*/
+.contenedor-hamburguesa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icono-hamburguesa{
+    margin-left: 20px;
+
+
+    font-size: 30px;
+    color: #ecf0f3;
+    transition: .5s;
+}
+
+.icono-hamburguesa:hover{
+    cursor: pointer;
+    font-size: 40px;
+    
+}
+
+.boton-icono{
+    height: 100%;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido{
+    width: 1200px;
+    border: 2px solid var(--color_fondo);
+    height: 400px;
+    position: absolute;
+}
+
+.contenedorS{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px var(--color_fondo);
+    width: 300px;
+    position: absolute;
+    z-index: 3;
+    top: 12%;
+    transition: .4s ;
+    left: 0px;
+    margin: 10px;
+    background-color: var(--color_fondo_cuadros);
+}
+
+
+.contenedor-botones-oculto{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px var(--color_fondo);
+    width: 360px;
+    position: absolute;
+    z-index: 3;
+    top: 10%;
+    transition: .3s ;
+    left: -360px;
+    justify-content: center;
+}
+
+.boton-barra{
+    width: 240px;
+    height: 40px;
+    border-radius: 30px;
+    /*margin-left: -150px;*/
+    cursor: pointer;
+    
+
+    background-color: var(--color_fondo);
+    color: var(--color_fondo_cuadros);
+    font-family: var(--fuente-titulos);
+    font-size: 14px;
+    text-shadow:1px 1px 1px var(--color-sombras-titulos);
+    margin: 7px;
+    box-shadow: 10px 10px 12px #d1d9e6, -10px -10px 12px #ffffff;
+
+    transition: .5s;
+}
+
+.boton-barra:hover{
+    background: #e3e6ec;
+    color: var(--color_fondo);
+    border: none;
 }
