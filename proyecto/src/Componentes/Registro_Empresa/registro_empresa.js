@@ -1,7 +1,8 @@
-import { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './estilos_registro_empresa.css';
 import swal from 'sweetalert2';
 import axios from 'axios';
+import ReactDatePicker from 'react-datepicker';
 
 const expresiones = {
     nombreEmpresa: /^[a-zA-Z\_\-]{0,100}$/, // Letras
@@ -28,7 +29,8 @@ class Registro_Empresa extends Component{
             validoTelefonoPersona   : false,
             validoCiPersona         : false,
             camposVacios            : true,
-            nit                     :0
+            nit                     :0,
+            doble                   : false
         }
         
     }
@@ -40,6 +42,7 @@ class Registro_Empresa extends Component{
     nombreCampos = ["nombreEmpresa", "rubro" ,"telefonoEmpresa", "correoEmpresa", "nitEmpresa", "nombrePersona", "telPersona", "ciPersona"];
     
     onChange = () => {
+        
         this.nombreCampos.forEach((campo) => {
             this.verificarCamposVacios();
             var elemento = document.getElementById(campo);
@@ -125,6 +128,7 @@ class Registro_Empresa extends Component{
                         validoNitEmpresa:false
                     })
                 }else{
+                    this.verificarExistencia()
                     console.log("funciona");
                     if(expresiones.nitEmpresa.test(elemento.value)){
                         this.setState({
@@ -199,57 +203,54 @@ class Registro_Empresa extends Component{
             
         })
     }
-
+    
     quitarEfectoError(etiqueta){
         document.getElementById(etiqueta).classList.remove("input-error");
         document.getElementById(`mensajeError-${etiqueta}`).classList.remove("formulario__input-error-activo");
     }
-
+    
     darEfectoError(etiqueta){
         document.getElementById(etiqueta).classList.add("input-error");
         document.getElementById(`mensajeError-${etiqueta}`).classList.add("formulario__input-error-activo");
     }
+    
+    
 
     verificar = () =>{
         if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
-            console.log("registrar");
-            axios.get(`https://proyecto-tis.herokuapp.com/api/empresas/nit/?nit=${document.getElementById("nitEmpresa").value}`)
-            .then(response => {
-                if(response.data[0] == null){
-                    console.log("no existe")
-                    this.nombreCampos.forEach((campo) => {
-                        console.log(document.getElementById(campo).value)
-                    })
-        
-                    //realizando un Post a la api mediante axios
-                    axios.post('https://proyecto-tis.herokuapp.com/api/empresas',{
-                        nombreEmpresa: document.getElementById("nombreEmpresa").value,
-                        rubro: document.getElementById("rubro").value,
-                        telefonoEmpresa: document.getElementById("telefonoEmpresa").value,
-                        correoEmpresa : document.getElementById("correoEmpresa").value,
-                        nit : document.getElementById("nitEmpresa").value,
-                        nombreEncargado : document.getElementById("nombrePersona").value,
-                        telefonoEncargado : document.getElementById("telPersona").value,
-                        ciEncargado : document.getElementById("ciPersona").value
-                    }).then(response => {
-                        console.log('Empresa añadida: ', response.data);
-                    }).catch(e => {
-                        console.log(e);
-                    });
-                    document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-activo");
-                }else{
-                    console.log("empresa ya existe")
-                    swal.fire({
-                        title:      'Error!',
-                        text:       'La empresa que desea registrar ya se encuentra registrada!',
-                        icon:       'error',
-                        confirmButtonText:  `Ok`,
-                        timer:              10000,
-                        timerProgressBar:   'true'
-                    })
-                }
-            })
-
+            if(this.state.doble == false){
+                console.log(this.state.doble)
+               /*
+                    
+                //realizando un Post a la api mediante axios
+                axios.post('https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/createRegisterBus',{
+                    nombreEmpresa: document.getElementById("nombreEmpresa").value,
+                    rubroEmpresa: document.getElementById("rubro").value,
+                    telefonoEmpresa: document.getElementById("telefonoEmpresa").value,
+                    correoEmpresa : document.getElementById("correoEmpresa").value,
+                    NITEmpresa : document.getElementById("nitEmpresa").value,
+                    NombrePersona : document.getElementById("nombrePersona").value,
+                    telefonoPersona : document.getElementById("telPersona").value,
+                    ciPersona : document.getElementById("ciPersona").value,
+                    RegistroNuevoUsuario_idRegistroNuevoUsuario: "1000000"
+                }).then(response => {
+                    console.log('Empresa añadida: ', response.data);
+                }).catch(e => {
+                    console.log(e);
+                });
+                document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-activo");
+               */
+            }else{
+                console.log("empresa ya existe")
+                swal.fire({
+                    title:      'Error!',
+                    text:       'La empresa que desea registrar ya se encuentra registrada!',
+                    icon:       'error',
+                    confirmButtonText:  `Ok`,
+                    timer:              10000,
+                    timerProgressBar:   'true'
+                })
+            }
         }else{
             console.log("datos llenados incorrectamente");
             document.getElementById("formulario__mensaje").classList.add("formulario__input-error-activo");
@@ -297,6 +298,7 @@ class Registro_Empresa extends Component{
         })
     }
 
+
     confirmacionDeRegistro = () =>{
         if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
             swal.fire({
@@ -335,7 +337,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__usuario">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-building"></i>
-                                <label for="nombre-empresa" className="subtitulo">Nombre de empresa:</label>
+                                <label className="subtitulo">Nombre de empresa:</label>
                             </div>
 
                             <div className="formulario__grupo-input ">
@@ -350,7 +352,7 @@ class Registro_Empresa extends Component{
                             </input>
                             
                             <p className="formulario__input-error"
-                             id="mensajeError-nombreEmpresa">
+                                id="mensajeError-nombreEmpresa">
                                 El nombre debe contener solo letras
                             </p>
                             </div>
@@ -359,7 +361,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__rubro">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-briefcase"></i>
-                                <label for="nombre-empresa" className="subtitulo">Rubro de empresa:</label>
+                                <label className="subtitulo">Rubro de empresa:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -370,7 +372,7 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese rubro aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p className="formulario__input-error" id="mensajeError-rubro">
                                     El rubro de la empresa debe contener entre 0 y 70 caracteres
                                 </p>
@@ -380,7 +382,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__telefonoEmpresa">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-phone"></i>
-                                <label for="nombre-empresa" className="subtitulo">Telefono de empresa:</label>
+                                <label className="subtitulo">Telefono de empresa:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -391,7 +393,7 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese teléfono aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p className="formulario__input-error" id="mensajeError-telefonoEmpresa">
                                 El telefono solo puede contener numeros y el maximo son 8 dígitos.
                                 </p>
@@ -412,7 +414,7 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese correo aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
                                 <p className="formulario__input-error" id="mensajeError-correoEmpresa">
                                 El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.
                                 </p>
@@ -423,7 +425,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__nitEmpresa">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-hashtag"></i>
-                                <label for="nombre-empresa" className="subtitulo">NIT de empresa:</label>
+                                <label className="subtitulo">NIT de empresa:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -434,8 +436,8 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese nit aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                <p class="formulario__input-error" id="mensajeError-nitEmpresa">
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                                <p className="formulario__input-error" id="mensajeError-nitEmpresa">
                                     El nit de la empresa solo puede contener 10 dígitos.
                                 </p>
                             </div>
@@ -444,7 +446,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__nombrePersona">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-user"></i>
-                                <label for="nombre-empresa" className="subtitulo">Nombre de persona encargada:</label>
+                                <label className="subtitulo">Nombre de persona encargada:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -455,8 +457,8 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese nombre aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                <p class="formulario__input-error" id="mensajeError-nombrePersona">
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                                <p className="formulario__input-error" id="mensajeError-nombrePersona">
                                     El nombre solo puede contener 40 letras y espacios.
                                 </p>
                             </div>
@@ -465,7 +467,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__telefonoPersona">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-phone"></i>
-                                <label for="nombre-empresa" className="subtitulo">Telefono de persona encargada:</label>
+                                <label className="subtitulo">Telefono de persona encargada:</label>
                             </div>
                             <div className="formulario__grupo-input">
                                 <input 
@@ -476,8 +478,8 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese teléfono aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                <p class="formulario__input-error" id="mensajeError-telPersona">
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                                <p className="formulario__input-error" id="mensajeError-telPersona">
                                     El telefono solo puede contener entre 7 y 8 digitos
                                 </p>
                             </div>
@@ -486,7 +488,7 @@ class Registro_Empresa extends Component{
                         <div className="elementos formulario__grupo" id="grupo__ciPersona">
                             <div className="contenedor-elementos-subtitulo">
                                 <i className="fas fa-hashtag"></i>
-                                <label for="nombre-empresa" className="subtitulo">CI de persona encargada:</label>
+                                <label className="subtitulo">CI de persona encargada:</label>
                             </div>
                             <div className="formulario__grupo" id="grupo-input">
                                 <input 
@@ -497,16 +499,16 @@ class Registro_Empresa extends Component{
                                     placeholder="Ingrese ci aquí"
                                     onChange={this.onChange}>
                                 </input>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                <p class="formulario__input-error" id="mensajeError-ciPersona">
+                                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                                <p className="formulario__input-error" id="mensajeError-ciPersona">
                                     El ci solo puede contener números.
                                 </p>
                             </div>
                         </div>
 
-                        <div class="formulario__mensaje" id="formulario__mensaje">
+                        <div className="formulario__mensaje" id="formulario__mensaje">
                             <p>
-                                <i class="fas fa-exclamation-triangle"></i>
+                                <i className="fas fa-exclamation-triangle"></i>
                                 <b>Error:</b> Por favor
                                 rellena el formulario correctamente.
                             </p>
@@ -519,7 +521,7 @@ class Registro_Empresa extends Component{
 
                         
                         <div className="mensaje-exito">
-                            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                            <p className="formulario__mensaje-exito" id="formulario__mensaje-exito">
                                 ¡Formulario enviado exitosamente!
                             </p>
                         </div>
