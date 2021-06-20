@@ -8,7 +8,7 @@ class Tarjeta extends React.Component{
 
     render(){
         return(
-            <div className="contenedor-principal-tarjetaE">
+            <div className="contenedor-principal-tarjetaE" data-aos="fade-up" data-aos-duration="3000">
                     <div className="contenedor-subtitulo-tarjetaE subtitulos-tarjetaE">
                         <label >Datos de Empresa</label>
                     </div>

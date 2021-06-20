@@ -4,7 +4,7 @@ import Spinner from '../Spinner/Spinner'
 
 function TarjetaInf(){
     const urlEmpresa = 'https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/getRegisterBusiness'
-    const [empresas, setEmpresas] = useState()
+    const [empresas, setEmpresas] = useState(false)
     const fetchApi = async () => {
         const response = await fetch(urlEmpresa)
         const responseJSON = await response.json()
@@ -12,7 +12,7 @@ function TarjetaInf(){
     }
 
     const urlSolicitudes = 'https://backendcompleto-sdc.herokuapp.com/api/formReq/getFormReq'
-    const [solicitudes, setSolicitudes] = useState()
+    const [solicitudes, setSolicitudes] = useState(false)
     const fetApiSoli = async () => {
         const response = await fetch(urlSolicitudes)
         const responseJSON = await response.json()
@@ -39,17 +39,17 @@ function TarjetaInf(){
     let arregloTarjetas = [datosEmpresa, datosSolicitud]
 
     return(
-        <div class="tarjetas-info">
-        <div class="contenedor-grid-tarjetas-info">
+        <div className="tarjetas-info">
+        <div className="contenedor-grid-tarjetas-info">
             {
-                !empresas? <Spinner />:
+                !empresas && !solicitudes? <Spinner />:
                 arregloTarjetas.map(tarj => {
-                    return <div class="contenedor-info">
-                                <div class="cont-info-titulo">
-                                    <i class={tarj.icono}></i>
-                                    <label class="label-info-titulo">{tarj.titulo}</label>
+                    return <div className="contenedor-info">
+                                <div className="cont-info-titulo">
+                                    <i className={tarj.icono}></i>
+                                    <label className="label-info-titulo">{tarj.titulo}</label>
                                 </div>
-                                <div class="cont-info-subtitulo">
+                                <div className="cont-info-subtitulo">
                                     <p className="label-info-subtitulo">{tarj.cantidad.length}</p>
                                 </div>
                             </div>

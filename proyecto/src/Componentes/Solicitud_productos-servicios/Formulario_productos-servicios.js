@@ -233,7 +233,7 @@ class Formulario_ProductosServicios extends Component{
     
     render(){
         return(
-            <div>
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     {this.state.showMe ? (
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 

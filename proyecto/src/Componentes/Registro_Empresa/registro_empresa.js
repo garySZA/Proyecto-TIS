@@ -322,7 +322,7 @@ class Registro_Empresa extends Component{
 
     render(){
         return(
-            <div >
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 {this.state.showMe ? (
                     <div className="contenedor-empresa" id="mostrar-registro-empresa">
 
