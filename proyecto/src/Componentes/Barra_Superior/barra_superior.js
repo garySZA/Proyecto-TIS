@@ -2,7 +2,15 @@ import './estilo_barra_superior.css';
 import logo from './img/UMSS_logo.png'
 import Barra_Izquierda from './Barra_Izquierda/Contenedor_Botones';
 
+window.addEventListener("click", function(e){
+  if(e.target == 'contenedorS'){
+    document.getElementById('caja-botones').classList.toggle('contenedorS')
+    document.getElementById('caja-botones').classList.toggle('contenedor-inicial')
+  }
+})
+
 function Barra_Sup() {
+  
   return (
     <div>
       <header>
@@ -11,7 +19,6 @@ function Barra_Sup() {
               <div className="boton-icono"><i className="fas fa-bars icono-hamburguesa" id="hamburguesa" onClick={() =>{
                 document.getElementById('caja-botones').classList.toggle('contenedorS')
                 document.getElementById('caja-botones').classList.toggle('contenedor-botones-oculto')
-                
               }}></i>
               </div>
             </div>

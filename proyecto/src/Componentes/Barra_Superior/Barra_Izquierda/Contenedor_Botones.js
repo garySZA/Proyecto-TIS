@@ -6,6 +6,7 @@ import Registro_Unidad_Gasto from '../../Registro_Unidades_De_Gasto/formulario_r
 import Mostrar_tarjetas from '../../Mostrar_Tarjetas/Mostrar_tarjetas';
 import Mostrar_tarjetas_solicitudes from '../../Mostrar_Tarjetas_Solicitudes/Mostrar_Tarjetas_Solicitudes';
 import Mostrar_Tarjetas_Modificacion_Estados from '../../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados';
+import TarjetaInf from '../../Tarjetas-Info/Informacion';
 
 function Barra_Izquierda(){
 
@@ -93,6 +94,7 @@ function Barra_Izquierda(){
 
     return(
         <> 
+        <TarjetaInf />
         <div className="contenedor-botones-oculto" id="caja-botones">
             <button className="boton-barra"  id ="botonRegistroEmpresa" onClick={mostrarRegistroEmpresa}>Registrar Empresa</button>
             <button className="boton-barra"  id="botonRegistroSolicitud" onClick={mostrarFormSoli}>Registro de solicitud</button>            

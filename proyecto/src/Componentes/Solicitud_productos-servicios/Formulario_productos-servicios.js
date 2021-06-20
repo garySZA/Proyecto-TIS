@@ -170,7 +170,7 @@ class Formulario_ProductosServicios extends Component{
                 FechaDeSolicitud: `${fechaS}` ,
                 responsableSolicitud: `${respon}` ,
                 montoSolicitud: `${mont}`,
-                estadoSolicitud: "En espera",
+                estadoSolicitud: "En Verificacion",
                 registroUnidadGasto_idRegistroUnidad: 3000000
             }
             console.log(fechaS);
