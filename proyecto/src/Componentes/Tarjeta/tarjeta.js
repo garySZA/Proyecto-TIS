@@ -1,10 +1,7 @@
 import React from 'react';
 import './estilos_tarjeta.css';
 class Tarjeta extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
+    
 
     render(){
         return(

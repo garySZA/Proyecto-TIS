@@ -48,7 +48,7 @@ function Tarjeta_Solicitudes(props){
         !observaciones? 'Cargando':
         observaciones.map(obs => {
             return (props.solicitud.idFormularioSolitud == obs.FormularioSolitud_idFormularioSolitud)?
-                <div className={props.estadoCaja} data-aos="fade-up" data-aos-duration="3000">
+                <div className={props.estadoCaja} data-aos="fade-up" data-aos-duration="2000">
                     <div className={props.estadoTitulo}>
                         <label className="estado-solicitud">{props.solicitud.estadoSolicitud}</label>
                     </div>

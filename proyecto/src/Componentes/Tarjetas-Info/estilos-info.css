@@ -15,11 +15,14 @@
 .contenedor-info{
     width: 250px;
     height: 150px;
-    border: 2px solid tomato;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: .5px solid rgb(170, 159, 159);
+    border-radius: 30px;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    box-shadow: 18px 18px 20px #d1d9e6, -10px -10px 16px #ffffff;
 }
 
 .cont-info-titulo{
@@ -31,10 +34,12 @@
 
 .icono-info{
     font-size: 40px;
+    color: var(--color_contenido);
 }
 
 .label-info-titulo{
     font-size: 25px;
+    color: var(--color_contenido)
 }
 
 .cont-info-subtitulo{
@@ -49,4 +54,5 @@
     font-size: 35px;
     display: block;
     margin: 0;
+    color: var(--color_fondo)
 }
