@@ -110,44 +110,44 @@ const EditYo = (props) => {
                 <div className="p-d-flex p-flex-column">
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="item" type="text" value={item} onChange={handleItemChange}/>
-                            <label htmlFor="item">item</label>
+                            <InputText className="input-margin" id="item" type="text" value={item} onChange={handleItemChange}/>
+                            <label htmlFor="item">Item</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="DetalleSolitud" type="text" value={detalle} onChange={handleDetalleChange}/>
-                            <label htmlFor="DetalleSolitud">DetalleSolitud</label>
+                            <InputText className="input-margin" id="DetalleSolitud" type="text" value={detalle} onChange={handleDetalleChange}/>
+                            <label htmlFor="DetalleSolitud">Detalle</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="FechaDeSolicitud" type="text" value={fecha} onChange={handleFechaChange}/>
-                            <label htmlFor="FechaDeSolicitud">FechaDeSolicitud</label>
+                            <InputText className="input-margin" id="FechaDeSolicitud" type="text" value={fecha} onChange={handleFechaChange}/>
+                            <label htmlFor="FechaDeSolicitud">Fecha de Solicitud</label>
                         </span>
                     </div>
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="responsableSolicitud" type="text" value={responsable} onChange={handleResponsableChange}/>
-                            <label htmlFor="responsableSolicitud">responsableSolicitud</label>
+                            <InputText className="input-margin" id="responsableSolicitud" type="text" value={responsable} onChange={handleResponsableChange}/>
+                            <label htmlFor="responsableSolicitud">Responsable</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="montoSolicitud" type="text" value={solicitud} onChange={handleSolicitudChange}/>
-                            <label htmlFor="montoSolicitud">montoSolicitud</label>
+                            <InputText className="input-margin" id="montoSolicitud" type="text" value={solicitud} onChange={handleSolicitudChange}/>
+                            <label htmlFor="montoSolicitud">Monto</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="estadoSolicitud" type="text" value={estado} onChange={handleEstadoPChange}/>
-                            <label htmlFor="estadoSolicitud">estadoSolicitud</label>
+                            <InputText className="input-margin" id="estadoSolicitud" type="text" value={estado} onChange={handleEstadoPChange}/>
+                            <label htmlFor="estadoSolicitud">Estado</label>
                         </span>
                     </div> 
                     <div className="p-mb-2">
                         <span className="p-float-label">
-                            <InputText id="registroUnidadGasto_idRegistroUnidad" type="text" value={idUnidadGasto} onChange={handleIdUnidadGastoPChange}/>
-                            <label htmlFor="registroUnidadGasto_idRegistroUnidad">registroUnidadGasto_idRegistroUnidad</label>
+                            <InputText className="input-margin" id="registroUnidadGasto_idRegistroUnidad" type="text" value={idUnidadGasto} onChange={handleIdUnidadGastoPChange}/>
+                            <label htmlFor="registroUnidadGasto_idRegistroUnidad">idRegistroUnidad</label>
                         </span>
                     </div> 
                 </div>        

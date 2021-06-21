@@ -28,11 +28,11 @@ class Formulario_ProductosServicios extends Component{
         super(props)
         this.state = {
             showMe:true,
-            validarItem: false,
-            validarDetalleSolicitud: false,
-            validarResponsableSolicitud: false,
-            validarMonto: false,
-            camposVacios: true,
+            validarItem:                    false,
+            validarDetalleSolicitud:        false,
+            validarResponsableSolicitud:    false,
+            validarMonto:                   false,
+            camposVacios:                   true,
 
             fecha: new Date()
         }
@@ -42,7 +42,10 @@ class Formulario_ProductosServicios extends Component{
         this.setState.showMe = true;
     }
 
-    nameImputs = ["item","detalleSolicitud", "responsableSolicitud", "monto"];
+    nameImputs = ["item",
+                  "detalleSolicitud", 
+                  "responsableSolicitud", 
+                  "monto"];
 
     //para verificar los datos de cada campo
     verificarCampos = () => {
@@ -144,19 +147,37 @@ class Formulario_ProductosServicios extends Component{
 
     //al presionar el boton "Solicitar"
     Solicitar = () => {
-        if(this.state.validarDetalleSolicitud == true && this.state.validarResponsableSolicitud == true && this.state.validarMonto == true){
+        if(this.state.validarItem == true 
+            && this.state.validarDetalleSolicitud == true 
+            && this.state.validarResponsableSolicitud == true 
+            && this.state.validarMonto == true){
             console.log("solicitar");
             this.nameImputs.forEach((campo) => {
                 console.log(document.getElementById(campo).value)
             })
+
+
+            var iitem1 = document.getElementById("item").value
+            var detalle = document.getElementById("detalleSolicitud").value
+            var fechaS = document.getElementById("fecha").value
+            var respon = document.getElementById("responsableSolicitud").value
+            var mont = document.getElementById("monto").value
+            var llave = "3000000"
+
+            const data = {
+                item: `${iitem1}`,
+                DetalleSolitud: `${detalle}` ,
+                FechaDeSolicitud: `${fechaS}` ,
+                responsableSolicitud: `${respon}` ,
+                montoSolicitud: `${mont}`,
+                estadoSolicitud: "En Verificacion",
+                registroUnidadGasto_idRegistroUnidad: 3000000
+            }
+            console.log(fechaS);
             //añadiendo datos a la API con ayuda de axios
-            axios.post('https://formulario-prod-ser-backend.herokuapp.com/add' , {
-                item: document.getElementById("item").value,
-                DetalleSolitud: document.getElementById("detalleSolicitud").value ,
-                FechaDeSolicitud: document.getElementById("fecha").value ,
-                responsableSolicitud: document.getElementById("responsableSolicitud").value ,
-                montoSolicitud: document.getElementById("monto").value
-            }).then(response => {
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/formReq/createFormReq' ,
+                data
+            ).then(response => {
                 console.log('solicitud aceptada y añadida!', response.data);
             }).catch(e => {
                 console.log(e);
@@ -212,7 +233,7 @@ class Formulario_ProductosServicios extends Component{
     
     render(){
         return(
-            <div>
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     {this.state.showMe ? (
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 
@@ -226,7 +247,7 @@ class Formulario_ProductosServicios extends Component{
 
                             <div className="camposform solicitud__datos" id="dato__item">
                                 <div className="contenedor-camposform-subtitulos">
-                                    <h3 for="campo-item" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
+                                    <h3 for="campo-detalle" className="subtitulos"> <i class="fas fa-newspaper"></i> Item:</h3>
                                 </div>
                                 <div className="solicitud__datos-imputs">
                                     <input
@@ -276,7 +297,9 @@ class Formulario_ProductosServicios extends Component{
                                     <DatePicker className="entradas" 
                                         type="text" 
                                         name="fecha"
-                                        id="fecha" selected={this.state.fecha}>
+                                        title="fechaSolicitud"
+                                        id="fecha" selected={this.state.fecha}
+                                        dateFormat="dd/MM/yyyy">
                                     </DatePicker>
 
                                 </div>

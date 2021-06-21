@@ -36,6 +36,8 @@ $ npm install primeflex
 
 $ npm install react-datepicker //para las fechas automaticas o personalizadas 
 
+$ npm install jspdf //para importar librerias para PFD
+
 
 # Getting Started with Create React App
 

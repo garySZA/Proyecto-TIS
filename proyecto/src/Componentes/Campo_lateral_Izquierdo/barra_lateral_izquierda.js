@@ -14,14 +14,12 @@ import Mostrar_tarjetas_solicitudes from '../Mostrar_Tarjetas_Solicitudes/Mostra
 //importacion de formulario de solicitud de productos y servicios
 import Formulario_ProductosServicios from '../Solicitud_productos-servicios/Formulario_productos-servicios'
 
-//importacion de formulario de registro de nuevos usuarios
-import RegistroDeNuevosUsuarios from '../Registro_de_Nuevos_Usuarios/new_user_registration'
-
 //importacion del formulario de registro de unidades de gasto
 import Registro_Unidad_Gasto from '../Registro_Unidades_De_Gasto/formulario_registro_unidadesDeGasto'
 
 //importacion de componente para mostrar solicitudes modificables
 import Mostrar_Tarjetas_Modificacion_Estados from '../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados'
+
 
 import axios from 'axios'
 
@@ -31,11 +29,11 @@ class BarraLateral extends React.Component{
     this.state = {
       mostrarRegistroEmpresa: false,
       mostrarFormularioProductosServicios :false,
-      mostrarFormularioDeUsuariosNuevos:false,
       mostrarregistroUnidadGasto: false,
       mostrarEmpresas: false,
       mostrarHistorialSolicitudes: false,
       mostrarSolicitudesModificables: false
+
     };
 
     this.listaEmpresas = [];
@@ -50,9 +48,9 @@ class BarraLateral extends React.Component{
       document.getElementById('botonRegistroEmpresa').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
+        
         mostrarRegistroEmpresa: true,
         mostrarFormularioProductosServicios: false, 
-        mostrarFormularioDeUsuariosNuevos: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
         mostrarSolicitudesModificables: false,
@@ -76,7 +74,6 @@ class BarraLateral extends React.Component{
     }else{
       this.setState({
         mostrarFormularioProductosServicios: true,
-        mostrarFormularioDeUsuariosNuevos:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
         mostrarEmpresas: false,
@@ -92,23 +89,7 @@ class BarraLateral extends React.Component{
     }
   }
 
-  operation4 = () =>{
-    if(this.state.mostrarFormularioDeUsuariosNuevos == true){
-      this.setState({
-        mostrarFormularioDeUsuariosNuevos: false
-      }) 
-    }else{
-      this.setState({
-        mostrarFormularioDeUsuariosNuevos: true,
-        mostrarFormularioProductosServicios:false,
-        mostrarRegistroEmpresa: false,
-        mostrarregistroUnidadGasto: false,
-        mostrarEmpresas: false,
-        mostrarSolicitudesModificables: false,
-        mostrarHistorialSolicitudes: false
-      })     
-    }
-  }
+  
 
   operation6 = () => {
     if(this.state.mostrarregistroUnidadGasto == true){
@@ -118,8 +99,9 @@ class BarraLateral extends React.Component{
       document.getElementById('botonRegistroUnidadDeGasto').classList.toggle('estilo-boton-click')
     }else {
       this.setState({
+        
         mostrarregistroUnidadGasto: true,
-        mostrarFormularioDeUsuariosNuevos: false,
+      
         mostrarFormularioProductosServicios: false,
         mostrarRegistroEmpresa: false,
         mostrarEmpresas: false,
@@ -149,7 +131,8 @@ class BarraLateral extends React.Component{
       document.getElementById('botonVerEmpresas').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarFormularioDeUsuariosNuevos: false,
+        
+        
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
@@ -175,7 +158,8 @@ class BarraLateral extends React.Component{
       document.getElementById('botonHistorialSolicitudes').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarFormularioDeUsuariosNuevos: false,
+       
+        
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
@@ -201,7 +185,7 @@ class BarraLateral extends React.Component{
       document.getElementById('botonModificarEstados').classList.toggle('estilo-boton-click')
     }else{
       this.setState({
-        mostrarFormularioDeUsuariosNuevos: false,
+       
         mostrarFormularioProductosServicios:false,
         mostrarRegistroEmpresa: false,
         mostrarregistroUnidadGasto: false,
@@ -217,6 +201,10 @@ class BarraLateral extends React.Component{
       document.getElementById('botonRegistroEmpresa').classList.remove('estilo-boton-click')     
     }
   }
+
+ 
+
+
 
   onChange = () =>{
     axios.get('https://proyecto-tis.herokuapp.com/api/empresas')
@@ -248,7 +236,9 @@ class BarraLateral extends React.Component{
             <button className="registro-empresa"  id="botonRegistroUnidadDeGasto"   onClick={()=>this.operation6()}>Registrar Unidad de Gasto</button>
             <button className="registro-empresa"  id="botonVerEmpresas"   onClick={()=>this.operation5()}>Ver Empresas</button>
             <button className="registro-empresa"  id="botonHistorialSolicitudes"   onClick={()=>this.operation7()}>Historial de Solicitudes</button>
-            <button className="registro-empresa"  id="botonModificarEstados" onClick={()=>this.operation8()}>Modificar Estados</button>
+            <button className="registro-empresa"  id="botonModificarEstados"   onClick={()=>this.operation8()}>Modificar Estados</button>
+            
+           
         </div>
         <div className="p-grid principal" id="algo" onChange={this.onChange}>
           {
@@ -263,12 +253,7 @@ class BarraLateral extends React.Component{
             :
             ''
           }
-          {
-            (this.state.mostrarFormularioDeUsuariosNuevos)?
-            <RegistroDeNuevosUsuarios />
-            :
-            ''
-          }
+         
           {
             (this.state.mostrarEmpresas)?
             <Mostrar_tarjetas />
@@ -292,7 +277,9 @@ class BarraLateral extends React.Component{
             <Mostrar_Tarjetas_Modificacion_Estados />
             :
             ''
-          }
+          } 
+
+            
       </div>
     </div>
     </div>

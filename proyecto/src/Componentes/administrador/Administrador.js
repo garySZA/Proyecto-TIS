@@ -6,7 +6,7 @@ const Administrador = () =>{
     return(
         <div>
             <Barra_Sup />
-            <BarraLateral />
+            {/*<BarraLateral />*/}
         </div>
     )
 }

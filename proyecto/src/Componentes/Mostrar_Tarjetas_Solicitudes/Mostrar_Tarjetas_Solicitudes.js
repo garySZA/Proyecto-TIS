@@ -13,6 +13,7 @@ function Mostrar_tarjetas_solicitudes(){
         const responseJSON = await response.json();
         setTodos(responseJSON);
     }
+console.log(todos)
 
     useEffect(() => {
         fetchApi();
@@ -31,7 +32,6 @@ function Mostrar_tarjetas_solicitudes(){
                             <Tarjeta_Solicitudes solicitud = {solicitud} estadoCaja = 'tarjeta-solicitud-rechazado' estadoTitulo = 'contenedor-estado-solicitud-rechazado'/>
                             :
                             ''
-                            
                         })
                     }
                 </div>

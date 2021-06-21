@@ -1,5 +1,9 @@
 import { Component } from "react";
-import { Card, Label } from "reactstrap";
+import { Card, Form, Label } from "reactstrap";
+import axios from 'axios';
+import swal from 'sweetalert2';
+
+import Menu from "./Menu"; //importacion de la carpeta Meno para controlar select
 
 import './formulario_registro_unidadesDeGasto.css';
 
@@ -12,48 +16,249 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
 
 
-
+const llenadoDeCampos = {
+    //elegirFacultad:         /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
+    //elegirCarrera:          /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/,
+    unidadAdministrativa:   /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/, 
+    presupuesto:            /^\d{1,7}$/, 
+    nombreJefe:             /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/, 
+    nombreSecretaria:       /^[a-zA-ZÀ-ÿ\s\d]{1,50}$/, 
+    telefonoUnidad:         /^\d{7,8}$/
+};
 
 
 class Registro_Unidad_Gasto extends Component {
     constructor(props){
         super(props)
         this.state = {
-            showMe:true,
-            seleccionarFacultad: null,
-            value2: '',
-            value3: '',
-            value4: '',
-            value5: '',
-            value6: '',
+            showMe:true, 
+
+            validarunidadAdministrativa:   false, 
+            validarpresupuesto:            false, 
+            validarnombreJefe:             false, 
+            validarnombreSecretaria:       false, 
+            validartelefonoUnidad:         false,
+
+            camposVacios:                   true,    
+            
         };
-        this.cities = [
-            { name: 'Fac. Arquitectura Y Ciencias Del Habitat',     code: 'FAC' },
-            { name: 'Fac. Ciencias Agricolas Y Pecuarias',          code: 'FCA' },
-            { name: 'Fac. Ciencias Economicas',                     code: 'FCE' },
-            { name: 'Fac. Ciencias Juridicas Y Politicas',          code: 'FCJ' },
-            { name: 'Fac. Ciencias Sociales',                       code: 'FCS' },
-            { name: 'Fac. Ciencias Veterinarias',                   code: 'FCV' },
-            { name: 'Fac. Ciencias y Tecnología',                   code: 'FCT' },
-            { name: 'Fac. Cs .Farmaceuticas Y Bioquimicas',         code: 'FFB' },
-            { name: 'Fac. Desarrollo Rural y Territorial',          code: 'FDR' },
-            { name: 'Fac. De Medicina',                             code: 'FM' },
-            { name: 'Fac. De Enfermeria',                           code: 'FE' },
-            { name: 'Fac. Humanidades Y Cs. De Educacion',          code: 'FHE' },
-            { name: 'Fac. De Odontología',                          code: 'FO' }
-        ];
-
-        this.onCityChange = this.onCityChange.bind(this);
     }
 
-    onCityChange(e) {
-        this.setState({ seleccionarFacultad: e.value });
+
+    //Verificar todos los campos
+    nameImputs = ["unidadAdministrativa", 
+                  "presupuesto", 
+                  "nombreJefe", 
+                  "nombreSecretaria", 
+                  "telefonoUnidad"];
+
+    verificarCampos = () => {
+        this.nameImputs.forEach((campo) => {
+            this.verificarCamposVacios(); //funcion para ver campos vacios revisar
+            var elemento = document.getElementById(campo);
+            if(campo == "unidadAdministrativa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validarunidadAdministrativa: false
+                    })
+                }else{
+                    console.log("posilocox2");
+                    if(llenadoDeCampos.unidadAdministrativa.test(elemento.value)){
+                        this.setState({
+                            validarunidadAdministrativa:true
+                        })
+                        this.ocultarError(campo);
+                    }else{
+                        this.setState({
+                            validarunidadAdministrativa:false
+                        })
+                        this.mostrarError(campo)
+                    }
+                }
+            }else if(campo == "presupuesto"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validarpresupuesto: false
+                    })
+                }else{
+                    console.log("posilocox2");
+                    if(llenadoDeCampos.presupuesto.test(elemento.value)){
+                        this.setState({
+                            validarpresupuesto: true
+                        })
+                        this.ocultarError(campo);
+                    }else{
+                        this.setState({
+                            validarpresupuesto: false
+                        })
+                        this.mostrarError(campo)
+                    }
+                }
+            }else if(campo == "nombreJefe"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validarnombreJefe: false
+                    })
+                }else{
+                    console.log("posilocox2");
+                    if(llenadoDeCampos.nombreJefe.test(elemento.value)){
+                        this.setState({
+                            validarnombreJefe: true
+                        })
+                        this.ocultarError(campo);
+                    }else{
+                        this.setState({
+                            validarnombreJefe: false
+                        })
+                        this.mostrarError(campo)
+                    }
+                }
+            }else if(campo == "nombreSecretaria"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validarnombreSecretaria: false
+                    })
+                }else{
+                    console.log("posilocox2");
+                    if(llenadoDeCampos.nombreSecretaria.test(elemento.value)){
+                        this.setState({
+                            validarnombreSecretaria: true
+                        })
+                        this.ocultarError(campo);
+                    }else{
+                        this.setState({
+                            validarnombreSecretaria: false
+                        })
+                        this.mostrarError(campo)
+                    }
+                }
+            }else if(campo == "telefonoUnidad"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validartelefonoUnidad: false
+                    })
+                }else{
+                    console.log("posilocox2");
+                    if(llenadoDeCampos.telefonoUnidad.test(elemento.value)){
+                        this.setState({
+                            validartelefonoUnidad: true
+                        })
+                        this.ocultarError(campo);
+                    }else{
+                        this.setState({
+                            validartelefonoUnidad: false
+                        })
+                        this.mostrarError(campo)
+                    }
+                }
+            }
+        })
     }
 
+    ocultarError(etiqueta){
+        document.getElementById(etiqueta).classList.remove("dato-erroneo");
+        document.getElementById(`errorDeMensaje-${etiqueta}`).classList.remove("solicitud__dato-erroneo-activo");
+    }
+    mostrarError(etiqueta){
+        document.getElementById(etiqueta).classList.add("dato-erroneo");
+        document.getElementById(`errorDeMensaje-${etiqueta}`).classList.add("solicitud__dato-erroneo-activo");
+    }
+
+
+    //para el boton cancelar... verifica y vacia los campos
+    limpiarCampos = () =>{
+        this.nameImputs.forEach((campo) => {
+            document.getElementById(campo).value ="";
+        })
+    }
+    notificacionAdvertencia = () =>{
+        if(!this.state.camposVacios){
+            swal.fire({
+                title:      'Advertencia',
+                text:       'Los campos llenados serán vaciados!',
+                icon:       'warning',
+                showDenyButton:     'true',
+                confirmButtonText:  `Aceptar`,
+                denyButtonText:     `Cancelar`
+            }).then((respuesta) => {
+                if(respuesta.isConfirmed){
+                    this.limpiarCampos();
+                }else if(respuesta.isDenied){
+                
+                }
+            })
+        }
+    }
+    verificarCamposVacios(){
+        this.nameImputs.forEach((campo) => {
+            if(document.getElementById(campo) === ""){
+                this.setState({
+                    camposVacios: true
+                })
+            }else{
+                this.setState({
+                    camposVacios: false
+                })
+            }
+        })
+    }
+
+
+    //para el boton registrar
+    Solicitar = () => {
+        if( //this.setState.seleccionarFacultad == true
+            //&& this.setState.seleccionarCarrera == true
+
+             this.state.validarunidadAdministrativa == true
+            && this.state.validarpresupuesto == true
+            && this.state.validarnombreJefe == true
+            && this.state.validarnombreSecretaria == true
+            && this.state.validartelefonoUnidad == true){
+            console.log("solicitar");
+            this.nameImputs.forEach((campo) => {
+                console.log(document.getElementById(campo).value)
+            })
+
+            var nomF = document.getElementById("setCategorias").value
+            var nomC = document.getElementById("selarticulos").value
+            var nomUnid = document.getElementById("unidadAdministrativa").value
+            var pre = document.getElementById("presupuesto").value 
+            var jefeUnid = document.getElementById("nombreJefe").value
+            var secreUnid = document.getElementById("nombreSecretaria").value
+            var telUnid = document.getElementById("telefonoUnidad").value
+            var llave = "1000000"
+
+            const data = {
+                nombreFacultad: `${nomF}`,
+                nombreCarrera: `${nomC}`,
+                nombreUnidad: `${nomUnid}`,
+                presupuesto: `${pre}`,
+                jefeUnidad: `${jefeUnid}`,
+                secretariaUnidad: `${secreUnid}`,
+                telefonoUnidad: `${telUnid}`,
+                RegistroNuevoUsuario_idRegistroNuevoUsuario: `${llave}`
+            }
+            //añadiendo datos a la API con ayuda de axios
+            axios.post('https://backendcompleto-sdc.herokuapp.com/api/unitSpending/createRegisterUnit' ,
+                data,    
+            ).then(response => {
+                console.log('registro añadido!', response.data);
+            }).catch(e => {
+                console.log(e);
+            });
+            document.getElementById("solicitud__mensaje-exitoso").classList.add("solicitud__mensaje-activo")
+        }else{
+            console.log("datos incorrectos");
+            document.getElementById("solicitud__mensaje").classList.add("solicitud__dato-erroneo-activo");
+        }
+    }
+
+
+    
 
     render(){
         return(
-            <div>
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 {this.state.showMe ? (
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 
@@ -61,75 +266,30 @@ class Registro_Unidad_Gasto extends Component {
                             <label className=" solitudDeProductos-servicios">
                                 Registrar Unidad de Gasto
                             </label>
-                        </div>           
+                        </div>
 
+                        <Menu/>
+       
                         <div className="contenedor-formularioDeRegistro">
-                            <div className="p-col-12 camposform solicitud__datos" id="dato__item">
-                                <div className="p-col-5 contenedor-camposform-subtitulos">
-                                    <h3 for="campo-item" className="subtitulos"> 
-                                    <i class="fas fa-school"></i> Nombre de Facultad:
-                                    </h3>
-                                </div>
-                                <div className="p-col-7 solicitud__datos-imputs">  
-                                    <Dropdown
-                                        className="entradas"
-                                        name="nombreFacultad"
-                                        id="nombreFacultad" 
-                                        type="selection" 
-                                        value={this.state.seleccionarFacultad} 
-                                        options={this.cities} 
-                                        onChange={this.onCityChange} 
-                                        optionLabel="name" 
-                                        placeholder="Seleccione una Facultad" >
-                                    </Dropdown>         
-                                    <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-item">
-                                        Debe de seleccionar una Facultad.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="p-col-12 camposform solicitud__datos" id="dato__detalle">
-                                <div className="p-col-5 contenedor-camposform-subtitulos">
-                                    <h3 for="campo-detalle" className="subtitulos"> 
-                                    <i class="fas fa-landmark"></i> Nombre de Carrera:
-                                    </h3>
-                                </div>
-                                <div className="p-col-7 solicitud__datos-imputs">
-                                    <select
-                                        className="entradas"
-                                        name="nombreCarrera"
-                                        id="nombreCarrera" 
-                                        type="selection" 
-                                        onChange = {this.verificarCampos}>
-                                            <option disabled selected>Seleccione una Carrera</option>
-                                            <option>Fac. Arquitectura Y Ciencias Del Habitat</option>
-                                    </select>
-                                    <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-detalleSolicitud">
-                                        Debe de seleccionar una Carrera.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="p-col-12 camposform solicitud__datos" id="dato__fecha" method="POST">
+                            
+                            <div className="p-col-12 camposform solicitud__datos" id="dato__fecha">
                                 <div className="p-col-5 contenedor-camposform-subtitulos">
                                     <h3 for="campo-detalle" className="subtitulos">
                                         <i class="fas fa-calendar-week"></i> Unidad Administrativa:
                                     </h3>
                                 </div>
                                 <span className="p-col-7 p-float-label solicitud__datos-imputs">
-                                    <InputText className="entradas"
-                                        name="unidadAdministrativa"
+                                    <InputText className="entradas" 
+                                        name="unidadAdministrativa" 
                                         id="unidadAdministrativa"
-                                        type="text"
-                                        required=""
-                                        value={this.state.value2} 
-                                        onChange={(e) => this.setState({value2: e.target.value})} 
-                                        onChange = {this.verificarCampos}>
-                                    </InputText>
-                                    <label htmlFor="username"> Ingresar la Unidad Administrativa. </label>
+                                        title="unidadAdministrativa"
+                                        type="text" 
+                                        maxlength="51" 
+                                        onChange = {this.verificarCampos}/>
+                                    <label htmlFor="username">Ingresar la Unidad Administrativa.</label>                                                                                                                                                                			                                                                                    
 
                                     <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-responsableSolicitud">
+                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-unidadAdministrativa">
                                         El campo debe de contener solo letras.
                                     </p>
                                 </span>
@@ -142,18 +302,16 @@ class Registro_Unidad_Gasto extends Component {
                                 </div>
                                 <span className="p-col-7 p-float-label solicitud__datos-imputs">
                                     <InputText className="entradas"
-                                        name="presupuesto"
+                                        name="presupuesto" 
                                         id="presupuesto" 
-                                        type="number"
-                                        required=""
-                                        value={this.state.value3} 
-                                        onChange={(e) => this.setState({value3: e.target.value})} 
-                                        onChange = {this.verificarCampos}>
-                                    </InputText>
+                                        title="presupuesto"
+                                        type="number"  
+                                        required pattern="[0-9]+"
+                                        onChange = {this.verificarCampos}/>                                                                                                                                                                   
                                     <label htmlFor="username"> Ingresar el presupuesto destinado. </label>
 
                                     <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-responsableSolicitud">
+                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-presupuesto">
                                         El campo debe de contener solo numeros enteros.
                                     </p>
                                 </span> 
@@ -166,18 +324,16 @@ class Registro_Unidad_Gasto extends Component {
                                 </div>
                                 <span className="p-col-7 p-float-label solicitud__datos-imputs">
                                     <InputText className="entradas"
-                                        name="nombreJefe"
+                                        name="nombreJefe" 
                                         id="nombreJefe" 
-                                        type="text"
-                                        required=""
-                                        value={this.state.value4} 
-                                        onChange={(e) => this.setState({value4: e.target.value})} 
-                                         onChange = {this.verificarCampos}>
-                                    </InputText>
+                                        title="nombreJefe"
+                                        type="text" 
+                                        maxlength="51" 
+                                        onChange = {this.verificarCampos}/>                                                                                                                                                                                                                                         
                                     <label htmlFor="username"> Ingresar nombre completo de Jefe. </label>
 
                                     <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-monto">
+                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-nombreJefe">
                                         El campo debe de contener solo letras.
                                     </p>
                                 </span>
@@ -190,18 +346,16 @@ class Registro_Unidad_Gasto extends Component {
                                 </div>
                                 <span className="p-col-7 p-float-label solicitud__datos-imputs">
                                     <InputText className="entradas"
-                                        name="nombreSecretaria"
+                                        name="nombreSecretaria" 
                                         id="nombreSecretaria" 
-                                        type="text"
-                                        required=""
-                                        value={this.state.value5} 
-                                        onChange={(e) => this.setState({value5: e.target.value})} 
-                                         onChange = {this.verificarCampos}>
-                                    </InputText>
+                                        title="nombreSecretaria"
+                                        type="text" 
+                                        maxlength="51" 
+                                        onChange = {this.verificarCampos}/>                                                                                                                                                              
                                     <label htmlFor="username"> Ingresar nombre completo de Secretaria. </label>
 
                                     <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-monto">
+                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-nombreSecretaria">
                                         El campo debe de contener solo letras.
                                     </p>
                                 </span>
@@ -214,24 +368,22 @@ class Registro_Unidad_Gasto extends Component {
                                 </div>
                                 <span className="p-col-7 p-float-label solicitud__datos-imputs">
                                     <InputText className="entradas"
-                                        name="telefonoUnidad"
+                                        name="telefonoUnidad" 
                                         id="telefonoUnidad" 
-                                        type="number"
+                                        title="telefonoUnidad"
+                                        type="number"  
                                         required pattern="[0-9]+"
-                                        value={this.state.value6} 
-                                        onChange={(e) => this.setState({value6: e.target.value})} 
-                                         onChange = {this.verificarCampos}>
-                                    </InputText>
+                                        onChange = {this.verificarCampos}/>                                                                                                                                                                                                      
                                     <label htmlFor="username"> Ingresar numero de Telefono. </label>
 
                                     <i class="solicitud__validacionCampos-Estados"></i>
-                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-monto">
+                                    <p className="solicitud__dato-erroneo" id="errorDeMensaje-telefonoUnidad">
                                         El campo debe de contener entre 7 a 8 digitos.
                                     </p>
                                 </span>
                             </div>
 
-                            <div class="solicitud__mensaje" id="solicitud__mensaje">
+                            <div class="p-col-12 solicitud__mensaje" id="solicitud__mensaje">
                                 <label>
                                     <i class="fas fa-exclamation-triangle"></i>
                                     <b>Error:</b> Llene los campos correctamente.
@@ -239,7 +391,7 @@ class Registro_Unidad_Gasto extends Component {
                             </div>
                             <div className="p-col-12 contendor-botonesDeRegistro solicitud__datos solicitud__datos-botonsolicitar">
                                     <button className="botondecancelar botones-formulario" type="button" onClick={this.notificacionAdvertencia} >Cancelar</button>
-                                    <button className="botondesolicitar botones-formulario" id="solicitar" type="button" onClick={this.Solicitar} >Solicitar</button>
+                                    <button className="botondesolicitar botones-formulario" id="solicitar" type="button" onClick={this.Solicitar} >Registrar Unidad</button>
                             </div>
                             <div className="mensaje-exitoso">
                                 <p className= "solicitud__mensaje-exitoso" id="solicitud__mensaje-exitoso">
