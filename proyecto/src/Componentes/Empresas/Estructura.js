@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './estilos-empresas.css'
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css'
+import swal from 'sweetalert2';
 
 function Estructura(props){
     const [estadoModalVer, setEstadoModalVer] = useState(false)
@@ -16,6 +17,30 @@ function Estructura(props){
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '500px'
+    }
+
+    const eliminarEmpresa = () => {
+        swal.fire({
+            title: 'Advertencia!',
+            text: "La empresa seleccionada será borrada de forma definitiva! ¿Desea continuar?",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText:"Cancelar",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Borrar empresa.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/deleteRegisterBus/${props.empresa.idRegistroEmpresa}`, {method: 'DELETE'})
+                .then(() => 
+                    swal.fire(
+                        'Eliminada',
+                        'La empresa seleccionada ha sido elimida.',
+                        'Hecho!'
+                    )
+                )
+            }
+            })
     }
 
     return(
@@ -39,7 +64,7 @@ function Estructura(props){
                     </div>
                     <div className="contenedor-btn-ver-empresas">
                         <button className="btn-ver-empresa btn-edit-empr" title="Editar datos de empresa"><i class="fas fa-pencil-alt icono-ver-empresa"></i></button>
-                        <button className="btn-ver-empresa btn-elim-empr" title="Eliminar empresa"><i class="far fa-trash-alt icono-ver-empresa"></i></button>
+                        <button className="btn-ver-empresa btn-elim-empr" title="Eliminar empresa" onClick={eliminarEmpresa}><i class="far fa-trash-alt icono-ver-empresa"></i></button>
                         <button className="btn-ver-empresa btn-ver-empr" title="Ver datos completos de empresa" onClick={abrirModalVer}><i class="far fa-eye icono-ver-empresa"></i></button>
                     </div>
             </section>
