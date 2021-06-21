@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import swal from 'sweetalert2';
 
 function Estructura(props){
+    //bloque para poder mostrar ventana flotante que contenga datos de una empresa
     const [estadoModalVer, setEstadoModalVer] = useState(false)
 
     const abrirModalVer = () => {
@@ -19,6 +20,9 @@ function Estructura(props){
         width: '500px'
     }
 
+    //bloque para mostrar ventana flotante para editar una empresa.
+
+    //bloque para eliminar una empresa mediante un boton.
     const eliminarEmpresa = () => {
         swal.fire({
             title: 'Advertencia!',
