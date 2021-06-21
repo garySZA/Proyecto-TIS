@@ -7,6 +7,7 @@ import Mostrar_tarjetas from '../../Mostrar_Tarjetas/Mostrar_tarjetas';
 import Mostrar_tarjetas_solicitudes from '../../Mostrar_Tarjetas_Solicitudes/Mostrar_Tarjetas_Solicitudes';
 import Mostrar_Tarjetas_Modificacion_Estados from '../../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados';
 import TarjetaInf from '../../Tarjetas-Info/Informacion';
+import Empresa from '../../Empresas/Empresas';
 
 function Barra_Izquierda(){
 
@@ -124,7 +125,7 @@ function Barra_Izquierda(){
             }
             {
                 (estadoVerEmpresas)?
-                <Mostrar_tarjetas />
+                <Empresa />
                 :
                 ''
             }
