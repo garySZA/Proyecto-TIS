@@ -3,6 +3,7 @@ import './estilos_mostrar_tarjetas.css';
 import Tarjeta from '../Tarjeta/Tarjeta';
 import Spinner from '../Spinner/Spinner'
 
+
 function Mostrar_tarjetas(){
     const url = 'https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/getRegisterBusiness'
     const [todos, setTodos] = useState()
@@ -35,6 +36,10 @@ function Mostrar_tarjetas(){
                     })
                         
                 }
+
+
+                
+                
             </div>  
         </div>
     );

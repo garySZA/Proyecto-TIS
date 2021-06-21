@@ -4,36 +4,57 @@ import {Button} from 'reactstrap'
 import jsPDF from 'jspdf'; 
 
 
+
+
 function Tarjeta_Solicitudes(props){
+    let detalless="";
     
     const {solicitud}=props;
-    
-    const { estadoSolicitud,DetalleSolitud,item,FechaDeSolicitud,responsableSolicitud,montoSolicitud}=solicitud;
+    console.log(detalless);
+    const { estadoSolicitud,DetalleSolitud,item,FechaDeSolicitud,responsableSolicitud,montoSolicitud,idFormularioSolitud}=solicitud;
     const fecha =FechaDeSolicitud.replace('T00:00:00.000Z', '');
  
+
+    const urlObs = 'https://backendcompleto-sdc.herokuapp.com/api/inform/getInfAR';
+    const [observaciones, setObservaciones] = useState([''])
+
+
+
+
+
     const printPDF=()=>{
 
+       observaciones.map(obs=>{
+        if(idFormularioSolitud==obs.FormularioSolitud_idFormularioSolitud){
+            detalless=obs.DetalleIAR;
+        }
+        
 
+       })
+        
         
         var doc=new jsPDF('portrait','px','a4','false');
         
-        doc.text(150,70, "Solicitudes de Empresas");
+        doc.setFontSize(12);
+        
+        doc.setFont('fontStyle');
+        doc.text(170,70, "Solicitudes de Empresas");
         doc.text(60,110,"Detalle: "+DetalleSolitud);
         doc.text(60,130,"Item: "+item);
         doc.text(60,150,"Fecha: "+fecha);
         doc.text(60,170,"Responsable: "+responsableSolicitud);
         doc.text(60,190,"Monto: "+montoSolicitud);
-        doc.text(143,230,"________________________");
-        doc.text(200,250,"RVGC");
-        
+        doc.text(60,210,"Observaciones:   "+detalless);
+        doc.text(143,270,"________________________");
+        doc.text(200,290,"RVGC");
+    
         doc.addPage();//previsualiza pdf en nuevo pestaña solo en chrome
         doc.save('Solicitud de Empresas.pdf');
 
     }
     
-    const urlObs = 'https://backendcompleto-sdc.herokuapp.com/api/inform/getInfAR';
-    const [observaciones, setObservaciones] = useState([''])
-
+  
+ console.log('obs',observaciones);
     const obtenerObservaciones = async () => {
         const response = await fetch(urlObs)
         const responseJSON = await response.json()
@@ -47,11 +68,14 @@ function Tarjeta_Solicitudes(props){
     return(
         !observaciones? 'Cargando':
         observaciones.map(obs => {
+          
+          
+
             return (props.solicitud.idFormularioSolitud == obs.FormularioSolitud_idFormularioSolitud)?
                 <div className={props.estadoCaja}>
-                    <div className={props.estadoTitulo}>
-                        <label className="estado-solicitud">{props.solicitud.estadoSolicitud}</label>
-                    </div>
+                        <div className={props.estadoTitulo}>
+                           <label className="estado-solicitud">{props.solicitud.estadoSolicitud}</label>                    
+                        </div>
 
                     <div className="contenedor-campos-solicitud">
                         <label className = "subtitulos-solicitud">Detalle:</label>
@@ -80,11 +104,15 @@ function Tarjeta_Solicitudes(props){
                         </div>
                     </div>
                     
-                <div className="tamanio-Botocitoo" style ={{textAlign:'center'}} ><br/>
-               <Button onClick={printPDF} >Download PDF</Button>
-                </div>
+                    < footer className='mb-2' >
+                        <div Tarjeta_Solicitudes style ={{textAlign:'center'}} ><br/>
+                          <Button  onClick={printPDF} >Download PDF</Button>
+                         </div>
 
+                    </footer>
+                        
                 </div>
+                
 
                :
             ''

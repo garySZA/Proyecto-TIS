@@ -3,6 +3,8 @@ import '../Mostrar_Tarjetas/estilos_mostrar_tarjetas.css'
 import Tarjeta_Modificacion_Estados from './Tarjeta_Modificacion_Solicitudes/Tarjeta_modificacion_estados'
 import Spinner from '../Spinner/Spinner'
 
+
+
 function Mostrar_Tarjetas_Modificacion_Estados(){
     const url = 'https://backendcompleto-sdc.herokuapp.com/api/formReq/getFormReq'
     const [todos, setTodos]  = useState()
@@ -28,6 +30,9 @@ function Mostrar_Tarjetas_Modificacion_Estados(){
                 })
             }
         </div>
+       
+
+
     </div>
     )
 }

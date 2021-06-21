@@ -30,6 +30,7 @@
     flex-direction: column;
     color: #293863;
     margin: 5px;
+    height: 300px;
 }
 
 .contenido-de-solicitudes{
@@ -61,4 +62,11 @@
     margin-top: -5px;
     margin-left: -1px;
     width: 250px;
+}
+.botoncitooss{
+  
+    
+    position: static;
+    
+  bottom: 0;
 }
