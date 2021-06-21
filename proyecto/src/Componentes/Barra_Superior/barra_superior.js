@@ -1,9 +1,16 @@
 import './estilo_barra_superior.css';
 import logo from './img/UMSS_logo.png'
+import Barra_Izquierda from './Barra_Izquierda/Contenedor_Botones';
 
-
+window.addEventListener("click", function(e){
+  if(e.target == 'contenedorS'){
+    document.getElementById('caja-botones').classList.toggle('contenedorS')
+    document.getElementById('caja-botones').classList.toggle('contenedor-inicial')
+  }
+})
 
 function Barra_Sup() {
+  
   return (
     <div>
       <header>
@@ -12,7 +19,6 @@ function Barra_Sup() {
               <div className="boton-icono"><i className="fas fa-bars icono-hamburguesa" id="hamburguesa" onClick={() =>{
                 document.getElementById('caja-botones').classList.toggle('contenedorS')
                 document.getElementById('caja-botones').classList.toggle('contenedor-botones-oculto')
-                
               }}></i>
               </div>
             </div>
@@ -28,14 +34,7 @@ function Barra_Sup() {
             </section>
           </nav>
         </header>
-        <div className="contenedor-botones-oculto" id="caja-botones">
-            <button className="boton-barra"  id ="botonRegistroEmpresa"  >Registrar Empresa</button>
-            <button className="boton-barra"  id="botonRegistroSolicitud">Registro de solicitud</button>            
-            <button className="boton-barra"  id="botonRegistroUnidadDeGasto">Registrar Unidad de Gasto</button>
-            <button className="boton-barra"  id="botonVerEmpresas">Ver Empresas</button>
-            <button className="boton-barra"  id="botonHistorialSolicitudes">Historial de Solicitudes</button>
-            <button className="boton-barra"  id="botonModificarEstados">Modificar Estados</button>
-        </div>
+        <Barra_Izquierda />
     </div>
   );
 }

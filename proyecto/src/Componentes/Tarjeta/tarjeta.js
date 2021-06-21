@@ -1,14 +1,11 @@
 import React from 'react';
 import './estilos_tarjeta.css';
 class Tarjeta extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
+    
 
     render(){
         return(
-            <div className="contenedor-principal-tarjetaE">
+            <div className="contenedor-principal-tarjetaE" data-aos="fade-up" data-aos-duration="3000">
                     <div className="contenedor-subtitulo-tarjetaE subtitulos-tarjetaE">
                         <label >Datos de Empresa</label>
                     </div>

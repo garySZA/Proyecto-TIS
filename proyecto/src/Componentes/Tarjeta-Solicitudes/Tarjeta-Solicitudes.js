@@ -48,7 +48,7 @@ function Tarjeta_Solicitudes(props){
         !observaciones? 'Cargando':
         observaciones.map(obs => {
             return (props.solicitud.idFormularioSolitud == obs.FormularioSolitud_idFormularioSolitud)?
-                <div className={props.estadoCaja}>
+                <div className={props.estadoCaja} data-aos="fade-up" data-aos-duration="2000">
                     <div className={props.estadoTitulo}>
                         <label className="estado-solicitud">{props.solicitud.estadoSolicitud}</label>
                     </div>
@@ -81,14 +81,13 @@ function Tarjeta_Solicitudes(props){
                     </div>
                     
                 <div className="tamanio-Botocitoo" style ={{textAlign:'center'}} ><br/>
-               <Button onClick={printPDF} >Download PDF</Button>
+                    <Button onClick={printPDF} >Download PDF</Button>
                 </div>
 
                 </div>
-
-               :
+            :
             ''
-          })
+            })
     )
 }
 
