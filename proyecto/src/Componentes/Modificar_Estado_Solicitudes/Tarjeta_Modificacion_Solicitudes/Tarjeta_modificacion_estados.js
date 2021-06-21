@@ -116,7 +116,7 @@ function Tarjeta_Modificacion_Estados(props){
     
     
     return(
-        <div className="tarjeta-solicitud" id={`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`}>
+        <div className="tarjeta-solicitud" id={`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`} data-aos="fade-up" data-aos-duration="3000">
             <div className="contenedor-estado-solicitud" id={`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`}>
                 <label className="estado-solicitud" id={props.solicitud.idFormularioSolitud}>{estado}</label>
             </div>

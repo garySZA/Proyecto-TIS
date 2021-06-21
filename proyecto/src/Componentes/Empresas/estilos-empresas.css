@@ -1,0 +1,82 @@
+.cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+}
+
+.contenedor-gral{
+    background-color: tomato;
+    width: 70%;
+    height: 40px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.contenedor-campos-ver-empresa{
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    width: 1000px;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.campos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+
+.contenedor-btn-ver-empresas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20%;
+}
+
+.btn-ver-empresa{
+    height: 90%;
+    border: .5px solid silver;
+    width: 44px;
+}
+
+.icono-ver-empresa{
+    font-size: 20px;
+    width: 30px;
+    color: antiquewhite;
+}
+
+.btn-edit-empr{
+    background-color: #f57c00;
+}
+
+.btn-elim-empr{
+    background-color: #EC1B23;
+}
+
+.btn-ver-empr{
+    background-color: #42ab49;
+}
+
+.btn-ver-empresa:hover{
+    cursor: pointer;
+}
+
+.contenedor-id{
+    width: 10%;
+}
+
+.contenedor-nombre, .contenedor-telf{
+    width: 20%;
+}
+
+.contenedor-enc{
+    width: 30%;
+}

@@ -219,8 +219,8 @@ class Registro_Unidad_Gasto extends Component {
                 console.log(document.getElementById(campo).value)
             })
 
-            //var nomF = document.getElementById("elegirFacultad").value
-            //var nomC = document.getElementById("elegirCarrera").value
+            var nomF = document.getElementById("setCategorias").value
+            var nomC = document.getElementById("selarticulos").value
             var nomUnid = document.getElementById("unidadAdministrativa").value
             var pre = document.getElementById("presupuesto").value 
             var jefeUnid = document.getElementById("nombreJefe").value
@@ -229,15 +229,14 @@ class Registro_Unidad_Gasto extends Component {
             var llave = "1000000"
 
             const data = {
-                //nombreFacultad: `${seleccion}`,
-                //nombreCarrera: `${seleccion}`,
-
+                nombreFacultad: `${nomF}`,
+                nombreCarrera: `${nomC}`,
                 nombreUnidad: `${nomUnid}`,
                 presupuesto: `${pre}`,
                 jefeUnidad: `${jefeUnid}`,
                 secretariaUnidad: `${secreUnid}`,
                 telefonoUnidad: `${telUnid}`,
-                RegistroNuevoUsuario_idRegistroNuevoUsuario: 1000000
+                RegistroNuevoUsuario_idRegistroNuevoUsuario: `${llave}`
             }
             //añadiendo datos a la API con ayuda de axios
             axios.post('https://backendcompleto-sdc.herokuapp.com/api/unitSpending/createRegisterUnit' ,
@@ -259,7 +258,7 @@ class Registro_Unidad_Gasto extends Component {
 
     render(){
         return(
-            <div>
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 {this.state.showMe ? (
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 

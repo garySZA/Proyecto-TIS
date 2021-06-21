@@ -432,7 +432,7 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
 
-
+                {this.state.showMe ? (
                 <div className="p-grid">
  
 
@@ -462,7 +462,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                                 <div className="elementosFormularioUsuarios__grupo"id="grupo_NombreUsuario" >
                                                        <div className="contenedorElementosNuevosUsuarios_subtitulos">
                                                            <i className="fas fa-user icon"></i> 
-                                                          <label for="nombre-nuevo-usuario"className="subtituloNU">Nombres</label>
+                                                          <label htmlFor="nombre-nuevo-usuario"className="subtituloNU">Nombres</label>
                                                        </div>
 
                                                         <div className="formularioNuevoUsuario__grupo-input">
@@ -490,9 +490,9 @@ class RegistroDeNuevosUsuarios extends Component{
                                                <div className="elementosFormularioUsuarios__grupo" id="grupo_ApellidoUsuario">
                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos">
                                                         <i className="fas fa-user icon"></i> 
-                                                        <label for="apellido-nuevo-usuario" className="subtituloNU">Apellidos</label>
+                                                        <label htmlFor="apellido-nuevo-usuario" className="subtituloNU">Apellidos</label>
                                                     </div>
-                                                     <div class="formularioNuevoUsuario__grupo-input" >
+                                                     <div className="formularioNuevoUsuario__grupo-input" >
                                                           <input 
                                                              type="text"
                                                              className="ingreso"
@@ -516,10 +516,10 @@ class RegistroDeNuevosUsuarios extends Component{
                                                  <div className="elementosFormularioUsuarios__grupo" id="grupo_FechaNacimientoUsuario">
                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos" >
                                                        <i className="fas fa-calendar-alt"></i>
-                                                       <label for="calendario-nuevo-usuario" className="subtituloNU">Fecha de Nacimiento</label>
+                                                       <label htmlFor="calendario-nuevo-usuario" className="subtituloNU">Fecha de Nacimiento</label>
                                                     </div>
 
-                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                                    <div className="formularioNuevoUsuario__grupo-input" >
                                                       <input  
                                                     
                                                         type = 'date'
@@ -527,7 +527,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                                         name="fechaNacimientoNuevoUsuario"
                                                         id="fechaNacimientoNuevoUsuario"
                                                         name="fecha"
-                                                        onChange={this.onChange}
+                                                        //onChange={this.onChange}
                                                       ></input>
                                                       <p className="formularioNuevoUsuario__input-error"
                                                         id="mensajeError-fechaNacimientoNuevoUsuario">
@@ -604,10 +604,10 @@ class RegistroDeNuevosUsuarios extends Component{
                                                   <div className="elementosFormularioUsuarios__grupo" id="grupo_DireccionUsuario">
                                                      <div className="contenedorElementosNuevosUsuarios_subtitulos">
                                                           <i className="fas fa-home"></i>
-                                                          <label for="direccion-nuevo-usuario" className="subtituloNU">Direccion</label>
+                                                          <label htmlFor="direccion-nuevo-usuario" className="subtituloNU">Direccion</label>
                                                   </div>
                                 
-                                                  <div class="formularioNuevoUsuario__grupo-input" >
+                                                  <div className="formularioNuevoUsuario__grupo-input" >
                                                     <input 
                                                       type= "text" 
                                                       className="ingreso"
@@ -632,10 +632,10 @@ class RegistroDeNuevosUsuarios extends Component{
                                                <div className="elementosFormularioUsuarios__grupo" id="grupo_TelefonoUsuario">
                                                  <div className="contenedorElementosNuevosUsuarios_subtitulos" >
                                                      <i className="fas fa-phone"></i>
-                                                     <label for="telefono-nuevo-usuario" className="subtituloNU">Teléfono</label>
+                                                     <label htmlFor="telefono-nuevo-usuario" className="subtituloNU">Teléfono</label>
                                                  </div>
                                  
-                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                                    <div className="formularioNuevoUsuario__grupo-input" >
                                                       <input 
                                                       type ="text" 
                                                       className="ingreso"
@@ -662,11 +662,11 @@ class RegistroDeNuevosUsuarios extends Component{
                                                 <div className="elementosFormularioUsuarios__grupo" id="grupo_TipoUsuario">
                                                      <div className="contenedorElementosNuevosUsuarios_subtitulos" >
                                                        <i className="fas fa-user icon"></i> 
-                                                       <label for="tipo-nuevo-usuario" className="subtituloNU">Tipo</label>
+                                                       <label htmlFor="tipo-nuevo-usuario" className="subtituloNU">Tipo</label>
                                                      </div>
                          
                                
-                                                    <div class="formularioNuevoUsuario__grupo-input" >
+                                                    <div className="formularioNuevoUsuario__grupo-input" >
                                 
                                                          <select type="selection"
                                                           className="ingreso"
@@ -677,7 +677,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                                               <option>secretario</option>
                                                               <option>administrador</option>
                                                               <option>jefe</option>
-                                                           onChange={this.onChange}
+                                                           
                                                          </select>
 
                                             
@@ -728,10 +728,10 @@ class RegistroDeNuevosUsuarios extends Component{
                                                 <div className="elementosFormularioUsuarios__grupo" id="grupo_EmailUsuario">
                                                     <div className="contenedorElementosNuevosUsuarios_subtitulos" >
                                                           <i className="fas fa-envelope icon"></i>
-                                                          <label for="email-nuevo-usuario" className="subtituloNU">Email</label>
+                                                          <label htmlFor="email-nuevo-usuario" className="subtituloNU">Email</label>
                                                     </div>
 
-                                                     <div class="formularioNuevoUsuario__grupo-input" >
+                                                     <div className="formularioNuevoUsuario__grupo-input" >
                                                                 <input 
                                                                  type="text"
                                                                  className="ingreso"
@@ -754,10 +754,10 @@ class RegistroDeNuevosUsuarios extends Component{
                                               <div className="elementosFormularioUsuarios__grupo" id="grupo_ContraseniaUsuario">
                                                 <div className="contenedorElementosNuevosUsuarios_subtitulos" >
                                                    <i className="fas fa-key icon"></i>
-                                                   <label for="email-nuevo-usuario" className="subtituloNU">Contraseña</label>
+                                                   <label htmlFor="email-nuevo-usuario" className="subtituloNU">Contraseña</label>
                                                  </div>
                              
-                                                  <div class="formularioNuevoUsuario__grupo-input" >
+                                                  <div className="formularioNuevoUsuario__grupo-input" >
                                                       <input 
                                                            type="password"
                                                            className="ingreso"
@@ -777,9 +777,9 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
 
-                                                    <div class="formulario__mensaje" id="formulario__mensaje">
+                                                    <div className="formulario__mensaje" id="formulario__mensaje">
                                                      <p>
-                                                      <i class="fas fa-exclamation-triangle"></i>
+                                                      <i className="fas fa-exclamation-triangle"></i>
                                                       <b>Error:</b> Por favor
                                                         llena el formulario correctamente.
                                                      </p>
@@ -792,7 +792,7 @@ class RegistroDeNuevosUsuarios extends Component{
 
 
                                                        <div className="mensaje-exito">
-                                                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                                                        <p className="formulario__mensaje-exito" id="formulario__mensaje-exito">
                                                         ¡El formulario ha sido registrado con exito!
                                                         </p>
                                                        </div>
@@ -814,7 +814,7 @@ class RegistroDeNuevosUsuarios extends Component{
 
                  <div className="p-col   space-top"></div>
             </div>
-
+                ):(<div></div>)}
      </div>
    );
   }

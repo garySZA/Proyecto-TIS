@@ -28,7 +28,6 @@ function Tarjeta_Solicitudes(props){
         if(idFormularioSolitud==obs.FormularioSolitud_idFormularioSolitud){
             detalless=obs.DetalleIAR;
         }
-        
 
        })
         
@@ -36,8 +35,7 @@ function Tarjeta_Solicitudes(props){
         var doc=new jsPDF('portrait','px','a4','false');
         
         doc.setFontSize(12);
-        
-        doc.setFont('fontStyle');
+        doc.setFont("helvetica");
         doc.text(170,70, "Solicitudes de Empresas");
         doc.text(60,110,"Detalle: "+DetalleSolitud);
         doc.text(60,130,"Item: "+item);

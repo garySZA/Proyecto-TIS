@@ -157,9 +157,9 @@ class Formulario_ProductosServicios extends Component{
             })
 
 
-            var iitem1 = document.getElementById("item").value;
+            var iitem1 = document.getElementById("item").value
             var detalle = document.getElementById("detalleSolicitud").value
-            var fechaS = "2021-06-11"
+            var fechaS = document.getElementById("fecha").value
             var respon = document.getElementById("responsableSolicitud").value
             var mont = document.getElementById("monto").value
             var llave = "3000000"
@@ -170,7 +170,7 @@ class Formulario_ProductosServicios extends Component{
                 FechaDeSolicitud: `${fechaS}` ,
                 responsableSolicitud: `${respon}` ,
                 montoSolicitud: `${mont}`,
-                estadoSolicitud: "En espera",
+                estadoSolicitud: "En Verificacion",
                 registroUnidadGasto_idRegistroUnidad: 3000000
             }
             console.log(fechaS);
@@ -233,7 +233,7 @@ class Formulario_ProductosServicios extends Component{
     
     render(){
         return(
-            <div>
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     {this.state.showMe ? (
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 
@@ -297,7 +297,9 @@ class Formulario_ProductosServicios extends Component{
                                     <DatePicker className="entradas" 
                                         type="text" 
                                         name="fecha"
-                                        id="fecha" selected={this.state.fecha}>
+                                        title="fechaSolicitud"
+                                        id="fecha" selected={this.state.fecha}
+                                        dateFormat="dd/MM/yyyy">
                                     </DatePicker>
 
                                 </div>
