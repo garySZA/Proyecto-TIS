@@ -46,7 +46,11 @@ const Usuario = () =>{
                 </div>
                 {
                     <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
-                        <h3>Right Sidebar</h3>
+                        <div>
+                            <h3>Antonio Roman</h3>
+                            <h5>Perfil</h5>
+                        </div>
+                        
                     </Sidebar>
                 }
             </div> 
