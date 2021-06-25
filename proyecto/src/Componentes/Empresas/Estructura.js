@@ -3,6 +3,7 @@ import './estilos-empresas.css'
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import swal from 'sweetalert2';
+import Editar from './Editar-Empresa/Editar';
 
 function Estructura(props){
     //bloque para poder mostrar ventana flotante que contenga datos de una empresa
@@ -21,7 +22,11 @@ function Estructura(props){
     }
 
     //bloque para mostrar ventana flotante para editar una empresa.
+    const [estadoModalEditar, setEstadoModalEditar] = useState(false)
 
+    const abrirModalEditar = () => {
+        setEstadoModalEditar(!estadoModalEditar)
+    }
     //bloque para eliminar una empresa mediante un boton.
     const eliminarEmpresa = () => {
         swal.fire({
@@ -47,6 +52,11 @@ function Estructura(props){
             })
     }
 
+    const onChangse = () => {
+        document.getElementById("inp-nombre").innerHTML='algo'
+        console.log(document.getElementById('inp-nombre').value)
+    }
+
     return(
         <div className="contenedor-gral" data-aos="fade-up" data-aos-duration="2000">
             <section className="contenedor-campos-ver-empresa">
@@ -67,7 +77,7 @@ function Estructura(props){
                         <label className="cont-ver-emp">{props.empresa.NombrePersona}</label>
                     </div>
                     <div className="contenedor-btn-ver-empresas">
-                        <button className="btn-ver-empresa btn-edit-empr" title="Editar datos de empresa"><i class="fas fa-pencil-alt icono-ver-empresa"></i></button>
+                        <button className="btn-ver-empresa btn-edit-empr" title="Editar datos de empresa" onClick={abrirModalEditar}><i class="fas fa-pencil-alt icono-ver-empresa"></i></button>
                         <button className="btn-ver-empresa btn-elim-empr" title="Eliminar empresa" onClick={eliminarEmpresa}><i class="far fa-trash-alt icono-ver-empresa"></i></button>
                         <button className="btn-ver-empresa btn-ver-empr" title="Ver datos completos de empresa" onClick={abrirModalVer}><i class="far fa-eye icono-ver-empresa"></i></button>
                     </div>
@@ -108,6 +118,20 @@ function Estructura(props){
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={abrirModalVer}>Aceptar</Button>
+                </ModalFooter>
+            </Modal>
+
+            <Modal isOpen={estadoModalEditar} style={modalStyles}>
+                <ModalHeader>Editar Empresa</ModalHeader>
+                <ModalBody>
+                    <FormGroup>
+                        <Label>Nombre: </Label>
+                        <Input id="inp-nombre" value={props.empresa.nombreEmpresa}></Input>
+                    </FormGroup>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" >Aceptar</Button>
+                    <Button color="secondary" onClick={abrirModalEditar}>Cancelar</Button>
                 </ModalFooter>
             </Modal>
         </div>
