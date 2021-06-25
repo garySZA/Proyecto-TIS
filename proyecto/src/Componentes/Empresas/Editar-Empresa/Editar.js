@@ -1,0 +1,488 @@
+import '../../Registro_Empresa/estilos_registro_empresa.css'
+import swal from 'sweetalert2';
+
+function DarEfecto(etiqueta){
+    
+    document.getElementById(etiqueta).classList.add("input-error");
+    document.getElementById(`mensajeError-${etiqueta}`).classList.add("formulario__input-error-activo");
+    
+}
+
+function QuitarEfectoError(etiqueta){
+    document.getElementById(etiqueta).classList.remove("input-error");
+    document.getElementById(`mensajeError-${etiqueta}`).classList.remove("formulario__input-error-activo");
+    
+}
+
+function VerificarCamposVacios(){
+        this.nombreCampos.forEach((campo) => {
+            if(document.getElementById(campo) === ""){
+                this.setState({
+                    camposVacios: true
+                })
+            }else{
+                this.setState({
+                    camposVacios: false
+                })
+            }
+        })
+}
+
+function Editar(){
+
+    const expresiones = {
+        nombreEmpresa: /^[a-zA-Z\_\-]{0,100}$/, // Letras
+        rubro: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras
+        telefonoEmpresa: /^\d{7,8}$/, // 7 a 8 digitos.
+        correoEmpresa: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        nitEmpresa: /^\d{10}$/, // 10 digitos.
+        nombrePersona: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras
+        telPersona: /^\d{7,8}$/, // 7 a 8 digitos.
+        ciPersona: /^\d{7,8}$/, // 7 a 8 digitos.
+    };
+
+    let nombreCampos = ["nombreEmpresa", "rubro" ,"telefonoEmpresa", "correoEmpresa", "nitEmpresa", "nombrePersona", "telPersona", "ciPersona"];
+    
+    const onChange = () => {
+        
+        this.nombreCampos.forEach((campo) => {
+            this.verificarCamposVacios();
+            var elemento = document.getElementById(campo);
+            if(campo == "nombreEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNombreEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.nombreEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoNombreEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoNombreEmpresa:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "rubro"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoRubroEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.rubro.test(elemento.value)){
+                        this.setState({
+                            validoRubroEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoRubroEmpresa:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "telefonoEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoTelefonoEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.telefonoEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoTelefonoEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoTelefonoEmpresa:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "correoEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoCorreoEmpresa:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.correoEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoCorreoEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoCorreoEmpresa:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "nitEmpresa"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNitEmpresa:false
+                    })
+                }else{
+                    this.verificarExistencia()
+                    console.log("funciona");
+                    if(expresiones.nitEmpresa.test(elemento.value)){
+                        this.setState({
+                            validoNitEmpresa:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoNitEmpresa:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "nombrePersona"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoNombrePersona:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.nombrePersona.test(elemento.value)){
+                        this.setState({
+                            validoNombrePersona:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoNombrePersona:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else if(campo == "telPersona"){
+                if(elemento.value ===""){
+                    this.setState({
+                        validoTelefonoPersona:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.telPersona.test(elemento.value)){
+                        this.setState({
+                            validoTelefonoPersona:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoTelefonoPersona:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }else{
+                if(elemento.value ===""){
+                    this.setState({
+                        validoCiPersona:false
+                    })
+                }else{
+                    console.log("funciona");
+                    if(expresiones.ciPersona.test(elemento.value)){
+                        this.setState({
+                            validoCiPersona:true
+                        })
+                        this.quitarEfectoError(campo);
+                    }else{
+                        this.setState({
+                            validoCiPersona:false
+                        })
+                        this.darEfectoError(campo)
+                    }
+                }
+            }
+            
+        })
+    }
+    
+
+    const verificar = () =>{
+        if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
+            if(this.state.doble == false){
+                //  Bloque para verificar si una empresa se encuentra registrada
+            }else{
+                console.log("empresa ya existe")
+                swal.fire({
+                    title:      'Error!',
+                    text:       'La empresa que desea registrar ya se encuentra registrada!',
+                    icon:       'error',
+                    confirmButtonText:  `Ok`,
+                    timer:              10000,
+                    timerProgressBar:   'true'
+                })
+            }
+        }else{
+            console.log("datos llenados incorrectamente");
+            document.getElementById("formulario__mensaje").classList.add("formulario__input-error-activo");
+        }
+    }
+
+    const limpiarCampos = () =>{
+        this.nombreCampos.forEach((campo) => {
+            document.getElementById(campo).value ="";
+        })
+    }
+
+    const notificacionAdvertencia = () =>{
+        if(!this.state.camposVacios){
+            swal.fire({
+                title:      'Advertencia',
+                text:       'Los campos llenados serán vaciados!',
+                icon:       'warning',
+                showDenyButton:     'true',
+                confirmButtonText:  `Aceptar`,
+                denyButtonText:     `Cancelar`,
+                timer:              5000,
+                timerProgressBar:   'true'
+            }).then((respuesta) => {
+                if(respuesta.isConfirmed){
+                    this.limpiarCampos();
+                }else if(respuesta.isDenied){
+    
+                }
+            })
+        }
+    }
+
+    const confirmacionDeRegistro = () =>{
+        if(this.state.validoNombreEmpresa == true && this.state.validoRubroEmpresa == true && this.state.validoTelefonoEmpresa == true && this.state.validoCorreoEmpresa == true && this.state.validoNitEmpresa == true && this.state.validoNombrePersona==true && this.state.validoTelefonoPersona == true && this.state.validoCiPersona == true){
+            swal.fire({
+                title:      'Advertencia',
+                text:       '¿Está de acuerdo en registrar los datos ingresados?',
+                icon:       'warning',
+                showDenyButton:     'true',
+                confirmButtonText:  `Registrar`,
+                denyButtonText:     `Cancelar`,
+                timer:              5000,
+                timerProgressBar:   'true'
+            }).then((respuesta) => {
+                if(respuesta.isConfirmed){
+                    this.verificar();
+                }else if(respuesta.isDenied){
+    
+                }
+            })
+        }
+    }
+
+    return(
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+             <div className="contenedor-empresa" id="mostrar-registro-empresa">
+
+<div className="contenedor-titulo">
+    <h2 className="titulo-registro-empresa">
+        Registro de Empresa
+    </h2>
+</div>
+
+<div className="contenedor-campos formulario">
+
+    <div className="elementos formulario__grupo" id="grupo__usuario">
+        <div className="contenedor-elementos-subtitulo">
+            <i className="fas fa-building"></i>
+            <label className="subtitulo">Nombre de empresa:</label>
+        </div>
+
+        <div className="formulario__grupo-input ">
+            <input 
+                type="text" 
+                className="inputs"
+                name="nombreEmpresa"
+                id="nombreEmpresa" 
+                placeholder="Ingrese nombre aquí"
+                onChange={onChange}>
+
+            </input>
+            
+            <p className="formulario__input-error"
+                id="mensajeError-nombreEmpresa">
+                El nombre debe contener solo letras
+            </p>
+            </div>
+        </div>
+
+        <div className="elementos formulario__grupo" id="grupo__rubro">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-briefcase"></i>
+                <label className="subtitulo">Rubro de empresa:</label>
+            </div>
+            <div className="formulario__grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs"
+                    name="rubro" 
+                    id="rubro"
+                    placeholder="Ingrese rubro aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-rubro">
+                    El rubro de la empresa debe contener entre 0 y 70 caracteres
+                </p>
+            </div>
+        </div>
+
+        <div className="elementos formulario__grupo" id="grupo__telefonoEmpresa">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-phone"></i>
+                <label className="subtitulo">Telefono de empresa:</label>
+            </div>
+            <div className="formulario__grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs" 
+                    name="telefonoEmpresa"
+                    id="telefonoEmpresa"
+                    placeholder="Ingrese teléfono aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-telefonoEmpresa">
+                El telefono solo puede contener numeros y el maximo son 8 dígitos.
+                </p>
+            </div>
+        </div>
+
+        <div className="elementos formulario__grupo" id="grupo__correoEmpresa">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-at"></i>
+                <label className="nombre-empresa" className="subtitulo">Correo electrónico de empresa:</label>
+            </div>
+            <div className="formulario__grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs"
+                    name="correoEmpresa"
+                    id="correoEmpresa" 
+                    placeholder="Ingrese correo aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-correoEmpresa">
+                El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.
+                </p>
+            </div>
+        </div>
+
+
+        <div className="elementos formulario__grupo" id="grupo__nitEmpresa">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-hashtag"></i>
+                <label className="subtitulo">NIT de empresa:</label>
+            </div>
+            <div className="formulario__grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs" 
+                    name="nitEmpresa"
+                    id="nitEmpresa"
+                    placeholder="Ingrese nit aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-nitEmpresa">
+                    El nit de la empresa solo puede contener 10 dígitos.
+                </p>
+            </div>
+        </div>
+
+        <div className="elementos formulario__grupo" id="grupo__nombrePersona">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-user"></i>
+                <label className="subtitulo">Nombre de persona encargada:</label>
+            </div>
+            <div className="formulario__grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs" 
+                    name="nombrePersona"
+                    id="nombrePersona"
+                    placeholder="Ingrese nombre aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-nombrePersona">
+                    El nombre solo puede contener 40 letras y espacios.
+                </p>
+            </div>
+        </div>
+
+        <div className="elementos formulario__grupo" id="grupo__telefonoPersona">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-phone"></i>
+                <label className="subtitulo">Telefono de persona encargada:</label>
+            </div>
+            <div className="formulario__grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs" 
+                    name="telefonoPersona"
+                    id="telPersona"
+                    placeholder="Ingrese teléfono aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-telPersona">
+                    El telefono solo puede contener entre 7 y 8 digitos
+                </p>
+            </div>
+        </div>
+
+        <div className="elementos formulario__grupo" id="grupo__ciPersona">
+            <div className="contenedor-elementos-subtitulo">
+                <i className="fas fa-hashtag"></i>
+                <label className="subtitulo">CI de persona encargada:</label>
+            </div>
+            <div className="formulario__grupo" id="grupo-input">
+                <input 
+                    type="text" 
+                    className="inputs" 
+                    name="ciPersona"
+                    id="ciPersona"
+                    placeholder="Ingrese ci aquí"
+                    onChange={onChange}>
+                </input>
+                <i className="formulario__validacion-estado fas fa-times-circle"></i>
+                <p className="formulario__input-error" id="mensajeError-ciPersona">
+                    El ci solo puede contener números.
+                </p>
+            </div>
+        </div>
+
+        <div className="formulario__mensaje" id="formulario__mensaje">
+            <p>
+                <i className="fas fa-exclamation-triangle"></i>
+                <b>Error:</b> Por favor
+                rellena el formulario correctamente.
+            </p>
+        </div>
+
+        <div className="contenedor-botones formulario__grupo formulario__grupo-btn-enviar">
+            <button className="boton-cancelar botonRegistro" >Cancelar</button>
+            <button className="boton-registrar botonRegistro formulario__btn" id="registrar" >Registrar</button>
+        </div>
+
+        
+        <div className="mensaje-exito">
+            <p className="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                ¡Formulario enviado exitosamente!
+            </p>
+        </div>
+    </div>
+    </div>
+        </div>
+    )
+}
+
+export default Editar;
