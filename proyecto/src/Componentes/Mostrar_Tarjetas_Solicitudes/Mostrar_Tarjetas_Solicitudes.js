@@ -32,14 +32,9 @@ console.log(todos)
                             <Tarjeta_Solicitudes solicitud = {solicitud} estadoCaja = 'tarjeta-solicitud-rechazado' estadoTitulo = 'contenedor-estado-solicitud-rechazado'/>
                             :
                             ''
-                            
                         })
-
                     }
-                     
-                    
                 </div>
-
             </div>
         );
 }

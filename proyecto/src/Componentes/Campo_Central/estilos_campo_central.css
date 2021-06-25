@@ -1,7 +1,8 @@
 .principal{
     background-color: var(--color_fondo_cuadros);
     
-    width: 68%;
+    width: 90%;
+    height: 540px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,9 +10,10 @@
 
 
 
-    margin-left: 10px;
+    margin-left: 70px;
     margin-bottom: 10px;
     border: 2px var(--color_fondo) solid;
     border-radius: 10px;
     box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    transition: .9s;
 }
