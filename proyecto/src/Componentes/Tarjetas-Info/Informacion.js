@@ -22,7 +22,7 @@ function TarjetaInf(){
     useEffect(() => {
         fetchApi();
         fetApiSoli()
-    }, [])
+    },[])
 
     let datosEmpresa = {
         icono: "far fa-building icono-info",
