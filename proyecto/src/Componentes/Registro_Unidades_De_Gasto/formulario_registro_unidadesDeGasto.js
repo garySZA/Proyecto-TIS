@@ -263,7 +263,7 @@ class Registro_Unidad_Gasto extends Component {
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 
                         <div className="p-col-12 contedor-tituloDeRegistro">
-                            <label className=" solitudDeProductos-servicios">
+                            <label className="solitudDeProductos-servicios">
                                 Registrar Unidad de Gasto
                             </label>
                         </div>

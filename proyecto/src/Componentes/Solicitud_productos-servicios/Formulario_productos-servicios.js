@@ -238,9 +238,9 @@ class Formulario_ProductosServicios extends Component{
                     <div className="p-grid contenedor-deRegistro" id="mostrar-formulario-proser">
 
                         <div className="p-col-12 contedor-tituloDeRegistro">
-                            <label className=" solitudDeProductos-servicios">
-                                Solicitud de Productos y/o Servicios
-                            </label>
+                            <h2 className="solitudDeProductos-servicioss">
+                                Solicitud de Cotizacion
+                            </h2>
                         </div>           
                                                                                                                             
                         <div className="contenedor-formularioDeRegistro">
