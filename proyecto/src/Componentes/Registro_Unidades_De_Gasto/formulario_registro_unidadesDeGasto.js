@@ -219,7 +219,7 @@ class Registro_Unidad_Gasto extends Component {
                 console.log(document.getElementById(campo).value)
             })
 
-            var nomF = document.getElementById("setCategorias").value
+            var nomF = document.getElementById("selCategorias").value;
             var nomC = document.getElementById("selarticulos").value
             var nomUnid = document.getElementById("unidadAdministrativa").value
             var pre = document.getElementById("presupuesto").value 
@@ -305,7 +305,8 @@ class Registro_Unidad_Gasto extends Component {
                                         name="presupuesto" 
                                         id="presupuesto" 
                                         title="presupuesto"
-                                        type="number"  
+                                        type="text" 
+                                        min="1" 
                                         required pattern="[0-9]+"
                                         onChange = {this.verificarCampos}/>                                                                                                                                                                   
                                     <label htmlFor="username"> Ingresar el presupuesto destinado. </label>
@@ -371,8 +372,9 @@ class Registro_Unidad_Gasto extends Component {
                                         name="telefonoUnidad" 
                                         id="telefonoUnidad" 
                                         title="telefonoUnidad"
-                                        type="number"  
+                                        type="text"  
                                         required pattern="[0-9]+"
+                                        maxLength="8"
                                         onChange = {this.verificarCampos}/>                                                                                                                                                                                                      
                                     <label htmlFor="username"> Ingresar numero de Telefono. </label>
 

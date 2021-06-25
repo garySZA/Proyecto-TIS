@@ -104,7 +104,7 @@ function Menu () {
         console.log(opcion);
 
         setIdArticulos(opcion);
-        //console.log(categorias.nombreFacultad[opcion]);     
+             
     }
 
 
@@ -118,16 +118,17 @@ function Menu () {
                 </div>
                 <div className="p-col-7 solicitud__datos-imputs">
                     <select className="entradas"
-                        name="categorias"  
-                        id="setCategorias"
+                        name="categorias"
+                        id="selCategorias"
                         title="elegirFacultad"
                         onClick={handlerCargarArticulos}>
                         <option value={-1}>Seleccione una Facultad </option>
                         {
                             categorias.map((item, i) => (
-                                <option key={"categoria"+i} value={i}>{item.nombreFacultad}</option>
+                                <option key={"categoria"+i} value={i}> {item.nombreFacultad} </option>
                             ) )
                         }
+                        
                     </select>
                 </div>
             </div>
@@ -146,8 +147,8 @@ function Menu () {
                             {
                                 idArticulos > -1 &&
                                 (
-                                    categorias[idArticulos].nombreCarrera.map((item,i) =>(
-                                        <option key={"articulo" +i} value={i+item}>{item}</option>
+                                    categorias[idArticulos].nombreCarrera.map((item ,i) =>(
+                                        <option key={"articulo" +i} value={item}>{item}</option>
                                     ))
                                 )
                             }
