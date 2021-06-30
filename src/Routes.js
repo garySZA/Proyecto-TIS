@@ -37,8 +37,8 @@ const Routes = () =>{
                 <Route path="/Jefe/:id/UnidadGasto"         exact component={UnidadGasto}/>
                 <Route path="/Jefe/:id/EstadoSolicitudes"   exact component={EstadoSolicitud}/>
                 <Route path="/Jefe/:id/RespuestasEmpresas"  exact component={RespuestaEmpresa}/>
-                <Route path="/Secretaria"                   exact component={Secretaria}/>
-                <Route path="/Usuario"                      exact component={Usuario}/>
+                <Route path="/Secretaria/:id"                   exact component={Secretaria}/>
+                <Route path="/Usuario/:id"                  exact component={Usuario}/>
                 <Route path="/NewUser"                      exact component={NewUser}/>
                 <Route path="/Notificaciones"               exact component={Notificaciones}/>
             </Switch>

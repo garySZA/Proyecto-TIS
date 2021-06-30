@@ -116,10 +116,10 @@ const Login = () =>{
             history.push(`/Jefe/${userDB}`);
         }else if(secretaria === true){
             console.log("Es Secretaria");
-            history.push('/Secretaria');
+            history.push(`/Secretaria/${userDB}`);
         }else if(user === true){
             console.log("Es Usuario");
-            history.push('/Usuario');
+            history.push(`/Usuario/${userDB}`);
         }
     };
 
