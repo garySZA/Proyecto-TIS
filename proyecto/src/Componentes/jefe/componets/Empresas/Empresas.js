@@ -5,6 +5,7 @@ import './Empresas.css';
 import { Menubar }                          from 'primereact/menubar';
 import { Button }                           from 'primereact/button';
 import { Card }                             from 'primereact/card';
+import { InputText }                        from 'primereact/inputtext';
         
         
 import EmpresaCard                          from './EmpresaCard';
@@ -23,7 +24,15 @@ import logo                         from './img/UMSS_logo.png';
 
 const Empresas = () =>{
 
-    const start = <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
+    const start = ()=>{
+        return( 
+            <div>
+                <img alt="logo" src={logo} height="60" className="p-mr-2"></img>;
+                <InputText placeholder="Search" type="text" />;
+            </div>       
+
+        )
+    };
     const history                    = useHistory();
     const {id}                       = useParams();
     const [idDB,setIdDB]             = useState(id);
@@ -35,6 +44,7 @@ const Empresas = () =>{
     const closeSesion = ()=>{
         return(
             <div>
+                
                 <Button label="CERRAR SESIÓN"    icon="pi  pi-fw pi-sign-out"  className="p-button-rounded p-button-lg p-button-info p-button-text close-se type-letter " onClick={handleHome}/>
             </div>  
         )
@@ -110,6 +120,8 @@ const Empresas = () =>{
       setEditando(false);
       setEmpresas(empresas.map(empresa => (empresa.idRegistroEmpresa === id ? actualizarEmpresa : empresa)));
     }
+
+    
 
     return(
         <div>
