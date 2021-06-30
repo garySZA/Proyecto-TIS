@@ -38,6 +38,8 @@ $ npm install react-datepicker //para las fechas automaticas o personalizadas
 
 $ npm install jspdf //para importar librerias para PFD
 
+$ npm install react-scripts  //desinstalar e instalar de nuevo en caso de error
+
 
 # Getting Started with Create React App
 

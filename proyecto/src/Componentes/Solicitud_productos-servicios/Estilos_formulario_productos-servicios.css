@@ -59,7 +59,7 @@
 .solitudDeProductos-servicioss {
     font-size: 2.813em;
     margin: 20px;
-    /*margin-left: 25%;*/
+    margin-left: 35%;
     font-family: var(--fuente-titulos);
     color: var(--color_fondo);
 }
