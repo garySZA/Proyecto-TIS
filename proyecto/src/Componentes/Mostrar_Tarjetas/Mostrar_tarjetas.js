@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './estilos_mostrar_tarjetas.css';
-import Tarjeta from '../Tarjeta/Tarjeta';
+import Tarjeta from '../Tarjeta/tarjeta';
 import Spinner from '../Spinner/Spinner'
 
 
