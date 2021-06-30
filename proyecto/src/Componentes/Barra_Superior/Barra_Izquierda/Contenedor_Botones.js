@@ -8,11 +8,14 @@ import Mostrar_tarjetas_solicitudes from '../../Mostrar_Tarjetas_Solicitudes/Mos
 import Mostrar_Tarjetas_Modificacion_Estados from '../../Modificar_Estado_Solicitudes/Mostrar_Tarjetas_Modificacion_Estados';
 import TarjetaInf from '../../Tarjetas-Info/Informacion';
 import Empresa from '../../Empresas/Empresas';
+import SolicitudesCuadros from '../../Cuadro_Comparativo/Estructura';
+import Routes from '../../../Routes';
+import {withRouter} from 'react-router-dom';
 
 function Barra_Izquierda(){
 
     const cambio = function(boton) {
-        let botones = ["botonModificarEstados", 'botonHistorialSolicitudes', 'botonVerEmpresas', 'botonRegistroUnidadDeGasto', 'botonRegistroEmpresa', 'botonRegistroSolicitud']
+        let botones = ["botonModificarEstados", 'botonHistorialSolicitudes', 'botonVerEmpresas', 'botonRegistroUnidadDeGasto', 'botonRegistroEmpresa', 'botonRegistroSolicitud', 'botonCuadroComp']
         botones.forEach(btn => {
             console.log(boton)
             if(btn == boton){
@@ -31,6 +34,7 @@ function Barra_Izquierda(){
     const [estadoVerEmpresas, setVerEmpresas] = useState(false)
     const [estadoHistorialSoli, setHistorialSoli] = useState(false)
     const [estadoModifSoli, setModifSoli] = useState(false)
+    const [EstadoCuadrosComp, setEstadoCuadros] = useState(false)
 
     const mostrarRegistroEmpresa = () => {
         setEstadoRegistroEmpresa(!estadoRegistroEmpresa)
@@ -39,6 +43,7 @@ function Barra_Izquierda(){
         setVerEmpresas(false)
         setHistorialSoli(false)
         setModifSoli(false)
+        setEstadoCuadros(false)
         cambio("botonRegistroEmpresa")
     }
 
@@ -49,6 +54,7 @@ function Barra_Izquierda(){
         setVerEmpresas(false)
         setHistorialSoli(false)
         setModifSoli(false)
+        setEstadoCuadros(false)
         cambio("botonRegistroSolicitud")
     }
 
@@ -59,6 +65,7 @@ function Barra_Izquierda(){
         setVerEmpresas(false)
         setHistorialSoli(false)
         setModifSoli(false)
+        setEstadoCuadros(false)
         cambio("botonRegistroUnidadDeGasto")
     }
 
@@ -69,6 +76,7 @@ function Barra_Izquierda(){
         setUnidadGasto(false)
         setHistorialSoli(false)
         setModifSoli(false)
+        setEstadoCuadros(false)
         cambio("botonVerEmpresas")
     }
 
@@ -79,6 +87,7 @@ function Barra_Izquierda(){
         setFormSolicitud(false)
         setUnidadGasto(false)
         setModifSoli(false)
+        setEstadoCuadros(false)
         //cambio de color al dar click
         cambio("botonHistorialSolicitudes")
     }
@@ -90,7 +99,19 @@ function Barra_Izquierda(){
         setFormSolicitud(false)
         setUnidadGasto(false)
         setHistorialSoli(false)
+        setEstadoCuadros(false)
         cambio("botonModificarEstados")
+    }
+
+    const mostrarCuadrosComp = () => {
+        setEstadoCuadros(!EstadoCuadrosComp)
+        setModifSoli(false)
+        setVerEmpresas(false)
+        setEstadoRegistroEmpresa(false)
+        setFormSolicitud(false)
+        setUnidadGasto(false)
+        setHistorialSoli(false)
+        cambio("botonCuadroComp")
     }
 
     return(
@@ -103,6 +124,7 @@ function Barra_Izquierda(){
             <button className="boton-barra"  id="botonVerEmpresas" onClick={mostrarEmpresas}>Ver Empresas</button>
             <button className="boton-barra"  id="botonHistorialSolicitudes" onClick={mostrarHistorialSoli}>Historial de Solicitudes</button>
             <button className="boton-barra"  id="botonModificarEstados" onClick={mostrarModifSoli}>Modificar Estados</button>
+            <button className="boton-barra"  id="botonCuadroComp" onClick={mostrarCuadrosComp}>Cuadros Comparativos</button>
         </div>
             {
                 (estadoRegistroEmpresa)?
@@ -134,12 +156,21 @@ function Barra_Izquierda(){
                 <Mostrar_tarjetas_solicitudes />
                 :
                 ''
-            }{
+            }
+            {
                 (estadoModifSoli)?
                 <Mostrar_Tarjetas_Modificacion_Estados />
                 :
                 ''
             }
+            {
+                (EstadoCuadrosComp)?
+                <SolicitudesCuadros />
+                :
+                ''
+            }
+
+            
         </>
     )
 }
