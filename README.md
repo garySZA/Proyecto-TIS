@@ -14,19 +14,11 @@ $ npm install sweetalert2
 
 $ npm install web-vitals
 
-$ npm install @material-ui/core      //no instalar 
+$ npm install primereact
 
-$ npm install @material-ui/icons     //No instalar 
+$ npm install primeicons
 
-$ npm install react-swipeable-views  //no instalar 
-
-$ npm install @material-ui/lab       //no instalar 
-
-$ npm install primereact --save
-
-$ npm install primeicons --save
-
-$ npm install react-transition-group --save
+$ npm install react-transition-group
 
 $ npm install react-responsive-carousel
 
@@ -40,6 +32,11 @@ $ npm install jspdf //para importar librerias para PFD
 
 $ npm install react-scripts  //desinstalar e instalar de nuevo en caso de error
 
+//Instalacion de todos los modulos en una linea
+$ npm install react-router-dom react-bootstrap bootstrap axios reactstrap yup sweetalert2 web-vitals primereact primeicons react-transition-group react-responsive-carousel react-hook-form primeflex react-datepicker jspdf react-scripts 
+
+//Fixear errores
+$ npm audit fix
 
 # Getting Started with Create React App
 
