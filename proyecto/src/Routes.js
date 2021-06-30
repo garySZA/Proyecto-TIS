@@ -17,6 +17,8 @@ import UsuarioDB        from './Componentes/jefe/componets/Usuarios/Usuarios';
 import UnidadGasto      from './Componentes/jefe/componets/UnidadGasto/UnidadGasto';
 import EstadoSolicitud  from './Componentes/jefe/componets/EstadoSolicitudes/EstadoSolicitudes';
 import RespuestaEmpresa from './Componentes/jefe/componets/RespuestaEmpresa/RespuestasEmpresa';
+import Notificaciones   from  './Componentes/Notificaciones/Notificaciones';
+
 
 
 
@@ -38,6 +40,7 @@ const Routes = () =>{
                 <Route path="/Secretaria"                   exact component={Secretaria}/>
                 <Route path="/Usuario"                      exact component={Usuario}/>
                 <Route path="/NewUser"                      exact component={NewUser}/>
+                <Route path="/Notificaciones"               exact component={Notificaciones}/>
             </Switch>
         </BrowserRouter>
     )

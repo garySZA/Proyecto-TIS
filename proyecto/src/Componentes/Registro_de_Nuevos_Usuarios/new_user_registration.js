@@ -527,6 +527,7 @@ class RegistroDeNuevosUsuarios extends Component{
                                                         name="fechaNacimientoNuevoUsuario"
                                                         id="fechaNacimientoNuevoUsuario"
                                                         name="fecha"
+                                                        required
                                                         //onChange={this.onChange}
                                                       ></input>
                                                       <p className="formularioNuevoUsuario__input-error"
@@ -671,12 +672,12 @@ class RegistroDeNuevosUsuarios extends Component{
                                                          <select type="selection"
                                                           className="ingreso"
                                                           name="seleccionTipoNuevoUsuario"
-                                                          id="seleccionTipoNuevoUsuario">
-                                                              <option disabled selected>seleccione un Rol</option>
-                                                              <option>usuario</option>
-                                                              <option>secretario</option>
-                                                              <option>administrador</option>
-                                                              <option>jefe</option>
+                                                          id="seleccionTipoNuevoUsuario" required>
+                                                              <option value=""></option>
+                                                              <option value="1">usuario</option>
+                                                              <option value="2">secretario</option>
+                                                              <option value="3">administrador</option>
+                                                              <option value="4">jefe</option>
                                                            
                                                          </select>
 

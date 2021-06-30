@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import './estilos_mostrar_tarjetas.css';
-import Tarjeta from '../Tarjeta/Tarjeta';
+import Tarjeta from '../Tarjeta/tarjeta';
 import Spinner from '../Spinner/Spinner'
+
 
 function Mostrar_tarjetas(){
     const url = 'https://backendcompleto-sdc.herokuapp.com/api/registerBusiness/getRegisterBusiness'
+    
     const [todos, setTodos] = useState()
     const fetchApi = async () =>{
         const response = await fetch(url)
         const responseJSON = await response.json()
         setTodos(responseJSON)
     }
+ console.log('todos',todos);
+
+
 
     useEffect(() => {
         fetchApi()
@@ -35,6 +40,10 @@ function Mostrar_tarjetas(){
                     })
                         
                 }
+
+
+                
+                
             </div>  
         </div>
     );

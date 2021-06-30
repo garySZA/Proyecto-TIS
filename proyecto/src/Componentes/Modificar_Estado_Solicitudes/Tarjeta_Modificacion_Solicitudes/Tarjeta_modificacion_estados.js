@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 
+
 //  Funcion que se encarga de cambiar el campo 'estadoSolicitud'
 function cambioDeEstado(estado, solicitud){
     axios.post(`https://backendcompleto-sdc.herokuapp.com/api/formReq/updateFormReq/${solicitud.idFormularioSolitud}`,{
@@ -109,6 +110,11 @@ function Tarjeta_Modificacion_Estados(props){
         width: '500px'
     }
 
+
+    
+    
+    
+    
     return(
         <div className="tarjeta-solicitud" id={`tarjeta-solicitud${props.solicitud.idFormularioSolitud}`} data-aos="fade-up" data-aos-duration="3000">
             <div className="contenedor-estado-solicitud" id={`contenedor-estado-solicitud${props.solicitud.idFormularioSolitud}`}>
@@ -131,6 +137,10 @@ function Tarjeta_Modificacion_Estados(props){
                 <div className="contenido-de-solicitudes">
                     <label className="etiqueta-contenido-solicitud">{props.solicitud.montoSolicitud}Bs.</label>
                 </div>
+
+                
+               
+
             </div>
             <div className="contenedor-botones-cambio-estado" id={idBotones}>
                 <button className="Boton-estado-solicitud boton-rechazar-solicitud" onClick={abrirModal}>Rechazar</button>
@@ -167,7 +177,9 @@ function Tarjeta_Modificacion_Estados(props){
                     <Button color="secondary" onClick={abrirModalAprobado}>Cancelar</Button>
                 </ModalFooter>
             </Modal>
-        </div>
+
+                    
+            </div>
     )
 }
 
